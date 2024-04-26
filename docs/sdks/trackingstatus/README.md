@@ -1,0 +1,158 @@
+# TrackingStatus
+(*trackingStatus()*)
+
+## Overview
+
+<p style="text-align: center; background-color: #F2F3F4;"></br>
+If you purchased your shipping label through Shippo, you can also get all the tracking details of your Shipment 
+from the <a href="#tag/Transactions">Transaction</a> object.
+</br></br></p>
+A tracking status of a package is an indication of current location of a package in the supply chain. For example,  sorting, warehousing, or out for delivery. Use the tracking status object to track the location of your shipments.
+
+When using your <a href="https://docs.goshippo.com/docs/guides_general/authentication/">Test</a> token for tracking, you need to use Shippo's 
+predefined tokens for testing different tracking statuses. You can find more information in our 
+<a href="https://docs.goshippo.com/docs/tracking/tracking/">Tracking tutorial</a> on how to do this, and what the 
+payloads look like.      
+<SchemaDefinition schemaRef="#/components/schemas/Track"/>
+
+### Available Operations
+
+* [create](#create) - Register a tracking webhook
+* [get](#get) - Get a tracking status
+
+## create
+
+Registers a webhook that will send HTTP notifications to you when the status of your tracked package changes. For more details on creating a webhook, see our guides on <a href="https://docs.goshippo.com/docs/tracking/webhooks/">Webhooks</a> and <a href="https://docs.goshippo.com/docs/tracking/tracking/">Tracking</a>.
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.shippo.shippo_java_sdk.Shippo;
+import com.shippo.shippo_java_sdk.models.components.*;
+import com.shippo.shippo_java_sdk.models.components.Security;
+import com.shippo.shippo_java_sdk.models.components.TracksRequest;
+import com.shippo.shippo_java_sdk.models.operations.*;
+import com.shippo.shippo_java_sdk.models.operations.CreateTrackRequest;
+import com.shippo.shippo_java_sdk.models.operations.CreateTrackResponse;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) {
+        try {
+            Shippo sdk = Shippo.builder()
+                .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                .shippoApiVersion("2018-02-08")
+                .build();
+
+            CreateTrackResponse res = sdk.trackingStatus().create()
+                .shippoApiVersion("2018-02-08")
+                .tracksRequest(TracksRequest.builder()
+                    .carrier("usps")
+                    .trackingNumber("9205590164917312751089")
+                    .metadata("Order 000123")
+                    .build())
+                .call();
+
+            if (res.track().isPresent()) {
+                // handle response
+            }
+        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+            // handle exception
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                | Example                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                                         | *Optional<? extends String>*                                                                                               | :heavy_minus_sign:                                                                                                         | String used to pick a non-default API version to use                                                                       | 2018-02-08                                                                                                                 |
+| `tracksRequest`                                                                                                            | [Optional<? extends com.shippo.shippo_java_sdk.models.components.TracksRequest>](../../models/components/TracksRequest.md) | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |                                                                                                                            |
+
+
+### Response
+
+**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateTrackResponse>](../../models/operations/CreateTrackResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
+
+## get
+
+Returns the tracking status of a shipment using a carrier name and a tracking number.
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.shippo.shippo_java_sdk.Shippo;
+import com.shippo.shippo_java_sdk.models.components.*;
+import com.shippo.shippo_java_sdk.models.components.Security;
+import com.shippo.shippo_java_sdk.models.operations.*;
+import com.shippo.shippo_java_sdk.models.operations.GetTrackRequest;
+import com.shippo.shippo_java_sdk.models.operations.GetTrackResponse;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) {
+        try {
+            Shippo sdk = Shippo.builder()
+                .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                .shippoApiVersion("2018-02-08")
+                .build();
+
+            GetTrackResponse res = sdk.trackingStatus().get()
+                .trackingNumber("<value>")
+                .carrier("<value>")
+                .shippoApiVersion("2018-02-08")
+                .call();
+
+            if (res.track().isPresent()) {
+                // handle response
+            }
+        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+            // handle exception
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `trackingNumber`                                     | *String*                                             | :heavy_check_mark:                                   | Tracking number                                      |                                                      |
+| `carrier`                                            | *String*                                             | :heavy_check_mark:                                   | Name of the carrier                                  |                                                      |
+| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+
+
+### Response
+
+**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetTrackResponse>](../../models/operations/GetTrackResponse.md)**
+### Errors
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
