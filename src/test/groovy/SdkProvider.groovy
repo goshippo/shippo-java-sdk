@@ -12,7 +12,7 @@ trait SdkProvider {
         if (_sdk == null) {
             String token = System.getenv("SHIPPO_TOKEN")
             _sdk = Shippo.builder()
-                    .apiKeyHeader("ShippoToken " + token)
+                    .apiKeyHeader(token)
                     .build()
         }
         return _sdk
