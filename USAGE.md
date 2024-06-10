@@ -2,22 +2,23 @@
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -33,10 +34,12 @@ public class Application {
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }

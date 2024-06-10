@@ -21,23 +21,23 @@ Creates a new refund object.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.RefundRequestBody;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateRefundRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateRefundResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -55,10 +55,12 @@ public class Application {
             if (res.refund().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -66,15 +68,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        | Example                                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                 | *Optional<? extends String>*                                                                                                       | :heavy_minus_sign:                                                                                                                 | String used to pick a non-default API version to use                                                                               | 2018-02-08                                                                                                                         |
-| `refundRequestBody`                                                                                                                | [Optional<? extends com.shippo.shippo_java_sdk.models.components.RefundRequestBody>](../../models/components/RefundRequestBody.md) | :heavy_minus_sign:                                                                                                                 | Refund details                                                                                                                     |                                                                                                                                    |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                 | *Optional<? extends String>*                                                                       | :heavy_minus_sign:                                                                                 | String used to pick a non-default API version to use                                               | 2018-02-08                                                                                         |
+| `refundRequestBody`                                                                                | [com.shippo.sdk.models.components.RefundRequestBody](../../models/components/RefundRequestBody.md) | :heavy_check_mark:                                                                                 | Refund details                                                                                     |                                                                                                    |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateRefundResponse>](../../models/operations/CreateRefundResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateRefundResponse>](../../models/operations/CreateRefundResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -90,22 +92,23 @@ Returns a list all refund objects.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListRefundsRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListRefundsResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -119,10 +122,12 @@ public class Application {
             if (res.refundPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -137,7 +142,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListRefundsResponse>](../../models/operations/ListRefundsResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListRefundsResponse>](../../models/operations/ListRefundsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -153,22 +158,23 @@ Returns an existing rate using a rate object ID.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetRefundRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetRefundResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -183,10 +189,12 @@ public class Application {
             if (res.refund().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -202,7 +210,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetRefundResponse>](../../models/operations/GetRefundResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetRefundResponse>](../../models/operations/GetRefundResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

@@ -1,8 +1,11 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     my-first-source:
         inputs:
             - location: https://docs.goshippo.com/spec/shippoapi/public-api.yaml
+        registry:
+            location: registry.speakeasyapi.dev/shippo/shippo/my-first-source
 targets:
     my-first-target:
         target: java

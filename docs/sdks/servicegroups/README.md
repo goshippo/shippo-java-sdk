@@ -23,22 +23,23 @@ Returns a list of service group objects.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListServiceGroupsRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListServiceGroupsResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -52,10 +53,12 @@ public class Application {
             if (res.serviceGroupListResponse().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -70,7 +73,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListServiceGroupsResponse>](../../models/operations/ListServiceGroupsResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListServiceGroupsResponse>](../../models/operations/ListServiceGroupsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -86,25 +89,23 @@ Creates a new service group.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.ServiceGroupAccountAndServiceLevel;
-import com.shippo.shippo_java_sdk.models.components.ServiceGroupCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.ServiceGroupTypeEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateServiceGroupRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateServiceGroupResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -133,10 +134,12 @@ public class Application {
             if (res.serviceGroup().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -144,15 +147,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        | Example                                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                                 | *Optional<? extends String>*                                                                                                                       | :heavy_minus_sign:                                                                                                                                 | String used to pick a non-default API version to use                                                                                               | 2018-02-08                                                                                                                                         |
-| `serviceGroupCreateRequest`                                                                                                                        | [Optional<? extends com.shippo.shippo_java_sdk.models.components.ServiceGroupCreateRequest>](../../models/components/ServiceGroupCreateRequest.md) | :heavy_minus_sign:                                                                                                                                 | N/A                                                                                                                                                |                                                                                                                                                    |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        | Example                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                 | *Optional<? extends String>*                                                                                       | :heavy_minus_sign:                                                                                                 | String used to pick a non-default API version to use                                                               | 2018-02-08                                                                                                         |
+| `serviceGroupCreateRequest`                                                                                        | [com.shippo.sdk.models.components.ServiceGroupCreateRequest](../../models/components/ServiceGroupCreateRequest.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |                                                                                                                    |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateServiceGroupResponse>](../../models/operations/CreateServiceGroupResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateServiceGroupResponse>](../../models/operations/CreateServiceGroupResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -168,25 +171,23 @@ Updates an existing service group object. <br>The object_id cannot be updated as
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.ServiceGroupAccountAndServiceLevel;
-import com.shippo.shippo_java_sdk.models.components.ServiceGroupTypeEnum;
-import com.shippo.shippo_java_sdk.models.components.ServiceGroupUpdateRequest;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.UpdateServiceGroupRequest;
-import com.shippo.shippo_java_sdk.models.operations.UpdateServiceGroupResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -217,10 +218,12 @@ public class Application {
             if (res.serviceGroup().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -228,15 +231,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        | Example                                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                                 | *Optional<? extends String>*                                                                                                                       | :heavy_minus_sign:                                                                                                                                 | String used to pick a non-default API version to use                                                                                               | 2018-02-08                                                                                                                                         |
-| `serviceGroupUpdateRequest`                                                                                                                        | [Optional<? extends com.shippo.shippo_java_sdk.models.components.ServiceGroupUpdateRequest>](../../models/components/ServiceGroupUpdateRequest.md) | :heavy_minus_sign:                                                                                                                                 | N/A                                                                                                                                                |                                                                                                                                                    |
+| Parameter                                                                                                                              | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            | Example                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                                                     | *Optional<? extends String>*                                                                                                           | :heavy_minus_sign:                                                                                                                     | String used to pick a non-default API version to use                                                                                   | 2018-02-08                                                                                                                             |
+| `serviceGroupUpdateRequest`                                                                                                            | [Optional<? extends com.shippo.sdk.models.components.ServiceGroupUpdateRequest>](../../models/components/ServiceGroupUpdateRequest.md) | :heavy_minus_sign:                                                                                                                     | N/A                                                                                                                                    |                                                                                                                                        |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.UpdateServiceGroupResponse>](../../models/operations/UpdateServiceGroupResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.UpdateServiceGroupResponse>](../../models/operations/UpdateServiceGroupResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -252,22 +255,23 @@ Deletes an existing service group using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.DeleteServiceGroupRequest;
-import com.shippo.shippo_java_sdk.models.operations.DeleteServiceGroupResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -280,10 +284,12 @@ public class Application {
                 .call();
 
             // handle response
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -299,7 +305,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.DeleteServiceGroupResponse>](../../models/operations/DeleteServiceGroupResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.DeleteServiceGroupResponse>](../../models/operations/DeleteServiceGroupResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

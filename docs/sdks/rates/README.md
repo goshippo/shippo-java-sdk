@@ -21,22 +21,23 @@ Returns an existing rate using a rate object ID.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetRateRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetRateResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -51,10 +52,12 @@ public class Application {
             if (res.rate().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -70,7 +73,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetRateResponse>](../../models/operations/GetRateResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetRateResponse>](../../models/operations/GetRateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -86,22 +89,23 @@ Returns a paginated list of rates associated with a shipment
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListShipmentRatesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListShipmentRatesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -118,10 +122,12 @@ public class Application {
             if (res.ratePaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -139,7 +145,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListShipmentRatesResponse>](../../models/operations/ListShipmentRatesResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListShipmentRatesResponse>](../../models/operations/ListShipmentRatesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -161,22 +167,23 @@ Note: re-requesting the rates with a different currency code will re-queue the s
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListShipmentRatesByCurrencyCodeRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListShipmentRatesByCurrencyCodeResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -186,8 +193,6 @@ public class Application {
             ListShipmentRatesByCurrencyCodeRequest req = ListShipmentRatesByCurrencyCodeRequest.builder()
                 .shipmentId("<value>")
                 .currencyCode("<value>")
-                .page(129833L)
-                .results(866327L)
                 .build();
 
             ListShipmentRatesByCurrencyCodeResponse res = sdk.rates().listShipmentRatesByCurrencyCode()
@@ -197,10 +202,12 @@ public class Application {
             if (res.ratePaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -208,14 +215,14 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                | [com.shippo.shippo_java_sdk.models.operations.ListShipmentRatesByCurrencyCodeRequest](../../models/operations/ListShipmentRatesByCurrencyCodeRequest.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
+| Parameter                                                                                                                                    | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                    | [com.shippo.sdk.models.operations.ListShipmentRatesByCurrencyCodeRequest](../../models/operations/ListShipmentRatesByCurrencyCodeRequest.md) | :heavy_check_mark:                                                                                                                           | The request object to use for the request.                                                                                                   |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListShipmentRatesByCurrencyCodeResponse>](../../models/operations/ListShipmentRatesByCurrencyCodeResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListShipmentRatesByCurrencyCodeResponse>](../../models/operations/ListShipmentRatesByCurrencyCodeResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

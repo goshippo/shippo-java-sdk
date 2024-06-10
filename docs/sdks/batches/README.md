@@ -31,61 +31,23 @@ Creates a new batch object for purchasing shipping labels for many shipments at 
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.AddressCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.Alcohol;
-import com.shippo.shippo_java_sdk.models.components.AncillaryEndorsement;
-import com.shippo.shippo_java_sdk.models.components.BatchCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.BatchShipmentBase;
-import com.shippo.shippo_java_sdk.models.components.Billing;
-import com.shippo.shippo_java_sdk.models.components.Cod;
-import com.shippo.shippo_java_sdk.models.components.CustomerReference;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsBiologicalMaterial;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsCode;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsLithiumBatteries;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsObject;
-import com.shippo.shippo_java_sdk.models.components.DepartmentNumber;
-import com.shippo.shippo_java_sdk.models.components.DistanceUnitEnum;
-import com.shippo.shippo_java_sdk.models.components.DryIce;
-import com.shippo.shippo_java_sdk.models.components.Insurance;
-import com.shippo.shippo_java_sdk.models.components.InvoiceNumber;
-import com.shippo.shippo_java_sdk.models.components.LabelFileTypeEnum;
-import com.shippo.shippo_java_sdk.models.components.LasershipAttrs;
-import com.shippo.shippo_java_sdk.models.components.ParcelCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateAramexAustraliaEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateCouriersPleaseEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDHLeCommerceEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDPDUKEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateFedExEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUPSEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUSPSEnum;
-import com.shippo.shippo_java_sdk.models.components.PaymentMethod;
-import com.shippo.shippo_java_sdk.models.components.PoNumber;
-import com.shippo.shippo_java_sdk.models.components.PreferredDeliveryTimeframe;
-import com.shippo.shippo_java_sdk.models.components.Provider;
-import com.shippo.shippo_java_sdk.models.components.RecipientType;
-import com.shippo.shippo_java_sdk.models.components.ReturnServiceType;
-import com.shippo.shippo_java_sdk.models.components.RmaNumber;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.ShipmentCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.ShipmentExtra;
-import com.shippo.shippo_java_sdk.models.components.SignatureConfirmation;
-import com.shippo.shippo_java_sdk.models.components.Type;
-import com.shippo.shippo_java_sdk.models.components.WeightUnitEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateBatchRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateBatchResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -98,14 +60,13 @@ public class Application {
                     .defaultCarrierAccount("078870331023437cb917f5187429b093")
                     .defaultServicelevelToken("usps_priority")
                     .batchShipments(java.util.List.of(
-                            BatchShipmentBase.builder()
+                            BatchShipmentCreateRequest.builder()
                                 .shipment(ShipmentCreateRequest.builder()
                                         .addressFrom(AddressFrom.of(AddressCreateRequest.builder()
                                                     .country("US")
                                                     .name("Shwan Ippotle")
                                                     .company("Shippo")
                                                     .street1("215 Clayton St.")
-                                                    .street2("<value>")
                                                     .street3("")
                                                     .streetNo("")
                                                     .city("San Francisco")
@@ -115,8 +76,6 @@ public class Application {
                                                     .email("shippotle@shippo.com")
                                                     .isResidential(true)
                                                     .metadata("Customer ID 123456")
-                                                    .latitude(3229.97d)
-                                                    .longitude(8946.95d)
                                                     .validate(true)
                                                     .build()))
                                         .addressTo(AddressTo.of(AddressCreateRequest.builder()
@@ -124,7 +83,6 @@ public class Application {
                                                     .name("Shwan Ippotle")
                                                     .company("Shippo")
                                                     .street1("215 Clayton St.")
-                                                    .street2("<value>")
                                                     .street3("")
                                                     .streetNo("")
                                                     .city("San Francisco")
@@ -134,116 +92,153 @@ public class Application {
                                                     .email("shippotle@shippo.com")
                                                     .isResidential(true)
                                                     .metadata("Customer ID 123456")
-                                                    .latitude(1856.93d)
-                                                    .longitude(4157.14d)
                                                     .validate(true)
                                                     .build()))
                                         .parcels(java.util.List.of(
-                                                new Object()))
-                                        .customsDeclaration("adcfdddf8ec64b84ad22772bce3ea37a")
+                                                Parcels.of("<value>")))
                                         .extra(ShipmentExtra.builder()
-                                            .ancillaryEndorsement(AncillaryEndorsement.FORWARDING_SERVICE_REQUESTED)
-                                            .authorityToLeave(false)
-                                            .alcohol(Alcohol.builder()
-                                                .containsAlcohol(false)
-                                                .recipientType(RecipientType.CONSUMER)
+                                            .accountsReceivableCustomerAccount(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
                                                 .build())
-                                            .billing(Billing.builder()
-                                                .account("13613808")
-                                                .country("<value>")
-                                                .participationCode("<value>")
-                                                .type(Type.THIRD_PARTY_CONSIGNEE)
-                                                .zip("60210-9530")
+                                            .appropriationNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
                                                 .build())
-                                            .bypassAddressValidation(false)
-                                            .carbonNeutral(false)
-                                            .carrierHubId("<value>")
-                                            .carrierHubTravelTime(272321L)
+                                            .billOfLadingNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
                                             .cod(Cod.builder()
                                                 .amount("5.5")
                                                 .currency("USD")
                                                 .paymentMethod(PaymentMethod.CASH)
                                                 .build())
-                                            .containerType("<value>")
-                                            .criticalPullTime("<value>")
-                                            .customerBranch("<value>")
+                                            .codNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
                                             .customerReference(CustomerReference.builder()
-                                                .prefix("<value>")
-                                                .value("<value>")
+                                                .refSort(1L)
                                                 .build())
-                                            .dangerousGoodsCode(DangerousGoodsCode.SIX)
-                                            .dangerousGoods(DangerousGoodsObject.builder()
-                                                .contains(false)
-                                                .biologicalMaterial(DangerousGoodsBiologicalMaterial.builder()
-                                                    .contains(false)
-                                                    .build())
-                                                .lithiumBatteries(DangerousGoodsLithiumBatteries.builder()
-                                                    .contains(false)
-                                                    .build())
+                                            .dealerOrderNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
                                                 .build())
-                                            .deliveryInstructions("<value>")
                                             .deptNumber(DepartmentNumber.builder()
-                                                .prefix("<value>")
-                                                .value("<value>")
+                                                .refSort(3L)
                                                 .build())
-                                            .dryIce(DryIce.builder()
-                                                .containsDryIce(false)
-                                                .weight("<value>")
+                                            .fdaProductCode(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
                                                 .build())
-                                            .fulfillmentCenter("<value>")
                                             .insurance(Insurance.builder()
                                                 .amount("5.5")
-                                                .content("<value>")
                                                 .currency("USD")
-                                                .provider(Provider.UPS)
                                                 .build())
                                             .invoiceNumber(InvoiceNumber.builder()
-                                                .prefix("<value>")
-                                                .value("<value>")
+                                                .refSort(2L)
                                                 .build())
-                                            .isReturn(false)
-                                            .lasershipAttrs(LasershipAttrs.CONTROLLED_SUBSTANCE)
-                                            .lasershipDeclaredValue("<value>")
+                                            .manifestNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
+                                            .modelNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
+                                            .partNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
                                             .poNumber(PoNumber.builder()
-                                                .prefix("<value>")
-                                                .value("<value>")
+                                                .refSort(2L)
                                                 .build())
-                                            .preferredDeliveryTimeframe(PreferredDeliveryTimeframe.EIGHTEEN_MILLION_TWO_THOUSAND)
-                                            .premium(false)
-                                            .qrCodeRequested(false)
-                                            .reference1("<value>")
-                                            .reference2("<value>")
-                                            .requestRetailRates(false)
-                                            .returnServiceType(ReturnServiceType.ELECTRONIC_LABEL)
+                                            .productionCode(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
+                                            .purchaseRequestNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
                                             .rmaNumber(RmaNumber.builder()
-                                                .prefix("<value>")
-                                                .value("<value>")
+                                                .refSort(1L)
                                                 .build())
-                                            .saturdayDelivery(false)
-                                            .signatureConfirmation(SignatureConfirmation.CERTIFIED)
+                                            .salespersonNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
+                                            .serialNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
+                                            .storeNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
+                                            .transactionReferenceNumber(UPSReferenceFields.builder()
+                                                .prefix("ABC")
+                                                .value("value")
+                                                .refSort(1L)
+                                                .build())
                                             .build())
                                         .metadata("Customer ID 123456")
                                         .shipmentDate("2021-03-22T12:00:00Z")
-                                        .addressReturn(AddressReturn.of(AddressCreateRequest.builder()
-                                                    .country("US")
-                                                    .name("Shwan Ippotle")
-                                                    .company("Shippo")
-                                                    .street1("215 Clayton St.")
-                                                    .street2("<value>")
-                                                    .street3("")
-                                                    .streetNo("")
-                                                    .city("San Francisco")
-                                                    .state("CA")
-                                                    .zip("94117")
-                                                    .phone("+1 555 341 9393")
-                                                    .email("shippotle@shippo.com")
-                                                    .isResidential(true)
-                                                    .metadata("Customer ID 123456")
-                                                    .latitude(4522.24d)
-                                                    .longitude(7395.06d)
-                                                    .validate(true)
+                                        .addressReturn(AddressReturn.of("d799c2679e644279b59fe661ac8fa488"))
+                                        .customsDeclaration(ShipmentCreateRequestCustomsDeclaration.of(CustomsDeclarationCreateRequest.builder()
+                                                    .certify(true)
+                                                    .certifySigner("Shawn Ippotle")
+                                                    .contentsType(CustomsDeclarationContentsTypeEnum.MERCHANDISE)
+                                                    .items(java.util.List.of(
+                                                            CustomsItemCreateRequest.builder()
+                                                                .description("T-Shirt")
+                                                                .massUnit(WeightUnitEnum.LB)
+                                                                .netWeight("5")
+                                                                .originCountry("<value>")
+                                                                .quantity(20L)
+                                                                .valueAmount("200")
+                                                                .valueCurrency("USD")
+                                                                .metadata("Order ID \"123454\"")
+                                                                .skuCode("HM-123")
+                                                                .build()))
+                                                    .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN_)
+                                                    .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
+                                                    .contentsExplanation("T-Shirt purchase")
+                                                    .invoice("#123123")
+                                                    .metadata("Order ID #123123")
+                                                    .addressImporter(AddressImporter.builder()
+                                                        .name("Shwan Ippotle")
+                                                        .company("Shippo")
+                                                        .street1("Blumenstraße")
+                                                        .street3("")
+                                                        .streetNo("22")
+                                                        .city("München")
+                                                        .state("CA")
+                                                        .zip("80331")
+                                                        .country("DE")
+                                                        .phone("80331")
+                                                        .email("shippotle@shippo.com")
+                                                        .isResidential(true)
+                                                        .build())
+                                                    .eelPfc(CustomsDeclarationEelPfcEnum.NOEEI3037_A)
+                                                    .incoterm(CustomsDeclarationIncotermEnum.DDP)
+                                                    .test(true)
                                                     .build()))
-                                        .async(false)
                                         .carrierAccounts(java.util.List.of(
                                             "065a4a8c10d24a34ab932163a1b87f52",
                                             "73f706f4bdb94b54a337563840ce52b0"))
@@ -260,10 +255,12 @@ public class Application {
             if (res.batch().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -271,15 +268,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          | Example                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                   | *Optional<? extends String>*                                                                                                         | :heavy_minus_sign:                                                                                                                   | String used to pick a non-default API version to use                                                                                 | 2018-02-08                                                                                                                           |
-| `batchCreateRequest`                                                                                                                 | [Optional<? extends com.shippo.shippo_java_sdk.models.components.BatchCreateRequest>](../../models/components/BatchCreateRequest.md) | :heavy_minus_sign:                                                                                                                   | Batch details.                                                                                                                       |                                                                                                                                      |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                   | *Optional<? extends String>*                                                                         | :heavy_minus_sign:                                                                                   | String used to pick a non-default API version to use                                                 | 2018-02-08                                                                                           |
+| `batchCreateRequest`                                                                                 | [com.shippo.sdk.models.components.BatchCreateRequest](../../models/components/BatchCreateRequest.md) | :heavy_check_mark:                                                                                   | Batch details.                                                                                       |                                                                                                      |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateBatchResponse>](../../models/operations/CreateBatchResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateBatchResponse>](../../models/operations/CreateBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -298,22 +295,23 @@ For more details on filtering results, see our guide on <a href="https://docs.go
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetBatchRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetBatchResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -328,10 +326,12 @@ public class Application {
             if (res.batch().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -347,7 +347,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetBatchResponse>](../../models/operations/GetBatchResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetBatchResponse>](../../models/operations/GetBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -363,59 +363,23 @@ Adds batch shipments to an existing batch.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.AddressCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.Alcohol;
-import com.shippo.shippo_java_sdk.models.components.AncillaryEndorsement;
-import com.shippo.shippo_java_sdk.models.components.BatchShipmentBase;
-import com.shippo.shippo_java_sdk.models.components.Billing;
-import com.shippo.shippo_java_sdk.models.components.Cod;
-import com.shippo.shippo_java_sdk.models.components.CustomerReference;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsBiologicalMaterial;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsCode;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsLithiumBatteries;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsObject;
-import com.shippo.shippo_java_sdk.models.components.DepartmentNumber;
-import com.shippo.shippo_java_sdk.models.components.DistanceUnitEnum;
-import com.shippo.shippo_java_sdk.models.components.DryIce;
-import com.shippo.shippo_java_sdk.models.components.Insurance;
-import com.shippo.shippo_java_sdk.models.components.InvoiceNumber;
-import com.shippo.shippo_java_sdk.models.components.LasershipAttrs;
-import com.shippo.shippo_java_sdk.models.components.ParcelCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateAramexAustraliaEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateCouriersPleaseEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDHLeCommerceEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDPDUKEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateFedExEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUPSEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUSPSEnum;
-import com.shippo.shippo_java_sdk.models.components.PaymentMethod;
-import com.shippo.shippo_java_sdk.models.components.PoNumber;
-import com.shippo.shippo_java_sdk.models.components.PreferredDeliveryTimeframe;
-import com.shippo.shippo_java_sdk.models.components.Provider;
-import com.shippo.shippo_java_sdk.models.components.RecipientType;
-import com.shippo.shippo_java_sdk.models.components.ReturnServiceType;
-import com.shippo.shippo_java_sdk.models.components.RmaNumber;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.ShipmentCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.ShipmentExtra;
-import com.shippo.shippo_java_sdk.models.components.SignatureConfirmation;
-import com.shippo.shippo_java_sdk.models.components.Type;
-import com.shippo.shippo_java_sdk.models.components.WeightUnitEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.AddShipmentsToBatchRequest;
-import com.shippo.shippo_java_sdk.models.operations.AddShipmentsToBatchResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -426,152 +390,163 @@ public class Application {
                 .batchId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .requestBody(java.util.List.of(
-                    BatchShipmentBase.builder()
+                    BatchShipmentCreateRequest.builder()
                         .shipment(ShipmentCreateRequest.builder()
-                                .addressFrom(AddressFrom.of(AddressCreateRequest.builder()
-                                            .country("US")
-                                            .name("Shwan Ippotle")
-                                            .company("Shippo")
-                                            .street1("215 Clayton St.")
-                                            .street2("<value>")
-                                            .street3("")
-                                            .streetNo("")
-                                            .city("San Francisco")
-                                            .state("CA")
-                                            .zip("94117")
-                                            .phone("+1 555 341 9393")
-                                            .email("shippotle@shippo.com")
-                                            .isResidential(true)
-                                            .metadata("Customer ID 123456")
-                                            .latitude(1024d)
-                                            .longitude(5558.79d)
-                                            .validate(true)
-                                            .build()))
-                                .addressTo(AddressTo.of(AddressCreateRequest.builder()
-                                            .country("US")
-                                            .name("Shwan Ippotle")
-                                            .company("Shippo")
-                                            .street1("215 Clayton St.")
-                                            .street2("<value>")
-                                            .street3("")
-                                            .streetNo("")
-                                            .city("San Francisco")
-                                            .state("CA")
-                                            .zip("94117")
-                                            .phone("+1 555 341 9393")
-                                            .email("shippotle@shippo.com")
-                                            .isResidential(true)
-                                            .metadata("Customer ID 123456")
-                                            .latitude(8527.39d)
-                                            .longitude(6056.55d)
-                                            .validate(true)
-                                            .build()))
+                                .addressFrom(AddressFrom.of("d799c2679e644279b59fe661ac8fa488"))
+                                .addressTo(AddressTo.of("d799c2679e644279b59fe661ac8fa489"))
                                 .parcels(java.util.List.of(
-                                        new Object()))
-                                .customsDeclaration("adcfdddf8ec64b84ad22772bce3ea37a")
+                                        Parcels.of(ParcelCreateRequest.builder()
+                                                .distanceUnit(DistanceUnitEnum.IN)
+                                                .height("1")
+                                                .length("1")
+                                                .massUnit(WeightUnitEnum.LB)
+                                                .weight("1")
+                                                .width("1")
+                                                .metadata("Customer ID 123456")
+                                                .build())))
                                 .extra(ShipmentExtra.builder()
-                                    .ancillaryEndorsement(AncillaryEndorsement.RETURN_SERVICE_REQUESTED)
-                                    .authorityToLeave(false)
-                                    .alcohol(Alcohol.builder()
-                                        .containsAlcohol(false)
-                                        .recipientType(RecipientType.LICENSEE)
+                                    .accountsReceivableCustomerAccount(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
                                         .build())
-                                    .billing(Billing.builder()
-                                        .account("86768169")
-                                        .country("<value>")
-                                        .participationCode("<value>")
-                                        .type(Type.RECIPIENT)
-                                        .zip("97342")
+                                    .appropriationNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
                                         .build())
-                                    .bypassAddressValidation(false)
-                                    .carbonNeutral(false)
-                                    .carrierHubId("<value>")
-                                    .carrierHubTravelTime(441087L)
+                                    .billOfLadingNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
                                     .cod(Cod.builder()
                                         .amount("5.5")
                                         .currency("USD")
                                         .paymentMethod(PaymentMethod.CASH)
                                         .build())
-                                    .containerType("<value>")
-                                    .criticalPullTime("<value>")
-                                    .customerBranch("<value>")
+                                    .codNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
                                     .customerReference(CustomerReference.builder()
-                                        .prefix("<value>")
-                                        .value("<value>")
+                                        .refSort(1L)
                                         .build())
-                                    .dangerousGoodsCode(DangerousGoodsCode.FOUR)
-                                    .dangerousGoods(DangerousGoodsObject.builder()
-                                        .contains(false)
-                                        .biologicalMaterial(DangerousGoodsBiologicalMaterial.builder()
-                                            .contains(false)
-                                            .build())
-                                        .lithiumBatteries(DangerousGoodsLithiumBatteries.builder()
-                                            .contains(false)
-                                            .build())
+                                    .dealerOrderNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
                                         .build())
-                                    .deliveryInstructions("<value>")
                                     .deptNumber(DepartmentNumber.builder()
-                                        .prefix("<value>")
-                                        .value("<value>")
+                                        .refSort(3L)
                                         .build())
-                                    .dryIce(DryIce.builder()
-                                        .containsDryIce(false)
-                                        .weight("<value>")
+                                    .fdaProductCode(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
                                         .build())
-                                    .fulfillmentCenter("<value>")
                                     .insurance(Insurance.builder()
                                         .amount("5.5")
-                                        .content("<value>")
                                         .currency("USD")
-                                        .provider(Provider.FEDEX)
                                         .build())
                                     .invoiceNumber(InvoiceNumber.builder()
-                                        .prefix("<value>")
-                                        .value("<value>")
+                                        .refSort(2L)
                                         .build())
-                                    .isReturn(false)
-                                    .lasershipAttrs(LasershipAttrs.TWO_PERSON_DELIVERY)
-                                    .lasershipDeclaredValue("<value>")
+                                    .manifestNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
+                                    .modelNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
+                                    .partNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
                                     .poNumber(PoNumber.builder()
-                                        .prefix("<value>")
-                                        .value("<value>")
+                                        .refSort(2L)
                                         .build())
-                                    .preferredDeliveryTimeframe(PreferredDeliveryTimeframe.TWELVE_MILLION_ONE_THOUSAND_FOUR_HUNDRED)
-                                    .premium(false)
-                                    .qrCodeRequested(false)
-                                    .reference1("<value>")
-                                    .reference2("<value>")
-                                    .requestRetailRates(false)
-                                    .returnServiceType(ReturnServiceType.PRINT_AND_MAIL)
+                                    .productionCode(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
+                                    .purchaseRequestNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
                                     .rmaNumber(RmaNumber.builder()
-                                        .prefix("<value>")
-                                        .value("<value>")
+                                        .refSort(1L)
                                         .build())
-                                    .saturdayDelivery(false)
-                                    .signatureConfirmation(SignatureConfirmation.INDIRECT)
+                                    .salespersonNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
+                                    .serialNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
+                                    .storeNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
+                                    .transactionReferenceNumber(UPSReferenceFields.builder()
+                                        .prefix("ABC")
+                                        .value("value")
+                                        .refSort(1L)
+                                        .build())
                                     .build())
                                 .metadata("Customer ID 123456")
                                 .shipmentDate("2021-03-22T12:00:00Z")
-                                .addressReturn(AddressReturn.of(AddressCreateRequest.builder()
-                                            .country("US")
-                                            .name("Shwan Ippotle")
-                                            .company("Shippo")
-                                            .street1("215 Clayton St.")
-                                            .street2("<value>")
-                                            .street3("")
-                                            .streetNo("")
-                                            .city("San Francisco")
-                                            .state("CA")
-                                            .zip("94117")
-                                            .phone("+1 555 341 9393")
-                                            .email("shippotle@shippo.com")
-                                            .isResidential(true)
-                                            .metadata("Customer ID 123456")
-                                            .latitude(5126.95d)
-                                            .longitude(5142.15d)
-                                            .validate(true)
+                                .addressReturn(AddressReturn.of("d799c2679e644279b59fe661ac8fa488"))
+                                .customsDeclaration(ShipmentCreateRequestCustomsDeclaration.of(CustomsDeclarationCreateRequest.builder()
+                                            .certify(true)
+                                            .certifySigner("Shawn Ippotle")
+                                            .contentsType(CustomsDeclarationContentsTypeEnum.MERCHANDISE)
+                                            .items(java.util.List.of(
+                                                    CustomsItemCreateRequest.builder()
+                                                        .description("T-Shirt")
+                                                        .massUnit(WeightUnitEnum.LB)
+                                                        .netWeight("5")
+                                                        .originCountry("<value>")
+                                                        .quantity(20L)
+                                                        .valueAmount("200")
+                                                        .valueCurrency("USD")
+                                                        .metadata("Order ID \"123454\"")
+                                                        .skuCode("HM-123")
+                                                        .build()))
+                                            .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN_)
+                                            .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
+                                            .contentsExplanation("T-Shirt purchase")
+                                            .invoice("#123123")
+                                            .metadata("Order ID #123123")
+                                            .addressImporter(AddressImporter.builder()
+                                                .name("Shwan Ippotle")
+                                                .company("Shippo")
+                                                .street1("Blumenstraße")
+                                                .street3("")
+                                                .streetNo("22")
+                                                .city("München")
+                                                .state("CA")
+                                                .zip("80331")
+                                                .country("DE")
+                                                .phone("80331")
+                                                .email("shippotle@shippo.com")
+                                                .isResidential(true)
+                                                .build())
+                                            .eelPfc(CustomsDeclarationEelPfcEnum.NOEEI3037_A)
+                                            .incoterm(CustomsDeclarationIncotermEnum.DDP)
+                                            .test(true)
                                             .build()))
-                                .async(false)
                                 .carrierAccounts(java.util.List.of(
                                     "065a4a8c10d24a34ab932163a1b87f52",
                                     "73f706f4bdb94b54a337563840ce52b0"))
@@ -585,10 +560,12 @@ public class Application {
             if (res.batch().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -596,16 +573,16 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          | Example                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `batchId`                                                                                                            | *String*                                                                                                             | :heavy_check_mark:                                                                                                   | Object ID of the batch                                                                                               |                                                                                                                      |
-| `shippoApiVersion`                                                                                                   | *Optional<? extends String>*                                                                                         | :heavy_minus_sign:                                                                                                   | String used to pick a non-default API version to use                                                                 | 2018-02-08                                                                                                           |
-| `requestBody`                                                                                                        | List<[com.shippo.shippo_java_sdk.models.components.BatchShipmentBase](../../models/components/BatchShipmentBase.md)> | :heavy_minus_sign:                                                                                                   | Array of shipments to add to the batch                                                                               |                                                                                                                      |
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                | Example                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `batchId`                                                                                                                  | *String*                                                                                                                   | :heavy_check_mark:                                                                                                         | Object ID of the batch                                                                                                     |                                                                                                                            |
+| `shippoApiVersion`                                                                                                         | *Optional<? extends String>*                                                                                               | :heavy_minus_sign:                                                                                                         | String used to pick a non-default API version to use                                                                       | 2018-02-08                                                                                                                 |
+| `requestBody`                                                                                                              | List<[com.shippo.sdk.models.components.BatchShipmentCreateRequest](../../models/components/BatchShipmentCreateRequest.md)> | :heavy_check_mark:                                                                                                         | Array of shipments to add to the batch                                                                                     |                                                                                                                            |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.AddShipmentsToBatchResponse>](../../models/operations/AddShipmentsToBatchResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.AddShipmentsToBatchResponse>](../../models/operations/AddShipmentsToBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -624,22 +601,23 @@ When all the shipments are purchased, the status will change to `PURCHASED` and 
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.PurchaseBatchRequest;
-import com.shippo.shippo_java_sdk.models.operations.PurchaseBatchResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -654,10 +632,12 @@ public class Application {
             if (res.batch().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -673,7 +653,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.PurchaseBatchResponse>](../../models/operations/PurchaseBatchResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.PurchaseBatchResponse>](../../models/operations/PurchaseBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -689,22 +669,23 @@ Removes shipments from an existing batch shipment.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.RemoveShipmentsFromBatchRequest;
-import com.shippo.shippo_java_sdk.models.operations.RemoveShipmentsFromBatchResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -721,10 +702,12 @@ public class Application {
             if (res.batch().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -736,12 +719,12 @@ public class Application {
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | `batchId`                                              | *String*                                               | :heavy_check_mark:                                     | Object ID of the batch                                 |                                                        |
 | `shippoApiVersion`                                     | *Optional<? extends String>*                           | :heavy_minus_sign:                                     | String used to pick a non-default API version to use   | 2018-02-08                                             |
-| `requestBody`                                          | List<*String*>                                         | :heavy_minus_sign:                                     | Array of shipments object ids to remove from the batch |                                                        |
+| `requestBody`                                          | List<*String*>                                         | :heavy_check_mark:                                     | Array of shipments object ids to remove from the batch |                                                        |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.RemoveShipmentsFromBatchResponse>](../../models/operations/RemoveShipmentsFromBatchResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.RemoveShipmentsFromBatchResponse>](../../models/operations/RemoveShipmentsFromBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

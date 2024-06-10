@@ -28,22 +28,23 @@ Returns a list all of all user parcel template objects.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListUserParcelTemplatesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListUserParcelTemplatesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -54,13 +55,15 @@ public class Application {
                 .shippoApiVersion("2018-02-08")
                 .call();
 
-            if (res.userParcelTemplateListResponse().isPresent()) {
+            if (res.userParcelTemplateList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -75,7 +78,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListUserParcelTemplatesResponse>](../../models/operations/ListUserParcelTemplatesResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListUserParcelTemplatesResponse>](../../models/operations/ListUserParcelTemplatesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -97,26 +100,23 @@ and depth, as well as their units."
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.DistanceUnitEnum;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.UserParcelTemplateWithCarrierTemplateCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.UserParcelTemplateWithoutCarrierTemplateCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.WeightUnitEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateUserParcelTemplateRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateUserParcelTemplateResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -125,16 +125,21 @@ public class Application {
 
             CreateUserParcelTemplateResponse res = sdk.userParcelTemplates().create()
                 .shippoApiVersion("2018-02-08")
-                .userParcelTemplateCreateRequest(new Object())
+                .userParcelTemplateCreateRequest(UserParcelTemplateCreateRequest.of(UserParcelTemplateWithCarrierTemplateCreateRequest.builder()
+                        .weight("12")
+                        .weightUnit(WeightUnitEnum.LB)
+                        .build()))
                 .call();
 
             if (res.userParcelTemplate().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -142,15 +147,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                      | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    | Example                                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                                             | *Optional<? extends String>*                                                                                                                                   | :heavy_minus_sign:                                                                                                                                             | String used to pick a non-default API version to use                                                                                                           | 2018-02-08                                                                                                                                                     |
-| `userParcelTemplateCreateRequest`                                                                                                                              | [Optional<? extends com.shippo.shippo_java_sdk.models.components.UserParcelTemplateCreateRequest>](../../models/components/UserParcelTemplateCreateRequest.md) | :heavy_minus_sign:                                                                                                                                             | N/A                                                                                                                                                            |                                                                                                                                                                |
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    | Example                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                             | *Optional<? extends String>*                                                                                                   | :heavy_minus_sign:                                                                                                             | String used to pick a non-default API version to use                                                                           | 2018-02-08                                                                                                                     |
+| `userParcelTemplateCreateRequest`                                                                                              | [com.shippo.sdk.models.components.UserParcelTemplateCreateRequest](../../models/components/UserParcelTemplateCreateRequest.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateUserParcelTemplateResponse>](../../models/operations/CreateUserParcelTemplateResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateUserParcelTemplateResponse>](../../models/operations/CreateUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -166,22 +171,23 @@ Deletes a user parcel template using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.DeleteUserParcelTemplateRequest;
-import com.shippo.shippo_java_sdk.models.operations.DeleteUserParcelTemplateResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -194,10 +200,12 @@ public class Application {
                 .call();
 
             // handle response
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -213,7 +221,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.DeleteUserParcelTemplateResponse>](../../models/operations/DeleteUserParcelTemplateResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.DeleteUserParcelTemplateResponse>](../../models/operations/DeleteUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -230,22 +238,23 @@ template, identified by the object ID.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetUserParcelTemplateRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetUserParcelTemplateResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -260,10 +269,12 @@ public class Application {
             if (res.userParcelTemplate().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -279,7 +290,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetUserParcelTemplateResponse>](../../models/operations/GetUserParcelTemplateResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetUserParcelTemplateResponse>](../../models/operations/GetUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -295,25 +306,23 @@ Updates an existing user parcel template.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.DistanceUnitEnum;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.UserParcelTemplateUpdateRequest;
-import com.shippo.shippo_java_sdk.models.components.WeightUnitEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.UpdateUserParcelTemplateRequest;
-import com.shippo.shippo_java_sdk.models.operations.UpdateUserParcelTemplateResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -337,10 +346,12 @@ public class Application {
             if (res.userParcelTemplate().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -348,16 +359,16 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                      | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    | Example                                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `userParcelTemplateObjectId`                                                                                                                                   | *String*                                                                                                                                                       | :heavy_check_mark:                                                                                                                                             | Object ID of the user parcel template                                                                                                                          |                                                                                                                                                                |
-| `shippoApiVersion`                                                                                                                                             | *Optional<? extends String>*                                                                                                                                   | :heavy_minus_sign:                                                                                                                                             | String used to pick a non-default API version to use                                                                                                           | 2018-02-08                                                                                                                                                     |
-| `userParcelTemplateUpdateRequest`                                                                                                                              | [Optional<? extends com.shippo.shippo_java_sdk.models.components.UserParcelTemplateUpdateRequest>](../../models/components/UserParcelTemplateUpdateRequest.md) | :heavy_minus_sign:                                                                                                                                             | N/A                                                                                                                                                            |                                                                                                                                                                |
+| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        | Example                                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `userParcelTemplateObjectId`                                                                                                                       | *String*                                                                                                                                           | :heavy_check_mark:                                                                                                                                 | Object ID of the user parcel template                                                                                                              |                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                 | *Optional<? extends String>*                                                                                                                       | :heavy_minus_sign:                                                                                                                                 | String used to pick a non-default API version to use                                                                                               | 2018-02-08                                                                                                                                         |
+| `userParcelTemplateUpdateRequest`                                                                                                                  | [Optional<? extends com.shippo.sdk.models.components.UserParcelTemplateUpdateRequest>](../../models/components/UserParcelTemplateUpdateRequest.md) | :heavy_minus_sign:                                                                                                                                 | N/A                                                                                                                                                |                                                                                                                                                    |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.UpdateUserParcelTemplateResponse>](../../models/operations/UpdateUserParcelTemplateResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.UpdateUserParcelTemplateResponse>](../../models/operations/UpdateUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

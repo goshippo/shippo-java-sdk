@@ -25,15 +25,15 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.shippo.shippo_java_sdk:openapi:0.0.1'
+implementation 'com.shippo.sdk:api:0.1.3'
 ```
 
 Maven:
 ```xml
 <dependency>
-    <groupId>com.shippo.shippo_java_sdk</groupId>
-    <artifactId>openapi</artifactId>
-    <version>0.0.1</version>
+    <groupId>com.shippo.sdk</groupId>
+    <artifactId>api</artifactId>
+    <version>0.1.3</version>
 </dependency>
 ```
 
@@ -60,22 +60,23 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -91,10 +92,12 @@ public class Application {
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -249,22 +252,23 @@ The following global parameter is available.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -280,10 +284,12 @@ public class Application {
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -295,34 +301,35 @@ public class Application {
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Exception type.
 
-| Error Object                                                                                     | Status Code                                                                                      | Content Type                                                                                     |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninResponseBody                        | 400                                                                                              | application/json                                                                                 |
-| com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody         | 401                                                                                              | application/json                                                                                 |
-| com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404                                                                                              | application/json                                                                                 |
-| models/errors/SDKError                                                                           | 4xx-5xx                                                                                          | */*                                                                                              |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| models/errors/InitiateOauth2SigninResponseBody                        | 400                                                                   | application/json                                                      |
+| models/errors/InitiateOauth2SigninCarrierAccountsResponseBody         | 401                                                                   | application/json                                                      |
+| models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404                                                                   | application/json                                                      |
+| models/errors/SDKError                                                | 4xx-5xx                                                               | */*                                                                   |
 
 ### Example
 
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.InitiateOauth2SigninRequest;
-import com.shippo.shippo_java_sdk.models.operations.InitiateOauth2SigninResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -337,16 +344,21 @@ public class Application {
                 .call();
 
             // handle response
-        } catch (com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninResponseBody e) {
+        } catch (com.shippo.sdk.models.errors.InitiateOauth2SigninResponseBody e) {
             // handle exception
-        } catch (com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody e) {
+            throw e;
+        } catch (com.shippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody e) {
             // handle exception
-        } catch (com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody e) {
+            throw e;
+        } catch (com.shippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody e) {
             // handle exception
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+            throw e;
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -369,22 +381,23 @@ You can override the default server globally by passing a server index to the `s
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .serverIndex(0)
@@ -401,10 +414,12 @@ public class Application {
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -417,22 +432,23 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .serverURL("https://api.goshippo.com")
@@ -449,10 +465,12 @@ public class Application {
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -474,22 +492,23 @@ To authenticate with the API the `apiKeyHeader` parameter must be set when initi
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListAddressesResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -505,10 +524,12 @@ public class Application {
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }

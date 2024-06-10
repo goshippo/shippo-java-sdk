@@ -12,9 +12,11 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
 java:
-  version: 0.0.1
+  version: 0.1.3
   additionalDependencies: []
-  artifactID: shippo-java-sdk
+  additionalPlugins:
+    - id 'groovy'
+  artifactID: sdk
   clientServerStatusCodesAsErrors: true
   companyEmail: info@mycompany.com
   companyName: My Company
@@ -33,5 +35,5 @@ java:
   inputModelSuffix: input
   maxMethodParams: 4
   outputModelSuffix: output
-  projectName: openapi
+  projectName: api
   templateVersion: v2

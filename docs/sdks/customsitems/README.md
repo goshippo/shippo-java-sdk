@@ -21,22 +21,23 @@ Returns a list all customs items objects.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListCustomsItemsRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListCustomsItemsResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -52,10 +53,12 @@ public class Application {
             if (res.customsItemPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -72,7 +75,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListCustomsItemsResponse>](../../models/operations/ListCustomsItemsResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListCustomsItemsResponse>](../../models/operations/ListCustomsItemsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -88,24 +91,23 @@ Creates a new customs item object.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.CustomsItemCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.WeightUnitEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateCustomsItemRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateCustomsItemResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -130,10 +132,12 @@ public class Application {
             if (res.customsItem().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -141,15 +145,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      | Example                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                               | *Optional<? extends String>*                                                                                                                     | :heavy_minus_sign:                                                                                                                               | String used to pick a non-default API version to use                                                                                             | 2018-02-08                                                                                                                                       |
-| `customsItemCreateRequest`                                                                                                                       | [Optional<? extends com.shippo.shippo_java_sdk.models.components.CustomsItemCreateRequest>](../../models/components/CustomsItemCreateRequest.md) | :heavy_minus_sign:                                                                                                                               | CustomsItem details.                                                                                                                             |                                                                                                                                                  |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      | Example                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                               | *Optional<? extends String>*                                                                                     | :heavy_minus_sign:                                                                                               | String used to pick a non-default API version to use                                                             | 2018-02-08                                                                                                       |
+| `customsItemCreateRequest`                                                                                       | [com.shippo.sdk.models.components.CustomsItemCreateRequest](../../models/components/CustomsItemCreateRequest.md) | :heavy_check_mark:                                                                                               | CustomsItem details.                                                                                             |                                                                                                                  |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateCustomsItemResponse>](../../models/operations/CreateCustomsItemResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateCustomsItemResponse>](../../models/operations/CreateCustomsItemResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -165,22 +169,23 @@ Returns an existing customs item using an object ID
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetCustomsItemRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetCustomsItemResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -196,10 +201,12 @@ public class Application {
             if (res.customsItem().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -216,7 +223,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetCustomsItemResponse>](../../models/operations/GetCustomsItemResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetCustomsItemResponse>](../../models/operations/GetCustomsItemResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

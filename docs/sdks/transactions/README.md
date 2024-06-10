@@ -21,24 +21,23 @@ Returns a list of all transaction objects.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.TrackingStatusEnum;
-import com.shippo.shippo_java_sdk.models.components.TransactionStatusEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListTransactionsRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListTransactionsResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -46,11 +45,8 @@ public class Application {
                 .build();
 
             ListTransactionsRequest req = ListTransactionsRequest.builder()
-                .rate("<value>")
                 .objectStatus(TransactionStatusEnum.SUCCESS)
                 .trackingStatus(TrackingStatusEnum.DELIVERED)
-                .page(768578L)
-                .results(99895L)
                 .build();
 
             ListTransactionsResponse res = sdk.transactions().list()
@@ -60,10 +56,12 @@ public class Application {
             if (res.transactionPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -71,14 +69,14 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                  | [com.shippo.shippo_java_sdk.models.operations.ListTransactionsRequest](../../models/operations/ListTransactionsRequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                      | [com.shippo.sdk.models.operations.ListTransactionsRequest](../../models/operations/ListTransactionsRequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListTransactionsResponse>](../../models/operations/ListTransactionsResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListTransactionsResponse>](../../models/operations/ListTransactionsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -94,62 +92,23 @@ Creates a new transaction object and purchases the shipping label using a rate o
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.AddressCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.Alcohol;
-import com.shippo.shippo_java_sdk.models.components.AncillaryEndorsement;
-import com.shippo.shippo_java_sdk.models.components.Billing;
-import com.shippo.shippo_java_sdk.models.components.Cod;
-import com.shippo.shippo_java_sdk.models.components.CustomerReference;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsBiologicalMaterial;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsCode;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsLithiumBatteries;
-import com.shippo.shippo_java_sdk.models.components.DangerousGoodsObject;
-import com.shippo.shippo_java_sdk.models.components.DepartmentNumber;
-import com.shippo.shippo_java_sdk.models.components.DistanceUnitEnum;
-import com.shippo.shippo_java_sdk.models.components.DryIce;
-import com.shippo.shippo_java_sdk.models.components.InstantTransactionCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.Insurance;
-import com.shippo.shippo_java_sdk.models.components.InvoiceNumber;
-import com.shippo.shippo_java_sdk.models.components.LabelFileType;
-import com.shippo.shippo_java_sdk.models.components.LabelFileTypeEnum;
-import com.shippo.shippo_java_sdk.models.components.LasershipAttrs;
-import com.shippo.shippo_java_sdk.models.components.ParcelCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateAramexAustraliaEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateCouriersPleaseEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDHLeCommerceEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDPDUKEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateFedExEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUPSEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUSPSEnum;
-import com.shippo.shippo_java_sdk.models.components.PaymentMethod;
-import com.shippo.shippo_java_sdk.models.components.PoNumber;
-import com.shippo.shippo_java_sdk.models.components.PreferredDeliveryTimeframe;
-import com.shippo.shippo_java_sdk.models.components.Provider;
-import com.shippo.shippo_java_sdk.models.components.RecipientType;
-import com.shippo.shippo_java_sdk.models.components.ReturnServiceType;
-import com.shippo.shippo_java_sdk.models.components.RmaNumber;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.ShipmentCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.ShipmentExtra;
-import com.shippo.shippo_java_sdk.models.components.SignatureConfirmation;
-import com.shippo.shippo_java_sdk.models.components.TransactionCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.Type;
-import com.shippo.shippo_java_sdk.models.components.WeightUnitEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateTransactionRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateTransactionResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -158,16 +117,23 @@ public class Application {
 
             CreateTransactionResponse res = sdk.transactions().create()
                 .shippoApiVersion("2018-02-08")
-                .requestBody(new Object())
+                .requestBody(com.shippo.sdk.models.operations.CreateTransactionRequestBody.of(TransactionCreateRequest.builder()
+                        .rate("ec9f0d3adc9441449c85d315f0997fd5")
+                        .async(false)
+                        .labelFileType(LabelFileTypeEnum.PDF4X6)
+                        .metadata("Order ID #12345")
+                        .build()))
                 .call();
 
-            if (res.transactionCreateResponse().isPresent()) {
+            if (res.transaction().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -175,15 +141,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              | Example                                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                                       | *Optional<? extends String>*                                                                                                                             | :heavy_minus_sign:                                                                                                                                       | String used to pick a non-default API version to use                                                                                                     | 2018-02-08                                                                                                                                               |
-| `requestBody`                                                                                                                                            | [Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateTransactionRequestBody>](../../models/operations/CreateTransactionRequestBody.md) | :heavy_minus_sign:                                                                                                                                       | Examples.                                                                                                                                                |                                                                                                                                                          |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              | Example                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                       | *Optional<? extends String>*                                                                                             | :heavy_minus_sign:                                                                                                       | String used to pick a non-default API version to use                                                                     | 2018-02-08                                                                                                               |
+| `requestBody`                                                                                                            | [com.shippo.sdk.models.operations.CreateTransactionRequestBody](../../models/operations/CreateTransactionRequestBody.md) | :heavy_check_mark:                                                                                                       | Examples.                                                                                                                |                                                                                                                          |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateTransactionResponse>](../../models/operations/CreateTransactionResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateTransactionResponse>](../../models/operations/CreateTransactionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -199,22 +165,23 @@ Returns an existing transaction using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetTransactionRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetTransactionResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -229,10 +196,12 @@ public class Application {
             if (res.transaction().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -248,7 +217,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetTransactionResponse>](../../models/operations/GetTransactionResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetTransactionResponse>](../../models/operations/GetTransactionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

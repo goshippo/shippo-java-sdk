@@ -30,23 +30,23 @@ By default, if the query parameter is omitted, the `service_levels` property wil
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.CarriersEnum;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListCarrierAccountsRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListCarrierAccountsResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -54,11 +54,6 @@ public class Application {
                 .build();
 
             ListCarrierAccountsRequest req = ListCarrierAccountsRequest.builder()
-                .serviceLevels(false)
-                .carrier(CarriersEnum.POSTI)
-                .accountId("<value>")
-                .page(99895L)
-                .results(547272L)
                 .build();
 
             ListCarrierAccountsResponse res = sdk.carrierAccounts().list()
@@ -68,10 +63,12 @@ public class Application {
             if (res.carrierAccountPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -79,14 +76,14 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                        | [com.shippo.shippo_java_sdk.models.operations.ListCarrierAccountsRequest](../../models/operations/ListCarrierAccountsRequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                            | [com.shippo.sdk.models.operations.ListCarrierAccountsRequest](../../models/operations/ListCarrierAccountsRequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListCarrierAccountsResponse>](../../models/operations/ListCarrierAccountsResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListCarrierAccountsResponse>](../../models/operations/ListCarrierAccountsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -102,24 +99,23 @@ Creates a new carrier account or connects an existing carrier account to the Shi
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.ConnectExistingOwnAccountRequest;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.UPSConnectExistingOwnAccountParameters;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateCarrierAccountRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateCarrierAccountResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -131,8 +127,16 @@ public class Application {
                 .connectExistingOwnAccountRequest(ConnectExistingOwnAccountRequest.builder()
                     .accountId("321123")
                     .carrier("fedex")
-                    .parameters(ConnectExistingOwnAccountRequestParameters.of(java.util.Map.ofEntries(
-                                entry("key", "<value>"))))
+                    .parameters(ConnectExistingOwnAccountRequestParameters.of(FedExConnectExistingOwnAccountParameters.builder()
+                                .firstName("<value>")
+                                .lastName("<value>")
+                                .phoneNumber("<value>")
+                                .fromAddressSt("<value>")
+                                .fromAddressCity("<value>")
+                                .fromAddressState("<value>")
+                                .fromAddressZip("<value>")
+                                .fromAddressCountryIso2("<value>")
+                                .build()))
                     .metadata("FEDEX Account")
                     .test(false)
                     .build())
@@ -141,10 +145,12 @@ public class Application {
             if (res.carrierAccount().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -152,15 +158,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                        | Type                                                                                                                                                             | Required                                                                                                                                                         | Description                                                                                                                                                      | Example                                                                                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                                               | *Optional<? extends String>*                                                                                                                                     | :heavy_minus_sign:                                                                                                                                               | String used to pick a non-default API version to use                                                                                                             | 2018-02-08                                                                                                                                                       |
-| `connectExistingOwnAccountRequest`                                                                                                                               | [Optional<? extends com.shippo.shippo_java_sdk.models.components.ConnectExistingOwnAccountRequest>](../../models/components/ConnectExistingOwnAccountRequest.md) | :heavy_minus_sign:                                                                                                                                               | Examples.                                                                                                                                                        |                                                                                                                                                                  |
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      | Example                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                                               | *Optional<? extends String>*                                                                                                     | :heavy_minus_sign:                                                                                                               | String used to pick a non-default API version to use                                                                             | 2018-02-08                                                                                                                       |
+| `connectExistingOwnAccountRequest`                                                                                               | [com.shippo.sdk.models.components.ConnectExistingOwnAccountRequest](../../models/components/ConnectExistingOwnAccountRequest.md) | :heavy_check_mark:                                                                                                               | Examples.                                                                                                                        |                                                                                                                                  |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateCarrierAccountResponse>](../../models/operations/CreateCarrierAccountResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateCarrierAccountResponse>](../../models/operations/CreateCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -176,22 +182,23 @@ Returns an existing carrier account using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetCarrierAccountRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetCarrierAccountResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -206,10 +213,12 @@ public class Application {
             if (res.carrierAccount().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -225,7 +234,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetCarrierAccountResponse>](../../models/operations/GetCarrierAccountResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetCarrierAccountResponse>](../../models/operations/GetCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -241,24 +250,23 @@ Updates an existing carrier account object. The account_id and carrier can't be 
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountBase;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.UPSConnectExistingOwnAccountParameters;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.UpdateCarrierAccountRequest;
-import com.shippo.shippo_java_sdk.models.operations.UpdateCarrierAccountResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -271,16 +279,42 @@ public class Application {
                 .carrierAccountBase(CarrierAccountBase.builder()
                     .accountId("****")
                     .carrier("usps")
+                    .parameters(CarrierAccountBaseParameters.of(UPSConnectExistingOwnAccountParameters.builder()
+                                .accountNumber("94567e")
+                                .billingAddressCity("San Francisco")
+                                .billingAddressCountryIso2("US")
+                                .billingAddressState("CA")
+                                .billingAddressStreet1("731 Market St")
+                                .billingAddressZip("94103")
+                                .collecCountryIso2("US")
+                                .collecZip("94103")
+                                .company("Shippo")
+                                .email("hippo@shippo.com")
+                                .fullName("Shippo Meister")
+                                .hasInvoice(false)
+                                .phone("1112223333")
+                                .title("Manager")
+                                .upsAgreements(false)
+                                .aiaCountryIso2("US")
+                                .billingAddressStreet2("STE 200")
+                                .currencyCode("USD")
+                                .invoiceControlid("1234")
+                                .invoiceDate("20210529")
+                                .invoiceNumber("1112234")
+                                .invoiceValue("11.23")
+                                .build()))
                     .build())
                 .call();
 
             if (res.carrierAccount().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -288,16 +322,16 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          | Example                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `carrierAccountId`                                                                                                                   | *String*                                                                                                                             | :heavy_check_mark:                                                                                                                   | Object ID of the carrier account                                                                                                     |                                                                                                                                      |
-| `shippoApiVersion`                                                                                                                   | *Optional<? extends String>*                                                                                                         | :heavy_minus_sign:                                                                                                                   | String used to pick a non-default API version to use                                                                                 | 2018-02-08                                                                                                                           |
-| `carrierAccountBase`                                                                                                                 | [Optional<? extends com.shippo.shippo_java_sdk.models.components.CarrierAccountBase>](../../models/components/CarrierAccountBase.md) | :heavy_minus_sign:                                                                                                                   | Examples.                                                                                                                            |                                                                                                                                      |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              | Example                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `carrierAccountId`                                                                                                       | *String*                                                                                                                 | :heavy_check_mark:                                                                                                       | Object ID of the carrier account                                                                                         |                                                                                                                          |
+| `shippoApiVersion`                                                                                                       | *Optional<? extends String>*                                                                                             | :heavy_minus_sign:                                                                                                       | String used to pick a non-default API version to use                                                                     | 2018-02-08                                                                                                               |
+| `carrierAccountBase`                                                                                                     | [Optional<? extends com.shippo.sdk.models.components.CarrierAccountBase>](../../models/components/CarrierAccountBase.md) | :heavy_minus_sign:                                                                                                       | Examples.                                                                                                                |                                                                                                                          |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.UpdateCarrierAccountResponse>](../../models/operations/UpdateCarrierAccountResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.UpdateCarrierAccountResponse>](../../models/operations/UpdateCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -313,22 +347,23 @@ Used by client applications to setup or reconnect an existing carrier account wi
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.InitiateOauth2SigninRequest;
-import com.shippo.shippo_java_sdk.models.operations.InitiateOauth2SigninResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -343,16 +378,21 @@ public class Application {
                 .call();
 
             // handle response
-        } catch (com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninResponseBody e) {
+        } catch (com.shippo.sdk.models.errors.InitiateOauth2SigninResponseBody e) {
             // handle exception
-        } catch (com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody e) {
+            throw e;
+        } catch (com.shippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody e) {
             // handle exception
-        } catch (com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody e) {
+            throw e;
+        } catch (com.shippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody e) {
             // handle exception
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+            throw e;
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -370,15 +410,15 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.InitiateOauth2SigninResponse>](../../models/operations/InitiateOauth2SigninResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.InitiateOauth2SigninResponse>](../../models/operations/InitiateOauth2SigninResponse.md)**
 ### Errors
 
-| Error Object                                                                                     | Status Code                                                                                      | Content Type                                                                                     |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninResponseBody                        | 400                                                                                              | application/json                                                                                 |
-| com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody         | 401                                                                                              | application/json                                                                                 |
-| com.shippo.shippo_java_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404                                                                                              | application/json                                                                                 |
-| models/errors/SDKError                                                                           | 4xx-5xx                                                                                          | */*                                                                                              |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| models/errors/InitiateOauth2SigninResponseBody                        | 400                                                                   | application/json                                                      |
+| models/errors/InitiateOauth2SigninCarrierAccountsResponseBody         | 401                                                                   | application/json                                                      |
+| models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404                                                                   | application/json                                                      |
+| models/errors/SDKError                                                | 4xx-5xx                                                               | */*                                                                   |
 
 ## register
 
@@ -389,50 +429,23 @@ Adds a Shippo carrier account
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountCanadaPostCreateParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountCanadaPostCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountChronopostCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountChronopostCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountColissimoCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountColissimoCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountCorreosCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountCorreosCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDHLExpressCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDHLExpressCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDPDUKCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDPDUKCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDeutschePostCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDeutschePostCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDpdDeCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountDpdDeCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountFedExCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountFedExCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountHermesUKCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountHermesUKCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountMondialRelayCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountMondialRelayCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountPosteItalianeCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountPosteItalianeCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountUPSCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountUPSCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountUSPSCreateRequest;
-import com.shippo.shippo_java_sdk.models.components.CarrierAccountUSPSCreateRequestParameters;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.RegisterCarrierAccountRequest;
-import com.shippo.shippo_java_sdk.models.operations.RegisterCarrierAccountResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -441,16 +454,22 @@ public class Application {
 
             RegisterCarrierAccountResponse res = sdk.carrierAccounts().register()
                 .shippoApiVersion("2018-02-08")
-                .requestBody(new Object())
+                .requestBody(com.shippo.sdk.models.operations.RegisterCarrierAccountRequestBody.of(CarrierAccountColissimoCreateRequest.builder()
+                        .carrier("colissimo")
+                        .parameters(CarrierAccountColissimoCreateRequestParameters.builder()
+                                .build())
+                        .build()))
                 .call();
 
             if (res.carrierAccount().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -458,15 +477,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional<? extends String>*                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                 | String used to pick a non-default API version to use                                                                                                               | 2018-02-08                                                                                                                                                         |
-| `requestBody`                                                                                                                                                      | [Optional<? extends com.shippo.shippo_java_sdk.models.operations.RegisterCarrierAccountRequestBody>](../../models/operations/RegisterCarrierAccountRequestBody.md) | :heavy_minus_sign:                                                                                                                                                 | Examples.                                                                                                                                                          |                                                                                                                                                                    |
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        | Example                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                                                 | *Optional<? extends String>*                                                                                                       | :heavy_minus_sign:                                                                                                                 | String used to pick a non-default API version to use                                                                               | 2018-02-08                                                                                                                         |
+| `requestBody`                                                                                                                      | [com.shippo.sdk.models.operations.RegisterCarrierAccountRequestBody](../../models/operations/RegisterCarrierAccountRequestBody.md) | :heavy_check_mark:                                                                                                                 | Examples.                                                                                                                          |                                                                                                                                    |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.RegisterCarrierAccountResponse>](../../models/operations/RegisterCarrierAccountResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.RegisterCarrierAccountResponse>](../../models/operations/RegisterCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -482,23 +501,23 @@ Returns the registration status for the given account for the given carrier
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.Carrier;
-import com.shippo.shippo_java_sdk.models.operations.GetCarrierRegistrationStatusRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetCarrierRegistrationStatusResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -513,10 +532,12 @@ public class Application {
             if (res.carrierAccountRegistrationStatus().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -524,15 +545,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `carrier`                                                                                  | [com.shippo.shippo_java_sdk.models.operations.Carrier](../../models/operations/Carrier.md) | :heavy_check_mark:                                                                         | filter by specific carrier                                                                 |                                                                                            |
-| `shippoApiVersion`                                                                         | *Optional<? extends String>*                                                               | :heavy_minus_sign:                                                                         | String used to pick a non-default API version to use                                       | 2018-02-08                                                                                 |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `carrier`                                                                      | [com.shippo.sdk.models.operations.Carrier](../../models/operations/Carrier.md) | :heavy_check_mark:                                                             | filter by specific carrier                                                     |                                                                                |
+| `shippoApiVersion`                                                             | *Optional<? extends String>*                                                   | :heavy_minus_sign:                                                             | String used to pick a non-default API version to use                           | 2018-02-08                                                                     |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetCarrierRegistrationStatusResponse>](../../models/operations/GetCarrierRegistrationStatusResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetCarrierRegistrationStatusResponse>](../../models/operations/GetCarrierRegistrationStatusResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |

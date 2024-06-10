@@ -1,24 +1,27 @@
-speakeasyVersion: 1.269.5
+speakeasyVersion: 1.300.1
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:932cd773c9ef436b5c337197f0860b57823f496866dc548e2f13cecbec714813
-        sourceBlobDigest: sha256:01531b636f0afeeedb7d5287f8f573e2fc8b5d66fe3b68d0bae962c4a650d9f5
+        sourceRevisionDigest: sha256:a74f570a9d452d88631fe91d4cb2ae7d17cf1fc7b31d70eedf7870c081e13d4f
+        sourceBlobDigest: sha256:9e1bc200384654a86be4dbdcd539388da5cfa8f687bd6e1cbd641cbbbfc7bf4b
         tags:
             - latest
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:932cd773c9ef436b5c337197f0860b57823f496866dc548e2f13cecbec714813
-        sourceBlobDigest: sha256:01531b636f0afeeedb7d5287f8f573e2fc8b5d66fe3b68d0bae962c4a650d9f5
+        sourceRevisionDigest: sha256:a74f570a9d452d88631fe91d4cb2ae7d17cf1fc7b31d70eedf7870c081e13d4f
+        sourceBlobDigest: sha256:9e1bc200384654a86be4dbdcd539388da5cfa8f687bd6e1cbd641cbbbfc7bf4b
         outLocation: /Users/mike.lueders/dev/shippo-java-sdk
 workflow:
     workflowVersion: 1.0.0
+    speakeasyVersion: latest
     sources:
         my-first-source:
             inputs:
                 - location: https://docs.goshippo.com/spec/shippoapi/public-api.yaml
+            registry:
+                location: registry.speakeasyapi.dev/shippo/shippo/my-first-source
     targets:
         my-first-target:
             target: java

@@ -25,22 +25,23 @@ Returns a list of all parcel objects.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.ListParcelsRequest;
-import com.shippo.shippo_java_sdk.models.operations.ListParcelsResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -56,10 +57,12 @@ public class Application {
             if (res.parcelPaginatedList().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -76,7 +79,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.ListParcelsResponse>](../../models/operations/ListParcelsResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.ListParcelsResponse>](../../models/operations/ListParcelsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -92,37 +95,23 @@ Creates a new parcel object.
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Cod;
-import com.shippo.shippo_java_sdk.models.components.DistanceUnitEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelExtra;
-import com.shippo.shippo_java_sdk.models.components.ParcelInsurance;
-import com.shippo.shippo_java_sdk.models.components.ParcelInsuranceProvider;
-import com.shippo.shippo_java_sdk.models.components.ParcelRequest;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateAramexAustraliaEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateCouriersPleaseEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDHLeCommerceEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateDPDUKEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateFedExEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUPSEnum;
-import com.shippo.shippo_java_sdk.models.components.ParcelTemplateUSPSEnum;
-import com.shippo.shippo_java_sdk.models.components.PaymentMethod;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.components.WeightUnitEnum;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.CreateParcelRequest;
-import com.shippo.shippo_java_sdk.models.operations.CreateParcelResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -138,16 +127,31 @@ public class Application {
                     .massUnit(WeightUnitEnum.LB)
                     .weight("1")
                     .width("1")
+                    .extra(ParcelExtra.builder()
+                        .cod(Cod.builder()
+                            .amount("5.5")
+                            .currency("USD")
+                            .paymentMethod(PaymentMethod.CASH)
+                            .build())
+                        .insurance(ParcelInsurance.builder()
+                            .amount("5.5")
+                            .content("Laptop")
+                            .currency("USD")
+                            .provider(ParcelInsuranceProvider.UPS)
+                            .build())
+                        .build())
                     .build())
                 .call();
 
             if (res.parcel().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -155,15 +159,15 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                | Example                                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                         | *Optional<? extends String>*                                                                                               | :heavy_minus_sign:                                                                                                         | String used to pick a non-default API version to use                                                                       | 2018-02-08                                                                                                                 |
-| `parcelRequest`                                                                                                            | [Optional<? extends com.shippo.shippo_java_sdk.models.components.ParcelRequest>](../../models/components/ParcelRequest.md) | :heavy_minus_sign:                                                                                                         | Parcel details.                                                                                                            |                                                                                                                            |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                         | *Optional<? extends String>*                                                               | :heavy_minus_sign:                                                                         | String used to pick a non-default API version to use                                       | 2018-02-08                                                                                 |
+| `parcelRequest`                                                                            | [com.shippo.sdk.models.components.ParcelRequest](../../models/components/ParcelRequest.md) | :heavy_check_mark:                                                                         | Parcel details.                                                                            |                                                                                            |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.CreateParcelResponse>](../../models/operations/CreateParcelResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.CreateParcelResponse>](../../models/operations/CreateParcelResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
@@ -179,22 +183,23 @@ Returns parcel details using an existing parcel object ID (this will not return 
 ```java
 package hello.world;
 
-import com.shippo.shippo_java_sdk.Shippo;
-import com.shippo.shippo_java_sdk.models.components.*;
-import com.shippo.shippo_java_sdk.models.components.Security;
-import com.shippo.shippo_java_sdk.models.operations.*;
-import com.shippo.shippo_java_sdk.models.operations.GetParcelRequest;
-import com.shippo.shippo_java_sdk.models.operations.GetParcelResponse;
+import com.shippo.sdk.Shippo;
+import com.shippo.sdk.models.components.*;
+import com.shippo.sdk.models.components.Security;
+import com.shippo.sdk.models.operations.*;
+import com.shippo.sdk.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
@@ -209,10 +214,12 @@ public class Application {
             if (res.parcel().isPresent()) {
                 // handle response
             }
-        } catch (com.shippo.shippo_java_sdk.models.errors.SDKError e) {
+        } catch (com.shippo.sdk.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -228,7 +235,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.shippo_java_sdk.models.operations.GetParcelResponse>](../../models/operations/GetParcelResponse.md)**
+**[Optional<? extends com.shippo.sdk.models.operations.GetParcelResponse>](../../models/operations/GetParcelResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
