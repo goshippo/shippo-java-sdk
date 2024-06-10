@@ -21,3 +21,5 @@ speakeasy-generate: # dev task, run the generator on a local spec.  useful for t
 
 speakeasy-run: # dev task, locally run the complete speakeasy workflow.  useful if the generator workflow ever fails, to replicate locally
 	speakeasy run
+
+.PHONY: test
