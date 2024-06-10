@@ -4,6 +4,8 @@
 // * is generated once and not overwritten in SDK generation updates
 dependencies {
     testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 test {
