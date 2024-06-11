@@ -21,7 +21,6 @@ public final class SDKHooks {
     }
 
     public static final void initialize(com.shippo.sdk.utils.Hooks hooks) {
-        // register hooks here
         hooks.registerBeforeRequest((context, request) -> {
             Optional<String> authHeader = request.headers().firstValue("authorization");
             if (authHeader.isPresent() && authHeader.get().startsWith("shippo_")) {
@@ -32,9 +31,6 @@ public final class SDKHooks {
                 return request;
             }
         });
-
-        // for more information see
-        // https://www.speakeasyapi.dev/docs/additional-features/sdk-hooks
     }
 
 }
