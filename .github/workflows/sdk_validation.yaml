@@ -1,0 +1,27 @@
+name: Validate
+
+on:
+  workflow_call:
+  pull_request:
+    types: [ opened, reopened, synchronize ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SHIPPO_TOKEN: ${{ secrets.SHIPPO_TOKEN }}
+    concurrency:
+      group: java-sdk-check
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up java
+        id: setup_java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+          cache: 'gradle'
+      - name: Check
+        run: make check
