@@ -6,6 +6,7 @@ dependencies {
     testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'com.github.tomakehurst:wiremock:2.27.2'
 }
 
 test {
