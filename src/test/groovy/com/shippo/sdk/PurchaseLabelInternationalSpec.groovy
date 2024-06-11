@@ -1,6 +1,7 @@
+package com.shippo.sdk
+
 import com.shippo.sdk.models.components.*
 import com.shippo.sdk.models.operations.CreateShipmentResponse
-import spock.lang.Ignore
 import spock.lang.Specification
 
 // https://docs.goshippo.com/docs/stories/intl_rating_guide/
@@ -81,7 +82,7 @@ class PurchaseLabelInternationalSpec extends Specification implements SdkProvide
                 .shipmentCreateRequest(ShipmentCreateRequest.builder()
                         .addressFrom(AddressFrom.of(addressFrom.objectId().get()))
                         .addressTo(AddressTo.of(addressToCreateRequest))
-                        .parcels(List.of(Parcels.of(parcelCreateRequest)))
+                        .parcels(List.of(com.shippo.sdk.models.components.Parcels.of(parcelCreateRequest)))
                         .customsDeclaration(ShipmentCreateRequestCustomsDeclaration.of(customsDeclaration.objectId().get()))
                         .extra(shipmentExtra)
                         .build())

@@ -1,3 +1,5 @@
+package com.shippo.sdk.hooks
+
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.shippo.sdk.Shippo
 import com.shippo.sdk.models.components.AddressPaginatedList
@@ -7,7 +9,7 @@ import spock.lang.Specification
 import static com.github.tomakehurst.wiremock.client.WireMock.*
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 
-class HooksSpec extends Specification {
+class SDKHooksSpec extends Specification {
 
     @Shared
     WireMockServer wiremockServer
