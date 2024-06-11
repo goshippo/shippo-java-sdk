@@ -23,9 +23,9 @@ class SDKConfiguration {
     public int serverIdx = 0;
     public String language = "java";
     public String openapiDocVersion = "2018-02-08";
-    public String sdkVersion = "0.1.3";
-    public String genVersion = "2.339.1";
-    public String userAgent = "speakeasy-sdk/java 0.1.3 2.339.1 2018-02-08 com.shippo.sdk";
+    public String sdkVersion = "0.1.4";
+    public String genVersion = "2.340.2";
+    public String userAgent = "speakeasy-sdk/java 0.1.4 2.340.2 2018-02-08 com.shippo.sdk";
 
     private com.shippo.sdk.utils.Hooks _hooks = new com.shippo.sdk.utils.Hooks();
 

@@ -93,7 +93,7 @@ public class Rate {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("included_insurance_price")
-    private Optional<? extends Double> includedInsurancePrice;
+    private Optional<? extends String> includedInsurancePrice;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("messages")
@@ -170,7 +170,7 @@ public class Rate {
             @JsonProperty("carrier_account") String carrierAccount,
             @JsonProperty("duration_terms") Optional<? extends String> durationTerms,
             @JsonProperty("estimated_days") Optional<? extends Long> estimatedDays,
-            @JsonProperty("included_insurance_price") Optional<? extends Double> includedInsurancePrice,
+            @JsonProperty("included_insurance_price") Optional<? extends String> includedInsurancePrice,
             @JsonProperty("messages") Optional<? extends java.util.List<ResponseMessage>> messages,
             @JsonProperty("object_created") OffsetDateTime objectCreated,
             @JsonProperty("object_id") String objectId,
@@ -330,8 +330,8 @@ public class Rate {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Double> includedInsurancePrice() {
-        return (Optional<Double>) includedInsurancePrice;
+    public Optional<String> includedInsurancePrice() {
+        return (Optional<String>) includedInsurancePrice;
     }
 
     @SuppressWarnings("unchecked")
@@ -546,7 +546,7 @@ public class Rate {
      * Expressed in the currency used in the sender's country. Will be null if no insurance coverage was requested, or if insurance is requested from a non-standard insurance provider. 
      * Please note this price is already included in the `amount` and `amount_local` fields on the Rate. Do not add this field to them.
      */
-    public Rate withIncludedInsurancePrice(double includedInsurancePrice) {
+    public Rate withIncludedInsurancePrice(String includedInsurancePrice) {
         Utils.checkNotNull(includedInsurancePrice, "includedInsurancePrice");
         this.includedInsurancePrice = Optional.ofNullable(includedInsurancePrice);
         return this;
@@ -557,7 +557,7 @@ public class Rate {
      * Expressed in the currency used in the sender's country. Will be null if no insurance coverage was requested, or if insurance is requested from a non-standard insurance provider. 
      * Please note this price is already included in the `amount` and `amount_local` fields on the Rate. Do not add this field to them.
      */
-    public Rate withIncludedInsurancePrice(Optional<? extends Double> includedInsurancePrice) {
+    public Rate withIncludedInsurancePrice(Optional<? extends String> includedInsurancePrice) {
         Utils.checkNotNull(includedInsurancePrice, "includedInsurancePrice");
         this.includedInsurancePrice = includedInsurancePrice;
         return this;
@@ -804,7 +804,7 @@ public class Rate {
  
         private Optional<? extends Long> estimatedDays = Optional.empty();
  
-        private Optional<? extends Double> includedInsurancePrice = Optional.empty();
+        private Optional<? extends String> includedInsurancePrice = Optional.empty();
  
         private Optional<? extends java.util.List<ResponseMessage>> messages = Optional.empty();
  
@@ -954,7 +954,7 @@ public class Rate {
          * Expressed in the currency used in the sender's country. Will be null if no insurance coverage was requested, or if insurance is requested from a non-standard insurance provider. 
          * Please note this price is already included in the `amount` and `amount_local` fields on the Rate. Do not add this field to them.
          */
-        public Builder includedInsurancePrice(double includedInsurancePrice) {
+        public Builder includedInsurancePrice(String includedInsurancePrice) {
             Utils.checkNotNull(includedInsurancePrice, "includedInsurancePrice");
             this.includedInsurancePrice = Optional.ofNullable(includedInsurancePrice);
             return this;
@@ -965,7 +965,7 @@ public class Rate {
          * Expressed in the currency used in the sender's country. Will be null if no insurance coverage was requested, or if insurance is requested from a non-standard insurance provider. 
          * Please note this price is already included in the `amount` and `amount_local` fields on the Rate. Do not add this field to them.
          */
-        public Builder includedInsurancePrice(Optional<? extends Double> includedInsurancePrice) {
+        public Builder includedInsurancePrice(Optional<? extends String> includedInsurancePrice) {
             Utils.checkNotNull(includedInsurancePrice, "includedInsurancePrice");
             this.includedInsurancePrice = includedInsurancePrice;
             return this;
