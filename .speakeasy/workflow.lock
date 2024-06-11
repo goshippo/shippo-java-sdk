@@ -1,18 +1,19 @@
-speakeasyVersion: 1.300.1
+speakeasyVersion: 1.303.4
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:a74f570a9d452d88631fe91d4cb2ae7d17cf1fc7b31d70eedf7870c081e13d4f
-        sourceBlobDigest: sha256:9e1bc200384654a86be4dbdcd539388da5cfa8f687bd6e1cbd641cbbbfc7bf4b
+        sourceRevisionDigest: sha256:770e245320605ba0e4afd5e04e694260e0c44c1306c6f143766f820c5c035504
+        sourceBlobDigest: sha256:ea7a28c5ead45dce10259a28d76f58366a8f73a7e4b2d44a14eb6d7619fd10c9
         tags:
             - latest
+            - main
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:a74f570a9d452d88631fe91d4cb2ae7d17cf1fc7b31d70eedf7870c081e13d4f
-        sourceBlobDigest: sha256:9e1bc200384654a86be4dbdcd539388da5cfa8f687bd6e1cbd641cbbbfc7bf4b
-        outLocation: /Users/mike.lueders/dev/shippo-java-sdk
+        sourceRevisionDigest: sha256:770e245320605ba0e4afd5e04e694260e0c44c1306c6f143766f820c5c035504
+        sourceBlobDigest: sha256:ea7a28c5ead45dce10259a28d76f58366a8f73a7e4b2d44a14eb6d7619fd10c9
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
