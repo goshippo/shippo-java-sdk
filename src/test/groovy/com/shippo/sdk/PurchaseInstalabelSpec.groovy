@@ -1,3 +1,5 @@
+package com.shippo.sdk
+
 import com.shippo.sdk.models.components.*
 import com.shippo.sdk.models.operations.CreateTransactionRequestBody
 import com.shippo.sdk.models.operations.CreateTransactionResponse
@@ -29,7 +31,7 @@ class PurchaseInstalabelSpec extends Specification implements SdkProvider {
                         .phone("4151234567")
                         .email("mrhippo@shippo.com")
                         .build()))
-                .parcels(List.of(Parcels.of(ParcelCreateRequest.builder()
+                .parcels(List.of(com.shippo.sdk.models.components.Parcels.of(ParcelCreateRequest.builder()
                         .distanceUnit(DistanceUnitEnum.IN)
                         .height("1")
                         .length("1")

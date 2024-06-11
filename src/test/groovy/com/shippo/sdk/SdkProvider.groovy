@@ -1,4 +1,6 @@
-import com.shippo.sdk.Shippo
+package com.shippo.sdk
+
+
 import com.shippo.sdk.models.components.CarrierAccountWithExtraInfo
 import com.shippo.sdk.models.components.CarriersEnum
 import com.shippo.sdk.models.operations.ListCarrierAccountsRequest

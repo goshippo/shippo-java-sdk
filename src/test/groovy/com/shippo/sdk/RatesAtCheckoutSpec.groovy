@@ -1,3 +1,5 @@
+package com.shippo.sdk
+
 import com.shippo.sdk.models.components.AddressCompleteCreateRequest
 import com.shippo.sdk.models.components.CarriersEnum
 import com.shippo.sdk.models.components.DistanceUnitEnum
