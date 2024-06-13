@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: 83c79445-e1aa-4008-8835-519234c13f68
 management:
-  docChecksum: 5f3530e1b29cad621760a07269fb6df8
+  docChecksum: 83260d88128c46673f69c31c772447dc
   docVersion: "2018-02-08"
-  speakeasyVersion: 1.303.4
-  generationVersion: 2.340.2
-  releaseVersion: 0.1.4
-  configChecksum: c561aa477f8e3d0978a20b537468d83b
+  speakeasyVersion: 1.307.1
+  generationVersion: 2.342.2
+  releaseVersion: 0.2.0
+  configChecksum: 6859bd53aeaebc50690a08618540fd1f
   repoURL: https://github.com/goshippo/shippo-java-sdk.git
 features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.22.0
+    core: 3.23.0
     flattening: 2.81.1
     globalSecurity: 2.82.5
     globalSecurityCallbacks: 0.1.0
@@ -21,6 +21,7 @@ features:
     globals: 2.82.1
     includes: 2.81.1
     nameOverrides: 2.81.3
+    nullables: 0.1.0
     sdkHooks: 0.1.0
     unions: 0.0.4
 generatedFiles:
@@ -45,6 +46,7 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/Transactions.java
   - src/main/java/com/shippo/sdk/UserParcelTemplates.java
   - src/main/java/com/shippo/sdk/ShippoAccounts.java
+  - src/main/java/com/shippo/sdk/Webhooks.java
   - src/main/java/com/shippo/sdk/models/operations/ListAddressesRequestBuilder.java
   - src/main/java/com/shippo/sdk/models/operations/CreateAddressRequestBuilder.java
   - src/main/java/com/shippo/sdk/models/operations/GetAddressRequestBuilder.java
@@ -110,6 +112,11 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/operations/CreateShippoAccountRequestBuilder.java
   - src/main/java/com/shippo/sdk/models/operations/GetShippoAccountRequestBuilder.java
   - src/main/java/com/shippo/sdk/models/operations/UpdateShippoAccountRequestBuilder.java
+  - src/main/java/com/shippo/sdk/models/operations/CreateWebhookRequestBuilder.java
+  - src/main/java/com/shippo/sdk/models/operations/ListWebhooksRequestBuilder.java
+  - src/main/java/com/shippo/sdk/models/operations/GetWebhookRequestBuilder.java
+  - src/main/java/com/shippo/sdk/models/operations/UpdateWebhookRequestBuilder.java
+  - src/main/java/com/shippo/sdk/models/operations/DeleteWebhookRequestBuilder.java
   - src/main/java/com/shippo/sdk/models/operations/SDKMethodInterfaces.java
   - src/main/java/com/shippo/sdk/Shippo.java
   - .gitattributes
@@ -155,6 +162,7 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/utils/TypedObject.java
   - src/main/java/com/shippo/sdk/utils/Types.java
   - src/main/java/com/shippo/sdk/utils/Utils.java
+  - src/main/java/com/shippo/sdk/models/errors/AuthException.java
   - src/main/java/com/shippo/sdk/models/errors/SDKError.java
   - src/main/java/com/shippo/sdk/models/operations/ListAddressesRequest.java
   - src/main/java/com/shippo/sdk/models/operations/ListAddressesResponse.java
@@ -290,11 +298,19 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/operations/GetShippoAccountResponse.java
   - src/main/java/com/shippo/sdk/models/operations/UpdateShippoAccountRequest.java
   - src/main/java/com/shippo/sdk/models/operations/UpdateShippoAccountResponse.java
+  - src/main/java/com/shippo/sdk/models/operations/CreateWebhookResponse.java
+  - src/main/java/com/shippo/sdk/models/operations/ListWebhooksResponse.java
+  - src/main/java/com/shippo/sdk/models/operations/GetWebhookRequest.java
+  - src/main/java/com/shippo/sdk/models/operations/GetWebhookResponse.java
+  - src/main/java/com/shippo/sdk/models/operations/UpdateWebhookRequest.java
+  - src/main/java/com/shippo/sdk/models/operations/UpdateWebhookResponse.java
+  - src/main/java/com/shippo/sdk/models/operations/DeleteWebhookRequest.java
+  - src/main/java/com/shippo/sdk/models/operations/DeleteWebhookResponse.java
   - src/main/java/com/shippo/sdk/models/components/AddressPaginatedList.java
+  - src/main/java/com/shippo/sdk/models/components/Latitude.java
+  - src/main/java/com/shippo/sdk/models/components/Longitude.java
   - src/main/java/com/shippo/sdk/models/components/Address.java
   - src/main/java/com/shippo/sdk/models/components/AddressValidationResults.java
-  - src/main/java/com/shippo/sdk/models/components/Code.java
-  - src/main/java/com/shippo/sdk/models/components/Source.java
   - src/main/java/com/shippo/sdk/models/components/AddressValidationResultsMessage.java
   - src/main/java/com/shippo/sdk/models/components/AddressCreateRequest.java
   - src/main/java/com/shippo/sdk/models/components/ObjectResults.java
@@ -333,7 +349,6 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationB13AFilingOptionEnum.java
   - src/main/java/com/shippo/sdk/models/components/AncillaryEndorsement.java
   - src/main/java/com/shippo/sdk/models/components/DangerousGoodsCode.java
-  - src/main/java/com/shippo/sdk/models/components/LasershipAttrs.java
   - src/main/java/com/shippo/sdk/models/components/PreferredDeliveryTimeframe.java
   - src/main/java/com/shippo/sdk/models/components/ReturnServiceType.java
   - src/main/java/com/shippo/sdk/models/components/SignatureConfirmation.java
@@ -341,6 +356,7 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/UPSReferenceFields.java
   - src/main/java/com/shippo/sdk/models/components/RmaNumber.java
   - src/main/java/com/shippo/sdk/models/components/PoNumber.java
+  - src/main/java/com/shippo/sdk/models/components/ShipmentExtraLasershipAttributesEnum.java
   - src/main/java/com/shippo/sdk/models/components/InvoiceNumber.java
   - src/main/java/com/shippo/sdk/models/components/Provider.java
   - src/main/java/com/shippo/sdk/models/components/Insurance.java
@@ -474,6 +490,7 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/TrackingStatusLocationBase.java
   - src/main/java/com/shippo/sdk/models/components/TracksRequest.java
   - src/main/java/com/shippo/sdk/models/components/TransactionPaginatedList.java
+  - src/main/java/com/shippo/sdk/models/components/CreatedBy.java
   - src/main/java/com/shippo/sdk/models/components/TransactionRate.java
   - src/main/java/com/shippo/sdk/models/components/Transaction.java
   - src/main/java/com/shippo/sdk/models/components/TransactionStatusEnum.java
@@ -489,7 +506,13 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/ShippoAccountPaginatedList.java
   - src/main/java/com/shippo/sdk/models/components/ShippoAccount.java
   - src/main/java/com/shippo/sdk/models/components/ShippoAccountUpdateRequest.java
+  - src/main/java/com/shippo/sdk/models/components/Webhook.java
+  - src/main/java/com/shippo/sdk/models/components/WebhookUpdateRequest.java
+  - src/main/java/com/shippo/sdk/models/components/WebhookEventTypeEnum.java
+  - src/main/java/com/shippo/sdk/models/components/WebhookPaginatedList.java
   - src/main/java/com/shippo/sdk/models/components/Security.java
+  - src/main/java/com/shippo/sdk/models/components/AddressValidationResultsMessageCodeEnum.java
+  - src/main/java/com/shippo/sdk/models/components/AddressValidationResultsMessageSourceEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevel.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelSwyftEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelVehoEnum.java
@@ -669,11 +692,19 @@ generatedFiles:
   - docs/models/operations/GetShippoAccountResponse.md
   - docs/models/operations/UpdateShippoAccountRequest.md
   - docs/models/operations/UpdateShippoAccountResponse.md
+  - docs/models/operations/CreateWebhookResponse.md
+  - docs/models/operations/ListWebhooksResponse.md
+  - docs/models/operations/GetWebhookRequest.md
+  - docs/models/operations/GetWebhookResponse.md
+  - docs/models/operations/UpdateWebhookRequest.md
+  - docs/models/operations/UpdateWebhookResponse.md
+  - docs/models/operations/DeleteWebhookRequest.md
+  - docs/models/operations/DeleteWebhookResponse.md
   - docs/models/components/AddressPaginatedList.md
+  - docs/models/components/Latitude.md
+  - docs/models/components/Longitude.md
   - docs/models/components/Address.md
   - docs/models/components/AddressValidationResults.md
-  - docs/models/components/Code.md
-  - docs/models/components/Source.md
   - docs/models/components/AddressValidationResultsMessage.md
   - docs/models/components/AddressCreateRequest.md
   - docs/models/components/ObjectResults.md
@@ -712,7 +743,6 @@ generatedFiles:
   - docs/models/components/CustomsDeclarationB13AFilingOptionEnum.md
   - docs/models/components/AncillaryEndorsement.md
   - docs/models/components/DangerousGoodsCode.md
-  - docs/models/components/LasershipAttrs.md
   - docs/models/components/PreferredDeliveryTimeframe.md
   - docs/models/components/ReturnServiceType.md
   - docs/models/components/SignatureConfirmation.md
@@ -720,6 +750,7 @@ generatedFiles:
   - docs/models/components/UPSReferenceFields.md
   - docs/models/components/RmaNumber.md
   - docs/models/components/PoNumber.md
+  - docs/models/components/ShipmentExtraLasershipAttributesEnum.md
   - docs/models/components/InvoiceNumber.md
   - docs/models/components/Provider.md
   - docs/models/components/Insurance.md
@@ -853,6 +884,7 @@ generatedFiles:
   - docs/models/components/TrackingStatusLocationBase.md
   - docs/models/components/TracksRequest.md
   - docs/models/components/TransactionPaginatedList.md
+  - docs/models/components/CreatedBy.md
   - docs/models/components/TransactionRate.md
   - docs/models/components/Transaction.md
   - docs/models/components/TransactionStatusEnum.md
@@ -868,7 +900,13 @@ generatedFiles:
   - docs/models/components/ShippoAccountPaginatedList.md
   - docs/models/components/ShippoAccount.md
   - docs/models/components/ShippoAccountUpdateRequest.md
+  - docs/models/components/Webhook.md
+  - docs/models/components/WebhookUpdateRequest.md
+  - docs/models/components/WebhookEventTypeEnum.md
+  - docs/models/components/WebhookPaginatedList.md
   - docs/models/components/Security.md
+  - docs/models/components/AddressValidationResultsMessageCodeEnum.md
+  - docs/models/components/AddressValidationResultsMessageSourceEnum.md
   - docs/models/components/ServiceLevel.md
   - docs/models/components/ServiceLevelSwyftEnum.md
   - docs/models/components/ServiceLevelVehoEnum.md
@@ -934,4 +972,5 @@ generatedFiles:
   - docs/sdks/transactions/README.md
   - docs/sdks/userparceltemplates/README.md
   - docs/sdks/shippoaccounts/README.md
+  - docs/sdks/webhooks/README.md
   - USAGE.md

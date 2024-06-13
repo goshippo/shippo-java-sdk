@@ -20,13 +20,19 @@ import java.util.Optional;
 
 public class AddressValidationResultsMessage {
 
+    /**
+     * See &lt;a href="#tag/Address-Validation-Codes"&gt;Address Validation Codes&lt;/a&gt;
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("code")
-    private Optional<? extends Code> code;
+    private Optional<? extends String> code;
 
+    /**
+     * See &lt;a href="#tag/Address-Validation-Source"&gt;Address Validation Source&lt;/a&gt;
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("source")
-    private Optional<? extends Source> source;
+    private Optional<? extends String> source;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("text")
@@ -38,8 +44,8 @@ public class AddressValidationResultsMessage {
 
     @JsonCreator
     public AddressValidationResultsMessage(
-            @JsonProperty("code") Optional<? extends Code> code,
-            @JsonProperty("source") Optional<? extends Source> source,
+            @JsonProperty("code") Optional<? extends String> code,
+            @JsonProperty("source") Optional<? extends String> source,
             @JsonProperty("text") Optional<? extends String> text,
             @JsonProperty("type") Optional<? extends String> type) {
         Utils.checkNotNull(code, "code");
@@ -56,16 +62,22 @@ public class AddressValidationResultsMessage {
         this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
+    /**
+     * See &lt;a href="#tag/Address-Validation-Codes"&gt;Address Validation Codes&lt;/a&gt;
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Code> code() {
-        return (Optional<Code>) code;
+    public Optional<String> code() {
+        return (Optional<String>) code;
     }
 
+    /**
+     * See &lt;a href="#tag/Address-Validation-Source"&gt;Address Validation Source&lt;/a&gt;
+     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Source> source() {
-        return (Optional<Source>) source;
+    public Optional<String> source() {
+        return (Optional<String>) source;
     }
 
     @SuppressWarnings("unchecked")
@@ -84,25 +96,37 @@ public class AddressValidationResultsMessage {
         return new Builder();
     }
 
-    public AddressValidationResultsMessage withCode(Code code) {
+    /**
+     * See &lt;a href="#tag/Address-Validation-Codes"&gt;Address Validation Codes&lt;/a&gt;
+     */
+    public AddressValidationResultsMessage withCode(String code) {
         Utils.checkNotNull(code, "code");
         this.code = Optional.ofNullable(code);
         return this;
     }
 
-    public AddressValidationResultsMessage withCode(Optional<? extends Code> code) {
+    /**
+     * See &lt;a href="#tag/Address-Validation-Codes"&gt;Address Validation Codes&lt;/a&gt;
+     */
+    public AddressValidationResultsMessage withCode(Optional<? extends String> code) {
         Utils.checkNotNull(code, "code");
         this.code = code;
         return this;
     }
 
-    public AddressValidationResultsMessage withSource(Source source) {
+    /**
+     * See &lt;a href="#tag/Address-Validation-Source"&gt;Address Validation Source&lt;/a&gt;
+     */
+    public AddressValidationResultsMessage withSource(String source) {
         Utils.checkNotNull(source, "source");
         this.source = Optional.ofNullable(source);
         return this;
     }
 
-    public AddressValidationResultsMessage withSource(Optional<? extends Source> source) {
+    /**
+     * See &lt;a href="#tag/Address-Validation-Source"&gt;Address Validation Source&lt;/a&gt;
+     */
+    public AddressValidationResultsMessage withSource(Optional<? extends String> source) {
         Utils.checkNotNull(source, "source");
         this.source = source;
         return this;
@@ -168,9 +192,9 @@ public class AddressValidationResultsMessage {
     
     public final static class Builder {
  
-        private Optional<? extends Code> code = Optional.empty();
+        private Optional<? extends String> code = Optional.empty();
  
-        private Optional<? extends Source> source = Optional.empty();
+        private Optional<? extends String> source = Optional.empty();
  
         private Optional<? extends String> text = Optional.empty();
  
@@ -180,25 +204,37 @@ public class AddressValidationResultsMessage {
           // force use of static builder() method
         }
 
-        public Builder code(Code code) {
+        /**
+         * See &lt;a href="#tag/Address-Validation-Codes"&gt;Address Validation Codes&lt;/a&gt;
+         */
+        public Builder code(String code) {
             Utils.checkNotNull(code, "code");
             this.code = Optional.ofNullable(code);
             return this;
         }
 
-        public Builder code(Optional<? extends Code> code) {
+        /**
+         * See &lt;a href="#tag/Address-Validation-Codes"&gt;Address Validation Codes&lt;/a&gt;
+         */
+        public Builder code(Optional<? extends String> code) {
             Utils.checkNotNull(code, "code");
             this.code = code;
             return this;
         }
 
-        public Builder source(Source source) {
+        /**
+         * See &lt;a href="#tag/Address-Validation-Source"&gt;Address Validation Source&lt;/a&gt;
+         */
+        public Builder source(String source) {
             Utils.checkNotNull(source, "source");
             this.source = Optional.ofNullable(source);
             return this;
         }
 
-        public Builder source(Optional<? extends Source> source) {
+        /**
+         * See &lt;a href="#tag/Address-Validation-Source"&gt;Address Validation Source&lt;/a&gt;
+         */
+        public Builder source(Optional<? extends String> source) {
             Utils.checkNotNull(source, "source");
             this.source = source;
             return this;

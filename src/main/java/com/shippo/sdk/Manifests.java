@@ -49,6 +49,7 @@ public class Manifests implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all manifests
      * Returns a list of all manifest objects.
@@ -111,7 +112,7 @@ public class Manifests implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListManifests", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListManifests", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -119,18 +120,18 @@ public class Manifests implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListManifests", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListManifests", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListManifests", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListManifests", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListManifests", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListManifests", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -176,6 +177,7 @@ public class Manifests implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -242,7 +244,7 @@ public class Manifests implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateManifest", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateManifest", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -250,18 +252,18 @@ public class Manifests implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateManifest", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateManifest", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateManifest", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateManifest", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateManifest", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateManifest", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -307,6 +309,7 @@ public class Manifests implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -367,7 +370,7 @@ public class Manifests implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetManifest", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetManifest", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -375,18 +378,18 @@ public class Manifests implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetManifest", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetManifest", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetManifest", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetManifest", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetManifest", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetManifest", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

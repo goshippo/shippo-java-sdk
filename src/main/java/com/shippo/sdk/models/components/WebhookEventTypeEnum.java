@@ -15,24 +15,17 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-/**
- * LasershipAttrs - Specify Lasership Attributes (Lasership only). Multiple options accepted.
- */
-public enum LasershipAttrs {
-    TWO_PERSON_DELIVERY("TwoPersonDelivery"),
-    EXPLOSIVE("Explosive"),
-    ALCOHOL("Alcohol"),
-    HAZMAT("Hazmat"),
-    CONTROLLED_SUBSTANCE("ControlledSubstance"),
-    REFRIGERATED("Refrigerated"),
-    DRY_ICE("DryIce"),
-    PERISHABLE("Perishable"),
-    NO_RTS("NoRTS");
+public enum WebhookEventTypeEnum {
+    TRANSACTION_CREATED("transaction_created"),
+    TRANSACTION_UPDATED("transaction_updated"),
+    TRACK_UPDATED("track_updated"),
+    BATCH_CREATED("batch_created"),
+    BATCH_PURCHASED("batch_purchased");
 
     @JsonValue
     private final String value;
 
-    private LasershipAttrs(String value) {
+    private WebhookEventTypeEnum(String value) {
         this.value = value;
     }
     

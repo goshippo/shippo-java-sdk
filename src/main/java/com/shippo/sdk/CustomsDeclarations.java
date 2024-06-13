@@ -44,6 +44,7 @@ public class CustomsDeclarations implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all customs declarations
      * Returns a a list of all customs declaration objects
@@ -106,7 +107,7 @@ public class CustomsDeclarations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListCustomsDeclarations", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListCustomsDeclarations", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -114,18 +115,18 @@ public class CustomsDeclarations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListCustomsDeclarations", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListCustomsDeclarations", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListCustomsDeclarations", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListCustomsDeclarations", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListCustomsDeclarations", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListCustomsDeclarations", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -171,6 +172,7 @@ public class CustomsDeclarations implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -237,7 +239,7 @@ public class CustomsDeclarations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateCustomsDeclaration", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -245,18 +247,18 @@ public class CustomsDeclarations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateCustomsDeclaration", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateCustomsDeclaration", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateCustomsDeclaration", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -302,6 +304,7 @@ public class CustomsDeclarations implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -370,7 +373,7 @@ public class CustomsDeclarations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetCustomsDeclaration", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -378,18 +381,18 @@ public class CustomsDeclarations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetCustomsDeclaration", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetCustomsDeclaration", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetCustomsDeclaration", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetCustomsDeclaration", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

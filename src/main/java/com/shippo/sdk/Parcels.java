@@ -47,6 +47,7 @@ public class Parcels implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all parcels
      * Returns a list of all parcel objects.
@@ -109,7 +110,7 @@ public class Parcels implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListParcels", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -117,18 +118,18 @@ public class Parcels implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListParcels", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListParcels", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListParcels", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -174,6 +175,7 @@ public class Parcels implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -240,7 +242,7 @@ public class Parcels implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateParcel", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -248,18 +250,18 @@ public class Parcels implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateParcel", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateParcel", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateParcel", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -305,6 +307,7 @@ public class Parcels implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -365,7 +368,7 @@ public class Parcels implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetParcel", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -373,18 +376,18 @@ public class Parcels implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetParcel", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetParcel", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetParcel", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

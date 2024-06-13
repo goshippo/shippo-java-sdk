@@ -41,6 +41,7 @@ public class Pickups implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create a pickup
      * Creates a pickup object. This request is for a carrier to come to a specified location to take a package for shipping.
@@ -105,7 +106,7 @@ public class Pickups implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreatePickup", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreatePickup", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -113,18 +114,18 @@ public class Pickups implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreatePickup", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreatePickup", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreatePickup", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreatePickup", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreatePickup", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreatePickup", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

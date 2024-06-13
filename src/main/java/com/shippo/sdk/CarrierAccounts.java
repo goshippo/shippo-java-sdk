@@ -50,6 +50,7 @@ public class CarrierAccounts implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all carrier accounts
      * Returns a list of all carrier accounts connected to your Shippo account. These carrier accounts include both Shippo carrier accounts and your own carrier accounts that you have connected to your Shippo account.
@@ -99,7 +100,7 @@ public class CarrierAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListCarrierAccounts", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListCarrierAccounts", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -107,18 +108,18 @@ public class CarrierAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListCarrierAccounts", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListCarrierAccounts", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListCarrierAccounts", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListCarrierAccounts", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListCarrierAccounts", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListCarrierAccounts", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -164,6 +165,7 @@ public class CarrierAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -230,7 +232,7 @@ public class CarrierAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateCarrierAccount", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -238,18 +240,18 @@ public class CarrierAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateCarrierAccount", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -295,6 +297,7 @@ public class CarrierAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -355,7 +358,7 @@ public class CarrierAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetCarrierAccount", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -363,18 +366,18 @@ public class CarrierAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetCarrierAccount", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -420,6 +423,7 @@ public class CarrierAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -488,7 +492,7 @@ public class CarrierAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("UpdateCarrierAccount", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("UpdateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -496,18 +500,18 @@ public class CarrierAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("UpdateCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("UpdateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("UpdateCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("UpdateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("UpdateCarrierAccount", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("UpdateCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -553,6 +557,7 @@ public class CarrierAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -626,7 +631,7 @@ public class CarrierAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("InitiateOauth2Signin", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("InitiateOauth2Signin", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -634,18 +639,18 @@ public class CarrierAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "401", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("InitiateOauth2Signin", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("InitiateOauth2Signin", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("InitiateOauth2Signin", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("InitiateOauth2Signin", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("InitiateOauth2Signin", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("InitiateOauth2Signin", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -731,6 +736,7 @@ public class CarrierAccounts implements
     }
 
 
+
     /**
      * Add a Shippo carrier account
      * Adds a Shippo carrier account
@@ -795,7 +801,7 @@ public class CarrierAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("RegisterCarrierAccount", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("RegisterCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -803,18 +809,18 @@ public class CarrierAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("RegisterCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("RegisterCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("RegisterCarrierAccount", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("RegisterCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("RegisterCarrierAccount", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("RegisterCarrierAccount", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -860,6 +866,7 @@ public class CarrierAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -923,7 +930,7 @@ public class CarrierAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetCarrierRegistrationStatus", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetCarrierRegistrationStatus", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -931,18 +938,18 @@ public class CarrierAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetCarrierRegistrationStatus", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetCarrierRegistrationStatus", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetCarrierRegistrationStatus", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetCarrierRegistrationStatus", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetCarrierRegistrationStatus", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetCarrierRegistrationStatus", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

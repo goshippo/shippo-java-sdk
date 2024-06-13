@@ -212,6 +212,12 @@ public class Shippo {
     private final ShippoAccounts shippoAccounts;
 
     /**
+     * Webhooks are a way for Shippo to notify your application when a specific event occurs. For example, when a label is purchased or when a shipment tracking status has changed. You can use webhooks to trigger actions in your application, such as sending an email or updating a database.
+     * &lt;SchemaDefinition schemaRef="#/components/schemas/Webhook"/&gt;
+     */
+    private final Webhooks webhooks;
+
+    /**
      * Addresses are the locations a parcel is being shipped **from** and **to**. They represent company and residential places. Among other things, you can use address objects to create shipments, calculate shipping rates, and purchase shipping labels.
      * &lt;SchemaDefinition schemaRef="#/components/schemas/Address"/&gt;
      */
@@ -424,6 +430,14 @@ public class Shippo {
         return shippoAccounts;
     }
 
+    /**
+     * Webhooks are a way for Shippo to notify your application when a specific event occurs. For example, when a label is purchased or when a shipment tracking status has changed. You can use webhooks to trigger actions in your application, such as sending an email or updating a database.
+     * &lt;SchemaDefinition schemaRef="#/components/schemas/Webhook"/&gt;
+     */
+    public Webhooks webhooks() {
+        return webhooks;
+    }
+
     private final SDKConfiguration sdkConfiguration;
 
     /**
@@ -586,5 +600,6 @@ public class Shippo {
         this.transactions = new Transactions(sdkConfiguration);
         this.userParcelTemplates = new UserParcelTemplates(sdkConfiguration);
         this.shippoAccounts = new ShippoAccounts(sdkConfiguration);
+        this.webhooks = new Webhooks(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }}

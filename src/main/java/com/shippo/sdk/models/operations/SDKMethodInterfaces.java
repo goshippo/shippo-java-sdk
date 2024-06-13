@@ -481,4 +481,34 @@ public class SDKMethodInterfaces {
             Optional<? extends com.shippo.sdk.models.components.ShippoAccountUpdateRequest> shippoAccountUpdateRequest) throws Exception;
     }
 
+
+    public interface MethodCallCreateWebhook {
+        com.shippo.sdk.models.operations.CreateWebhookResponse createWebhook(
+            com.shippo.sdk.models.components.WebhookUpdateRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallListWebhooks {
+        com.shippo.sdk.models.operations.ListWebhooksResponse listWebhooksDirect() throws Exception;
+    }
+
+
+    public interface MethodCallGetWebhook {
+        com.shippo.sdk.models.operations.GetWebhookResponse getWebhook(
+            String webhookId) throws Exception;
+    }
+
+
+    public interface MethodCallUpdateWebhook {
+        com.shippo.sdk.models.operations.UpdateWebhookResponse updateWebhook(
+            String webhookId,
+            com.shippo.sdk.models.components.WebhookUpdateRequest webhookUpdateRequest) throws Exception;
+    }
+
+
+    public interface MethodCallDeleteWebhook {
+        com.shippo.sdk.models.operations.DeleteWebhookResponse deleteWebhook(
+            String webhookId) throws Exception;
+    }
+
 }

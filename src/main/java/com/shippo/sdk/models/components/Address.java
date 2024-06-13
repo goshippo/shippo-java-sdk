@@ -150,14 +150,14 @@ public class Address {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("latitude")
-    private Optional<? extends Double> latitude;
+    private Optional<? extends Latitude> latitude;
 
     /**
      * Longitude of address
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("longitude")
-    private Optional<? extends Double> longitude;
+    private Optional<? extends Longitude> longitude;
 
     /**
      * Date and time of Address creation.
@@ -222,8 +222,8 @@ public class Address {
             @JsonProperty("is_residential") Optional<? extends Boolean> isResidential,
             @JsonProperty("metadata") Optional<? extends String> metadata,
             @JsonProperty("is_complete") Optional<? extends Boolean> isComplete,
-            @JsonProperty("latitude") Optional<? extends Double> latitude,
-            @JsonProperty("longitude") Optional<? extends Double> longitude,
+            @JsonProperty("latitude") Optional<? extends Latitude> latitude,
+            @JsonProperty("longitude") Optional<? extends Longitude> longitude,
             @JsonProperty("object_created") Optional<? extends OffsetDateTime> objectCreated,
             @JsonProperty("object_id") Optional<? extends String> objectId,
             @JsonProperty("object_owner") Optional<? extends String> objectOwner,
@@ -437,8 +437,8 @@ public class Address {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Double> latitude() {
-        return (Optional<Double>) latitude;
+    public Optional<Latitude> latitude() {
+        return (Optional<Latitude>) latitude;
     }
 
     /**
@@ -446,8 +446,8 @@ public class Address {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Double> longitude() {
-        return (Optional<Double>) longitude;
+    public Optional<Longitude> longitude() {
+        return (Optional<Longitude>) longitude;
     }
 
     /**
@@ -804,7 +804,7 @@ public class Address {
     /**
      * Latitude of address
      */
-    public Address withLatitude(double latitude) {
+    public Address withLatitude(Latitude latitude) {
         Utils.checkNotNull(latitude, "latitude");
         this.latitude = Optional.ofNullable(latitude);
         return this;
@@ -813,7 +813,7 @@ public class Address {
     /**
      * Latitude of address
      */
-    public Address withLatitude(Optional<? extends Double> latitude) {
+    public Address withLatitude(Optional<? extends Latitude> latitude) {
         Utils.checkNotNull(latitude, "latitude");
         this.latitude = latitude;
         return this;
@@ -822,7 +822,7 @@ public class Address {
     /**
      * Longitude of address
      */
-    public Address withLongitude(double longitude) {
+    public Address withLongitude(Longitude longitude) {
         Utils.checkNotNull(longitude, "longitude");
         this.longitude = Optional.ofNullable(longitude);
         return this;
@@ -831,7 +831,7 @@ public class Address {
     /**
      * Longitude of address
      */
-    public Address withLongitude(Optional<? extends Double> longitude) {
+    public Address withLongitude(Optional<? extends Longitude> longitude) {
         Utils.checkNotNull(longitude, "longitude");
         this.longitude = longitude;
         return this;
@@ -1076,9 +1076,9 @@ public class Address {
  
         private Optional<? extends Boolean> isComplete = Optional.empty();
  
-        private Optional<? extends Double> latitude = Optional.empty();
+        private Optional<? extends Latitude> latitude = Optional.empty();
  
-        private Optional<? extends Double> longitude = Optional.empty();
+        private Optional<? extends Longitude> longitude = Optional.empty();
  
         private Optional<? extends OffsetDateTime> objectCreated = Optional.empty();
  
@@ -1388,7 +1388,7 @@ public class Address {
         /**
          * Latitude of address
          */
-        public Builder latitude(double latitude) {
+        public Builder latitude(Latitude latitude) {
             Utils.checkNotNull(latitude, "latitude");
             this.latitude = Optional.ofNullable(latitude);
             return this;
@@ -1397,7 +1397,7 @@ public class Address {
         /**
          * Latitude of address
          */
-        public Builder latitude(Optional<? extends Double> latitude) {
+        public Builder latitude(Optional<? extends Latitude> latitude) {
             Utils.checkNotNull(latitude, "latitude");
             this.latitude = latitude;
             return this;
@@ -1406,7 +1406,7 @@ public class Address {
         /**
          * Longitude of address
          */
-        public Builder longitude(double longitude) {
+        public Builder longitude(Longitude longitude) {
             Utils.checkNotNull(longitude, "longitude");
             this.longitude = Optional.ofNullable(longitude);
             return this;
@@ -1415,7 +1415,7 @@ public class Address {
         /**
          * Longitude of address
          */
-        public Builder longitude(Optional<? extends Double> longitude) {
+        public Builder longitude(Optional<? extends Longitude> longitude) {
             Utils.checkNotNull(longitude, "longitude");
             this.longitude = longitude;
             return this;

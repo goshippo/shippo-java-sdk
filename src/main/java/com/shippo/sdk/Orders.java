@@ -53,6 +53,7 @@ public class Orders implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all orders
      * Returns a list of all order objects.
@@ -115,7 +116,7 @@ public class Orders implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListOrders", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListOrders", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -123,18 +124,18 @@ public class Orders implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListOrders", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListOrders", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListOrders", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListOrders", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListOrders", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListOrders", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -180,6 +181,7 @@ public class Orders implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -246,7 +248,7 @@ public class Orders implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateOrder", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateOrder", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -254,18 +256,18 @@ public class Orders implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateOrder", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateOrder", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateOrder", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateOrder", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateOrder", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateOrder", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -311,6 +313,7 @@ public class Orders implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -371,7 +374,7 @@ public class Orders implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetOrder", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetOrder", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -379,18 +382,18 @@ public class Orders implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetOrder", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetOrder", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetOrder", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetOrder", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetOrder", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetOrder", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

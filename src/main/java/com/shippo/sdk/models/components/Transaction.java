@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Transaction {
 
@@ -30,6 +31,10 @@ public class Transaction {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("commercial_invoice_url")
     private Optional<? extends String> commercialInvoiceUrl;
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("created_by")
+    private JsonNullable<? extends CreatedBy> createdBy;
 
     /**
      * The estimated time of arrival according to the carrier.
@@ -159,6 +164,7 @@ public class Transaction {
     @JsonCreator
     public Transaction(
             @JsonProperty("commercial_invoice_url") Optional<? extends String> commercialInvoiceUrl,
+            @JsonProperty("created_by") JsonNullable<? extends CreatedBy> createdBy,
             @JsonProperty("eta") Optional<? extends String> eta,
             @JsonProperty("label_file_type") Optional<? extends LabelFileTypeEnum> labelFileType,
             @JsonProperty("label_url") Optional<? extends String> labelUrl,
@@ -177,6 +183,7 @@ public class Transaction {
             @JsonProperty("tracking_status") Optional<? extends TrackingStatusEnum> trackingStatus,
             @JsonProperty("tracking_url_provider") Optional<? extends String> trackingUrlProvider) {
         Utils.checkNotNull(commercialInvoiceUrl, "commercialInvoiceUrl");
+        Utils.checkNotNull(createdBy, "createdBy");
         Utils.checkNotNull(eta, "eta");
         Utils.checkNotNull(labelFileType, "labelFileType");
         Utils.checkNotNull(labelUrl, "labelUrl");
@@ -195,6 +202,7 @@ public class Transaction {
         Utils.checkNotNull(trackingStatus, "trackingStatus");
         Utils.checkNotNull(trackingUrlProvider, "trackingUrlProvider");
         this.commercialInvoiceUrl = commercialInvoiceUrl;
+        this.createdBy = createdBy;
         this.eta = eta;
         this.labelFileType = labelFileType;
         this.labelUrl = labelUrl;
@@ -215,7 +223,7 @@ public class Transaction {
     }
     
     public Transaction() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -226,6 +234,12 @@ public class Transaction {
     @JsonIgnore
     public Optional<String> commercialInvoiceUrl() {
         return (Optional<String>) commercialInvoiceUrl;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<CreatedBy> createdBy() {
+        return (JsonNullable<CreatedBy>) createdBy;
     }
 
     /**
@@ -408,6 +422,18 @@ public class Transaction {
     public Transaction withCommercialInvoiceUrl(Optional<? extends String> commercialInvoiceUrl) {
         Utils.checkNotNull(commercialInvoiceUrl, "commercialInvoiceUrl");
         this.commercialInvoiceUrl = commercialInvoiceUrl;
+        return this;
+    }
+
+    public Transaction withCreatedBy(CreatedBy createdBy) {
+        Utils.checkNotNull(createdBy, "createdBy");
+        this.createdBy = JsonNullable.of(createdBy);
+        return this;
+    }
+
+    public Transaction withCreatedBy(JsonNullable<? extends CreatedBy> createdBy) {
+        Utils.checkNotNull(createdBy, "createdBy");
+        this.createdBy = createdBy;
         return this;
     }
 
@@ -740,6 +766,7 @@ public class Transaction {
         Transaction other = (Transaction) o;
         return 
             java.util.Objects.deepEquals(this.commercialInvoiceUrl, other.commercialInvoiceUrl) &&
+            java.util.Objects.deepEquals(this.createdBy, other.createdBy) &&
             java.util.Objects.deepEquals(this.eta, other.eta) &&
             java.util.Objects.deepEquals(this.labelFileType, other.labelFileType) &&
             java.util.Objects.deepEquals(this.labelUrl, other.labelUrl) &&
@@ -763,6 +790,7 @@ public class Transaction {
     public int hashCode() {
         return java.util.Objects.hash(
             commercialInvoiceUrl,
+            createdBy,
             eta,
             labelFileType,
             labelUrl,
@@ -786,6 +814,7 @@ public class Transaction {
     public String toString() {
         return Utils.toString(Transaction.class,
                 "commercialInvoiceUrl", commercialInvoiceUrl,
+                "createdBy", createdBy,
                 "eta", eta,
                 "labelFileType", labelFileType,
                 "labelUrl", labelUrl,
@@ -808,6 +837,8 @@ public class Transaction {
     public final static class Builder {
  
         private Optional<? extends String> commercialInvoiceUrl = Optional.empty();
+ 
+        private JsonNullable<? extends CreatedBy> createdBy = JsonNullable.undefined();
  
         private Optional<? extends String> eta = Optional.empty();
  
@@ -864,6 +895,18 @@ public class Transaction {
         public Builder commercialInvoiceUrl(Optional<? extends String> commercialInvoiceUrl) {
             Utils.checkNotNull(commercialInvoiceUrl, "commercialInvoiceUrl");
             this.commercialInvoiceUrl = commercialInvoiceUrl;
+            return this;
+        }
+
+        public Builder createdBy(CreatedBy createdBy) {
+            Utils.checkNotNull(createdBy, "createdBy");
+            this.createdBy = JsonNullable.of(createdBy);
+            return this;
+        }
+
+        public Builder createdBy(JsonNullable<? extends CreatedBy> createdBy) {
+            Utils.checkNotNull(createdBy, "createdBy");
+            this.createdBy = createdBy;
             return this;
         }
 
@@ -1188,6 +1231,7 @@ public class Transaction {
         public Transaction build() {
             return new Transaction(
                 commercialInvoiceUrl,
+                createdBy,
                 eta,
                 labelFileType,
                 labelUrl,

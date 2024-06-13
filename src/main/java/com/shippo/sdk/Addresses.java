@@ -44,6 +44,7 @@ public class Addresses implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all addresses
      * Returns a list of all address objects that have been created in this account.
@@ -106,7 +107,7 @@ public class Addresses implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListAddresses", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListAddresses", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -114,18 +115,18 @@ public class Addresses implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListAddresses", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListAddresses", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListAddresses", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListAddresses", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListAddresses", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListAddresses", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -171,6 +172,7 @@ public class Addresses implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -237,7 +239,7 @@ public class Addresses implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateAddress", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateAddress", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -245,18 +247,18 @@ public class Addresses implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateAddress", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateAddress", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateAddress", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateAddress", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateAddress", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateAddress", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -302,6 +304,7 @@ public class Addresses implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -362,7 +365,7 @@ public class Addresses implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetAddress", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetAddress", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -370,18 +373,18 @@ public class Addresses implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetAddress", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetAddress", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetAddress", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetAddress", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetAddress", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetAddress", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -427,6 +430,7 @@ public class Addresses implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -487,7 +491,7 @@ public class Addresses implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ValidateAddress", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ValidateAddress", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -495,18 +499,18 @@ public class Addresses implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ValidateAddress", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ValidateAddress", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ValidateAddress", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ValidateAddress", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ValidateAddress", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ValidateAddress", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
