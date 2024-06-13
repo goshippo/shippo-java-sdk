@@ -211,7 +211,7 @@ public class ShipmentExtra {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lasership_attrs")
-    private Optional<? extends LasershipAttrs> lasershipAttrs;
+    private Optional<? extends java.util.List<ShipmentExtraLasershipAttributesEnum>> lasershipAttrs;
 
     /**
      * Declared value (Lasership only). Defaults to `50.00`.
@@ -364,7 +364,7 @@ public class ShipmentExtra {
             @JsonProperty("insurance") Optional<? extends Insurance> insurance,
             @JsonProperty("invoice_number") Optional<? extends InvoiceNumber> invoiceNumber,
             @JsonProperty("is_return") Optional<? extends Boolean> isReturn,
-            @JsonProperty("lasership_attrs") Optional<? extends LasershipAttrs> lasershipAttrs,
+            @JsonProperty("lasership_attrs") Optional<? extends java.util.List<ShipmentExtraLasershipAttributesEnum>> lasershipAttrs,
             @JsonProperty("lasership_declared_value") Optional<? extends String> lasershipDeclaredValue,
             @JsonProperty("manifest_number") Optional<? extends UPSReferenceFields> manifestNumber,
             @JsonProperty("model_number") Optional<? extends UPSReferenceFields> modelNumber,
@@ -736,8 +736,8 @@ public class ShipmentExtra {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<LasershipAttrs> lasershipAttrs() {
-        return (Optional<LasershipAttrs>) lasershipAttrs;
+    public Optional<java.util.List<ShipmentExtraLasershipAttributesEnum>> lasershipAttrs() {
+        return (Optional<java.util.List<ShipmentExtraLasershipAttributesEnum>>) lasershipAttrs;
     }
 
     /**
@@ -1388,7 +1388,7 @@ public class ShipmentExtra {
     /**
      * Specify Lasership Attributes (Lasership only). Multiple options accepted.
      */
-    public ShipmentExtra withLasershipAttrs(LasershipAttrs lasershipAttrs) {
+    public ShipmentExtra withLasershipAttrs(java.util.List<ShipmentExtraLasershipAttributesEnum> lasershipAttrs) {
         Utils.checkNotNull(lasershipAttrs, "lasershipAttrs");
         this.lasershipAttrs = Optional.ofNullable(lasershipAttrs);
         return this;
@@ -1397,7 +1397,7 @@ public class ShipmentExtra {
     /**
      * Specify Lasership Attributes (Lasership only). Multiple options accepted.
      */
-    public ShipmentExtra withLasershipAttrs(Optional<? extends LasershipAttrs> lasershipAttrs) {
+    public ShipmentExtra withLasershipAttrs(Optional<? extends java.util.List<ShipmentExtraLasershipAttributesEnum>> lasershipAttrs) {
         Utils.checkNotNull(lasershipAttrs, "lasershipAttrs");
         this.lasershipAttrs = lasershipAttrs;
         return this;
@@ -1959,7 +1959,7 @@ public class ShipmentExtra {
  
         private Optional<? extends Boolean> isReturn = Optional.empty();
  
-        private Optional<? extends LasershipAttrs> lasershipAttrs = Optional.empty();
+        private Optional<? extends java.util.List<ShipmentExtraLasershipAttributesEnum>> lasershipAttrs = Optional.empty();
  
         private Optional<? extends String> lasershipDeclaredValue = Optional.empty();
  
@@ -2488,7 +2488,7 @@ public class ShipmentExtra {
         /**
          * Specify Lasership Attributes (Lasership only). Multiple options accepted.
          */
-        public Builder lasershipAttrs(LasershipAttrs lasershipAttrs) {
+        public Builder lasershipAttrs(java.util.List<ShipmentExtraLasershipAttributesEnum> lasershipAttrs) {
             Utils.checkNotNull(lasershipAttrs, "lasershipAttrs");
             this.lasershipAttrs = Optional.ofNullable(lasershipAttrs);
             return this;
@@ -2497,7 +2497,7 @@ public class ShipmentExtra {
         /**
          * Specify Lasership Attributes (Lasership only). Multiple options accepted.
          */
-        public Builder lasershipAttrs(Optional<? extends LasershipAttrs> lasershipAttrs) {
+        public Builder lasershipAttrs(Optional<? extends java.util.List<ShipmentExtraLasershipAttributesEnum>> lasershipAttrs) {
             Utils.checkNotNull(lasershipAttrs, "lasershipAttrs");
             this.lasershipAttrs = lasershipAttrs;
             return this;

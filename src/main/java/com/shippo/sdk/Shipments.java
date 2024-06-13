@@ -47,6 +47,7 @@ public class Shipments implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all shipments
      * Returns a list of all shipment objects.&lt;br&gt;&lt;br&gt;
@@ -160,7 +161,7 @@ public class Shipments implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListShipments", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListShipments", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -168,18 +169,18 @@ public class Shipments implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListShipments", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListShipments", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListShipments", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListShipments", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListShipments", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListShipments", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -225,6 +226,7 @@ public class Shipments implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -291,7 +293,7 @@ public class Shipments implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateShipment", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateShipment", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -299,18 +301,18 @@ public class Shipments implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateShipment", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateShipment", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateShipment", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateShipment", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateShipment", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateShipment", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -356,6 +358,7 @@ public class Shipments implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -416,7 +419,7 @@ public class Shipments implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetShipment", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetShipment", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -424,18 +427,18 @@ public class Shipments implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetShipment", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetShipment", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetShipment", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetShipment", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetShipment", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetShipment", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

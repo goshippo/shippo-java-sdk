@@ -49,6 +49,7 @@ public class UserParcelTemplates implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all user parcel templates
      * Returns a list all of all user parcel template objects.
@@ -100,7 +101,7 @@ public class UserParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListUserParcelTemplates", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListUserParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -108,18 +109,18 @@ public class UserParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListUserParcelTemplates", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListUserParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListUserParcelTemplates", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListUserParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListUserParcelTemplates", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListUserParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -165,6 +166,7 @@ public class UserParcelTemplates implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -249,7 +251,7 @@ public class UserParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateUserParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -257,18 +259,18 @@ public class UserParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateUserParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -314,6 +316,7 @@ public class UserParcelTemplates implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -374,7 +377,7 @@ public class UserParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("DeleteUserParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("DeleteUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -382,18 +385,18 @@ public class UserParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("DeleteUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("DeleteUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("DeleteUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("DeleteUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("DeleteUserParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("DeleteUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -428,6 +431,7 @@ public class UserParcelTemplates implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -491,7 +495,7 @@ public class UserParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetUserParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -499,18 +503,18 @@ public class UserParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetUserParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -556,6 +560,7 @@ public class UserParcelTemplates implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -624,7 +629,7 @@ public class UserParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("UpdateUserParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("UpdateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -632,18 +637,18 @@ public class UserParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("UpdateUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("UpdateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("UpdateUserParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("UpdateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("UpdateUserParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("UpdateUserParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

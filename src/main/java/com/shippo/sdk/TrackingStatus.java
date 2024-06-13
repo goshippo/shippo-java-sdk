@@ -50,6 +50,7 @@ public class TrackingStatus implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Register a tracking webhook
      * Registers a webhook that will send HTTP notifications to you when the status of your tracked package changes. For more details on creating a webhook, see our guides on &lt;a href="https://docs.goshippo.com/docs/tracking/webhooks/"&gt;Webhooks&lt;/a&gt; and &lt;a href="https://docs.goshippo.com/docs/tracking/tracking/"&gt;Tracking&lt;/a&gt;.
@@ -114,7 +115,7 @@ public class TrackingStatus implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateTrack", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateTrack", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -122,18 +123,18 @@ public class TrackingStatus implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateTrack", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateTrack", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateTrack", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateTrack", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateTrack", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateTrack", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -179,6 +180,7 @@ public class TrackingStatus implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -244,7 +246,7 @@ public class TrackingStatus implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetTrack", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetTrack", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -252,18 +254,18 @@ public class TrackingStatus implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetTrack", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetTrack", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetTrack", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetTrack", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetTrack", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetTrack", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

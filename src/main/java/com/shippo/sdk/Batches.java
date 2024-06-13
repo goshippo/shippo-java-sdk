@@ -51,6 +51,7 @@ public class Batches implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create a batch
      * Creates a new batch object for purchasing shipping labels for many shipments at once. Batches are created asynchronously. This means that the API response won't include your batch shipments yet. You need to retrieve the batch later to verify that all batch shipments are valid.
@@ -115,7 +116,7 @@ public class Batches implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateBatch", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateBatch", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -123,18 +124,18 @@ public class Batches implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateBatch", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateBatch", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateBatch", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateBatch", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateBatch", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateBatch", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -180,6 +181,7 @@ public class Batches implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -249,7 +251,7 @@ public class Batches implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetBatch", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetBatch", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -257,18 +259,18 @@ public class Batches implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetBatch", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetBatch", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetBatch", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetBatch", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetBatch", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetBatch", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -314,6 +316,7 @@ public class Batches implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -387,7 +390,7 @@ public class Batches implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("AddShipmentsToBatch", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("AddShipmentsToBatch", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -395,18 +398,18 @@ public class Batches implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("AddShipmentsToBatch", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("AddShipmentsToBatch", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("AddShipmentsToBatch", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("AddShipmentsToBatch", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("AddShipmentsToBatch", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("AddShipmentsToBatch", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -452,6 +455,7 @@ public class Batches implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -521,7 +525,7 @@ public class Batches implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("PurchaseBatch", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("PurchaseBatch", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -529,18 +533,18 @@ public class Batches implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("PurchaseBatch", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("PurchaseBatch", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("PurchaseBatch", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("PurchaseBatch", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("PurchaseBatch", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("PurchaseBatch", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -586,6 +590,7 @@ public class Batches implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -659,7 +664,7 @@ public class Batches implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("RemoveShipmentsFromBatch", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("RemoveShipmentsFromBatch", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -667,18 +672,18 @@ public class Batches implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("RemoveShipmentsFromBatch", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("RemoveShipmentsFromBatch", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("RemoveShipmentsFromBatch", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("RemoveShipmentsFromBatch", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("RemoveShipmentsFromBatch", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("RemoveShipmentsFromBatch", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

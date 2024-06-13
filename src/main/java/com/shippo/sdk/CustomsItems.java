@@ -43,6 +43,7 @@ public class CustomsItems implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all customs items
      * Returns a list all customs items objects.
@@ -105,7 +106,7 @@ public class CustomsItems implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListCustomsItems", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListCustomsItems", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -113,18 +114,18 @@ public class CustomsItems implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListCustomsItems", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListCustomsItems", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListCustomsItems", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListCustomsItems", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListCustomsItems", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListCustomsItems", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -170,6 +171,7 @@ public class CustomsItems implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -236,7 +238,7 @@ public class CustomsItems implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateCustomsItem", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateCustomsItem", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -244,18 +246,18 @@ public class CustomsItems implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateCustomsItem", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateCustomsItem", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateCustomsItem", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateCustomsItem", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateCustomsItem", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateCustomsItem", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -301,6 +303,7 @@ public class CustomsItems implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -369,7 +372,7 @@ public class CustomsItems implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetCustomsItem", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetCustomsItem", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -377,18 +380,18 @@ public class CustomsItems implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetCustomsItem", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetCustomsItem", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetCustomsItem", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetCustomsItem", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetCustomsItem", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetCustomsItem", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

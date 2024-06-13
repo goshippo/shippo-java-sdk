@@ -41,6 +41,7 @@ public class CarrierParcelTemplates implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all carrier parcel templates
      * List all carrier parcel template objects. &lt;br&gt; Use the following query string params to filter the results as needed. &lt;br&gt; &lt;ul&gt; &lt;li&gt;`include=all` (the default). Includes templates from all carriers &lt;/li&gt; &lt;li&gt;`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) &lt;/li&gt; &lt;li&gt;`include=enabled`. includes templates only for carriers which the user has added and enabled &lt;/li&gt; &lt;li&gt;`carrier=*token*`. filter by specific carrier, e.g. fedex, usps &lt;/li&gt; &lt;/ul&gt;
@@ -103,7 +104,7 @@ public class CarrierParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListCarrierParcelTemplates", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -111,18 +112,18 @@ public class CarrierParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListCarrierParcelTemplates", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListCarrierParcelTemplates", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListCarrierParcelTemplates", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -168,6 +169,7 @@ public class CarrierParcelTemplates implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -228,7 +230,7 @@ public class CarrierParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetCarrierParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -236,18 +238,18 @@ public class CarrierParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetCarrierParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetCarrierParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetCarrierParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

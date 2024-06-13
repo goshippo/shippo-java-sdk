@@ -46,6 +46,7 @@ public class ShippoAccounts implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all Shippo Accounts
      * Returns a list of Shippo Accounts objects
@@ -108,7 +109,7 @@ public class ShippoAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListShippoAccounts", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListShippoAccounts", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -116,18 +117,18 @@ public class ShippoAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListShippoAccounts", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListShippoAccounts", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListShippoAccounts", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListShippoAccounts", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListShippoAccounts", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListShippoAccounts", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -173,6 +174,7 @@ public class ShippoAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -239,7 +241,7 @@ public class ShippoAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateShippoAccount", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -247,18 +249,18 @@ public class ShippoAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateShippoAccount", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateShippoAccount", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateShippoAccount", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -304,6 +306,7 @@ public class ShippoAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -364,7 +367,7 @@ public class ShippoAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetShippoAccount", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -372,18 +375,18 @@ public class ShippoAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetShippoAccount", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetShippoAccount", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetShippoAccount", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetShippoAccount", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -429,6 +432,7 @@ public class ShippoAccounts implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -497,7 +501,7 @@ public class ShippoAccounts implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("UpdateShippoAccount", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("UpdateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -505,18 +509,18 @@ public class ShippoAccounts implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("UpdateShippoAccount", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("UpdateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("UpdateShippoAccount", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("UpdateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("UpdateShippoAccount", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("UpdateShippoAccount", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

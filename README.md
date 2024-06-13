@@ -25,7 +25,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.shippo.sdk:api:0.1.4'
+implementation 'com.shippo.sdk:api:0.2.0'
 ```
 
 Maven:
@@ -33,7 +33,7 @@ Maven:
 <dependency>
     <groupId>com.shippo.sdk</groupId>
     <artifactId>api</artifactId>
-    <version>0.1.4</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
@@ -237,6 +237,14 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [create](docs/sdks/shippoaccounts/README.md#create) - Create a Shippo Account
 * [get](docs/sdks/shippoaccounts/README.md#get) - Retrieve a Shippo Account
 * [update](docs/sdks/shippoaccounts/README.md#update) - Update a Shippo Account
+
+### [webhooks()](docs/sdks/webhooks/README.md)
+
+* [createWebhook](docs/sdks/webhooks/README.md#createwebhook) - Create a new webhook
+* [listWebhooks](docs/sdks/webhooks/README.md#listwebhooks) - List all webhooks
+* [getWebhook](docs/sdks/webhooks/README.md#getwebhook) - Retrieve a specific webhook
+* [updateWebhook](docs/sdks/webhooks/README.md#updatewebhook) - Update an existing webhook
+* [deleteWebhook](docs/sdks/webhooks/README.md#deletewebhook) - Delete a specific webhook
 <!-- End Available Resources and Operations [operations] -->
 
 # Development

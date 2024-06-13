@@ -43,6 +43,7 @@ public class Transactions implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all shipping labels
      * Returns a list of all transaction objects.
@@ -84,7 +85,7 @@ public class Transactions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListTransactions", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListTransactions", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -92,18 +93,18 @@ public class Transactions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListTransactions", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListTransactions", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListTransactions", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListTransactions", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListTransactions", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListTransactions", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -149,6 +150,7 @@ public class Transactions implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -215,7 +217,7 @@ public class Transactions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateTransaction", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateTransaction", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -223,18 +225,18 @@ public class Transactions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateTransaction", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateTransaction", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateTransaction", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateTransaction", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateTransaction", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateTransaction", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -280,6 +282,7 @@ public class Transactions implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -340,7 +343,7 @@ public class Transactions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetTransaction", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetTransaction", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -348,18 +351,18 @@ public class Transactions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetTransaction", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetTransaction", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetTransaction", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetTransaction", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetTransaction", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetTransaction", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

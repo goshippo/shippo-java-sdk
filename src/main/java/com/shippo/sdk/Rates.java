@@ -42,6 +42,7 @@ public class Rates implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Retrieve a rate
      * Returns an existing rate using a rate object ID.
@@ -100,7 +101,7 @@ public class Rates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetRate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetRate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -108,18 +109,18 @@ public class Rates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetRate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetRate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetRate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetRate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetRate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetRate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -165,6 +166,7 @@ public class Rates implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -236,7 +238,7 @@ public class Rates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListShipmentRates", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListShipmentRates", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -244,18 +246,18 @@ public class Rates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListShipmentRates", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListShipmentRates", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListShipmentRates", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListShipmentRates", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListShipmentRates", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListShipmentRates", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -301,6 +303,7 @@ public class Rates implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -358,7 +361,7 @@ public class Rates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListShipmentRatesByCurrencyCode", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListShipmentRatesByCurrencyCode", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -366,18 +369,18 @@ public class Rates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListShipmentRatesByCurrencyCode", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListShipmentRatesByCurrencyCode", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListShipmentRatesByCurrencyCode", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListShipmentRatesByCurrencyCode", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListShipmentRatesByCurrencyCode", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListShipmentRatesByCurrencyCode", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

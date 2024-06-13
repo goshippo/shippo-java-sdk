@@ -42,6 +42,7 @@ public class Refunds implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create a refund
      * Creates a new refund object.
@@ -106,7 +107,7 @@ public class Refunds implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateRefund", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateRefund", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -114,18 +115,18 @@ public class Refunds implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateRefund", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateRefund", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateRefund", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateRefund", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateRefund", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateRefund", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -171,6 +172,7 @@ public class Refunds implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -224,7 +226,7 @@ public class Refunds implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListRefunds", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListRefunds", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -232,18 +234,18 @@ public class Refunds implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListRefunds", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListRefunds", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListRefunds", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListRefunds", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListRefunds", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListRefunds", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -289,6 +291,7 @@ public class Refunds implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -349,7 +352,7 @@ public class Refunds implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetRefund", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetRefund", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -357,18 +360,18 @@ public class Refunds implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetRefund", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetRefund", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetRefund", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetRefund", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetRefund", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetRefund", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

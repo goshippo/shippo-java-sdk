@@ -15,14 +15,14 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public enum Source {
+public enum AddressValidationResultsMessageSourceEnum {
     SHIPPO_ADDRESS_VALIDATOR("Shippo Address Validator"),
     UPS("UPS");
 
     @JsonValue
     private final String value;
 
-    private Source(String value) {
+    private AddressValidationResultsMessageSourceEnum(String value) {
         this.value = value;
     }
     

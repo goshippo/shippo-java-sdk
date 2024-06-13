@@ -49,6 +49,7 @@ public class RatesAtCheckout implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Generate a live rates request
      * Initiates a live rates request. Include either the object ID for
@@ -122,7 +123,7 @@ public class RatesAtCheckout implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateLiveRate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateLiveRate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -130,18 +131,18 @@ public class RatesAtCheckout implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateLiveRate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateLiveRate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateLiveRate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateLiveRate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateLiveRate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateLiveRate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -187,6 +188,7 @@ public class RatesAtCheckout implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -240,7 +242,7 @@ public class RatesAtCheckout implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -248,18 +250,18 @@ public class RatesAtCheckout implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetDefaultParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -305,6 +307,7 @@ public class RatesAtCheckout implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -366,7 +369,7 @@ public class RatesAtCheckout implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("UpdateDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("UpdateDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -374,18 +377,18 @@ public class RatesAtCheckout implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("UpdateDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("UpdateDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("UpdateDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("UpdateDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("UpdateDefaultParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("UpdateDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -431,6 +434,7 @@ public class RatesAtCheckout implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -484,7 +488,7 @@ public class RatesAtCheckout implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("DeleteDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("DeleteDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -492,18 +496,18 @@ public class RatesAtCheckout implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("DeleteDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("DeleteDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("DeleteDefaultParcelTemplate", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("DeleteDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("DeleteDefaultParcelTemplate", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("DeleteDefaultParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

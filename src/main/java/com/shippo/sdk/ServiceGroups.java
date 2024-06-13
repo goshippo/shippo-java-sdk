@@ -43,6 +43,7 @@ public class ServiceGroups implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * List all service groups
      * Returns a list of service group objects.
@@ -94,7 +95,7 @@ public class ServiceGroups implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListServiceGroups", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListServiceGroups", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -102,18 +103,18 @@ public class ServiceGroups implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListServiceGroups", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListServiceGroups", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListServiceGroups", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListServiceGroups", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListServiceGroups", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListServiceGroups", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -159,6 +160,7 @@ public class ServiceGroups implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -225,7 +227,7 @@ public class ServiceGroups implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateServiceGroup", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -233,18 +235,18 @@ public class ServiceGroups implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateServiceGroup", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateServiceGroup", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateServiceGroup", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -290,6 +292,7 @@ public class ServiceGroups implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -351,7 +354,7 @@ public class ServiceGroups implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("UpdateServiceGroup", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("UpdateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -359,18 +362,18 @@ public class ServiceGroups implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("UpdateServiceGroup", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("UpdateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("UpdateServiceGroup", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("UpdateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("UpdateServiceGroup", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("UpdateServiceGroup", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -416,6 +419,7 @@ public class ServiceGroups implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -476,7 +480,7 @@ public class ServiceGroups implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("DeleteServiceGroup", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("DeleteServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -484,18 +488,18 @@ public class ServiceGroups implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("DeleteServiceGroup", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("DeleteServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("DeleteServiceGroup", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("DeleteServiceGroup", Optional.empty(), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("DeleteServiceGroup", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("DeleteServiceGroup", Optional.empty(), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

@@ -15,7 +15,7 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public enum Code {
+public enum AddressValidationResultsMessageCodeEnum {
     VERIFICATION_ERROR("verification_error"),
     UNKNOWN_STREET_LOWER("unknown_street"),
     COMPONENT_MISMATCH_ERROR("component_mismatch_error"),
@@ -80,7 +80,7 @@ public enum Code {
     @JsonValue
     private final String value;
 
-    private Code(String value) {
+    private AddressValidationResultsMessageCodeEnum(String value) {
         this.value = value;
     }
     
