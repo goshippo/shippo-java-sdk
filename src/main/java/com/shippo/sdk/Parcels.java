@@ -110,7 +110,7 @@ public class Parcels implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListParcels", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -118,18 +118,18 @@ public class Parcels implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListParcels", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListParcels", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListParcels", Optional.empty(), sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListParcels", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -190,30 +190,30 @@ public class Parcels implements
     /**
      * Create a new parcel
      * Creates a new parcel object.
-     * @param parcelRequest
+     * @param requestBody Parcel details.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public com.shippo.sdk.models.operations.CreateParcelResponse create(
-            com.shippo.sdk.models.components.ParcelRequest parcelRequest) throws Exception {
-        return create(Optional.empty(), parcelRequest);
+            com.shippo.sdk.models.operations.CreateParcelRequestBody requestBody) throws Exception {
+        return create(Optional.empty(), requestBody);
     }
     /**
      * Create a new parcel
      * Creates a new parcel object.
      * @param shippoApiVersion String used to pick a non-default API version to use
-     * @param parcelRequest
+     * @param requestBody Parcel details.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public com.shippo.sdk.models.operations.CreateParcelResponse create(
             Optional<? extends String> shippoApiVersion,
-            com.shippo.sdk.models.components.ParcelRequest parcelRequest) throws Exception {
+            com.shippo.sdk.models.operations.CreateParcelRequestBody requestBody) throws Exception {
         com.shippo.sdk.models.operations.CreateParcelRequest request =
             com.shippo.sdk.models.operations.CreateParcelRequest
                 .builder()
                 .shippoApiVersion(shippoApiVersion)
-                .parcelRequest(parcelRequest)
+                .requestBody(requestBody)
                 .build();
         
         String _baseUrl = this.sdkConfiguration.serverUrl;
@@ -225,7 +225,7 @@ public class Parcels implements
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<java.lang.Object>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, "parcelRequest", "json", false);
+                _convertedRequest, "requestBody", "json", false);
         if (_serializedRequestBody == null) {
             throw new Exception("Request body is required");
         }
@@ -242,7 +242,7 @@ public class Parcels implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("CreateParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -250,18 +250,18 @@ public class Parcels implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("CreateParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("CreateParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("CreateParcel", Optional.empty(), sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("CreateParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -368,7 +368,7 @@ public class Parcels implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -376,18 +376,18 @@ public class Parcels implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetParcel", Optional.empty(), sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetParcel", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

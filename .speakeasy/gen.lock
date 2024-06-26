@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: 83c79445-e1aa-4008-8835-519234c13f68
 management:
-  docChecksum: 83260d88128c46673f69c31c772447dc
+  docChecksum: f8a55a9af3dcccda8c950270aef6ae0b
   docVersion: "2018-02-08"
-  speakeasyVersion: 1.307.1
-  generationVersion: 2.342.2
-  releaseVersion: 0.2.0
-  configChecksum: 6859bd53aeaebc50690a08618540fd1f
+  speakeasyVersion: 1.320.1
+  generationVersion: 2.354.2
+  releaseVersion: 0.3.0
+  configChecksum: bf4bce285d96180ce8c78c9b0656e1e5
   repoURL: https://github.com/goshippo/shippo-java-sdk.git
 features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.23.0
+    core: 3.26.0
     flattening: 2.81.1
     globalSecurity: 2.82.5
     globalSecurityCallbacks: 0.1.0
@@ -138,6 +138,7 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/utils/HTTPClient.java
   - src/main/java/com/shippo/sdk/utils/HTTPRequest.java
   - src/main/java/com/shippo/sdk/utils/HeaderMetadata.java
+  - src/main/java/com/shippo/sdk/utils/Helpers.java
   - src/main/java/com/shippo/sdk/utils/Hook.java
   - src/main/java/com/shippo/sdk/utils/Hooks.java
   - src/main/java/com/shippo/sdk/utils/JSON.java
@@ -237,6 +238,7 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/operations/GetCarrierParcelTemplateResponse.java
   - src/main/java/com/shippo/sdk/models/operations/ListParcelsRequest.java
   - src/main/java/com/shippo/sdk/models/operations/ListParcelsResponse.java
+  - src/main/java/com/shippo/sdk/models/operations/CreateParcelRequestBody.java
   - src/main/java/com/shippo/sdk/models/operations/CreateParcelRequest.java
   - src/main/java/com/shippo/sdk/models/operations/CreateParcelResponse.java
   - src/main/java/com/shippo/sdk/models/operations/GetParcelRequest.java
@@ -329,16 +331,22 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/Parcels.java
   - src/main/java/com/shippo/sdk/models/components/ShipmentCreateRequest.java
   - src/main/java/com/shippo/sdk/models/components/ParcelCreateRequest.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateAramexAustraliaEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateCouriersPleaseEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateDPDUKEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateDHLeCommerceEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateUSPSEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateUPSEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateFedExEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateEnumSet.java
-  - src/main/java/com/shippo/sdk/models/components/WeightUnitEnum.java
   - src/main/java/com/shippo/sdk/models/components/DistanceUnitEnum.java
+  - src/main/java/com/shippo/sdk/models/components/WeightUnitEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelExtra.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelInsuranceProvider.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelInsurance.java
+  - src/main/java/com/shippo/sdk/models/components/PaymentMethod.java
+  - src/main/java/com/shippo/sdk/models/components/Cod.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelCreateFromTemplateRequest.java
+  - src/main/java/com/shippo/sdk/models/components/AramexAustraliaParcelTemplate.java
+  - src/main/java/com/shippo/sdk/models/components/CouriersPleaseParcelTemplate.java
+  - src/main/java/com/shippo/sdk/models/components/DPDUKParcelTemplate.java
+  - src/main/java/com/shippo/sdk/models/components/DHLECommerceParcelTemplate.java
+  - src/main/java/com/shippo/sdk/models/components/USPSParcelTemplate.java
+  - src/main/java/com/shippo/sdk/models/components/UPSParcelTemplate.java
+  - src/main/java/com/shippo/sdk/models/components/FedExParcelTemplate.java
+  - src/main/java/com/shippo/sdk/models/components/ParcelTemplateEnumSet.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationCreateRequest.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationNonDeliveryOptionEnum.java
   - src/main/java/com/shippo/sdk/models/components/CustomsItemCreateRequest.java
@@ -346,6 +354,9 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationEelPfcEnum.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationContentsTypeEnum.java
   - src/main/java/com/shippo/sdk/models/components/AddressImporter.java
+  - src/main/java/com/shippo/sdk/models/components/CustomsExporterIdentification.java
+  - src/main/java/com/shippo/sdk/models/components/CustomsTaxIdentificationType.java
+  - src/main/java/com/shippo/sdk/models/components/CustomsTaxIdentification.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationB13AFilingOptionEnum.java
   - src/main/java/com/shippo/sdk/models/components/AncillaryEndorsement.java
   - src/main/java/com/shippo/sdk/models/components/DangerousGoodsCode.java
@@ -355,6 +366,8 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/ShipmentExtra.java
   - src/main/java/com/shippo/sdk/models/components/UPSReferenceFields.java
   - src/main/java/com/shippo/sdk/models/components/RmaNumber.java
+  - src/main/java/com/shippo/sdk/models/components/ShipmentExtraReturnServiceTypeUPSEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ShipmentExtraReturnServiceTypeLasershipEnum.java
   - src/main/java/com/shippo/sdk/models/components/PoNumber.java
   - src/main/java/com/shippo/sdk/models/components/ShipmentExtraLasershipAttributesEnum.java
   - src/main/java/com/shippo/sdk/models/components/InvoiceNumber.java
@@ -366,8 +379,6 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/DangerousGoodsLithiumBatteries.java
   - src/main/java/com/shippo/sdk/models/components/DangerousGoodsBiologicalMaterial.java
   - src/main/java/com/shippo/sdk/models/components/CustomerReference.java
-  - src/main/java/com/shippo/sdk/models/components/PaymentMethod.java
-  - src/main/java/com/shippo/sdk/models/components/Cod.java
   - src/main/java/com/shippo/sdk/models/components/Type.java
   - src/main/java/com/shippo/sdk/models/components/Billing.java
   - src/main/java/com/shippo/sdk/models/components/RecipientType.java
@@ -419,13 +430,9 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/CarrierAccountUSPSCreateRequest.java
   - src/main/java/com/shippo/sdk/models/components/CarrierAccountRegistrationStatus.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationPaginatedList.java
-  - src/main/java/com/shippo/sdk/models/components/CustomsDeclarationAddressImporter.java
   - src/main/java/com/shippo/sdk/models/components/CustomsDeclaration.java
   - src/main/java/com/shippo/sdk/models/components/ObjectStateEnum.java
   - src/main/java/com/shippo/sdk/models/components/CustomsInvoicedCharges.java
-  - src/main/java/com/shippo/sdk/models/components/CustomsExporterIdentification.java
-  - src/main/java/com/shippo/sdk/models/components/CustomsTaxIdentificationType.java
-  - src/main/java/com/shippo/sdk/models/components/CustomsTaxIdentification.java
   - src/main/java/com/shippo/sdk/models/components/CustomsItemPaginatedList.java
   - src/main/java/com/shippo/sdk/models/components/CustomsItem.java
   - src/main/java/com/shippo/sdk/models/components/LiveRatePaginatedList.java
@@ -436,9 +443,6 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/LiveRateCreateRequest.java
   - src/main/java/com/shippo/sdk/models/components/ObjectState.java
   - src/main/java/com/shippo/sdk/models/components/Parcel.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelExtra.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelInsuranceProvider.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelInsurance.java
   - src/main/java/com/shippo/sdk/models/components/LineItem.java
   - src/main/java/com/shippo/sdk/models/components/AddressCompleteCreateRequest.java
   - src/main/java/com/shippo/sdk/models/components/DefaultParcelTemplate.java
@@ -458,7 +462,6 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/LineItemBase.java
   - src/main/java/com/shippo/sdk/models/components/CarrierParcelTemplateList.java
   - src/main/java/com/shippo/sdk/models/components/ParcelPaginatedList.java
-  - src/main/java/com/shippo/sdk/models/components/ParcelRequest.java
   - src/main/java/com/shippo/sdk/models/components/PickupStatus.java
   - src/main/java/com/shippo/sdk/models/components/Pickup.java
   - src/main/java/com/shippo/sdk/models/components/BuildingLocationType.java
@@ -519,6 +522,7 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelUDSEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelEvriUKEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelLasershipEnum.java
+  - src/main/java/com/shippo/sdk/models/components/ServiceLevelJitsuEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelOnTracEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelSendleEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelRoyalMailEnum.java
@@ -546,7 +550,6 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelCanadaPostEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelBetterTrucksEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelAPGEnum.java
-  - src/main/java/com/shippo/sdk/models/components/ServiceLevelAxleHireEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelAustraliaPostEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelAsendiaEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevelAPCPostalEnum.java
@@ -631,6 +634,7 @@ generatedFiles:
   - docs/models/operations/GetCarrierParcelTemplateResponse.md
   - docs/models/operations/ListParcelsRequest.md
   - docs/models/operations/ListParcelsResponse.md
+  - docs/models/operations/CreateParcelRequestBody.md
   - docs/models/operations/CreateParcelRequest.md
   - docs/models/operations/CreateParcelResponse.md
   - docs/models/operations/GetParcelRequest.md
@@ -723,16 +727,22 @@ generatedFiles:
   - docs/models/components/Parcels.md
   - docs/models/components/ShipmentCreateRequest.md
   - docs/models/components/ParcelCreateRequest.md
-  - docs/models/components/ParcelTemplateAramexAustraliaEnum.md
-  - docs/models/components/ParcelTemplateCouriersPleaseEnum.md
-  - docs/models/components/ParcelTemplateDPDUKEnum.md
-  - docs/models/components/ParcelTemplateDHLeCommerceEnum.md
-  - docs/models/components/ParcelTemplateUSPSEnum.md
-  - docs/models/components/ParcelTemplateUPSEnum.md
-  - docs/models/components/ParcelTemplateFedExEnum.md
-  - docs/models/components/ParcelTemplateEnumSet.md
-  - docs/models/components/WeightUnitEnum.md
   - docs/models/components/DistanceUnitEnum.md
+  - docs/models/components/WeightUnitEnum.md
+  - docs/models/components/ParcelExtra.md
+  - docs/models/components/ParcelInsuranceProvider.md
+  - docs/models/components/ParcelInsurance.md
+  - docs/models/components/PaymentMethod.md
+  - docs/models/components/Cod.md
+  - docs/models/components/ParcelCreateFromTemplateRequest.md
+  - docs/models/components/AramexAustraliaParcelTemplate.md
+  - docs/models/components/CouriersPleaseParcelTemplate.md
+  - docs/models/components/DPDUKParcelTemplate.md
+  - docs/models/components/DHLECommerceParcelTemplate.md
+  - docs/models/components/USPSParcelTemplate.md
+  - docs/models/components/UPSParcelTemplate.md
+  - docs/models/components/FedExParcelTemplate.md
+  - docs/models/components/ParcelTemplateEnumSet.md
   - docs/models/components/CustomsDeclarationCreateRequest.md
   - docs/models/components/CustomsDeclarationNonDeliveryOptionEnum.md
   - docs/models/components/CustomsItemCreateRequest.md
@@ -740,6 +750,9 @@ generatedFiles:
   - docs/models/components/CustomsDeclarationEelPfcEnum.md
   - docs/models/components/CustomsDeclarationContentsTypeEnum.md
   - docs/models/components/AddressImporter.md
+  - docs/models/components/CustomsExporterIdentification.md
+  - docs/models/components/CustomsTaxIdentificationType.md
+  - docs/models/components/CustomsTaxIdentification.md
   - docs/models/components/CustomsDeclarationB13AFilingOptionEnum.md
   - docs/models/components/AncillaryEndorsement.md
   - docs/models/components/DangerousGoodsCode.md
@@ -749,6 +762,8 @@ generatedFiles:
   - docs/models/components/ShipmentExtra.md
   - docs/models/components/UPSReferenceFields.md
   - docs/models/components/RmaNumber.md
+  - docs/models/components/ShipmentExtraReturnServiceTypeUPSEnum.md
+  - docs/models/components/ShipmentExtraReturnServiceTypeLasershipEnum.md
   - docs/models/components/PoNumber.md
   - docs/models/components/ShipmentExtraLasershipAttributesEnum.md
   - docs/models/components/InvoiceNumber.md
@@ -760,8 +775,6 @@ generatedFiles:
   - docs/models/components/DangerousGoodsLithiumBatteries.md
   - docs/models/components/DangerousGoodsBiologicalMaterial.md
   - docs/models/components/CustomerReference.md
-  - docs/models/components/PaymentMethod.md
-  - docs/models/components/Cod.md
   - docs/models/components/Type.md
   - docs/models/components/Billing.md
   - docs/models/components/RecipientType.md
@@ -813,13 +826,9 @@ generatedFiles:
   - docs/models/components/CarrierAccountUSPSCreateRequest.md
   - docs/models/components/CarrierAccountRegistrationStatus.md
   - docs/models/components/CustomsDeclarationPaginatedList.md
-  - docs/models/components/CustomsDeclarationAddressImporter.md
   - docs/models/components/CustomsDeclaration.md
   - docs/models/components/ObjectStateEnum.md
   - docs/models/components/CustomsInvoicedCharges.md
-  - docs/models/components/CustomsExporterIdentification.md
-  - docs/models/components/CustomsTaxIdentificationType.md
-  - docs/models/components/CustomsTaxIdentification.md
   - docs/models/components/CustomsItemPaginatedList.md
   - docs/models/components/CustomsItem.md
   - docs/models/components/LiveRatePaginatedList.md
@@ -830,9 +839,6 @@ generatedFiles:
   - docs/models/components/LiveRateCreateRequest.md
   - docs/models/components/ObjectState.md
   - docs/models/components/Parcel.md
-  - docs/models/components/ParcelExtra.md
-  - docs/models/components/ParcelInsuranceProvider.md
-  - docs/models/components/ParcelInsurance.md
   - docs/models/components/LineItem.md
   - docs/models/components/AddressCompleteCreateRequest.md
   - docs/models/components/DefaultParcelTemplate.md
@@ -852,7 +858,6 @@ generatedFiles:
   - docs/models/components/LineItemBase.md
   - docs/models/components/CarrierParcelTemplateList.md
   - docs/models/components/ParcelPaginatedList.md
-  - docs/models/components/ParcelRequest.md
   - docs/models/components/PickupStatus.md
   - docs/models/components/Pickup.md
   - docs/models/components/BuildingLocationType.md
@@ -913,6 +918,7 @@ generatedFiles:
   - docs/models/components/ServiceLevelUDSEnum.md
   - docs/models/components/ServiceLevelEvriUKEnum.md
   - docs/models/components/ServiceLevelLasershipEnum.md
+  - docs/models/components/ServiceLevelJitsuEnum.md
   - docs/models/components/ServiceLevelOnTracEnum.md
   - docs/models/components/ServiceLevelSendleEnum.md
   - docs/models/components/ServiceLevelRoyalMailEnum.md
@@ -940,7 +946,6 @@ generatedFiles:
   - docs/models/components/ServiceLevelCanadaPostEnum.md
   - docs/models/components/ServiceLevelBetterTrucksEnum.md
   - docs/models/components/ServiceLevelAPGEnum.md
-  - docs/models/components/ServiceLevelAxleHireEnum.md
   - docs/models/components/ServiceLevelAustraliaPostEnum.md
   - docs/models/components/ServiceLevelAsendiaEnum.md
   - docs/models/components/ServiceLevelAPCPostalEnum.md

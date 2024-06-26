@@ -35,51 +35,51 @@ public class ParcelTemplateEnumSet {
         this.value = value;
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateFedExEnum value) {
+    public static ParcelTemplateEnumSet of(FedExParcelTemplate value) {
         Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateFedExEnum>(){}));
+        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FedExParcelTemplate>(){}));
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateUPSEnum value) {
+    public static ParcelTemplateEnumSet of(UPSParcelTemplate value) {
         Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateUPSEnum>(){}));
+        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<UPSParcelTemplate>(){}));
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateUSPSEnum value) {
+    public static ParcelTemplateEnumSet of(USPSParcelTemplate value) {
         Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateUSPSEnum>(){}));
+        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<USPSParcelTemplate>(){}));
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateDHLeCommerceEnum value) {
+    public static ParcelTemplateEnumSet of(DHLECommerceParcelTemplate value) {
         Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateDHLeCommerceEnum>(){}));
+        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DHLECommerceParcelTemplate>(){}));
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateDPDUKEnum value) {
+    public static ParcelTemplateEnumSet of(DPDUKParcelTemplate value) {
         Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateDPDUKEnum>(){}));
+        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DPDUKParcelTemplate>(){}));
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateCouriersPleaseEnum value) {
+    public static ParcelTemplateEnumSet of(CouriersPleaseParcelTemplate value) {
         Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateCouriersPleaseEnum>(){}));
+        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CouriersPleaseParcelTemplate>(){}));
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateAramexAustraliaEnum value) {
+    public static ParcelTemplateEnumSet of(AramexAustraliaParcelTemplate value) {
         Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateAramexAustraliaEnum>(){}));
+        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AramexAustraliaParcelTemplate>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code ParcelTemplateFedExEnum}</li>
-     * <li>{@code ParcelTemplateUPSEnum}</li>
-     * <li>{@code ParcelTemplateUSPSEnum}</li>
-     * <li>{@code ParcelTemplateDHLeCommerceEnum}</li>
-     * <li>{@code ParcelTemplateDPDUKEnum}</li>
-     * <li>{@code ParcelTemplateCouriersPleaseEnum}</li>
-     * <li>{@code ParcelTemplateAramexAustraliaEnum}</li>
+     * <li>{@code FedExParcelTemplate}</li>
+     * <li>{@code UPSParcelTemplate}</li>
+     * <li>{@code USPSParcelTemplate}</li>
+     * <li>{@code DHLECommerceParcelTemplate}</li>
+     * <li>{@code DPDUKParcelTemplate}</li>
+     * <li>{@code CouriersPleaseParcelTemplate}</li>
+     * <li>{@code AramexAustraliaParcelTemplate}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -119,13 +119,13 @@ public class ParcelTemplateEnumSet {
 
         public _Deserializer() {
             super(ParcelTemplateEnumSet.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelTemplateFedExEnum>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelTemplateUPSEnum>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelTemplateUSPSEnum>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelTemplateDHLeCommerceEnum>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelTemplateDPDUKEnum>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelTemplateCouriersPleaseEnum>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelTemplateAramexAustraliaEnum>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<FedExParcelTemplate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<UPSParcelTemplate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<USPSParcelTemplate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DHLECommerceParcelTemplate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DPDUKParcelTemplate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<CouriersPleaseParcelTemplate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<AramexAustraliaParcelTemplate>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

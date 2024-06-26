@@ -74,6 +74,13 @@ public class CustomsItemCreateRequest {
     private Optional<? extends String> skuCode;
 
     /**
+     * HS code of the item, which is required by some carriers.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("hs_code")
+    private Optional<? extends String> hsCode;
+
+    /**
      * The tariff number of the item.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -103,6 +110,7 @@ public class CustomsItemCreateRequest {
             @JsonProperty("origin_country") String originCountry,
             @JsonProperty("quantity") long quantity,
             @JsonProperty("sku_code") Optional<? extends String> skuCode,
+            @JsonProperty("hs_code") Optional<? extends String> hsCode,
             @JsonProperty("tariff_number") Optional<? extends String> tariffNumber,
             @JsonProperty("value_amount") String valueAmount,
             @JsonProperty("value_currency") String valueCurrency) {
@@ -114,6 +122,7 @@ public class CustomsItemCreateRequest {
         Utils.checkNotNull(originCountry, "originCountry");
         Utils.checkNotNull(quantity, "quantity");
         Utils.checkNotNull(skuCode, "skuCode");
+        Utils.checkNotNull(hsCode, "hsCode");
         Utils.checkNotNull(tariffNumber, "tariffNumber");
         Utils.checkNotNull(valueAmount, "valueAmount");
         Utils.checkNotNull(valueCurrency, "valueCurrency");
@@ -125,6 +134,7 @@ public class CustomsItemCreateRequest {
         this.originCountry = originCountry;
         this.quantity = quantity;
         this.skuCode = skuCode;
+        this.hsCode = hsCode;
         this.tariffNumber = tariffNumber;
         this.valueAmount = valueAmount;
         this.valueCurrency = valueCurrency;
@@ -138,7 +148,7 @@ public class CustomsItemCreateRequest {
             long quantity,
             String valueAmount,
             String valueCurrency) {
-        this(description, Optional.empty(), massUnit, Optional.empty(), netWeight, originCountry, quantity, Optional.empty(), Optional.empty(), valueAmount, valueCurrency);
+        this(description, Optional.empty(), massUnit, Optional.empty(), netWeight, originCountry, quantity, Optional.empty(), Optional.empty(), Optional.empty(), valueAmount, valueCurrency);
     }
 
     /**
@@ -208,6 +218,15 @@ public class CustomsItemCreateRequest {
     @JsonIgnore
     public Optional<String> skuCode() {
         return (Optional<String>) skuCode;
+    }
+
+    /**
+     * HS code of the item, which is required by some carriers.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> hsCode() {
+        return (Optional<String>) hsCode;
     }
 
     /**
@@ -343,6 +362,24 @@ public class CustomsItemCreateRequest {
     }
 
     /**
+     * HS code of the item, which is required by some carriers.
+     */
+    public CustomsItemCreateRequest withHsCode(String hsCode) {
+        Utils.checkNotNull(hsCode, "hsCode");
+        this.hsCode = Optional.ofNullable(hsCode);
+        return this;
+    }
+
+    /**
+     * HS code of the item, which is required by some carriers.
+     */
+    public CustomsItemCreateRequest withHsCode(Optional<? extends String> hsCode) {
+        Utils.checkNotNull(hsCode, "hsCode");
+        this.hsCode = hsCode;
+        return this;
+    }
+
+    /**
      * The tariff number of the item.
      */
     public CustomsItemCreateRequest withTariffNumber(String tariffNumber) {
@@ -397,6 +434,7 @@ public class CustomsItemCreateRequest {
             java.util.Objects.deepEquals(this.originCountry, other.originCountry) &&
             java.util.Objects.deepEquals(this.quantity, other.quantity) &&
             java.util.Objects.deepEquals(this.skuCode, other.skuCode) &&
+            java.util.Objects.deepEquals(this.hsCode, other.hsCode) &&
             java.util.Objects.deepEquals(this.tariffNumber, other.tariffNumber) &&
             java.util.Objects.deepEquals(this.valueAmount, other.valueAmount) &&
             java.util.Objects.deepEquals(this.valueCurrency, other.valueCurrency);
@@ -413,6 +451,7 @@ public class CustomsItemCreateRequest {
             originCountry,
             quantity,
             skuCode,
+            hsCode,
             tariffNumber,
             valueAmount,
             valueCurrency);
@@ -429,6 +468,7 @@ public class CustomsItemCreateRequest {
                 "originCountry", originCountry,
                 "quantity", quantity,
                 "skuCode", skuCode,
+                "hsCode", hsCode,
                 "tariffNumber", tariffNumber,
                 "valueAmount", valueAmount,
                 "valueCurrency", valueCurrency);
@@ -451,6 +491,8 @@ public class CustomsItemCreateRequest {
         private Long quantity;
  
         private Optional<? extends String> skuCode = Optional.empty();
+ 
+        private Optional<? extends String> hsCode = Optional.empty();
  
         private Optional<? extends String> tariffNumber = Optional.empty();
  
@@ -565,6 +607,24 @@ public class CustomsItemCreateRequest {
         }
 
         /**
+         * HS code of the item, which is required by some carriers.
+         */
+        public Builder hsCode(String hsCode) {
+            Utils.checkNotNull(hsCode, "hsCode");
+            this.hsCode = Optional.ofNullable(hsCode);
+            return this;
+        }
+
+        /**
+         * HS code of the item, which is required by some carriers.
+         */
+        public Builder hsCode(Optional<? extends String> hsCode) {
+            Utils.checkNotNull(hsCode, "hsCode");
+            this.hsCode = hsCode;
+            return this;
+        }
+
+        /**
          * The tariff number of the item.
          */
         public Builder tariffNumber(String tariffNumber) {
@@ -611,6 +671,7 @@ public class CustomsItemCreateRequest {
                 originCountry,
                 quantity,
                 skuCode,
+                hsCode,
                 tariffNumber,
                 valueAmount,
                 valueCurrency);

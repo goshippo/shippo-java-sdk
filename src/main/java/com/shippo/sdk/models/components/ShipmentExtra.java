@@ -290,7 +290,7 @@ public class ShipmentExtra {
     private Optional<? extends Boolean> requestRetailRates;
 
     /**
-     * Request additional return option for return shipments (UPS only).
+     * Request additional return option for return shipments (UPS and Lasership only).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("return_service_type")
@@ -843,7 +843,7 @@ public class ShipmentExtra {
     }
 
     /**
-     * Request additional return option for return shipments (UPS only).
+     * Request additional return option for return shipments (UPS and Lasership only).
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -1608,7 +1608,7 @@ public class ShipmentExtra {
     }
 
     /**
-     * Request additional return option for return shipments (UPS only).
+     * Request additional return option for return shipments (UPS and Lasership only).
      */
     public ShipmentExtra withReturnServiceType(ReturnServiceType returnServiceType) {
         Utils.checkNotNull(returnServiceType, "returnServiceType");
@@ -1617,7 +1617,7 @@ public class ShipmentExtra {
     }
 
     /**
-     * Request additional return option for return shipments (UPS only).
+     * Request additional return option for return shipments (UPS and Lasership only).
      */
     public ShipmentExtra withReturnServiceType(Optional<? extends ReturnServiceType> returnServiceType) {
         Utils.checkNotNull(returnServiceType, "returnServiceType");
@@ -2708,7 +2708,7 @@ public class ShipmentExtra {
         }
 
         /**
-         * Request additional return option for return shipments (UPS only).
+         * Request additional return option for return shipments (UPS and Lasership only).
          */
         public Builder returnServiceType(ReturnServiceType returnServiceType) {
             Utils.checkNotNull(returnServiceType, "returnServiceType");
@@ -2717,7 +2717,7 @@ public class ShipmentExtra {
         }
 
         /**
-         * Request additional return option for return shipments (UPS only).
+         * Request additional return option for return shipments (UPS and Lasership only).
          */
         public Builder returnServiceType(Optional<? extends ReturnServiceType> returnServiceType) {
             Utils.checkNotNull(returnServiceType, "returnServiceType");

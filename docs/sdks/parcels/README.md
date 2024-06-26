@@ -64,6 +64,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -120,27 +121,28 @@ public class Application {
 
             CreateParcelResponse res = sdk.parcels().create()
                 .shippoApiVersion("2018-02-08")
-                .parcelRequest(ParcelRequest.builder()
-                    .distanceUnit(DistanceUnitEnum.IN)
-                    .height("1")
-                    .length("1")
-                    .massUnit(WeightUnitEnum.LB)
-                    .weight("1")
-                    .width("1")
-                    .extra(ParcelExtra.builder()
-                        .cod(Cod.builder()
-                            .amount("5.5")
-                            .currency("USD")
-                            .paymentMethod(PaymentMethod.CASH)
+                .requestBody(com.shippo.sdk.models.operations.CreateParcelRequestBody.of(ParcelCreateRequest.builder()
+                        .massUnit(WeightUnitEnum.LB)
+                        .weight("1")
+                        .distanceUnit(DistanceUnitEnum.IN)
+                        .height("1")
+                        .length("1")
+                        .width("1")
+                        .extra(ParcelExtra.builder()
+                            .cod(Cod.builder()
+                                .amount("5.5")
+                                .currency("USD")
+                                .paymentMethod(PaymentMethod.CASH)
+                                .build())
+                            .insurance(ParcelInsurance.builder()
+                                .amount("5.5")
+                                .content("Laptop")
+                                .currency("USD")
+                                .provider(ParcelInsuranceProvider.UPS)
+                                .build())
                             .build())
-                        .insurance(ParcelInsurance.builder()
-                            .amount("5.5")
-                            .content("Laptop")
-                            .currency("USD")
-                            .provider(ParcelInsuranceProvider.UPS)
-                            .build())
-                        .build())
-                    .build())
+                        .metadata("Customer ID 123456")
+                        .build()))
                 .call();
 
             if (res.parcel().isPresent()) {
@@ -153,16 +155,17 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                         | *Optional<? extends String>*                                                               | :heavy_minus_sign:                                                                         | String used to pick a non-default API version to use                                       | 2018-02-08                                                                                 |
-| `parcelRequest`                                                                            | [com.shippo.sdk.models.components.ParcelRequest](../../models/components/ParcelRequest.md) | :heavy_check_mark:                                                                         | Parcel details.                                                                            |                                                                                            |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    | Example                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                                                             | *Optional<? extends String>*                                                                                   | :heavy_minus_sign:                                                                                             | String used to pick a non-default API version to use                                                           | 2018-02-08                                                                                                     |
+| `requestBody`                                                                                                  | [com.shippo.sdk.models.operations.CreateParcelRequestBody](../../models/operations/CreateParcelRequestBody.md) | :heavy_check_mark:                                                                                             | Parcel details.                                                                                                |                                                                                                                |
 
 
 ### Response
@@ -221,6 +224,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```

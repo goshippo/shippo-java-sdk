@@ -273,7 +273,7 @@ public class SDKMethodInterfaces {
     public interface MethodCallCreateParcel {
         com.shippo.sdk.models.operations.CreateParcelResponse create(
             Optional<? extends String> shippoApiVersion,
-            com.shippo.sdk.models.components.ParcelRequest parcelRequest) throws Exception;
+            com.shippo.sdk.models.operations.CreateParcelRequestBody requestBody) throws Exception;
     }
 
 

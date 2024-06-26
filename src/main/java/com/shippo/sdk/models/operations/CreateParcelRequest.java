@@ -28,21 +28,21 @@ public class CreateParcelRequest {
      * Parcel details.
      */
     @SpeakeasyMetadata("request:mediaType=application/json")
-    private com.shippo.sdk.models.components.ParcelRequest parcelRequest;
+    private CreateParcelRequestBody requestBody;
 
     @JsonCreator
     public CreateParcelRequest(
             Optional<? extends String> shippoApiVersion,
-            com.shippo.sdk.models.components.ParcelRequest parcelRequest) {
+            CreateParcelRequestBody requestBody) {
         Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
-        Utils.checkNotNull(parcelRequest, "parcelRequest");
+        Utils.checkNotNull(requestBody, "requestBody");
         this.shippoApiVersion = shippoApiVersion;
-        this.parcelRequest = parcelRequest;
+        this.requestBody = requestBody;
     }
     
     public CreateParcelRequest(
-            com.shippo.sdk.models.components.ParcelRequest parcelRequest) {
-        this(Optional.empty(), parcelRequest);
+            CreateParcelRequestBody requestBody) {
+        this(Optional.empty(), requestBody);
     }
 
     /**
@@ -58,8 +58,8 @@ public class CreateParcelRequest {
      * Parcel details.
      */
     @JsonIgnore
-    public com.shippo.sdk.models.components.ParcelRequest parcelRequest() {
-        return parcelRequest;
+    public CreateParcelRequestBody requestBody() {
+        return requestBody;
     }
 
     public final static Builder builder() {
@@ -87,9 +87,9 @@ public class CreateParcelRequest {
     /**
      * Parcel details.
      */
-    public CreateParcelRequest withParcelRequest(com.shippo.sdk.models.components.ParcelRequest parcelRequest) {
-        Utils.checkNotNull(parcelRequest, "parcelRequest");
-        this.parcelRequest = parcelRequest;
+    public CreateParcelRequest withRequestBody(CreateParcelRequestBody requestBody) {
+        Utils.checkNotNull(requestBody, "requestBody");
+        this.requestBody = requestBody;
         return this;
     }
     
@@ -104,28 +104,28 @@ public class CreateParcelRequest {
         CreateParcelRequest other = (CreateParcelRequest) o;
         return 
             java.util.Objects.deepEquals(this.shippoApiVersion, other.shippoApiVersion) &&
-            java.util.Objects.deepEquals(this.parcelRequest, other.parcelRequest);
+            java.util.Objects.deepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
             shippoApiVersion,
-            parcelRequest);
+            requestBody);
     }
     
     @Override
     public String toString() {
         return Utils.toString(CreateParcelRequest.class,
                 "shippoApiVersion", shippoApiVersion,
-                "parcelRequest", parcelRequest);
+                "requestBody", requestBody);
     }
     
     public final static class Builder {
  
         private Optional<? extends String> shippoApiVersion = Optional.empty();
  
-        private com.shippo.sdk.models.components.ParcelRequest parcelRequest;  
+        private CreateParcelRequestBody requestBody;  
         
         private Builder() {
           // force use of static builder() method
@@ -152,16 +152,16 @@ public class CreateParcelRequest {
         /**
          * Parcel details.
          */
-        public Builder parcelRequest(com.shippo.sdk.models.components.ParcelRequest parcelRequest) {
-            Utils.checkNotNull(parcelRequest, "parcelRequest");
-            this.parcelRequest = parcelRequest;
+        public Builder requestBody(CreateParcelRequestBody requestBody) {
+            Utils.checkNotNull(requestBody, "requestBody");
+            this.requestBody = requestBody;
             return this;
         }
         
         public CreateParcelRequest build() {
             return new CreateParcelRequest(
                 shippoApiVersion,
-                parcelRequest);
+                requestBody);
         }
     }
 }

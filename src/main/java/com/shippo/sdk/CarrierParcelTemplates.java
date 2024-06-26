@@ -104,7 +104,7 @@ public class CarrierParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("ListCarrierParcelTemplates", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -112,18 +112,18 @@ public class CarrierParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("ListCarrierParcelTemplates", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("ListCarrierParcelTemplates", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("ListCarrierParcelTemplates", Optional.empty(), sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("ListCarrierParcelTemplates", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -230,7 +230,7 @@ public class CarrierParcelTemplates implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("GetCarrierParcelTemplate", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -238,18 +238,18 @@ public class CarrierParcelTemplates implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("GetCarrierParcelTemplate", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("GetCarrierParcelTemplate", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("GetCarrierParcelTemplate", Optional.empty(), sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("GetCarrierParcelTemplate", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

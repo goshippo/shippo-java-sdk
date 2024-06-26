@@ -16,20 +16,20 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * ServiceLevelAxleHireEnum - |Token | Service name|
+ * ServiceLevelJitsuEnum - |Token | Service name|
  * |:---|:---|
  * | axlehire_same_day | Same Day|
  * | axlehire_next_day | Next Day|
  * 
  */
-public enum ServiceLevelAxleHireEnum {
+public enum ServiceLevelJitsuEnum {
     AXLEHIRE_SAME_DAY("axlehire_same_day"),
     AXLEHIRE_NEXT_DAY("axlehire_next_day");
 
     @JsonValue
     private final String value;
 
-    private ServiceLevelAxleHireEnum(String value) {
+    private ServiceLevelJitsuEnum(String value) {
         this.value = value;
     }
     

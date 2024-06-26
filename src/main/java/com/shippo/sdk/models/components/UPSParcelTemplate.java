@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * ParcelTemplateUPSEnum - |Token | Name | Dimensions|
+ * UPSParcelTemplate - |Token | Name | Dimensions|
  * |:---|:---|:---|
  * | UPS_Box_10kg | Box 10kg | 410.00 x 335.00 x 265.00 mm|
  * | UPS_Box_25kg | Box 25kg | 484.00 x 433.00 x 350.00 mm|
@@ -45,7 +45,7 @@ import java.math.BigInteger;
  * | UPS_Pallet | Pallet | 120.00 x 80.00 x 200.00 cm|
  * 
  */
-public enum ParcelTemplateUPSEnum {
+public enum UPSParcelTemplate {
     UPS_BOX10KG("UPS_Box_10kg"),
     UPS_BOX25KG("UPS_Box_25kg"),
     UPS_EXPRESS_BOX("UPS_Express_Box"),
@@ -75,7 +75,7 @@ public enum ParcelTemplateUPSEnum {
     @JsonValue
     private final String value;
 
-    private ParcelTemplateUPSEnum(String value) {
+    private UPSParcelTemplate(String value) {
         this.value = value;
     }
     

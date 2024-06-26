@@ -16,20 +16,18 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * ParcelTemplateDHLeCommerceEnum - |Token | Name | Dimensions|
+ * DPDUKParcelTemplate - |Token | Name | Dimensions|
  * |:---|:---|:---|
- * | DHLeC_Irregular | Irregular Shipment | 10.00 x 10.00 x 10.00 in|
- * | DHLeC_SM_Flats | Flats | 27.00 x 17.00 x 17.00 in|
+ * | DPD_UK_Express_Pak| DPD UK Express Pak | 530.00 x 400.00 x 100.00 mm|
  * 
  */
-public enum ParcelTemplateDHLeCommerceEnum {
-    DH_LE_C_IRREGULAR("DHLeC_Irregular"),
-    DH_LE_CSM_FLATS("DHLeC_SM_Flats");
+public enum DPDUKParcelTemplate {
+    DPDUK_EXPRESS_PAK("DPD_UK_Express_Pak");
 
     @JsonValue
     private final String value;
 
-    private ParcelTemplateDHLeCommerceEnum(String value) {
+    private DPDUKParcelTemplate(String value) {
         this.value = value;
     }
     

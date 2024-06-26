@@ -24,12 +24,6 @@ import java.util.Optional;
 public class Parcel {
 
     /**
-     * The measure unit used for length, width and height.
-     */
-    @JsonProperty("distance_unit")
-    private DistanceUnitEnum distanceUnit;
-
-    /**
      * An object holding optional extra services to be requested for each parcel in a multi-piece shipment. 
      * See the &lt;a href="#section/Parcel-Extras"&gt;Parcel Extra table below&lt;/a&gt; for all available services.
      */
@@ -37,19 +31,9 @@ public class Parcel {
     @JsonProperty("extra")
     private Optional<? extends ParcelExtra> extra;
 
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonProperty("height")
-    private String height;
-
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonProperty("length")
-    private String length;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("metadata")
+    private Optional<? extends String> metadata;
 
     /**
      * The unit used for weight.
@@ -58,11 +42,34 @@ public class Parcel {
     private WeightUnitEnum massUnit;
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want to attach to the object.
+     * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
      */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("metadata")
-    private Optional<? extends String> metadata;
+    @JsonProperty("weight")
+    private String weight;
+
+    /**
+     * The measure unit used for length, width and height.
+     */
+    @JsonProperty("distance_unit")
+    private DistanceUnitEnum distanceUnit;
+
+    /**
+     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    @JsonProperty("height")
+    private String height;
+
+    /**
+     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    @JsonProperty("length")
+    private String length;
+
+    /**
+     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    @JsonProperty("width")
+    private String width;
 
     /**
      * Date and time of Parcel creation.
@@ -113,42 +120,31 @@ public class Parcel {
     @JsonProperty("test")
     private Optional<? extends Boolean> test;
 
-    /**
-     * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonProperty("weight")
-    private String weight;
-
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonProperty("width")
-    private String width;
-
     @JsonCreator
     public Parcel(
-            @JsonProperty("distance_unit") DistanceUnitEnum distanceUnit,
             @JsonProperty("extra") Optional<? extends ParcelExtra> extra,
+            @JsonProperty("metadata") Optional<? extends String> metadata,
+            @JsonProperty("mass_unit") WeightUnitEnum massUnit,
+            @JsonProperty("weight") String weight,
+            @JsonProperty("distance_unit") DistanceUnitEnum distanceUnit,
             @JsonProperty("height") String height,
             @JsonProperty("length") String length,
-            @JsonProperty("mass_unit") WeightUnitEnum massUnit,
-            @JsonProperty("metadata") Optional<? extends String> metadata,
+            @JsonProperty("width") String width,
             @JsonProperty("object_created") Optional<? extends OffsetDateTime> objectCreated,
             @JsonProperty("object_id") Optional<? extends String> objectId,
             @JsonProperty("object_owner") Optional<? extends String> objectOwner,
             @JsonProperty("object_state") Optional<? extends ObjectState> objectState,
             @JsonProperty("object_updated") Optional<? extends OffsetDateTime> objectUpdated,
             @JsonProperty("template") Optional<? extends ParcelTemplateEnumSet> template,
-            @JsonProperty("test") Optional<? extends Boolean> test,
-            @JsonProperty("weight") String weight,
-            @JsonProperty("width") String width) {
-        Utils.checkNotNull(distanceUnit, "distanceUnit");
+            @JsonProperty("test") Optional<? extends Boolean> test) {
         Utils.checkNotNull(extra, "extra");
+        Utils.checkNotNull(metadata, "metadata");
+        Utils.checkNotNull(massUnit, "massUnit");
+        Utils.checkNotNull(weight, "weight");
+        Utils.checkNotNull(distanceUnit, "distanceUnit");
         Utils.checkNotNull(height, "height");
         Utils.checkNotNull(length, "length");
-        Utils.checkNotNull(massUnit, "massUnit");
-        Utils.checkNotNull(metadata, "metadata");
+        Utils.checkNotNull(width, "width");
         Utils.checkNotNull(objectCreated, "objectCreated");
         Utils.checkNotNull(objectId, "objectId");
         Utils.checkNotNull(objectOwner, "objectOwner");
@@ -156,14 +152,14 @@ public class Parcel {
         Utils.checkNotNull(objectUpdated, "objectUpdated");
         Utils.checkNotNull(template, "template");
         Utils.checkNotNull(test, "test");
-        Utils.checkNotNull(weight, "weight");
-        Utils.checkNotNull(width, "width");
-        this.distanceUnit = distanceUnit;
         this.extra = extra;
+        this.metadata = metadata;
+        this.massUnit = massUnit;
+        this.weight = weight;
+        this.distanceUnit = distanceUnit;
         this.height = height;
         this.length = length;
-        this.massUnit = massUnit;
-        this.metadata = metadata;
+        this.width = width;
         this.objectCreated = objectCreated;
         this.objectId = objectId;
         this.objectOwner = objectOwner;
@@ -171,26 +167,16 @@ public class Parcel {
         this.objectUpdated = objectUpdated;
         this.template = template;
         this.test = test;
-        this.weight = weight;
-        this.width = width;
     }
     
     public Parcel(
+            WeightUnitEnum massUnit,
+            String weight,
             DistanceUnitEnum distanceUnit,
             String height,
             String length,
-            WeightUnitEnum massUnit,
-            String weight,
             String width) {
-        this(distanceUnit, Optional.empty(), height, length, massUnit, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), weight, width);
-    }
-
-    /**
-     * The measure unit used for length, width and height.
-     */
-    @JsonIgnore
-    public DistanceUnitEnum distanceUnit() {
-        return distanceUnit;
+        this(Optional.empty(), Optional.empty(), massUnit, weight, distanceUnit, height, length, width, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -203,22 +189,10 @@ public class Parcel {
         return (Optional<ParcelExtra>) extra;
     }
 
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public String height() {
-        return height;
-    }
-
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonIgnore
-    public String length() {
-        return length;
+    public Optional<String> metadata() {
+        return (Optional<String>) metadata;
     }
 
     /**
@@ -230,12 +204,43 @@ public class Parcel {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want to attach to the object.
+     * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
      */
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> metadata() {
-        return (Optional<String>) metadata;
+    public String weight() {
+        return weight;
+    }
+
+    /**
+     * The measure unit used for length, width and height.
+     */
+    @JsonIgnore
+    public DistanceUnitEnum distanceUnit() {
+        return distanceUnit;
+    }
+
+    /**
+     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    @JsonIgnore
+    public String height() {
+        return height;
+    }
+
+    /**
+     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    @JsonIgnore
+    public String length() {
+        return length;
+    }
+
+    /**
+     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    @JsonIgnore
+    public String width() {
+        return width;
     }
 
     /**
@@ -301,34 +306,8 @@ public class Parcel {
         return (Optional<Boolean>) test;
     }
 
-    /**
-     * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonIgnore
-    public String weight() {
-        return weight;
-    }
-
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonIgnore
-    public String width() {
-        return width;
-    }
-
     public final static Builder builder() {
         return new Builder();
-    }
-
-    /**
-     * The measure unit used for length, width and height.
-     */
-    public Parcel withDistanceUnit(DistanceUnitEnum distanceUnit) {
-        Utils.checkNotNull(distanceUnit, "distanceUnit");
-        this.distanceUnit = distanceUnit;
-        return this;
     }
 
     /**
@@ -351,23 +330,15 @@ public class Parcel {
         return this;
     }
 
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    public Parcel withHeight(String height) {
-        Utils.checkNotNull(height, "height");
-        this.height = height;
+    public Parcel withMetadata(String metadata) {
+        Utils.checkNotNull(metadata, "metadata");
+        this.metadata = Optional.ofNullable(metadata);
         return this;
     }
 
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    public Parcel withLength(String length) {
-        Utils.checkNotNull(length, "length");
-        this.length = length;
+    public Parcel withMetadata(Optional<? extends String> metadata) {
+        Utils.checkNotNull(metadata, "metadata");
+        this.metadata = metadata;
         return this;
     }
 
@@ -381,20 +352,47 @@ public class Parcel {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want to attach to the object.
+     * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
      */
-    public Parcel withMetadata(String metadata) {
-        Utils.checkNotNull(metadata, "metadata");
-        this.metadata = Optional.ofNullable(metadata);
+    public Parcel withWeight(String weight) {
+        Utils.checkNotNull(weight, "weight");
+        this.weight = weight;
         return this;
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want to attach to the object.
+     * The measure unit used for length, width and height.
      */
-    public Parcel withMetadata(Optional<? extends String> metadata) {
-        Utils.checkNotNull(metadata, "metadata");
-        this.metadata = metadata;
+    public Parcel withDistanceUnit(DistanceUnitEnum distanceUnit) {
+        Utils.checkNotNull(distanceUnit, "distanceUnit");
+        this.distanceUnit = distanceUnit;
+        return this;
+    }
+
+    /**
+     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    public Parcel withHeight(String height) {
+        Utils.checkNotNull(height, "height");
+        this.height = height;
+        return this;
+    }
+
+    /**
+     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    public Parcel withLength(String length) {
+        Utils.checkNotNull(length, "length");
+        this.length = length;
+        return this;
+    }
+
+    /**
+     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+     */
+    public Parcel withWidth(String width) {
+        Utils.checkNotNull(width, "width");
+        this.width = width;
         return this;
     }
 
@@ -523,25 +521,6 @@ public class Parcel {
         this.test = test;
         return this;
     }
-
-    /**
-     * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    public Parcel withWeight(String weight) {
-        Utils.checkNotNull(weight, "weight");
-        this.weight = weight;
-        return this;
-    }
-
-    /**
-     * **Required if template is not specified**&lt;br&gt;
-     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    public Parcel withWidth(String width) {
-        Utils.checkNotNull(width, "width");
-        this.width = width;
-        return this;
-    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -553,76 +532,80 @@ public class Parcel {
         }
         Parcel other = (Parcel) o;
         return 
-            java.util.Objects.deepEquals(this.distanceUnit, other.distanceUnit) &&
             java.util.Objects.deepEquals(this.extra, other.extra) &&
+            java.util.Objects.deepEquals(this.metadata, other.metadata) &&
+            java.util.Objects.deepEquals(this.massUnit, other.massUnit) &&
+            java.util.Objects.deepEquals(this.weight, other.weight) &&
+            java.util.Objects.deepEquals(this.distanceUnit, other.distanceUnit) &&
             java.util.Objects.deepEquals(this.height, other.height) &&
             java.util.Objects.deepEquals(this.length, other.length) &&
-            java.util.Objects.deepEquals(this.massUnit, other.massUnit) &&
-            java.util.Objects.deepEquals(this.metadata, other.metadata) &&
+            java.util.Objects.deepEquals(this.width, other.width) &&
             java.util.Objects.deepEquals(this.objectCreated, other.objectCreated) &&
             java.util.Objects.deepEquals(this.objectId, other.objectId) &&
             java.util.Objects.deepEquals(this.objectOwner, other.objectOwner) &&
             java.util.Objects.deepEquals(this.objectState, other.objectState) &&
             java.util.Objects.deepEquals(this.objectUpdated, other.objectUpdated) &&
             java.util.Objects.deepEquals(this.template, other.template) &&
-            java.util.Objects.deepEquals(this.test, other.test) &&
-            java.util.Objects.deepEquals(this.weight, other.weight) &&
-            java.util.Objects.deepEquals(this.width, other.width);
+            java.util.Objects.deepEquals(this.test, other.test);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            distanceUnit,
             extra,
+            metadata,
+            massUnit,
+            weight,
+            distanceUnit,
             height,
             length,
-            massUnit,
-            metadata,
+            width,
             objectCreated,
             objectId,
             objectOwner,
             objectState,
             objectUpdated,
             template,
-            test,
-            weight,
-            width);
+            test);
     }
     
     @Override
     public String toString() {
         return Utils.toString(Parcel.class,
-                "distanceUnit", distanceUnit,
                 "extra", extra,
+                "metadata", metadata,
+                "massUnit", massUnit,
+                "weight", weight,
+                "distanceUnit", distanceUnit,
                 "height", height,
                 "length", length,
-                "massUnit", massUnit,
-                "metadata", metadata,
+                "width", width,
                 "objectCreated", objectCreated,
                 "objectId", objectId,
                 "objectOwner", objectOwner,
                 "objectState", objectState,
                 "objectUpdated", objectUpdated,
                 "template", template,
-                "test", test,
-                "weight", weight,
-                "width", width);
+                "test", test);
     }
     
     public final static class Builder {
  
-        private DistanceUnitEnum distanceUnit;
- 
         private Optional<? extends ParcelExtra> extra = Optional.empty();
+ 
+        private Optional<? extends String> metadata = Optional.empty();
+ 
+        private WeightUnitEnum massUnit;
+ 
+        private String weight;
+ 
+        private DistanceUnitEnum distanceUnit;
  
         private String height;
  
         private String length;
  
-        private WeightUnitEnum massUnit;
- 
-        private Optional<? extends String> metadata = Optional.empty();
+        private String width;
  
         private Optional<? extends OffsetDateTime> objectCreated = Optional.empty();
  
@@ -636,23 +619,10 @@ public class Parcel {
  
         private Optional<? extends ParcelTemplateEnumSet> template = Optional.empty();
  
-        private Optional<? extends Boolean> test = Optional.empty();
- 
-        private String weight;
- 
-        private String width;  
+        private Optional<? extends Boolean> test = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * The measure unit used for length, width and height.
-         */
-        public Builder distanceUnit(DistanceUnitEnum distanceUnit) {
-            Utils.checkNotNull(distanceUnit, "distanceUnit");
-            this.distanceUnit = distanceUnit;
-            return this;
         }
 
         /**
@@ -675,23 +645,15 @@ public class Parcel {
             return this;
         }
 
-        /**
-         * **Required if template is not specified**&lt;br&gt;
-         * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-         */
-        public Builder height(String height) {
-            Utils.checkNotNull(height, "height");
-            this.height = height;
+        public Builder metadata(String metadata) {
+            Utils.checkNotNull(metadata, "metadata");
+            this.metadata = Optional.ofNullable(metadata);
             return this;
         }
 
-        /**
-         * **Required if template is not specified**&lt;br&gt;
-         * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-         */
-        public Builder length(String length) {
-            Utils.checkNotNull(length, "length");
-            this.length = length;
+        public Builder metadata(Optional<? extends String> metadata) {
+            Utils.checkNotNull(metadata, "metadata");
+            this.metadata = metadata;
             return this;
         }
 
@@ -705,20 +667,47 @@ public class Parcel {
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you want to attach to the object.
+         * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
          */
-        public Builder metadata(String metadata) {
-            Utils.checkNotNull(metadata, "metadata");
-            this.metadata = Optional.ofNullable(metadata);
+        public Builder weight(String weight) {
+            Utils.checkNotNull(weight, "weight");
+            this.weight = weight;
             return this;
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you want to attach to the object.
+         * The measure unit used for length, width and height.
          */
-        public Builder metadata(Optional<? extends String> metadata) {
-            Utils.checkNotNull(metadata, "metadata");
-            this.metadata = metadata;
+        public Builder distanceUnit(DistanceUnitEnum distanceUnit) {
+            Utils.checkNotNull(distanceUnit, "distanceUnit");
+            this.distanceUnit = distanceUnit;
+            return this;
+        }
+
+        /**
+         * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+         */
+        public Builder height(String height) {
+            Utils.checkNotNull(height, "height");
+            this.height = height;
+            return this;
+        }
+
+        /**
+         * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+         */
+        public Builder length(String length) {
+            Utils.checkNotNull(length, "length");
+            this.length = length;
+            return this;
+        }
+
+        /**
+         * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
+         */
+        public Builder width(String width) {
+            Utils.checkNotNull(width, "width");
+            this.width = width;
             return this;
         }
 
@@ -847,43 +836,24 @@ public class Parcel {
             this.test = test;
             return this;
         }
-
-        /**
-         * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-         */
-        public Builder weight(String weight) {
-            Utils.checkNotNull(weight, "weight");
-            this.weight = weight;
-            return this;
-        }
-
-        /**
-         * **Required if template is not specified**&lt;br&gt;
-         * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-         */
-        public Builder width(String width) {
-            Utils.checkNotNull(width, "width");
-            this.width = width;
-            return this;
-        }
         
         public Parcel build() {
             return new Parcel(
-                distanceUnit,
                 extra,
+                metadata,
+                massUnit,
+                weight,
+                distanceUnit,
                 height,
                 length,
-                massUnit,
-                metadata,
+                width,
                 objectCreated,
                 objectId,
                 objectOwner,
                 objectState,
                 objectUpdated,
                 template,
-                test,
-                weight,
-                width);
+                test);
         }
     }
 }

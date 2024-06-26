@@ -67,11 +67,6 @@ public class ServiceLevelEnumSet {
         return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelAustraliaPostEnum>(){}));
     }
 
-    public static ServiceLevelEnumSet of(ServiceLevelAxleHireEnum value) {
-        Utils.checkNotNull(value, "value");
-        return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelAxleHireEnum>(){}));
-    }
-
     public static ServiceLevelEnumSet of(ServiceLevelAPGEnum value) {
         Utils.checkNotNull(value, "value");
         return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelAPGEnum>(){}));
@@ -207,6 +202,11 @@ public class ServiceLevelEnumSet {
         return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelOnTracEnum>(){}));
     }
 
+    public static ServiceLevelEnumSet of(ServiceLevelJitsuEnum value) {
+        Utils.checkNotNull(value, "value");
+        return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelJitsuEnum>(){}));
+    }
+
     public static ServiceLevelEnumSet of(ServiceLevelLasershipEnum value) {
         Utils.checkNotNull(value, "value");
         return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelLasershipEnum>(){}));
@@ -242,7 +242,6 @@ public class ServiceLevelEnumSet {
      * <li>{@code ServiceLevelAPCPostalEnum}</li>
      * <li>{@code ServiceLevelAsendiaEnum}</li>
      * <li>{@code ServiceLevelAustraliaPostEnum}</li>
-     * <li>{@code ServiceLevelAxleHireEnum}</li>
      * <li>{@code ServiceLevelAPGEnum}</li>
      * <li>{@code ServiceLevelBetterTrucksEnum}</li>
      * <li>{@code ServiceLevelCanadaPostEnum}</li>
@@ -270,6 +269,7 @@ public class ServiceLevelEnumSet {
      * <li>{@code ServiceLevelRoyalMailEnum}</li>
      * <li>{@code ServiceLevelSendleEnum}</li>
      * <li>{@code ServiceLevelOnTracEnum}</li>
+     * <li>{@code ServiceLevelJitsuEnum}</li>
      * <li>{@code ServiceLevelLasershipEnum}</li>
      * <li>{@code ServiceLevelEvriUKEnum}</li>
      * <li>{@code ServiceLevelUDSEnum}</li>
@@ -321,7 +321,6 @@ public class ServiceLevelEnumSet {
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelAPCPostalEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelAsendiaEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelAustraliaPostEnum>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelAxleHireEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelAPGEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelBetterTrucksEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelCanadaPostEnum>() {}, Utils.JsonShape.DEFAULT),
@@ -349,6 +348,7 @@ public class ServiceLevelEnumSet {
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelRoyalMailEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelSendleEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelOnTracEnum>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelJitsuEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelLasershipEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelEvriUKEnum>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ServiceLevelUDSEnum>() {}, Utils.JsonShape.DEFAULT),

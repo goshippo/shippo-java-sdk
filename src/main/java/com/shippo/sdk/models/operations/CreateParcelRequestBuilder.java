@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 public class CreateParcelRequestBuilder {
 
     private Optional<? extends String> shippoApiVersion = Optional.empty();
-    private com.shippo.sdk.models.components.ParcelRequest parcelRequest;
+    private CreateParcelRequestBody requestBody;
     private final SDKMethodInterfaces.MethodCallCreateParcel sdk;
 
     public CreateParcelRequestBuilder(SDKMethodInterfaces.MethodCallCreateParcel sdk) {
@@ -39,9 +39,9 @@ public class CreateParcelRequestBuilder {
         return this;
     }
 
-    public CreateParcelRequestBuilder parcelRequest(com.shippo.sdk.models.components.ParcelRequest parcelRequest) {
-        Utils.checkNotNull(parcelRequest, "parcelRequest");
-        this.parcelRequest = parcelRequest;
+    public CreateParcelRequestBuilder requestBody(CreateParcelRequestBody requestBody) {
+        Utils.checkNotNull(requestBody, "requestBody");
+        this.requestBody = requestBody;
         return this;
     }
 
@@ -49,6 +49,6 @@ public class CreateParcelRequestBuilder {
 
         return sdk.create(
             shippoApiVersion,
-            parcelRequest);
+            requestBody);
     }
 }

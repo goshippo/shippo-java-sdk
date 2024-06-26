@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * ParcelTemplateUSPSEnum - |Token | Name | Dimensions|
+ * USPSParcelTemplate - |Token | Name | Dimensions|
  * |:---|:---|:---|
  * | USPS_FlatRateCardboardEnvelope | Flat Rate Cardboard Envelope |  12.50 x 9.50 x 0.75 in |
  * | USPS_FlatRateEnvelope | Flat Rate Envelope |  12.50 x 9.50 x 0.75 in |
@@ -40,7 +40,7 @@ import java.math.BigInteger;
  * | USPS_SoftPack | Soft Pack Padded Envelope |  Length and width defined in the Parcel|
  * 
  */
-public enum ParcelTemplateUSPSEnum {
+public enum USPSParcelTemplate {
     USPS_FLAT_RATE_CARDBOARD_ENVELOPE("USPS_FlatRateCardboardEnvelope"),
     USPS_FLAT_RATE_ENVELOPE("USPS_FlatRateEnvelope"),
     USPS_FLAT_RATE_GIFT_CARD_ENVELOPE("USPS_FlatRateGiftCardEnvelope"),
@@ -65,7 +65,7 @@ public enum ParcelTemplateUSPSEnum {
     @JsonValue
     private final String value;
 
-    private ParcelTemplateUSPSEnum(String value) {
+    private USPSParcelTemplate(String value) {
         this.value = value;
     }
     

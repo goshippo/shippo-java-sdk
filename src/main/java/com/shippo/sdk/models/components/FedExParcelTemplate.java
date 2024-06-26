@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * ParcelTemplateFedExEnum - |Token | Name | Dimensions|
+ * FedExParcelTemplate - |Token | Name | Dimensions|
  * |:---|:---|:---|
  * | FedEx_Box_10kg | FedEx® 10kg Box | 15.81 x 12.94 x 10.19 in|
  * | FedEx_Box_25kg | FedEx® 25kg Box | 54.80 x 42.10 x 33.50 in|
@@ -36,7 +36,7 @@ import java.math.BigInteger;
  * | FedEx_XL_Pak | FedEx® Extra Large Pak | 17.50 x 20.75 x 2.00 in|
  * 
  */
-public enum ParcelTemplateFedExEnum {
+public enum FedExParcelTemplate {
     FED_EX_BOX10KG("FedEx_Box_10kg"),
     FED_EX_BOX25KG("FedEx_Box_25kg"),
     FED_EX_BOX_EXTRA_LARGE1("FedEx_Box_Extra_Large_1"),
@@ -57,7 +57,7 @@ public enum ParcelTemplateFedExEnum {
     @JsonValue
     private final String value;
 
-    private ParcelTemplateFedExEnum(String value) {
+    private FedExParcelTemplate(String value) {
         this.value = value;
     }
     

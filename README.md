@@ -21,19 +21,21 @@ Shippo sdk = Shippo.builder()
 
 ### Getting started
 
+JDK 11 or later is required.
+
 The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.shippo.sdk:api:0.2.0'
+implementation 'com.shippo:sdk:0.3.0'
 ```
 
 Maven:
 ```xml
 <dependency>
-    <groupId>com.shippo.sdk</groupId>
-    <artifactId>api</artifactId>
-    <version>0.2.0</version>
+    <groupId>com.shippo</groupId>
+    <artifactId>sdk</artifactId>
+    <version>0.3.0</version>
 </dependency>
 ```
 
