@@ -60,6 +60,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -126,6 +127,7 @@ public class Application {
                     .valueCurrency("USD")
                     .metadata("Order ID \"123454\"")
                     .skuCode("HM-123")
+                    .hsCode("0901.21")
                     .build())
                 .call();
 
@@ -139,6 +141,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -208,6 +211,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```

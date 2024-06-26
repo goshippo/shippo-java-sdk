@@ -61,6 +61,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -132,10 +133,18 @@ public class Application {
                                 .valueCurrency("USD")
                                 .metadata("Order ID \"123454\"")
                                 .skuCode("HM-123")
+                                .hsCode("0901.21")
                                 .build()))
                     .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN_)
                     .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
                     .contentsExplanation("T-Shirt purchase")
+                    .exporterIdentification(CustomsExporterIdentification.builder()
+                        .eoriNumber("PL123456790ABCDE")
+                        .taxId(CustomsTaxIdentification.builder()
+                            .number("123456789")
+                            .type(CustomsTaxIdentificationType.EIN)
+                            .build())
+                        .build())
                     .invoice("#123123")
                     .metadata("Order ID #123123")
                     .addressImporter(AddressImporter.builder()
@@ -168,6 +177,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -237,6 +247,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```

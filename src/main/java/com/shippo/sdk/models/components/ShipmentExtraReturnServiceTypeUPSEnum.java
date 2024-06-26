@@ -15,18 +15,16 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public enum WebhookEventTypeEnum {
-    TRANSACTION_CREATED("transaction_created"),
-    TRANSACTION_UPDATED("transaction_updated"),
-    TRACK_UPDATED("track_updated"),
-    BATCH_CREATED("batch_created"),
-    BATCH_PURCHASED("batch_purchased"),
-    ALL("all");
+public enum ShipmentExtraReturnServiceTypeUPSEnum {
+    PRINT_AND_MAIL("PRINT_AND_MAIL"),
+    ATTEMPT1("ATTEMPT_1"),
+    ATTEMPT3("ATTEMPT_3"),
+    ELECTRONIC_LABEL("ELECTRONIC_LABEL");
 
     @JsonValue
     private final String value;
 
-    private WebhookEventTypeEnum(String value) {
+    private ShipmentExtraReturnServiceTypeUPSEnum(String value) {
         this.value = value;
     }
     

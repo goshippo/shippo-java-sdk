@@ -15,19 +15,13 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-/**
- * ParcelTemplateDPDUKEnum - |Token | Name | Dimensions|
- * |:---|:---|:---|
- * | DPD_UK_Express_Pak| DPD UK Express Pak | 530.00 x 400.00 x 100.00 mm|
- * 
- */
-public enum ParcelTemplateDPDUKEnum {
-    DPDUK_EXPRESS_PAK("DPD_UK_Express_Pak");
+public enum ShipmentExtraReturnServiceTypeLasershipEnum {
+    NO_RETURN("NO_RETURN");
 
     @JsonValue
     private final String value;
 
-    private ParcelTemplateDPDUKEnum(String value) {
+    private ShipmentExtraReturnServiceTypeLasershipEnum(String value) {
         this.value = value;
     }
     

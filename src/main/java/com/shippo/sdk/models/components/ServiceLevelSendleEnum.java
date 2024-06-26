@@ -19,10 +19,12 @@ import java.math.BigInteger;
  * ServiceLevelSendleEnum - |Token | Service name|
  * |:---|:---|
  * | sendle_parcel | Sendle Parcel|
+ * | sendle_standard_dropoff | Sendle Standard Dropoff|
  * 
  */
 public enum ServiceLevelSendleEnum {
-    SENDLE_PARCEL("sendle_parcel");
+    SENDLE_PARCEL("sendle_parcel"),
+    SENDLE_STANDARD_DROPOFF("sendle_standard_dropoff");
 
     @JsonValue
     private final String value;

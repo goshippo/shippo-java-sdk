@@ -95,7 +95,25 @@ public class Application {
                                                     .validate(true)
                                                     .build()))
                                         .parcels(java.util.List.of(
-                                                Parcels.of("<value>")))
+                                                Parcels.of(ParcelCreateFromTemplateRequest.builder()
+                                                        .massUnit(WeightUnitEnum.LB)
+                                                        .weight("1")
+                                                        .template(ParcelTemplateEnumSet.of(AramexAustraliaParcelTemplate.FASTWAY_AUSTRALIA_SATCHEL_A3))
+                                                        .extra(ParcelExtra.builder()
+                                                            .cod(Cod.builder()
+                                                                .amount("5.5")
+                                                                .currency("USD")
+                                                                .paymentMethod(PaymentMethod.CASH)
+                                                                .build())
+                                                            .insurance(ParcelInsurance.builder()
+                                                                .amount("5.5")
+                                                                .content("Laptop")
+                                                                .currency("USD")
+                                                                .provider(ParcelInsuranceProvider.UPS)
+                                                                .build())
+                                                            .build())
+                                                        .metadata("Customer ID 123456")
+                                                        .build())))
                                         .extra(ShipmentExtra.builder()
                                             .accountsReceivableCustomerAccount(UPSReferenceFields.builder()
                                                 .prefix("ABC")
@@ -199,7 +217,22 @@ public class Application {
                                             .build())
                                         .metadata("Customer ID 123456")
                                         .shipmentDate("2021-03-22T12:00:00Z")
-                                        .addressReturn(AddressReturn.of("d799c2679e644279b59fe661ac8fa488"))
+                                        .addressReturn(AddressReturn.of(AddressCreateRequest.builder()
+                                                    .country("US")
+                                                    .name("Shwan Ippotle")
+                                                    .company("Shippo")
+                                                    .street1("215 Clayton St.")
+                                                    .street3("")
+                                                    .streetNo("")
+                                                    .city("San Francisco")
+                                                    .state("CA")
+                                                    .zip("94117")
+                                                    .phone("+1 555 341 9393")
+                                                    .email("shippotle@shippo.com")
+                                                    .isResidential(true)
+                                                    .metadata("Customer ID 123456")
+                                                    .validate(true)
+                                                    .build()))
                                         .customsDeclaration(ShipmentCreateRequestCustomsDeclaration.of(CustomsDeclarationCreateRequest.builder()
                                                     .certify(true)
                                                     .certifySigner("Shawn Ippotle")
@@ -215,10 +248,18 @@ public class Application {
                                                                 .valueCurrency("USD")
                                                                 .metadata("Order ID \"123454\"")
                                                                 .skuCode("HM-123")
+                                                                .hsCode("0901.21")
                                                                 .build()))
                                                     .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN_)
                                                     .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
                                                     .contentsExplanation("T-Shirt purchase")
+                                                    .exporterIdentification(CustomsExporterIdentification.builder()
+                                                        .eoriNumber("PL123456790ABCDE")
+                                                        .taxId(CustomsTaxIdentification.builder()
+                                                            .number("123456789")
+                                                            .type(CustomsTaxIdentificationType.EIN)
+                                                            .build())
+                                                        .build())
                                                     .invoice("#123123")
                                                     .metadata("Order ID #123123")
                                                     .addressImporter(AddressImporter.builder()
@@ -262,6 +303,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -333,6 +375,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -396,12 +439,25 @@ public class Application {
                                 .addressTo(AddressTo.of("d799c2679e644279b59fe661ac8fa489"))
                                 .parcels(java.util.List.of(
                                         Parcels.of(ParcelCreateRequest.builder()
+                                                .massUnit(WeightUnitEnum.LB)
+                                                .weight("1")
                                                 .distanceUnit(DistanceUnitEnum.IN)
                                                 .height("1")
                                                 .length("1")
-                                                .massUnit(WeightUnitEnum.LB)
-                                                .weight("1")
                                                 .width("1")
+                                                .extra(ParcelExtra.builder()
+                                                    .cod(Cod.builder()
+                                                        .amount("5.5")
+                                                        .currency("USD")
+                                                        .paymentMethod(PaymentMethod.CASH)
+                                                        .build())
+                                                    .insurance(ParcelInsurance.builder()
+                                                        .amount("5.5")
+                                                        .content("Laptop")
+                                                        .currency("USD")
+                                                        .provider(ParcelInsuranceProvider.UPS)
+                                                        .build())
+                                                    .build())
                                                 .metadata("Customer ID 123456")
                                                 .build())))
                                 .extra(ShipmentExtra.builder()
@@ -523,10 +579,18 @@ public class Application {
                                                         .valueCurrency("USD")
                                                         .metadata("Order ID \"123454\"")
                                                         .skuCode("HM-123")
+                                                        .hsCode("0901.21")
                                                         .build()))
                                             .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN_)
                                             .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
                                             .contentsExplanation("T-Shirt purchase")
+                                            .exporterIdentification(CustomsExporterIdentification.builder()
+                                                .eoriNumber("PL123456790ABCDE")
+                                                .taxId(CustomsTaxIdentification.builder()
+                                                    .number("123456789")
+                                                    .type(CustomsTaxIdentificationType.EIN)
+                                                    .build())
+                                                .build())
                                             .invoice("#123123")
                                             .metadata("Order ID #123123")
                                             .addressImporter(AddressImporter.builder()
@@ -567,6 +631,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -639,6 +704,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -709,6 +775,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```

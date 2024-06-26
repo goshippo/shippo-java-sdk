@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * ParcelTemplateAramexAustraliaEnum - |Token | Name | Dimensions|
+ * AramexAustraliaParcelTemplate - |Token | Name | Dimensions|
  * |:---|:---|:---|
  * | Fastway_Australia_Satchel_A2 | Satchel A2 | 594.00 x 420.00 x 48.00 mm|
  * | Fastway_Australia_Satchel_A3 | Satchel A3 | 420.00 x 297.00 x 64.00 mm|
@@ -24,7 +24,7 @@ import java.math.BigInteger;
  * | Fastway_Australia_Satchel_A5 | Satchel A5 | 210.00 x 148.00 x 64.00 mm|
  * 
  */
-public enum ParcelTemplateAramexAustraliaEnum {
+public enum AramexAustraliaParcelTemplate {
     FASTWAY_AUSTRALIA_SATCHEL_A2("Fastway_Australia_Satchel_A2"),
     FASTWAY_AUSTRALIA_SATCHEL_A3("Fastway_Australia_Satchel_A3"),
     FASTWAY_AUSTRALIA_SATCHEL_A4("Fastway_Australia_Satchel_A4"),
@@ -33,7 +33,7 @@ public enum ParcelTemplateAramexAustraliaEnum {
     @JsonValue
     private final String value;
 
-    private ParcelTemplateAramexAustraliaEnum(String value) {
+    private AramexAustraliaParcelTemplate(String value) {
         this.value = value;
     }
     

@@ -37,6 +37,11 @@ public class Parcels {
         return new Parcels(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelCreateRequest>(){}));
     }
 
+    public static Parcels of(ParcelCreateFromTemplateRequest value) {
+        Utils.checkNotNull(value, "value");
+        return new Parcels(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelCreateFromTemplateRequest>(){}));
+    }
+
     public static Parcels of(String value) {
         Utils.checkNotNull(value, "value");
         return new Parcels(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
@@ -46,6 +51,7 @@ public class Parcels {
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code ParcelCreateRequest}</li>
+     * <li>{@code ParcelCreateFromTemplateRequest}</li>
      * <li>{@code String}</li>
      * </ul>
      * 
@@ -87,6 +93,7 @@ public class Parcels {
         public _Deserializer() {
             super(Parcels.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<ParcelCreateRequest>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<ParcelCreateFromTemplateRequest>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<String>() {}, Utils.JsonShape.DEFAULT));
         }
     }

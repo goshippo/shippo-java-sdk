@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
 
-public class ParcelCreateRequest {
+public class ParcelCreateFromTemplateRequest {
 
     /**
      * An object holding optional extra services to be requested for each parcel in a multi-piece shipment. 
@@ -45,65 +45,35 @@ public class ParcelCreateRequest {
     private String weight;
 
     /**
-     * The measure unit used for length, width and height.
+     * If template is passed, `length`, `width`, `height`, and `distance_unit` are not required
      */
-    @JsonProperty("distance_unit")
-    private DistanceUnitEnum distanceUnit;
-
-    /**
-     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonProperty("height")
-    private String height;
-
-    /**
-     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonProperty("length")
-    private String length;
-
-    /**
-     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonProperty("width")
-    private String width;
+    @JsonProperty("template")
+    private ParcelTemplateEnumSet template;
 
     @JsonCreator
-    public ParcelCreateRequest(
+    public ParcelCreateFromTemplateRequest(
             @JsonProperty("extra") Optional<? extends ParcelExtra> extra,
             @JsonProperty("metadata") Optional<? extends String> metadata,
             @JsonProperty("mass_unit") WeightUnitEnum massUnit,
             @JsonProperty("weight") String weight,
-            @JsonProperty("distance_unit") DistanceUnitEnum distanceUnit,
-            @JsonProperty("height") String height,
-            @JsonProperty("length") String length,
-            @JsonProperty("width") String width) {
+            @JsonProperty("template") ParcelTemplateEnumSet template) {
         Utils.checkNotNull(extra, "extra");
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(massUnit, "massUnit");
         Utils.checkNotNull(weight, "weight");
-        Utils.checkNotNull(distanceUnit, "distanceUnit");
-        Utils.checkNotNull(height, "height");
-        Utils.checkNotNull(length, "length");
-        Utils.checkNotNull(width, "width");
+        Utils.checkNotNull(template, "template");
         this.extra = extra;
         this.metadata = metadata;
         this.massUnit = massUnit;
         this.weight = weight;
-        this.distanceUnit = distanceUnit;
-        this.height = height;
-        this.length = length;
-        this.width = width;
+        this.template = template;
     }
     
-    public ParcelCreateRequest(
+    public ParcelCreateFromTemplateRequest(
             WeightUnitEnum massUnit,
             String weight,
-            DistanceUnitEnum distanceUnit,
-            String height,
-            String length,
-            String width) {
-        this(Optional.empty(), Optional.empty(), massUnit, weight, distanceUnit, height, length, width);
+            ParcelTemplateEnumSet template) {
+        this(Optional.empty(), Optional.empty(), massUnit, weight, template);
     }
 
     /**
@@ -139,35 +109,11 @@ public class ParcelCreateRequest {
     }
 
     /**
-     * The measure unit used for length, width and height.
+     * If template is passed, `length`, `width`, `height`, and `distance_unit` are not required
      */
     @JsonIgnore
-    public DistanceUnitEnum distanceUnit() {
-        return distanceUnit;
-    }
-
-    /**
-     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonIgnore
-    public String height() {
-        return height;
-    }
-
-    /**
-     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonIgnore
-    public String length() {
-        return length;
-    }
-
-    /**
-     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    @JsonIgnore
-    public String width() {
-        return width;
+    public ParcelTemplateEnumSet template() {
+        return template;
     }
 
     public final static Builder builder() {
@@ -178,7 +124,7 @@ public class ParcelCreateRequest {
      * An object holding optional extra services to be requested for each parcel in a multi-piece shipment. 
      * See the &lt;a href="#section/Parcel-Extras"&gt;Parcel Extra table below&lt;/a&gt; for all available services.
      */
-    public ParcelCreateRequest withExtra(ParcelExtra extra) {
+    public ParcelCreateFromTemplateRequest withExtra(ParcelExtra extra) {
         Utils.checkNotNull(extra, "extra");
         this.extra = Optional.ofNullable(extra);
         return this;
@@ -188,19 +134,19 @@ public class ParcelCreateRequest {
      * An object holding optional extra services to be requested for each parcel in a multi-piece shipment. 
      * See the &lt;a href="#section/Parcel-Extras"&gt;Parcel Extra table below&lt;/a&gt; for all available services.
      */
-    public ParcelCreateRequest withExtra(Optional<? extends ParcelExtra> extra) {
+    public ParcelCreateFromTemplateRequest withExtra(Optional<? extends ParcelExtra> extra) {
         Utils.checkNotNull(extra, "extra");
         this.extra = extra;
         return this;
     }
 
-    public ParcelCreateRequest withMetadata(String metadata) {
+    public ParcelCreateFromTemplateRequest withMetadata(String metadata) {
         Utils.checkNotNull(metadata, "metadata");
         this.metadata = Optional.ofNullable(metadata);
         return this;
     }
 
-    public ParcelCreateRequest withMetadata(Optional<? extends String> metadata) {
+    public ParcelCreateFromTemplateRequest withMetadata(Optional<? extends String> metadata) {
         Utils.checkNotNull(metadata, "metadata");
         this.metadata = metadata;
         return this;
@@ -209,7 +155,7 @@ public class ParcelCreateRequest {
     /**
      * The unit used for weight.
      */
-    public ParcelCreateRequest withMassUnit(WeightUnitEnum massUnit) {
+    public ParcelCreateFromTemplateRequest withMassUnit(WeightUnitEnum massUnit) {
         Utils.checkNotNull(massUnit, "massUnit");
         this.massUnit = massUnit;
         return this;
@@ -218,45 +164,18 @@ public class ParcelCreateRequest {
     /**
      * Weight of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
      */
-    public ParcelCreateRequest withWeight(String weight) {
+    public ParcelCreateFromTemplateRequest withWeight(String weight) {
         Utils.checkNotNull(weight, "weight");
         this.weight = weight;
         return this;
     }
 
     /**
-     * The measure unit used for length, width and height.
+     * If template is passed, `length`, `width`, `height`, and `distance_unit` are not required
      */
-    public ParcelCreateRequest withDistanceUnit(DistanceUnitEnum distanceUnit) {
-        Utils.checkNotNull(distanceUnit, "distanceUnit");
-        this.distanceUnit = distanceUnit;
-        return this;
-    }
-
-    /**
-     * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    public ParcelCreateRequest withHeight(String height) {
-        Utils.checkNotNull(height, "height");
-        this.height = height;
-        return this;
-    }
-
-    /**
-     * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    public ParcelCreateRequest withLength(String length) {
-        Utils.checkNotNull(length, "length");
-        this.length = length;
-        return this;
-    }
-
-    /**
-     * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-     */
-    public ParcelCreateRequest withWidth(String width) {
-        Utils.checkNotNull(width, "width");
-        this.width = width;
+    public ParcelCreateFromTemplateRequest withTemplate(ParcelTemplateEnumSet template) {
+        Utils.checkNotNull(template, "template");
+        this.template = template;
         return this;
     }
     
@@ -268,16 +187,13 @@ public class ParcelCreateRequest {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ParcelCreateRequest other = (ParcelCreateRequest) o;
+        ParcelCreateFromTemplateRequest other = (ParcelCreateFromTemplateRequest) o;
         return 
             java.util.Objects.deepEquals(this.extra, other.extra) &&
             java.util.Objects.deepEquals(this.metadata, other.metadata) &&
             java.util.Objects.deepEquals(this.massUnit, other.massUnit) &&
             java.util.Objects.deepEquals(this.weight, other.weight) &&
-            java.util.Objects.deepEquals(this.distanceUnit, other.distanceUnit) &&
-            java.util.Objects.deepEquals(this.height, other.height) &&
-            java.util.Objects.deepEquals(this.length, other.length) &&
-            java.util.Objects.deepEquals(this.width, other.width);
+            java.util.Objects.deepEquals(this.template, other.template);
     }
     
     @Override
@@ -287,23 +203,17 @@ public class ParcelCreateRequest {
             metadata,
             massUnit,
             weight,
-            distanceUnit,
-            height,
-            length,
-            width);
+            template);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(ParcelCreateRequest.class,
+        return Utils.toString(ParcelCreateFromTemplateRequest.class,
                 "extra", extra,
                 "metadata", metadata,
                 "massUnit", massUnit,
                 "weight", weight,
-                "distanceUnit", distanceUnit,
-                "height", height,
-                "length", length,
-                "width", width);
+                "template", template);
     }
     
     public final static class Builder {
@@ -316,13 +226,7 @@ public class ParcelCreateRequest {
  
         private String weight;
  
-        private DistanceUnitEnum distanceUnit;
- 
-        private String height;
- 
-        private String length;
- 
-        private String width;  
+        private ParcelTemplateEnumSet template;  
         
         private Builder() {
           // force use of static builder() method
@@ -379,51 +283,21 @@ public class ParcelCreateRequest {
         }
 
         /**
-         * The measure unit used for length, width and height.
+         * If template is passed, `length`, `width`, `height`, and `distance_unit` are not required
          */
-        public Builder distanceUnit(DistanceUnitEnum distanceUnit) {
-            Utils.checkNotNull(distanceUnit, "distanceUnit");
-            this.distanceUnit = distanceUnit;
-            return this;
-        }
-
-        /**
-         * Height of the parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-         */
-        public Builder height(String height) {
-            Utils.checkNotNull(height, "height");
-            this.height = height;
-            return this;
-        }
-
-        /**
-         * Length of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-         */
-        public Builder length(String length) {
-            Utils.checkNotNull(length, "length");
-            this.length = length;
-            return this;
-        }
-
-        /**
-         * Width of the Parcel. Up to six digits in front and four digits after the decimal separator are accepted.
-         */
-        public Builder width(String width) {
-            Utils.checkNotNull(width, "width");
-            this.width = width;
+        public Builder template(ParcelTemplateEnumSet template) {
+            Utils.checkNotNull(template, "template");
+            this.template = template;
             return this;
         }
         
-        public ParcelCreateRequest build() {
-            return new ParcelCreateRequest(
+        public ParcelCreateFromTemplateRequest build() {
+            return new ParcelCreateFromTemplateRequest(
                 extra,
                 metadata,
                 massUnit,
                 weight,
-                distanceUnit,
-                height,
-                length,
-                width);
+                template);
         }
     }
 }

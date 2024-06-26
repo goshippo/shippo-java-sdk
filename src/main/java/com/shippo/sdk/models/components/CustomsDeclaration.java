@@ -90,6 +90,13 @@ public class CustomsDeclaration {
     private Optional<? extends String> disclaimer;
 
     /**
+     * Additional exporter identification that may be required to ship in certain countries
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("exporter_identification")
+    private Optional<? extends CustomsExporterIdentification> exporterIdentification;
+
+    /**
      * Exporter reference of an export shipment.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -108,7 +115,7 @@ public class CustomsDeclaration {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_vat_collected")
-    private Optional<? extends java.lang.Object> isVatCollected;
+    private Optional<? extends Boolean> isVatCollected;
 
     /**
      * Invoice reference of the shipment.
@@ -144,7 +151,7 @@ public class CustomsDeclaration {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("address_importer")
-    private Optional<? extends CustomsDeclarationAddressImporter> addressImporter;
+    private Optional<? extends String> addressImporter;
 
     /**
      * Type of goods of the shipment.  
@@ -161,13 +168,6 @@ public class CustomsDeclaration {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("eel_pfc")
     private Optional<? extends String> eelPfc;
-
-    /**
-     * Additional exporter identification that may be required to ship in certain countries
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("exporter_identification")
-    private Optional<? extends CustomsExporterIdentification> exporterIdentification;
 
     /**
      * The incoterm reference of the shipment. FCA is available for DHL Express and FedEx only. 
@@ -252,17 +252,17 @@ public class CustomsDeclaration {
             @JsonProperty("commercial_invoice") Optional<? extends Boolean> commercialInvoice,
             @JsonProperty("contents_explanation") Optional<? extends String> contentsExplanation,
             @JsonProperty("disclaimer") Optional<? extends String> disclaimer,
+            @JsonProperty("exporter_identification") Optional<? extends CustomsExporterIdentification> exporterIdentification,
             @JsonProperty("exporter_reference") Optional<? extends String> exporterReference,
             @JsonProperty("importer_reference") Optional<? extends String> importerReference,
-            @JsonProperty("is_vat_collected") Optional<? extends java.lang.Object> isVatCollected,
+            @JsonProperty("is_vat_collected") Optional<? extends Boolean> isVatCollected,
             @JsonProperty("invoice") Optional<? extends String> invoice,
             @JsonProperty("license") Optional<? extends String> license,
             @JsonProperty("metadata") Optional<? extends String> metadata,
             @JsonProperty("notes") Optional<? extends String> notes,
-            @JsonProperty("address_importer") Optional<? extends CustomsDeclarationAddressImporter> addressImporter,
+            @JsonProperty("address_importer") Optional<? extends String> addressImporter,
             @JsonProperty("contents_type") String contentsType,
             @JsonProperty("eel_pfc") Optional<? extends String> eelPfc,
-            @JsonProperty("exporter_identification") Optional<? extends CustomsExporterIdentification> exporterIdentification,
             @JsonProperty("incoterm") Optional<? extends String> incoterm,
             @JsonProperty("invoiced_charges") Optional<? extends CustomsInvoicedCharges> invoicedCharges,
             @JsonProperty("items") java.util.List<String> items,
@@ -282,6 +282,7 @@ public class CustomsDeclaration {
         Utils.checkNotNull(commercialInvoice, "commercialInvoice");
         Utils.checkNotNull(contentsExplanation, "contentsExplanation");
         Utils.checkNotNull(disclaimer, "disclaimer");
+        Utils.checkNotNull(exporterIdentification, "exporterIdentification");
         Utils.checkNotNull(exporterReference, "exporterReference");
         Utils.checkNotNull(importerReference, "importerReference");
         Utils.checkNotNull(isVatCollected, "isVatCollected");
@@ -292,7 +293,6 @@ public class CustomsDeclaration {
         Utils.checkNotNull(addressImporter, "addressImporter");
         Utils.checkNotNull(contentsType, "contentsType");
         Utils.checkNotNull(eelPfc, "eelPfc");
-        Utils.checkNotNull(exporterIdentification, "exporterIdentification");
         Utils.checkNotNull(incoterm, "incoterm");
         Utils.checkNotNull(invoicedCharges, "invoicedCharges");
         Utils.checkNotNull(items, "items");
@@ -312,6 +312,7 @@ public class CustomsDeclaration {
         this.commercialInvoice = commercialInvoice;
         this.contentsExplanation = contentsExplanation;
         this.disclaimer = disclaimer;
+        this.exporterIdentification = exporterIdentification;
         this.exporterReference = exporterReference;
         this.importerReference = importerReference;
         this.isVatCollected = isVatCollected;
@@ -322,7 +323,6 @@ public class CustomsDeclaration {
         this.addressImporter = addressImporter;
         this.contentsType = contentsType;
         this.eelPfc = eelPfc;
-        this.exporterIdentification = exporterIdentification;
         this.incoterm = incoterm;
         this.invoicedCharges = invoicedCharges;
         this.items = items;
@@ -341,7 +341,7 @@ public class CustomsDeclaration {
             String contentsType,
             java.util.List<String> items,
             String nonDeliveryOption) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), certify, certifySigner, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), contentsType, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), items, nonDeliveryOption, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), certify, certifySigner, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), contentsType, Optional.empty(), Optional.empty(), Optional.empty(), items, nonDeliveryOption, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -429,6 +429,15 @@ public class CustomsDeclaration {
     }
 
     /**
+     * Additional exporter identification that may be required to ship in certain countries
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CustomsExporterIdentification> exporterIdentification() {
+        return (Optional<CustomsExporterIdentification>) exporterIdentification;
+    }
+
+    /**
      * Exporter reference of an export shipment.
      */
     @SuppressWarnings("unchecked")
@@ -451,8 +460,8 @@ public class CustomsDeclaration {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<java.lang.Object> isVatCollected() {
-        return (Optional<java.lang.Object>) isVatCollected;
+    public Optional<Boolean> isVatCollected() {
+        return (Optional<Boolean>) isVatCollected;
     }
 
     /**
@@ -497,8 +506,8 @@ public class CustomsDeclaration {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<CustomsDeclarationAddressImporter> addressImporter() {
-        return (Optional<CustomsDeclarationAddressImporter>) addressImporter;
+    public Optional<String> addressImporter() {
+        return (Optional<String>) addressImporter;
     }
 
     /**
@@ -519,15 +528,6 @@ public class CustomsDeclaration {
     @JsonIgnore
     public Optional<String> eelPfc() {
         return (Optional<String>) eelPfc;
-    }
-
-    /**
-     * Additional exporter identification that may be required to ship in certain countries
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<CustomsExporterIdentification> exporterIdentification() {
-        return (Optional<CustomsExporterIdentification>) exporterIdentification;
     }
 
     /**
@@ -780,6 +780,24 @@ public class CustomsDeclaration {
     }
 
     /**
+     * Additional exporter identification that may be required to ship in certain countries
+     */
+    public CustomsDeclaration withExporterIdentification(CustomsExporterIdentification exporterIdentification) {
+        Utils.checkNotNull(exporterIdentification, "exporterIdentification");
+        this.exporterIdentification = Optional.ofNullable(exporterIdentification);
+        return this;
+    }
+
+    /**
+     * Additional exporter identification that may be required to ship in certain countries
+     */
+    public CustomsDeclaration withExporterIdentification(Optional<? extends CustomsExporterIdentification> exporterIdentification) {
+        Utils.checkNotNull(exporterIdentification, "exporterIdentification");
+        this.exporterIdentification = exporterIdentification;
+        return this;
+    }
+
+    /**
      * Exporter reference of an export shipment.
      */
     public CustomsDeclaration withExporterReference(String exporterReference) {
@@ -818,7 +836,7 @@ public class CustomsDeclaration {
     /**
      * Indicates whether the shipment's destination VAT has been collected. May be required for some destinations.
      */
-    public CustomsDeclaration withIsVatCollected(java.lang.Object isVatCollected) {
+    public CustomsDeclaration withIsVatCollected(boolean isVatCollected) {
         Utils.checkNotNull(isVatCollected, "isVatCollected");
         this.isVatCollected = Optional.ofNullable(isVatCollected);
         return this;
@@ -827,7 +845,7 @@ public class CustomsDeclaration {
     /**
      * Indicates whether the shipment's destination VAT has been collected. May be required for some destinations.
      */
-    public CustomsDeclaration withIsVatCollected(Optional<? extends java.lang.Object> isVatCollected) {
+    public CustomsDeclaration withIsVatCollected(Optional<? extends Boolean> isVatCollected) {
         Utils.checkNotNull(isVatCollected, "isVatCollected");
         this.isVatCollected = isVatCollected;
         return this;
@@ -910,7 +928,7 @@ public class CustomsDeclaration {
     /**
      * Object ID of the Importer address.
      */
-    public CustomsDeclaration withAddressImporter(CustomsDeclarationAddressImporter addressImporter) {
+    public CustomsDeclaration withAddressImporter(String addressImporter) {
         Utils.checkNotNull(addressImporter, "addressImporter");
         this.addressImporter = Optional.ofNullable(addressImporter);
         return this;
@@ -919,7 +937,7 @@ public class CustomsDeclaration {
     /**
      * Object ID of the Importer address.
      */
-    public CustomsDeclaration withAddressImporter(Optional<? extends CustomsDeclarationAddressImporter> addressImporter) {
+    public CustomsDeclaration withAddressImporter(Optional<? extends String> addressImporter) {
         Utils.checkNotNull(addressImporter, "addressImporter");
         this.addressImporter = addressImporter;
         return this;
@@ -954,24 +972,6 @@ public class CustomsDeclaration {
     public CustomsDeclaration withEelPfc(Optional<? extends String> eelPfc) {
         Utils.checkNotNull(eelPfc, "eelPfc");
         this.eelPfc = eelPfc;
-        return this;
-    }
-
-    /**
-     * Additional exporter identification that may be required to ship in certain countries
-     */
-    public CustomsDeclaration withExporterIdentification(CustomsExporterIdentification exporterIdentification) {
-        Utils.checkNotNull(exporterIdentification, "exporterIdentification");
-        this.exporterIdentification = Optional.ofNullable(exporterIdentification);
-        return this;
-    }
-
-    /**
-     * Additional exporter identification that may be required to ship in certain countries
-     */
-    public CustomsDeclaration withExporterIdentification(Optional<? extends CustomsExporterIdentification> exporterIdentification) {
-        Utils.checkNotNull(exporterIdentification, "exporterIdentification");
-        this.exporterIdentification = exporterIdentification;
         return this;
     }
 
@@ -1163,6 +1163,7 @@ public class CustomsDeclaration {
             java.util.Objects.deepEquals(this.commercialInvoice, other.commercialInvoice) &&
             java.util.Objects.deepEquals(this.contentsExplanation, other.contentsExplanation) &&
             java.util.Objects.deepEquals(this.disclaimer, other.disclaimer) &&
+            java.util.Objects.deepEquals(this.exporterIdentification, other.exporterIdentification) &&
             java.util.Objects.deepEquals(this.exporterReference, other.exporterReference) &&
             java.util.Objects.deepEquals(this.importerReference, other.importerReference) &&
             java.util.Objects.deepEquals(this.isVatCollected, other.isVatCollected) &&
@@ -1173,7 +1174,6 @@ public class CustomsDeclaration {
             java.util.Objects.deepEquals(this.addressImporter, other.addressImporter) &&
             java.util.Objects.deepEquals(this.contentsType, other.contentsType) &&
             java.util.Objects.deepEquals(this.eelPfc, other.eelPfc) &&
-            java.util.Objects.deepEquals(this.exporterIdentification, other.exporterIdentification) &&
             java.util.Objects.deepEquals(this.incoterm, other.incoterm) &&
             java.util.Objects.deepEquals(this.invoicedCharges, other.invoicedCharges) &&
             java.util.Objects.deepEquals(this.items, other.items) &&
@@ -1198,6 +1198,7 @@ public class CustomsDeclaration {
             commercialInvoice,
             contentsExplanation,
             disclaimer,
+            exporterIdentification,
             exporterReference,
             importerReference,
             isVatCollected,
@@ -1208,7 +1209,6 @@ public class CustomsDeclaration {
             addressImporter,
             contentsType,
             eelPfc,
-            exporterIdentification,
             incoterm,
             invoicedCharges,
             items,
@@ -1233,6 +1233,7 @@ public class CustomsDeclaration {
                 "commercialInvoice", commercialInvoice,
                 "contentsExplanation", contentsExplanation,
                 "disclaimer", disclaimer,
+                "exporterIdentification", exporterIdentification,
                 "exporterReference", exporterReference,
                 "importerReference", importerReference,
                 "isVatCollected", isVatCollected,
@@ -1243,7 +1244,6 @@ public class CustomsDeclaration {
                 "addressImporter", addressImporter,
                 "contentsType", contentsType,
                 "eelPfc", eelPfc,
-                "exporterIdentification", exporterIdentification,
                 "incoterm", incoterm,
                 "invoicedCharges", invoicedCharges,
                 "items", items,
@@ -1276,11 +1276,13 @@ public class CustomsDeclaration {
  
         private Optional<? extends String> disclaimer = Optional.empty();
  
+        private Optional<? extends CustomsExporterIdentification> exporterIdentification = Optional.empty();
+ 
         private Optional<? extends String> exporterReference = Optional.empty();
  
         private Optional<? extends String> importerReference = Optional.empty();
  
-        private Optional<? extends java.lang.Object> isVatCollected = Optional.empty();
+        private Optional<? extends Boolean> isVatCollected = Optional.empty();
  
         private Optional<? extends String> invoice = Optional.empty();
  
@@ -1290,13 +1292,11 @@ public class CustomsDeclaration {
  
         private Optional<? extends String> notes = Optional.empty();
  
-        private Optional<? extends CustomsDeclarationAddressImporter> addressImporter = Optional.empty();
+        private Optional<? extends String> addressImporter = Optional.empty();
  
         private String contentsType;
  
         private Optional<? extends String> eelPfc = Optional.empty();
- 
-        private Optional<? extends CustomsExporterIdentification> exporterIdentification = Optional.empty();
  
         private Optional<? extends String> incoterm = Optional.empty();
  
@@ -1476,6 +1476,24 @@ public class CustomsDeclaration {
         }
 
         /**
+         * Additional exporter identification that may be required to ship in certain countries
+         */
+        public Builder exporterIdentification(CustomsExporterIdentification exporterIdentification) {
+            Utils.checkNotNull(exporterIdentification, "exporterIdentification");
+            this.exporterIdentification = Optional.ofNullable(exporterIdentification);
+            return this;
+        }
+
+        /**
+         * Additional exporter identification that may be required to ship in certain countries
+         */
+        public Builder exporterIdentification(Optional<? extends CustomsExporterIdentification> exporterIdentification) {
+            Utils.checkNotNull(exporterIdentification, "exporterIdentification");
+            this.exporterIdentification = exporterIdentification;
+            return this;
+        }
+
+        /**
          * Exporter reference of an export shipment.
          */
         public Builder exporterReference(String exporterReference) {
@@ -1514,7 +1532,7 @@ public class CustomsDeclaration {
         /**
          * Indicates whether the shipment's destination VAT has been collected. May be required for some destinations.
          */
-        public Builder isVatCollected(java.lang.Object isVatCollected) {
+        public Builder isVatCollected(boolean isVatCollected) {
             Utils.checkNotNull(isVatCollected, "isVatCollected");
             this.isVatCollected = Optional.ofNullable(isVatCollected);
             return this;
@@ -1523,7 +1541,7 @@ public class CustomsDeclaration {
         /**
          * Indicates whether the shipment's destination VAT has been collected. May be required for some destinations.
          */
-        public Builder isVatCollected(Optional<? extends java.lang.Object> isVatCollected) {
+        public Builder isVatCollected(Optional<? extends Boolean> isVatCollected) {
             Utils.checkNotNull(isVatCollected, "isVatCollected");
             this.isVatCollected = isVatCollected;
             return this;
@@ -1606,7 +1624,7 @@ public class CustomsDeclaration {
         /**
          * Object ID of the Importer address.
          */
-        public Builder addressImporter(CustomsDeclarationAddressImporter addressImporter) {
+        public Builder addressImporter(String addressImporter) {
             Utils.checkNotNull(addressImporter, "addressImporter");
             this.addressImporter = Optional.ofNullable(addressImporter);
             return this;
@@ -1615,7 +1633,7 @@ public class CustomsDeclaration {
         /**
          * Object ID of the Importer address.
          */
-        public Builder addressImporter(Optional<? extends CustomsDeclarationAddressImporter> addressImporter) {
+        public Builder addressImporter(Optional<? extends String> addressImporter) {
             Utils.checkNotNull(addressImporter, "addressImporter");
             this.addressImporter = addressImporter;
             return this;
@@ -1650,24 +1668,6 @@ public class CustomsDeclaration {
         public Builder eelPfc(Optional<? extends String> eelPfc) {
             Utils.checkNotNull(eelPfc, "eelPfc");
             this.eelPfc = eelPfc;
-            return this;
-        }
-
-        /**
-         * Additional exporter identification that may be required to ship in certain countries
-         */
-        public Builder exporterIdentification(CustomsExporterIdentification exporterIdentification) {
-            Utils.checkNotNull(exporterIdentification, "exporterIdentification");
-            this.exporterIdentification = Optional.ofNullable(exporterIdentification);
-            return this;
-        }
-
-        /**
-         * Additional exporter identification that may be required to ship in certain countries
-         */
-        public Builder exporterIdentification(Optional<? extends CustomsExporterIdentification> exporterIdentification) {
-            Utils.checkNotNull(exporterIdentification, "exporterIdentification");
-            this.exporterIdentification = exporterIdentification;
             return this;
         }
 
@@ -1851,6 +1851,7 @@ public class CustomsDeclaration {
                 commercialInvoice,
                 contentsExplanation,
                 disclaimer,
+                exporterIdentification,
                 exporterReference,
                 importerReference,
                 isVatCollected,
@@ -1861,7 +1862,6 @@ public class CustomsDeclaration {
                 addressImporter,
                 contentsType,
                 eelPfc,
-                exporterIdentification,
                 incoterm,
                 invoicedCharges,
                 items,

@@ -47,7 +47,7 @@ public class Application {
                 .build();
 
             WebhookUpdateRequest req = WebhookUpdateRequest.builder()
-                .event(WebhookEventTypeEnum.TRACK_UPDATED)
+                .event(WebhookEventTypeEnum.BATCH_CREATED)
                 .url("<value>")
                 .build();
 
@@ -65,6 +65,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -130,6 +131,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -190,6 +192,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -245,7 +248,7 @@ public class Application {
             UpdateWebhookResponse res = sdk.webhooks().updateWebhook()
                 .webhookId("<value>")
                 .webhookUpdateRequest(WebhookUpdateRequest.builder()
-                    .event(WebhookEventTypeEnum.TRACK_UPDATED)
+                    .event(WebhookEventTypeEnum.BATCH_CREATED)
                     .url("<value>")
                     .build())
                 .call();
@@ -260,6 +263,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -325,6 +329,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
