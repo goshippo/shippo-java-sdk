@@ -1,6 +1,7 @@
 package com.shippo.sdk
 
 import com.shippo.sdk.models.components.*
+import com.shippo.sdk.models.operations.CreateParcelRequestBody
 import com.shippo.sdk.models.operations.CreateShipmentResponse
 import com.shippo.sdk.models.operations.CreateTransactionRequestBody
 import spock.lang.Specification
@@ -81,7 +82,7 @@ class PurchaseLabelSpec extends Specification implements SdkProvider {
                 .phone("4151234567")
                 .email("mrhippo@shippo.com")
                 .build()
-        def parcelRequest = ParcelRequest.builder()
+        def parcelRequest = ParcelCreateRequest.builder()
                 .length("5")
                 .width("5")
                 .height("5")
@@ -99,7 +100,7 @@ class PurchaseLabelSpec extends Specification implements SdkProvider {
                 .addressCreateRequest(addressToCreateRequest)
                 .call().address().get()
         Parcel parcel = getSdk().parcels().create()
-                .parcelRequest(parcelRequest)
+                .requestBody(CreateParcelRequestBody.of(parcelRequest))
                 .call().parcel().get()
         Shipment shipment = getSdk().shipments().create()
                 .shipmentCreateRequest(ShipmentCreateRequest.builder()
