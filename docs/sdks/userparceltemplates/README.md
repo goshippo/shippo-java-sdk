@@ -79,12 +79,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListUserParcelTemplatesResponse>](../../models/operations/ListUserParcelTemplatesResponse.md)**
+**[com.shippo.sdk.models.operations.ListUserParcelTemplatesResponse](../../models/operations/ListUserParcelTemplatesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -157,12 +157,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateUserParcelTemplateResponse>](../../models/operations/CreateUserParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.CreateUserParcelTemplateResponse](../../models/operations/CreateUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## delete
 
@@ -224,12 +224,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.DeleteUserParcelTemplateResponse>](../../models/operations/DeleteUserParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.DeleteUserParcelTemplateResponse](../../models/operations/DeleteUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -294,12 +294,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetUserParcelTemplateResponse>](../../models/operations/GetUserParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.GetUserParcelTemplateResponse](../../models/operations/GetUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## update
 
@@ -373,9 +373,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateUserParcelTemplateResponse>](../../models/operations/UpdateUserParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.UpdateUserParcelTemplateResponse](../../models/operations/UpdateUserParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

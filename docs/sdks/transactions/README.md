@@ -77,12 +77,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListTransactionsResponse>](../../models/operations/ListTransactionsResponse.md)**
+**[com.shippo.sdk.models.operations.ListTransactionsResponse](../../models/operations/ListTransactionsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -151,12 +151,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateTransactionResponse>](../../models/operations/CreateTransactionResponse.md)**
+**[com.shippo.sdk.models.operations.CreateTransactionResponse](../../models/operations/CreateTransactionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -220,9 +220,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetTransactionResponse>](../../models/operations/GetTransactionResponse.md)**
+**[com.shippo.sdk.models.operations.GetTransactionResponse](../../models/operations/GetTransactionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

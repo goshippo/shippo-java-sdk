@@ -44,7 +44,13 @@ public class CarrierParcelTemplates implements
 
     /**
      * List all carrier parcel templates
-     * List all carrier parcel template objects. &lt;br&gt; Use the following query string params to filter the results as needed. &lt;br&gt; &lt;ul&gt; &lt;li&gt;`include=all` (the default). Includes templates from all carriers &lt;/li&gt; &lt;li&gt;`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) &lt;/li&gt; &lt;li&gt;`include=enabled`. includes templates only for carriers which the user has added and enabled &lt;/li&gt; &lt;li&gt;`carrier=*token*`. filter by specific carrier, e.g. fedex, usps &lt;/li&gt; &lt;/ul&gt;
+     * List all carrier parcel template objects. &lt;br&gt; Use the following query string params to filter the results as needed. &lt;br&gt;
+     * &lt;ul&gt;
+     * &lt;li&gt;`include=all` (the default). Includes templates from all carriers &lt;/li&gt;
+     * &lt;li&gt;`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) &lt;/li&gt;
+     * &lt;li&gt;`include=enabled`. includes templates only for carriers which the user has added and enabled &lt;/li&gt;
+     * &lt;li&gt;`carrier=*token*`. filter by specific carrier, e.g. fedex, usps &lt;/li&gt;
+     * &lt;/ul&gt;
      * @return The call builder
      */
     public com.shippo.sdk.models.operations.ListCarrierParcelTemplatesRequestBuilder list() {
@@ -53,7 +59,13 @@ public class CarrierParcelTemplates implements
 
     /**
      * List all carrier parcel templates
-     * List all carrier parcel template objects. &lt;br&gt; Use the following query string params to filter the results as needed. &lt;br&gt; &lt;ul&gt; &lt;li&gt;`include=all` (the default). Includes templates from all carriers &lt;/li&gt; &lt;li&gt;`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) &lt;/li&gt; &lt;li&gt;`include=enabled`. includes templates only for carriers which the user has added and enabled &lt;/li&gt; &lt;li&gt;`carrier=*token*`. filter by specific carrier, e.g. fedex, usps &lt;/li&gt; &lt;/ul&gt;
+     * List all carrier parcel template objects. &lt;br&gt; Use the following query string params to filter the results as needed. &lt;br&gt;
+     * &lt;ul&gt;
+     * &lt;li&gt;`include=all` (the default). Includes templates from all carriers &lt;/li&gt;
+     * &lt;li&gt;`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) &lt;/li&gt;
+     * &lt;li&gt;`include=enabled`. includes templates only for carriers which the user has added and enabled &lt;/li&gt;
+     * &lt;li&gt;`carrier=*token*`. filter by specific carrier, e.g. fedex, usps &lt;/li&gt;
+     * &lt;/ul&gt;
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -62,7 +74,13 @@ public class CarrierParcelTemplates implements
     }
     /**
      * List all carrier parcel templates
-     * List all carrier parcel template objects. &lt;br&gt; Use the following query string params to filter the results as needed. &lt;br&gt; &lt;ul&gt; &lt;li&gt;`include=all` (the default). Includes templates from all carriers &lt;/li&gt; &lt;li&gt;`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) &lt;/li&gt; &lt;li&gt;`include=enabled`. includes templates only for carriers which the user has added and enabled &lt;/li&gt; &lt;li&gt;`carrier=*token*`. filter by specific carrier, e.g. fedex, usps &lt;/li&gt; &lt;/ul&gt;
+     * List all carrier parcel template objects. &lt;br&gt; Use the following query string params to filter the results as needed. &lt;br&gt;
+     * &lt;ul&gt;
+     * &lt;li&gt;`include=all` (the default). Includes templates from all carriers &lt;/li&gt;
+     * &lt;li&gt;`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) &lt;/li&gt;
+     * &lt;li&gt;`include=enabled`. includes templates only for carriers which the user has added and enabled &lt;/li&gt;
+     * &lt;li&gt;`carrier=*token*`. filter by specific carrier, e.g. fedex, usps &lt;/li&gt;
+     * &lt;/ul&gt;
      * @param include filter by user or enabled
      * @param carrier filter by specific carrier
      * @param shippoApiVersion String used to pick a non-default API version to use

@@ -14,7 +14,13 @@ A carrier parcel template represents a package used for shipping that has preset
 
 ## list
 
-List all carrier parcel template objects. <br> Use the following query string params to filter the results as needed. <br> <ul> <li>`include=all` (the default). Includes templates from all carriers </li> <li>`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) </li> <li>`include=enabled`. includes templates only for carriers which the user has added and enabled </li> <li>`carrier=*token*`. filter by specific carrier, e.g. fedex, usps </li> </ul>
+List all carrier parcel template objects. <br> Use the following query string params to filter the results as needed. <br>
+<ul>
+<li>`include=all` (the default). Includes templates from all carriers </li>
+<li>`include=user`. Includes templates only from carriers which the user has added (whether or not they're currently enabled) </li>
+<li>`include=enabled`. includes templates only for carriers which the user has added and enabled </li>
+<li>`carrier=*token*`. filter by specific carrier, e.g. fedex, usps </li>
+</ul>
 
 ### Example Usage
 
@@ -76,12 +82,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListCarrierParcelTemplatesResponse>](../../models/operations/ListCarrierParcelTemplatesResponse.md)**
+**[com.shippo.sdk.models.operations.ListCarrierParcelTemplatesResponse](../../models/operations/ListCarrierParcelTemplatesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -145,9 +151,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetCarrierParcelTemplateResponse>](../../models/operations/GetCarrierParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.GetCarrierParcelTemplateResponse](../../models/operations/GetCarrierParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

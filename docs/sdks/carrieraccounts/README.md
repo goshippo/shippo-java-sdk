@@ -84,12 +84,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListCarrierAccountsResponse>](../../models/operations/ListCarrierAccountsResponse.md)**
+**[com.shippo.sdk.models.operations.ListCarrierAccountsResponse](../../models/operations/ListCarrierAccountsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -168,12 +168,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateCarrierAccountResponse>](../../models/operations/CreateCarrierAccountResponse.md)**
+**[com.shippo.sdk.models.operations.CreateCarrierAccountResponse](../../models/operations/CreateCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -237,12 +237,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetCarrierAccountResponse>](../../models/operations/GetCarrierAccountResponse.md)**
+**[com.shippo.sdk.models.operations.GetCarrierAccountResponse](../../models/operations/GetCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## update
 
@@ -335,12 +335,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateCarrierAccountResponse>](../../models/operations/UpdateCarrierAccountResponse.md)**
+**[com.shippo.sdk.models.operations.UpdateCarrierAccountResponse](../../models/operations/UpdateCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## initiateOauth2Signin
 
@@ -415,7 +415,7 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.InitiateOauth2SigninResponse>](../../models/operations/InitiateOauth2SigninResponse.md)**
+**[com.shippo.sdk.models.operations.InitiateOauth2SigninResponse](../../models/operations/InitiateOauth2SigninResponse.md)**
 ### Errors
 
 | Error Object                                                          | Status Code                                                           | Content Type                                                          |
@@ -423,7 +423,7 @@ public class Application {
 | models/errors/InitiateOauth2SigninResponseBody                        | 400                                                                   | application/json                                                      |
 | models/errors/InitiateOauth2SigninCarrierAccountsResponseBody         | 401                                                                   | application/json                                                      |
 | models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404                                                                   | application/json                                                      |
-| models/errors/SDKError                                                | 4xx-5xx                                                               | */*                                                                   |
+| models/errors/SDKError                                                | 4xx-5xx                                                               | \*\/*                                                                 |
 
 ## register
 
@@ -491,12 +491,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.RegisterCarrierAccountResponse>](../../models/operations/RegisterCarrierAccountResponse.md)**
+**[com.shippo.sdk.models.operations.RegisterCarrierAccountResponse](../../models/operations/RegisterCarrierAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getRegistrationStatus
 
@@ -560,9 +560,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetCarrierRegistrationStatusResponse>](../../models/operations/GetCarrierRegistrationStatusResponse.md)**
+**[com.shippo.sdk.models.operations.GetCarrierRegistrationStatusResponse](../../models/operations/GetCarrierRegistrationStatusResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

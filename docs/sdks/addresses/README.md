@@ -77,12 +77,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListAddressesResponse>](../../models/operations/ListAddressesResponse.md)**
+**[com.shippo.sdk.models.operations.ListAddressesResponse](../../models/operations/ListAddressesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -161,12 +161,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateAddressResponse>](../../models/operations/CreateAddressResponse.md)**
+**[com.shippo.sdk.models.operations.CreateAddressResponse](../../models/operations/CreateAddressResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -230,12 +230,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetAddressResponse>](../../models/operations/GetAddressResponse.md)**
+**[com.shippo.sdk.models.operations.GetAddressResponse](../../models/operations/GetAddressResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## validate
 
@@ -299,9 +299,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ValidateAddressResponse>](../../models/operations/ValidateAddressResponse.md)**
+**[com.shippo.sdk.models.operations.ValidateAddressResponse](../../models/operations/ValidateAddressResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

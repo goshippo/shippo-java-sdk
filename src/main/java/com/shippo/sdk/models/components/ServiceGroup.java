@@ -52,7 +52,9 @@ public class ServiceGroup {
     private Optional<? extends String> freeShippingThresholdCurrency;
 
     /**
-     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum cart total (total cost of items in the cart) for this service group to be returned for rates at checkout. Optional unless type is `FREE_SHIPPING`
+     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum 
+     * cart total (total cost of items in the cart) for this service group to be returned for rates at 
+     * checkout. Optional unless type is `FREE_SHIPPING`
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("free_shipping_threshold_min")
@@ -72,7 +74,10 @@ public class ServiceGroup {
     private Optional<? extends Long> rateAdjustment;
 
     /**
-     * The type of the service group.&lt;br&gt; `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
+     * The type of the service group.&lt;br&gt; 
+     * `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; 
+     * `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; 
+     * `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
      */
     @JsonProperty("type")
     private ServiceGroupTypeEnum type;
@@ -179,7 +184,9 @@ public class ServiceGroup {
     }
 
     /**
-     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum cart total (total cost of items in the cart) for this service group to be returned for rates at checkout. Optional unless type is `FREE_SHIPPING`
+     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum 
+     * cart total (total cost of items in the cart) for this service group to be returned for rates at 
+     * checkout. Optional unless type is `FREE_SHIPPING`
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -205,7 +212,10 @@ public class ServiceGroup {
     }
 
     /**
-     * The type of the service group.&lt;br&gt; `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
+     * The type of the service group.&lt;br&gt; 
+     * `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; 
+     * `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; 
+     * `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
      */
     @JsonIgnore
     public ServiceGroupTypeEnum type() {
@@ -310,7 +320,9 @@ public class ServiceGroup {
     }
 
     /**
-     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum cart total (total cost of items in the cart) for this service group to be returned for rates at checkout. Optional unless type is `FREE_SHIPPING`
+     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum 
+     * cart total (total cost of items in the cart) for this service group to be returned for rates at 
+     * checkout. Optional unless type is `FREE_SHIPPING`
      */
     public ServiceGroup withFreeShippingThresholdMin(String freeShippingThresholdMin) {
         Utils.checkNotNull(freeShippingThresholdMin, "freeShippingThresholdMin");
@@ -319,7 +331,9 @@ public class ServiceGroup {
     }
 
     /**
-     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum cart total (total cost of items in the cart) for this service group to be returned for rates at checkout. Optional unless type is `FREE_SHIPPING`
+     * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum 
+     * cart total (total cost of items in the cart) for this service group to be returned for rates at 
+     * checkout. Optional unless type is `FREE_SHIPPING`
      */
     public ServiceGroup withFreeShippingThresholdMin(Optional<? extends String> freeShippingThresholdMin) {
         Utils.checkNotNull(freeShippingThresholdMin, "freeShippingThresholdMin");
@@ -355,7 +369,10 @@ public class ServiceGroup {
     }
 
     /**
-     * The type of the service group.&lt;br&gt; `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
+     * The type of the service group.&lt;br&gt; 
+     * `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; 
+     * `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; 
+     * `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
      */
     public ServiceGroup withType(ServiceGroupTypeEnum type) {
         Utils.checkNotNull(type, "type");
@@ -551,7 +568,9 @@ public class ServiceGroup {
         }
 
         /**
-         * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum cart total (total cost of items in the cart) for this service group to be returned for rates at checkout. Optional unless type is `FREE_SHIPPING`
+         * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum 
+         * cart total (total cost of items in the cart) for this service group to be returned for rates at 
+         * checkout. Optional unless type is `FREE_SHIPPING`
          */
         public Builder freeShippingThresholdMin(String freeShippingThresholdMin) {
             Utils.checkNotNull(freeShippingThresholdMin, "freeShippingThresholdMin");
@@ -560,7 +579,9 @@ public class ServiceGroup {
         }
 
         /**
-         * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum cart total (total cost of items in the cart) for this service group to be returned for rates at checkout. Optional unless type is `FREE_SHIPPING`
+         * For service groups of type `FREE_SHIPPING`, this field must be required to configure the minimum 
+         * cart total (total cost of items in the cart) for this service group to be returned for rates at 
+         * checkout. Optional unless type is `FREE_SHIPPING`
          */
         public Builder freeShippingThresholdMin(Optional<? extends String> freeShippingThresholdMin) {
             Utils.checkNotNull(freeShippingThresholdMin, "freeShippingThresholdMin");
@@ -596,7 +617,10 @@ public class ServiceGroup {
         }
 
         /**
-         * The type of the service group.&lt;br&gt; `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
+         * The type of the service group.&lt;br&gt; 
+         * `LIVE_RATE` - Shippo will make a rating request and return real-time rates for the shipping group, only falling back to the specified flat rate amount if no rates match a service level in the service group.&lt;br&gt; 
+         * `FLAT_RATE` - Returns a shipping option with the specified flat rate amount.&lt;br&gt; 
+         * `FREE_SHIPPING` - Returns a shipping option with a price of $0 only if the total cost of items exceeds the amount defined by `free_shipping_threshold_min`
          */
         public Builder type(ServiceGroupTypeEnum type) {
             Utils.checkNotNull(type, "type");

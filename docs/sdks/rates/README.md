@@ -74,12 +74,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetRateResponse>](../../models/operations/GetRateResponse.md)**
+**[com.shippo.sdk.models.operations.GetRateResponse](../../models/operations/GetRateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listShipmentRates
 
@@ -147,12 +147,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListShipmentRatesResponse>](../../models/operations/ListShipmentRatesResponse.md)**
+**[com.shippo.sdk.models.operations.ListShipmentRatesResponse](../../models/operations/ListShipmentRatesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listShipmentRatesByCurrencyCode
 
@@ -225,9 +225,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListShipmentRatesByCurrencyCodeResponse>](../../models/operations/ListShipmentRatesByCurrencyCodeResponse.md)**
+**[com.shippo.sdk.models.operations.ListShipmentRatesByCurrencyCodeResponse](../../models/operations/ListShipmentRatesByCurrencyCodeResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

@@ -46,7 +46,7 @@ public class CarrierParcelTemplate {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_variable_dimensions")
-    private Optional<? extends String> isVariableDimensions;
+    private Optional<? extends Boolean> isVariableDimensions;
 
     /**
      * The length of the package, in units specified by the distance_unit attribute
@@ -81,7 +81,7 @@ public class CarrierParcelTemplate {
             @JsonProperty("carrier") Optional<? extends String> carrier,
             @JsonProperty("distance_unit") Optional<? extends DistanceUnitEnum> distanceUnit,
             @JsonProperty("height") Optional<? extends String> height,
-            @JsonProperty("is_variable_dimensions") Optional<? extends String> isVariableDimensions,
+            @JsonProperty("is_variable_dimensions") Optional<? extends Boolean> isVariableDimensions,
             @JsonProperty("length") Optional<? extends String> length,
             @JsonProperty("name") Optional<? extends String> name,
             @JsonProperty("token") Optional<? extends String> token,
@@ -140,8 +140,8 @@ public class CarrierParcelTemplate {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> isVariableDimensions() {
-        return (Optional<String>) isVariableDimensions;
+    public Optional<Boolean> isVariableDimensions() {
+        return (Optional<Boolean>) isVariableDimensions;
     }
 
     /**
@@ -241,7 +241,7 @@ public class CarrierParcelTemplate {
     /**
      * True if the carrier parcel template allows custom dimensions, such as USPS Softpack.
      */
-    public CarrierParcelTemplate withIsVariableDimensions(String isVariableDimensions) {
+    public CarrierParcelTemplate withIsVariableDimensions(boolean isVariableDimensions) {
         Utils.checkNotNull(isVariableDimensions, "isVariableDimensions");
         this.isVariableDimensions = Optional.ofNullable(isVariableDimensions);
         return this;
@@ -250,7 +250,7 @@ public class CarrierParcelTemplate {
     /**
      * True if the carrier parcel template allows custom dimensions, such as USPS Softpack.
      */
-    public CarrierParcelTemplate withIsVariableDimensions(Optional<? extends String> isVariableDimensions) {
+    public CarrierParcelTemplate withIsVariableDimensions(Optional<? extends Boolean> isVariableDimensions) {
         Utils.checkNotNull(isVariableDimensions, "isVariableDimensions");
         this.isVariableDimensions = isVariableDimensions;
         return this;
@@ -382,7 +382,7 @@ public class CarrierParcelTemplate {
  
         private Optional<? extends String> height = Optional.empty();
  
-        private Optional<? extends String> isVariableDimensions = Optional.empty();
+        private Optional<? extends Boolean> isVariableDimensions = Optional.empty();
  
         private Optional<? extends String> length = Optional.empty();
  
@@ -453,7 +453,7 @@ public class CarrierParcelTemplate {
         /**
          * True if the carrier parcel template allows custom dimensions, such as USPS Softpack.
          */
-        public Builder isVariableDimensions(String isVariableDimensions) {
+        public Builder isVariableDimensions(boolean isVariableDimensions) {
             Utils.checkNotNull(isVariableDimensions, "isVariableDimensions");
             this.isVariableDimensions = Optional.ofNullable(isVariableDimensions);
             return this;
@@ -462,7 +462,7 @@ public class CarrierParcelTemplate {
         /**
          * True if the carrier parcel template allows custom dimensions, such as USPS Softpack.
          */
-        public Builder isVariableDimensions(Optional<? extends String> isVariableDimensions) {
+        public Builder isVariableDimensions(Optional<? extends Boolean> isVariableDimensions) {
             Utils.checkNotNull(isVariableDimensions, "isVariableDimensions");
             this.isVariableDimensions = isVariableDimensions;
             return this;

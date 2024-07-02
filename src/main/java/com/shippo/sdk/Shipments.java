@@ -94,50 +94,12 @@ public class Shipments implements
      * 
      *   Example URL:&lt;br&gt;
      *     `https://api.goshippo.com/shipments/?object_created_gte=2017-01-01T00:00:30&amp;object_created_lt=2017-04-01T00:00:30`
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public com.shippo.sdk.models.operations.ListShipmentsResponse listDirect() throws Exception {
-        return list(Optional.empty(), Optional.empty(), Optional.empty());
-    }
-    /**
-     * List all shipments
-     * Returns a list of all shipment objects.&lt;br&gt;&lt;br&gt;
-     * In order to filter results, you must use the below path parameters. 
-     * A maximum date range of 90 days is permitted. 
-     * Provided dates should be ISO 8601 UTC dates (timezone offsets are currently not supported).&lt;br&gt;&lt;br&gt;
-     * 
-     * Optional path parameters:&lt;br&gt;
-     *   `object_created_gt`- object(s) created greater than a provided date time&lt;br&gt;
-     *   `object_created_gte` - object(s) created greater than or equal to a provided date time&lt;br&gt;
-     *   `object_created_lt` - object(s) created less than a provided date time&lt;br&gt;
-     *   `object_created_lte` - object(s) created less than or equal to a provided date time&lt;br&gt;
-     * 
-     *   Date format examples:&lt;br&gt;
-     *     `2017-01-01`&lt;br&gt;
-     *     `2017-01-01T03:30:30` or `2017-01-01T03:30:30.5`&lt;br&gt;
-     *     `2017-01-01T03:30:30Z`&lt;br&gt;&lt;br&gt;
-     * 
-     *   Example URL:&lt;br&gt;
-     *     `https://api.goshippo.com/shipments/?object_created_gte=2017-01-01T00:00:30&amp;object_created_lt=2017-04-01T00:00:30`
-     * @param page The page number you want to select
-     * @param results The number of results to return per page (max 100)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param request The request object containing all of the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public com.shippo.sdk.models.operations.ListShipmentsResponse list(
-            Optional<? extends Long> page,
-            Optional<? extends Long> results,
-            Optional<? extends String> shippoApiVersion) throws Exception {
-        com.shippo.sdk.models.operations.ListShipmentsRequest request =
-            com.shippo.sdk.models.operations.ListShipmentsRequest
-                .builder()
-                .page(page)
-                .results(results)
-                .shippoApiVersion(shippoApiVersion)
-                .build();
-        
+            com.shippo.sdk.models.operations.ListShipmentsRequest request) throws Exception {
         String _baseUrl = this.sdkConfiguration.serverUrl;
         String _url = Utils.generateURL(
                 _baseUrl,

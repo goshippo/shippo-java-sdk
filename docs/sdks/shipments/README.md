@@ -65,10 +65,11 @@ public class Application {
                 .shippoApiVersion("2018-02-08")
                 .build();
 
+            ListShipmentsRequest req = ListShipmentsRequest.builder()
+                .build();
+
             ListShipmentsResponse res = sdk.shipments().list()
-                .page(1L)
-                .results(25L)
-                .shippoApiVersion("2018-02-08")
+                .request(req)
                 .call();
 
             if (res.shipmentPaginatedList().isPresent()) {
@@ -88,21 +89,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `page`                                               | *Optional<? extends Long>*                           | :heavy_minus_sign:                                   | The page number you want to select                   |                                                      |
-| `results`                                            | *Optional<? extends Long>*                           | :heavy_minus_sign:                                   | The number of results to return per page (max 100)   |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                | [com.shippo.sdk.models.operations.ListShipmentsRequest](../../models/operations/ListShipmentsRequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListShipmentsResponse>](../../models/operations/ListShipmentsResponse.md)**
+**[com.shippo.sdk.models.operations.ListShipmentsResponse](../../models/operations/ListShipmentsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -388,12 +387,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateShipmentResponse>](../../models/operations/CreateShipmentResponse.md)**
+**[com.shippo.sdk.models.operations.CreateShipmentResponse](../../models/operations/CreateShipmentResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -457,9 +456,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetShipmentResponse>](../../models/operations/GetShipmentResponse.md)**
+**[com.shippo.sdk.models.operations.GetShipmentResponse](../../models/operations/GetShipmentResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

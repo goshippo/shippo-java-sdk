@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 public class ListShipmentsRequest {
@@ -32,6 +33,30 @@ public class ListShipmentsRequest {
     private Optional<? extends Long> results;
 
     /**
+     * Object(s) created greater than a provided date and time.
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=object_created_gt")
+    private Optional<? extends OffsetDateTime> objectCreatedGt;
+
+    /**
+     * Object(s) created greater than or equal to a provided date and time.
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=object_created_gte")
+    private Optional<? extends OffsetDateTime> objectCreatedGte;
+
+    /**
+     * Object(s) created lesser than a provided date and time.
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=object_created_lt")
+    private Optional<? extends OffsetDateTime> objectCreatedLt;
+
+    /**
+     * Object(s) created lesser than or equal to a provided date and time.
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=object_created_lte")
+    private Optional<? extends OffsetDateTime> objectCreatedLte;
+
+    /**
      * String used to pick a non-default API version to use
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=SHIPPO-API-VERSION")
@@ -41,17 +66,29 @@ public class ListShipmentsRequest {
     public ListShipmentsRequest(
             Optional<? extends Long> page,
             Optional<? extends Long> results,
+            Optional<? extends OffsetDateTime> objectCreatedGt,
+            Optional<? extends OffsetDateTime> objectCreatedGte,
+            Optional<? extends OffsetDateTime> objectCreatedLt,
+            Optional<? extends OffsetDateTime> objectCreatedLte,
             Optional<? extends String> shippoApiVersion) {
         Utils.checkNotNull(page, "page");
         Utils.checkNotNull(results, "results");
+        Utils.checkNotNull(objectCreatedGt, "objectCreatedGt");
+        Utils.checkNotNull(objectCreatedGte, "objectCreatedGte");
+        Utils.checkNotNull(objectCreatedLt, "objectCreatedLt");
+        Utils.checkNotNull(objectCreatedLte, "objectCreatedLte");
         Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
         this.page = page;
         this.results = results;
+        this.objectCreatedGt = objectCreatedGt;
+        this.objectCreatedGte = objectCreatedGte;
+        this.objectCreatedLt = objectCreatedLt;
+        this.objectCreatedLte = objectCreatedLte;
         this.shippoApiVersion = shippoApiVersion;
     }
     
     public ListShipmentsRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -70,6 +107,42 @@ public class ListShipmentsRequest {
     @JsonIgnore
     public Optional<Long> results() {
         return (Optional<Long>) results;
+    }
+
+    /**
+     * Object(s) created greater than a provided date and time.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> objectCreatedGt() {
+        return (Optional<OffsetDateTime>) objectCreatedGt;
+    }
+
+    /**
+     * Object(s) created greater than or equal to a provided date and time.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> objectCreatedGte() {
+        return (Optional<OffsetDateTime>) objectCreatedGte;
+    }
+
+    /**
+     * Object(s) created lesser than a provided date and time.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> objectCreatedLt() {
+        return (Optional<OffsetDateTime>) objectCreatedLt;
+    }
+
+    /**
+     * Object(s) created lesser than or equal to a provided date and time.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> objectCreatedLte() {
+        return (Optional<OffsetDateTime>) objectCreatedLte;
     }
 
     /**
@@ -122,6 +195,78 @@ public class ListShipmentsRequest {
     }
 
     /**
+     * Object(s) created greater than a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedGt(OffsetDateTime objectCreatedGt) {
+        Utils.checkNotNull(objectCreatedGt, "objectCreatedGt");
+        this.objectCreatedGt = Optional.ofNullable(objectCreatedGt);
+        return this;
+    }
+
+    /**
+     * Object(s) created greater than a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedGt(Optional<? extends OffsetDateTime> objectCreatedGt) {
+        Utils.checkNotNull(objectCreatedGt, "objectCreatedGt");
+        this.objectCreatedGt = objectCreatedGt;
+        return this;
+    }
+
+    /**
+     * Object(s) created greater than or equal to a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedGte(OffsetDateTime objectCreatedGte) {
+        Utils.checkNotNull(objectCreatedGte, "objectCreatedGte");
+        this.objectCreatedGte = Optional.ofNullable(objectCreatedGte);
+        return this;
+    }
+
+    /**
+     * Object(s) created greater than or equal to a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedGte(Optional<? extends OffsetDateTime> objectCreatedGte) {
+        Utils.checkNotNull(objectCreatedGte, "objectCreatedGte");
+        this.objectCreatedGte = objectCreatedGte;
+        return this;
+    }
+
+    /**
+     * Object(s) created lesser than a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedLt(OffsetDateTime objectCreatedLt) {
+        Utils.checkNotNull(objectCreatedLt, "objectCreatedLt");
+        this.objectCreatedLt = Optional.ofNullable(objectCreatedLt);
+        return this;
+    }
+
+    /**
+     * Object(s) created lesser than a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedLt(Optional<? extends OffsetDateTime> objectCreatedLt) {
+        Utils.checkNotNull(objectCreatedLt, "objectCreatedLt");
+        this.objectCreatedLt = objectCreatedLt;
+        return this;
+    }
+
+    /**
+     * Object(s) created lesser than or equal to a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedLte(OffsetDateTime objectCreatedLte) {
+        Utils.checkNotNull(objectCreatedLte, "objectCreatedLte");
+        this.objectCreatedLte = Optional.ofNullable(objectCreatedLte);
+        return this;
+    }
+
+    /**
+     * Object(s) created lesser than or equal to a provided date and time.
+     */
+    public ListShipmentsRequest withObjectCreatedLte(Optional<? extends OffsetDateTime> objectCreatedLte) {
+        Utils.checkNotNull(objectCreatedLte, "objectCreatedLte");
+        this.objectCreatedLte = objectCreatedLte;
+        return this;
+    }
+
+    /**
      * String used to pick a non-default API version to use
      */
     public ListShipmentsRequest withShippoApiVersion(String shippoApiVersion) {
@@ -151,6 +296,10 @@ public class ListShipmentsRequest {
         return 
             java.util.Objects.deepEquals(this.page, other.page) &&
             java.util.Objects.deepEquals(this.results, other.results) &&
+            java.util.Objects.deepEquals(this.objectCreatedGt, other.objectCreatedGt) &&
+            java.util.Objects.deepEquals(this.objectCreatedGte, other.objectCreatedGte) &&
+            java.util.Objects.deepEquals(this.objectCreatedLt, other.objectCreatedLt) &&
+            java.util.Objects.deepEquals(this.objectCreatedLte, other.objectCreatedLte) &&
             java.util.Objects.deepEquals(this.shippoApiVersion, other.shippoApiVersion);
     }
     
@@ -159,6 +308,10 @@ public class ListShipmentsRequest {
         return java.util.Objects.hash(
             page,
             results,
+            objectCreatedGt,
+            objectCreatedGte,
+            objectCreatedLt,
+            objectCreatedLte,
             shippoApiVersion);
     }
     
@@ -167,6 +320,10 @@ public class ListShipmentsRequest {
         return Utils.toString(ListShipmentsRequest.class,
                 "page", page,
                 "results", results,
+                "objectCreatedGt", objectCreatedGt,
+                "objectCreatedGte", objectCreatedGte,
+                "objectCreatedLt", objectCreatedLt,
+                "objectCreatedLte", objectCreatedLte,
                 "shippoApiVersion", shippoApiVersion);
     }
     
@@ -175,6 +332,14 @@ public class ListShipmentsRequest {
         private Optional<? extends Long> page;
  
         private Optional<? extends Long> results;
+ 
+        private Optional<? extends OffsetDateTime> objectCreatedGt = Optional.empty();
+ 
+        private Optional<? extends OffsetDateTime> objectCreatedGte = Optional.empty();
+ 
+        private Optional<? extends OffsetDateTime> objectCreatedLt = Optional.empty();
+ 
+        private Optional<? extends OffsetDateTime> objectCreatedLte = Optional.empty();
  
         private Optional<? extends String> shippoApiVersion = Optional.empty();  
         
@@ -219,6 +384,78 @@ public class ListShipmentsRequest {
         }
 
         /**
+         * Object(s) created greater than a provided date and time.
+         */
+        public Builder objectCreatedGt(OffsetDateTime objectCreatedGt) {
+            Utils.checkNotNull(objectCreatedGt, "objectCreatedGt");
+            this.objectCreatedGt = Optional.ofNullable(objectCreatedGt);
+            return this;
+        }
+
+        /**
+         * Object(s) created greater than a provided date and time.
+         */
+        public Builder objectCreatedGt(Optional<? extends OffsetDateTime> objectCreatedGt) {
+            Utils.checkNotNull(objectCreatedGt, "objectCreatedGt");
+            this.objectCreatedGt = objectCreatedGt;
+            return this;
+        }
+
+        /**
+         * Object(s) created greater than or equal to a provided date and time.
+         */
+        public Builder objectCreatedGte(OffsetDateTime objectCreatedGte) {
+            Utils.checkNotNull(objectCreatedGte, "objectCreatedGte");
+            this.objectCreatedGte = Optional.ofNullable(objectCreatedGte);
+            return this;
+        }
+
+        /**
+         * Object(s) created greater than or equal to a provided date and time.
+         */
+        public Builder objectCreatedGte(Optional<? extends OffsetDateTime> objectCreatedGte) {
+            Utils.checkNotNull(objectCreatedGte, "objectCreatedGte");
+            this.objectCreatedGte = objectCreatedGte;
+            return this;
+        }
+
+        /**
+         * Object(s) created lesser than a provided date and time.
+         */
+        public Builder objectCreatedLt(OffsetDateTime objectCreatedLt) {
+            Utils.checkNotNull(objectCreatedLt, "objectCreatedLt");
+            this.objectCreatedLt = Optional.ofNullable(objectCreatedLt);
+            return this;
+        }
+
+        /**
+         * Object(s) created lesser than a provided date and time.
+         */
+        public Builder objectCreatedLt(Optional<? extends OffsetDateTime> objectCreatedLt) {
+            Utils.checkNotNull(objectCreatedLt, "objectCreatedLt");
+            this.objectCreatedLt = objectCreatedLt;
+            return this;
+        }
+
+        /**
+         * Object(s) created lesser than or equal to a provided date and time.
+         */
+        public Builder objectCreatedLte(OffsetDateTime objectCreatedLte) {
+            Utils.checkNotNull(objectCreatedLte, "objectCreatedLte");
+            this.objectCreatedLte = Optional.ofNullable(objectCreatedLte);
+            return this;
+        }
+
+        /**
+         * Object(s) created lesser than or equal to a provided date and time.
+         */
+        public Builder objectCreatedLte(Optional<? extends OffsetDateTime> objectCreatedLte) {
+            Utils.checkNotNull(objectCreatedLte, "objectCreatedLte");
+            this.objectCreatedLte = objectCreatedLte;
+            return this;
+        }
+
+        /**
          * String used to pick a non-default API version to use
          */
         public Builder shippoApiVersion(String shippoApiVersion) {
@@ -246,6 +483,10 @@ public class ListShipmentsRequest {
             return new ListShipmentsRequest(
                 page,
                 results,
+                objectCreatedGt,
+                objectCreatedGte,
+                objectCreatedLt,
+                objectCreatedLte,
                 shippoApiVersion);
         }
 

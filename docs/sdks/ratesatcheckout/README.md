@@ -104,12 +104,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateLiveRateResponse>](../../models/operations/CreateLiveRateResponse.md)**
+**[com.shippo.sdk.models.operations.CreateLiveRateResponse](../../models/operations/CreateLiveRateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getDefaultParcelTemplate
 
@@ -171,12 +171,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetDefaultParcelTemplateResponse>](../../models/operations/GetDefaultParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.GetDefaultParcelTemplateResponse](../../models/operations/GetDefaultParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## updateDefaultParcelTemplate
 
@@ -242,12 +242,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateDefaultParcelTemplateResponse>](../../models/operations/UpdateDefaultParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.UpdateDefaultParcelTemplateResponse](../../models/operations/UpdateDefaultParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## deleteDefaultParcelTemplate
 
@@ -307,9 +307,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.DeleteDefaultParcelTemplateResponse>](../../models/operations/DeleteDefaultParcelTemplateResponse.md)**
+**[com.shippo.sdk.models.operations.DeleteDefaultParcelTemplateResponse](../../models/operations/DeleteDefaultParcelTemplateResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

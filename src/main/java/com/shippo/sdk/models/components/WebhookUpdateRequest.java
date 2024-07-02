@@ -20,6 +20,9 @@ import java.util.Optional;
 
 public class WebhookUpdateRequest {
 
+    /**
+     * Type of event that triggered the webhook.
+     */
     @JsonProperty("event")
     private WebhookEventTypeEnum event;
 
@@ -65,6 +68,9 @@ public class WebhookUpdateRequest {
         this(event, url, Optional.empty(), Optional.empty());
     }
 
+    /**
+     * Type of event that triggered the webhook.
+     */
     @JsonIgnore
     public WebhookEventTypeEnum event() {
         return event;
@@ -100,6 +106,9 @@ public class WebhookUpdateRequest {
         return new Builder();
     }
 
+    /**
+     * Type of event that triggered the webhook.
+     */
     public WebhookUpdateRequest withEvent(WebhookEventTypeEnum event) {
         Utils.checkNotNull(event, "event");
         this.event = event;
@@ -199,6 +208,9 @@ public class WebhookUpdateRequest {
           // force use of static builder() method
         }
 
+        /**
+         * Type of event that triggered the webhook.
+         */
         public Builder event(WebhookEventTypeEnum event) {
             Utils.checkNotNull(event, "event");
             this.event = event;

@@ -77,12 +77,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateRefundResponse>](../../models/operations/CreateRefundResponse.md)**
+**[com.shippo.sdk.models.operations.CreateRefundResponse](../../models/operations/CreateRefundResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## list
 
@@ -144,12 +144,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListRefundsResponse>](../../models/operations/ListRefundsResponse.md)**
+**[com.shippo.sdk.models.operations.ListRefundsResponse](../../models/operations/ListRefundsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -213,9 +213,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetRefundResponse>](../../models/operations/GetRefundResponse.md)**
+**[com.shippo.sdk.models.operations.GetRefundResponse](../../models/operations/GetRefundResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

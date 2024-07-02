@@ -87,12 +87,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListOrdersResponse>](../../models/operations/ListOrdersResponse.md)**
+**[com.shippo.sdk.models.operations.ListOrdersResponse](../../models/operations/ListOrdersResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -216,12 +216,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateOrderResponse>](../../models/operations/CreateOrderResponse.md)**
+**[com.shippo.sdk.models.operations.CreateOrderResponse](../../models/operations/CreateOrderResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -285,9 +285,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetOrderResponse>](../../models/operations/GetOrderResponse.md)**
+**[com.shippo.sdk.models.operations.GetOrderResponse](../../models/operations/GetOrderResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

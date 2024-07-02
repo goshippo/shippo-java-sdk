@@ -15,6 +15,9 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+/**
+ * WebhookEventTypeEnum - Type of event that triggered the webhook.
+ */
 public enum WebhookEventTypeEnum {
     TRANSACTION_CREATED("transaction_created"),
     TRANSACTION_UPDATED("transaction_updated"),
