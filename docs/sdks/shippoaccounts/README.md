@@ -79,12 +79,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListShippoAccountsResponse>](../../models/operations/ListShippoAccountsResponse.md)**
+**[com.shippo.sdk.models.operations.ListShippoAccountsResponse](../../models/operations/ListShippoAccountsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -153,12 +153,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateShippoAccountResponse>](../../models/operations/CreateShippoAccountResponse.md)**
+**[com.shippo.sdk.models.operations.CreateShippoAccountResponse](../../models/operations/CreateShippoAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -222,12 +222,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetShippoAccountResponse>](../../models/operations/GetShippoAccountResponse.md)**
+**[com.shippo.sdk.models.operations.GetShippoAccountResponse](../../models/operations/GetShippoAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## update
 
@@ -298,9 +298,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateShippoAccountResponse>](../../models/operations/UpdateShippoAccountResponse.md)**
+**[com.shippo.sdk.models.operations.UpdateShippoAccountResponse](../../models/operations/UpdateShippoAccountResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

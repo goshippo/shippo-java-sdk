@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: 83c79445-e1aa-4008-8835-519234c13f68
 management:
-  docChecksum: f8a55a9af3dcccda8c950270aef6ae0b
+  docChecksum: 7445f937979a0cde668af1a2056afb53
   docVersion: "2018-02-08"
-  speakeasyVersion: 1.320.1
-  generationVersion: 2.354.2
-  releaseVersion: 0.3.0
-  configChecksum: bf4bce285d96180ce8c78c9b0656e1e5
+  speakeasyVersion: 1.325.0
+  generationVersion: 2.356.0
+  releaseVersion: 0.4.0
+  configChecksum: 56eaa9d16dc1d3113644ad91f019c50a
   repoURL: https://github.com/goshippo/shippo-java-sdk.git
 features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.26.0
+    core: 3.26.1
     flattening: 2.81.1
     globalSecurity: 2.82.5
     globalSecurityCallbacks: 0.1.0
@@ -24,6 +24,7 @@ features:
     nullables: 0.1.0
     sdkHooks: 0.1.0
     unions: 0.0.4
+    webhooks: 1.0.0
 generatedFiles:
   - src/main/java/com/shippo/sdk/SecuritySource.java
   - src/main/java/com/shippo/sdk/SDKConfiguration.java
@@ -514,6 +515,9 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/components/WebhookEventTypeEnum.java
   - src/main/java/com/shippo/sdk/models/components/WebhookPaginatedList.java
   - src/main/java/com/shippo/sdk/models/components/Security.java
+  - src/main/java/com/shippo/sdk/models/components/WebhookPayloadBatch.java
+  - src/main/java/com/shippo/sdk/models/components/WebhookPayloadTrack.java
+  - src/main/java/com/shippo/sdk/models/components/WebhookPayloadTransaction.java
   - src/main/java/com/shippo/sdk/models/components/AddressValidationResultsMessageCodeEnum.java
   - src/main/java/com/shippo/sdk/models/components/AddressValidationResultsMessageSourceEnum.java
   - src/main/java/com/shippo/sdk/models/components/ServiceLevel.java
@@ -561,6 +565,9 @@ generatedFiles:
   - src/main/java/com/shippo/sdk/models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody.java
   - src/main/java/com/shippo/sdk/models/errors/InitiateOauth2SigninCarrierAccountsResponseBody.java
   - src/main/java/com/shippo/sdk/models/errors/InitiateOauth2SigninResponseBody.java
+  - src/main/java/com/shippo/sdk/models/webhooks/BatchResponse.java
+  - src/main/java/com/shippo/sdk/models/webhooks/TrackResponse.java
+  - src/main/java/com/shippo/sdk/models/webhooks/TransactionResponse.java
   - docs/models/operations/ListAddressesRequest.md
   - docs/models/operations/ListAddressesResponse.md
   - docs/models/operations/CreateAddressRequest.md
@@ -910,6 +917,9 @@ generatedFiles:
   - docs/models/components/WebhookEventTypeEnum.md
   - docs/models/components/WebhookPaginatedList.md
   - docs/models/components/Security.md
+  - docs/models/components/WebhookPayloadBatch.md
+  - docs/models/components/WebhookPayloadTrack.md
+  - docs/models/components/WebhookPayloadTransaction.md
   - docs/models/components/AddressValidationResultsMessageCodeEnum.md
   - docs/models/components/AddressValidationResultsMessageSourceEnum.md
   - docs/models/components/ServiceLevel.md
@@ -957,6 +967,9 @@ generatedFiles:
   - docs/models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody.md
   - docs/models/errors/InitiateOauth2SigninCarrierAccountsResponseBody.md
   - docs/models/errors/InitiateOauth2SigninResponseBody.md
+  - docs/models/webhooks/BatchResponse.md
+  - docs/models/webhooks/TrackResponse.md
+  - docs/models/webhooks/TransactionResponse.md
   - docs/sdks/shippo/README.md
   - docs/sdks/addresses/README.md
   - docs/sdks/batches/README.md

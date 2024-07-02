@@ -362,9 +362,7 @@ public class SDKMethodInterfaces {
 
     public interface MethodCallListShipments {
         com.shippo.sdk.models.operations.ListShipmentsResponse list(
-            Optional<? extends Long> page,
-            Optional<? extends Long> results,
-            Optional<? extends String> shippoApiVersion) throws Exception;
+            com.shippo.sdk.models.operations.ListShipmentsRequest request) throws Exception;
     }
 
 

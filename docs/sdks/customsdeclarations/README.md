@@ -77,12 +77,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListCustomsDeclarationsResponse>](../../models/operations/ListCustomsDeclarationsResponse.md)**
+**[com.shippo.sdk.models.operations.ListCustomsDeclarationsResponse](../../models/operations/ListCustomsDeclarationsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -192,12 +192,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateCustomsDeclarationResponse>](../../models/operations/CreateCustomsDeclarationResponse.md)**
+**[com.shippo.sdk.models.operations.CreateCustomsDeclarationResponse](../../models/operations/CreateCustomsDeclarationResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -263,9 +263,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetCustomsDeclarationResponse>](../../models/operations/GetCustomsDeclarationResponse.md)**
+**[com.shippo.sdk.models.operations.GetCustomsDeclarationResponse](../../models/operations/GetCustomsDeclarationResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

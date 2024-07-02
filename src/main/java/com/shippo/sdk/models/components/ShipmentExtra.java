@@ -186,7 +186,10 @@ public class ShipmentExtra {
     private Optional<? extends String> fulfillmentCenter;
 
     /**
-     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance to you shipment, do not set these parameters.
+     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, 
+     * specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance 
+     * by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance 
+     * to your shipment, do not set these parameters.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("insurance")
@@ -705,7 +708,10 @@ public class ShipmentExtra {
     }
 
     /**
-     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance to you shipment, do not set these parameters.
+     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, 
+     * specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance 
+     * by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance 
+     * to your shipment, do not set these parameters.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -1332,7 +1338,10 @@ public class ShipmentExtra {
     }
 
     /**
-     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance to you shipment, do not set these parameters.
+     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, 
+     * specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance 
+     * by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance 
+     * to your shipment, do not set these parameters.
      */
     public ShipmentExtra withInsurance(Insurance insurance) {
         Utils.checkNotNull(insurance, "insurance");
@@ -1341,7 +1350,10 @@ public class ShipmentExtra {
     }
 
     /**
-     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance to you shipment, do not set these parameters.
+     * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, 
+     * specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance 
+     * by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance 
+     * to your shipment, do not set these parameters.
      */
     public ShipmentExtra withInsurance(Optional<? extends Insurance> insurance) {
         Utils.checkNotNull(insurance, "insurance");
@@ -2432,7 +2444,10 @@ public class ShipmentExtra {
         }
 
         /**
-         * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance to you shipment, do not set these parameters.
+         * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, 
+         * specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance 
+         * by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance 
+         * to your shipment, do not set these parameters.
          */
         public Builder insurance(Insurance insurance) {
             Utils.checkNotNull(insurance, "insurance");
@@ -2441,7 +2456,10 @@ public class ShipmentExtra {
         }
 
         /**
-         * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance to you shipment, do not set these parameters.
+         * To add 3rd party insurance powered by &lt;a href="https://docs.goshippo.com/docs/shipments/shippinginsurance/"&gt;XCover&lt;/a&gt;, 
+         * specify &lt;br&gt; `amount`, `content`, and `currency`. &lt;br&gt; Alternatively, you can choose carrier provided insurance 
+         * by additionally specifying `provider` (UPS, FedEx and OnTrac only). &lt;br&gt;&lt;br&gt; If you do not want to add insurance 
+         * to your shipment, do not set these parameters.
          */
         public Builder insurance(Optional<? extends Insurance> insurance) {
             Utils.checkNotNull(insurance, "insurance");

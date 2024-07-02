@@ -74,12 +74,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListServiceGroupsResponse>](../../models/operations/ListServiceGroupsResponse.md)**
+**[com.shippo.sdk.models.operations.ListServiceGroupsResponse](../../models/operations/ListServiceGroupsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -157,12 +157,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateServiceGroupResponse>](../../models/operations/CreateServiceGroupResponse.md)**
+**[com.shippo.sdk.models.operations.CreateServiceGroupResponse](../../models/operations/CreateServiceGroupResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## update
 
@@ -242,12 +242,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateServiceGroupResponse>](../../models/operations/UpdateServiceGroupResponse.md)**
+**[com.shippo.sdk.models.operations.UpdateServiceGroupResponse](../../models/operations/UpdateServiceGroupResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## delete
 
@@ -309,9 +309,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.DeleteServiceGroupResponse>](../../models/operations/DeleteServiceGroupResponse.md)**
+**[com.shippo.sdk.models.operations.DeleteServiceGroupResponse](../../models/operations/DeleteServiceGroupResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

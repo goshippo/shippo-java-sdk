@@ -318,12 +318,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateBatchResponse>](../../models/operations/CreateBatchResponse.md)**
+**[com.shippo.sdk.models.operations.CreateBatchResponse](../../models/operations/CreateBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -390,12 +390,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetBatchResponse>](../../models/operations/GetBatchResponse.md)**
+**[com.shippo.sdk.models.operations.GetBatchResponse](../../models/operations/GetBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## addShipments
 
@@ -647,12 +647,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.AddShipmentsToBatchResponse>](../../models/operations/AddShipmentsToBatchResponse.md)**
+**[com.shippo.sdk.models.operations.AddShipmentsToBatchResponse](../../models/operations/AddShipmentsToBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## purchase
 
@@ -719,12 +719,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.PurchaseBatchResponse>](../../models/operations/PurchaseBatchResponse.md)**
+**[com.shippo.sdk.models.operations.PurchaseBatchResponse](../../models/operations/PurchaseBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## removeShipments
 
@@ -791,9 +791,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.RemoveShipmentsFromBatchResponse>](../../models/operations/RemoveShipmentsFromBatchResponse.md)**
+**[com.shippo.sdk.models.operations.RemoveShipmentsFromBatchResponse](../../models/operations/RemoveShipmentsFromBatchResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

@@ -19,80 +19,22 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class ListShipmentsRequestBuilder {
 
-    private Optional<? extends Long> page = Utils.readDefaultOrConstValue(
-                            "page",
-                            "1",
-                            new TypeReference<Optional<? extends Long>>() {});
-    private Optional<? extends Long> results = Utils.readDefaultOrConstValue(
-                            "results",
-                            "25",
-                            new TypeReference<Optional<? extends Long>>() {});
-    private Optional<? extends String> shippoApiVersion = Optional.empty();
+    private ListShipmentsRequest request;
     private final SDKMethodInterfaces.MethodCallListShipments sdk;
 
     public ListShipmentsRequestBuilder(SDKMethodInterfaces.MethodCallListShipments sdk) {
         this.sdk = sdk;
     }
-                
-    public ListShipmentsRequestBuilder page(long page) {
-        Utils.checkNotNull(page, "page");
-        this.page = Optional.of(page);
-        return this;
-    }
 
-    public ListShipmentsRequestBuilder page(Optional<? extends Long> page) {
-        Utils.checkNotNull(page, "page");
-        this.page = page;
-        return this;
-    }
-                
-    public ListShipmentsRequestBuilder results(long results) {
-        Utils.checkNotNull(results, "results");
-        this.results = Optional.of(results);
-        return this;
-    }
-
-    public ListShipmentsRequestBuilder results(Optional<? extends Long> results) {
-        Utils.checkNotNull(results, "results");
-        this.results = results;
-        return this;
-    }
-                
-    public ListShipmentsRequestBuilder shippoApiVersion(String shippoApiVersion) {
-        Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
-        this.shippoApiVersion = Optional.of(shippoApiVersion);
-        return this;
-    }
-
-    public ListShipmentsRequestBuilder shippoApiVersion(Optional<? extends String> shippoApiVersion) {
-        Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
-        this.shippoApiVersion = shippoApiVersion;
+    public ListShipmentsRequestBuilder request(ListShipmentsRequest request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
         return this;
     }
 
     public ListShipmentsResponse call() throws Exception {
-        if (page == null) {
-            page = _SINGLETON_VALUE_Page.value();
-        }
-        if (results == null) {
-            results = _SINGLETON_VALUE_Results.value();
-        }
 
         return sdk.list(
-            page,
-            results,
-            shippoApiVersion);
+            request);
     }
-
-    private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_Page =
-            new LazySingletonValue<>(
-                    "page",
-                    "1",
-                    new TypeReference<Optional<? extends Long>>() {});
-
-    private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_Results =
-            new LazySingletonValue<>(
-                    "results",
-                    "25",
-                    new TypeReference<Optional<? extends Long>>() {});
 }

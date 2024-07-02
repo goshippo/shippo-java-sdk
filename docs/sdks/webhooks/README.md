@@ -6,6 +6,10 @@
 Webhooks are a way for Shippo to notify your application when a specific event occurs. For example, when a label is purchased or when a shipment tracking status has changed. You can use webhooks to trigger actions in your application, such as sending an email or updating a database.
 <SchemaDefinition schemaRef="#/components/schemas/Webhook"/>
 
+# Webhook Payload
+The payload is the body of the POST request Shippo sends to the URL specified at the time of webhook registration.
+<SchemaDefinition schemaRef="#/components/schemas/WebhookPayload"/>
+
 ### Available Operations
 
 * [createWebhook](#createwebhook) - Create a new webhook
@@ -79,12 +83,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateWebhookResponse>](../../models/operations/CreateWebhookResponse.md)**
+**[com.shippo.sdk.models.operations.CreateWebhookResponse](../../models/operations/CreateWebhookResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listWebhooks
 
@@ -139,12 +143,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListWebhooksResponse>](../../models/operations/ListWebhooksResponse.md)**
+**[com.shippo.sdk.models.operations.ListWebhooksResponse](../../models/operations/ListWebhooksResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getWebhook
 
@@ -206,12 +210,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetWebhookResponse>](../../models/operations/GetWebhookResponse.md)**
+**[com.shippo.sdk.models.operations.GetWebhookResponse](../../models/operations/GetWebhookResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## updateWebhook
 
@@ -278,12 +282,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateWebhookResponse>](../../models/operations/UpdateWebhookResponse.md)**
+**[com.shippo.sdk.models.operations.UpdateWebhookResponse](../../models/operations/UpdateWebhookResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## deleteWebhook
 
@@ -343,9 +347,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.DeleteWebhookResponse>](../../models/operations/DeleteWebhookResponse.md)**
+**[com.shippo.sdk.models.operations.DeleteWebhookResponse](../../models/operations/DeleteWebhookResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

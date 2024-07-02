@@ -76,12 +76,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListCustomsItemsResponse>](../../models/operations/ListCustomsItemsResponse.md)**
+**[com.shippo.sdk.models.operations.ListCustomsItemsResponse](../../models/operations/ListCustomsItemsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## create
 
@@ -156,12 +156,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateCustomsItemResponse>](../../models/operations/CreateCustomsItemResponse.md)**
+**[com.shippo.sdk.models.operations.CreateCustomsItemResponse](../../models/operations/CreateCustomsItemResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -227,9 +227,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetCustomsItemResponse>](../../models/operations/GetCustomsItemResponse.md)**
+**[com.shippo.sdk.models.operations.GetCustomsItemResponse](../../models/operations/GetCustomsItemResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

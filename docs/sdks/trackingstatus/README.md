@@ -86,12 +86,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateTrackResponse>](../../models/operations/CreateTrackResponse.md)**
+**[com.shippo.sdk.models.operations.CreateTrackResponse](../../models/operations/CreateTrackResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## get
 
@@ -157,9 +157,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetTrackResponse>](../../models/operations/GetTrackResponse.md)**
+**[com.shippo.sdk.models.operations.GetTrackResponse](../../models/operations/GetTrackResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

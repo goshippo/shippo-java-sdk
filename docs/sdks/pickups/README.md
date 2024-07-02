@@ -100,9 +100,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreatePickupResponse>](../../models/operations/CreatePickupResponse.md)**
+**[com.shippo.sdk.models.operations.CreatePickupResponse](../../models/operations/CreatePickupResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
