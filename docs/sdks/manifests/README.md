@@ -28,45 +28,27 @@ Returns a list of all manifest objects.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.operations.ListManifestsResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            ListManifestsResponse res = sdk.manifests().list()
+        ListManifestsResponse res = sdk.manifests().list()
                 .page(1L)
                 .results(5L)
                 .shippoApiVersion("2018-02-08")
                 .call();
 
-            if (res.manifestPaginatedList().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.manifestPaginatedList().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
@@ -75,19 +57,20 @@ public class Application {
 
 | Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `page`                                                        | *Optional<? extends Long>*                                    | :heavy_minus_sign:                                            | The page number you want to select                            |                                                               |
-| `results`                                                     | *Optional<? extends Long>*                                    | :heavy_minus_sign:                                            | The number of results to return per page (max 100, default 5) |                                                               |
-| `shippoApiVersion`                                            | *Optional<? extends String>*                                  | :heavy_minus_sign:                                            | String used to pick a non-default API version to use          | 2018-02-08                                                    |
-
+| `page`                                                        | *Optional<Long>*                                              | :heavy_minus_sign:                                            | The page number you want to select                            |                                                               |
+| `results`                                                     | *Optional<Long>*                                              | :heavy_minus_sign:                                            | The number of results to return per page (max 100, default 5) |                                                               |
+| `shippoApiVersion`                                            | *Optional<String>*                                            | :heavy_minus_sign:                                            | String used to pick a non-default API version to use          | 2018-02-08                                                    |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListManifestsResponse>](../../models/operations/ListManifestsResponse.md)**
+**[ListManifestsResponse](../../models/operations/ListManifestsResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## create
 
@@ -99,85 +82,72 @@ Creates a new manifest object.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.AddressCreateRequest;
+import com.shippo.sdk.models.components.ManifestCreateRequest;
+import com.shippo.sdk.models.components.ManifestCreateRequestAddressFrom;
+import com.shippo.sdk.models.operations.CreateManifestResponse;
+import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            CreateManifestResponse res = sdk.manifests().create()
+        CreateManifestResponse res = sdk.manifests().create()
                 .shippoApiVersion("2018-02-08")
                 .manifestCreateRequest(ManifestCreateRequest.builder()
                     .carrierAccount("adcfdddf8ec64b84ad22772bce3ea37a")
                     .shipmentDate("2014-05-16T23:59:59Z")
                     .addressFrom(ManifestCreateRequestAddressFrom.of(AddressCreateRequest.builder()
-                                .country("US")
-                                .name("Shwan Ippotle")
-                                .company("Shippo")
-                                .street1("215 Clayton St.")
-                                .street3("")
-                                .streetNo("")
-                                .city("San Francisco")
-                                .state("CA")
-                                .zip("94117")
-                                .phone("+1 555 341 9393")
-                                .email("shippotle@shippo.com")
-                                .isResidential(true)
-                                .metadata("Customer ID 123456")
-                                .validate(true)
-                                .build()))
-                    .transactions(java.util.List.of(
+                        .country("US")
+                        .name("Shwan Ippotle")
+                        .company("Shippo")
+                        .street1("215 Clayton St.")
+                        .street3("")
+                        .streetNo("")
+                        .city("San Francisco")
+                        .state("CA")
+                        .zip("94117")
+                        .phone("+1 555 341 9393")
+                        .email("shippotle@shippo.com")
+                        .isResidential(true)
+                        .metadata("Customer ID 123456")
+                        .validate(true)
+                        .build()))
+                    .transactions(List.of(
                         "adcfdddf8ec64b84ad22772bce3ea37a"))
                     .build())
                 .call();
 
-            if (res.manifest().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.manifest().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                         | *Optional<? extends String>*                                                                               | :heavy_minus_sign:                                                                                         | String used to pick a non-default API version to use                                                       | 2018-02-08                                                                                                 |
-| `manifestCreateRequest`                                                                                    | [com.shippo.sdk.models.components.ManifestCreateRequest](../../models/components/ManifestCreateRequest.md) | :heavy_check_mark:                                                                                         | Manifest details and contact info.                                                                         |                                                                                                            |
-
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `shippoApiVersion`                                                        | *Optional<String>*                                                        | :heavy_minus_sign:                                                        | String used to pick a non-default API version to use                      | 2018-02-08                                                                |
+| `manifestCreateRequest`                                                   | [ManifestCreateRequest](../../models/components/ManifestCreateRequest.md) | :heavy_check_mark:                                                        | Manifest details and contact info.                                        |                                                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateManifestResponse>](../../models/operations/CreateManifestResponse.md)**
+**[CreateManifestResponse](../../models/operations/CreateManifestResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## get
 
@@ -189,44 +159,26 @@ Returns an existing manifest using an object ID.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.operations.GetManifestResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            GetManifestResponse res = sdk.manifests().get()
+        GetManifestResponse res = sdk.manifests().get()
                 .manifestId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
-            if (res.manifest().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.manifest().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
@@ -236,14 +188,14 @@ public class Application {
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `manifestId`                                         | *String*                                             | :heavy_check_mark:                                   | Object ID of the manifest to update                  |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetManifestResponse>](../../models/operations/GetManifestResponse.md)**
+**[GetManifestResponse](../../models/operations/GetManifestResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

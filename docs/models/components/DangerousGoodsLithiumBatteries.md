@@ -7,4 +7,4 @@ Container for specifying the presence of lithium batteries.
 
 | Field                                                 | Type                                                  | Required                                              | Description                                           |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `contains`                                            | *Optional<? extends Boolean>*                         | :heavy_minus_sign:                                    | Indicates if the shipment contains lithium batteries. |
+| `contains`                                            | *Optional<Boolean>*                                   | :heavy_minus_sign:                                    | Indicates if the shipment contains lithium batteries. |

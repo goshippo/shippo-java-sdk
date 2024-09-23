@@ -30,29 +30,20 @@ Registers a webhook that will send HTTP notifications to you when the status of 
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.TracksRequest;
+import com.shippo.sdk.models.operations.CreateTrackResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            CreateTrackResponse res = sdk.trackingStatus().create()
+        CreateTrackResponse res = sdk.trackingStatus().create()
                 .shippoApiVersion("2018-02-08")
                 .tracksRequest(TracksRequest.builder()
                     .carrier("usps")
@@ -61,37 +52,30 @@ public class Application {
                     .build())
                 .call();
 
-            if (res.track().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.track().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                         | *Optional<? extends String>*                                                               | :heavy_minus_sign:                                                                         | String used to pick a non-default API version to use                                       | 2018-02-08                                                                                 |
-| `tracksRequest`                                                                            | [com.shippo.sdk.models.components.TracksRequest](../../models/components/TracksRequest.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
-
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               | Example                                                   |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `shippoApiVersion`                                        | *Optional<String>*                                        | :heavy_minus_sign:                                        | String used to pick a non-default API version to use      | 2018-02-08                                                |
+| `tracksRequest`                                           | [TracksRequest](../../models/components/TracksRequest.md) | :heavy_check_mark:                                        | N/A                                                       |                                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateTrackResponse>](../../models/operations/CreateTrackResponse.md)**
+**[CreateTrackResponse](../../models/operations/CreateTrackResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## get
 
@@ -103,45 +87,27 @@ Returns the tracking status of a shipment using a carrier name and a tracking nu
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.operations.GetTrackResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            GetTrackResponse res = sdk.trackingStatus().get()
+        GetTrackResponse res = sdk.trackingStatus().get()
                 .trackingNumber("<value>")
                 .carrier("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
-            if (res.track().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.track().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
@@ -152,14 +118,14 @@ public class Application {
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `trackingNumber`                                     | *String*                                             | :heavy_check_mark:                                   | Tracking number                                      |                                                      |
 | `carrier`                                            | *String*                                             | :heavy_check_mark:                                   | Name of the carrier                                  |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetTrackResponse>](../../models/operations/GetTrackResponse.md)**
+**[GetTrackResponse](../../models/operations/GetTrackResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

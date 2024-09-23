@@ -7,4 +7,4 @@ Container for specifying the presence of biological material.
 
 | Field                                                   | Type                                                    | Required                                                | Description                                             |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `contains`                                              | *Optional<? extends Boolean>*                           | :heavy_minus_sign:                                      | Indicates if the shipment contains biological material. |
+| `contains`                                              | *Optional<Boolean>*                                     | :heavy_minus_sign:                                      | Indicates if the shipment contains biological material. |

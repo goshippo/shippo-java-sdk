@@ -8,8 +8,8 @@ which is associated with the account but not any specific user.
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `firstName`                  | *Optional<? extends String>* | :heavy_minus_sign:           | N/A                          | Shwan                        |
-| `lastName`                   | *Optional<? extends String>* | :heavy_minus_sign:           | N/A                          | Ippotle                      |
-| `username`                   | *Optional<? extends String>* | :heavy_minus_sign:           | N/A                          | shippotle@shippo.com         |
+| Field                | Type                 | Required             | Description          | Example              |
+| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| `firstName`          | *Optional<String>*   | :heavy_minus_sign:   | N/A                  | Shwan                |
+| `lastName`           | *Optional<String>*   | :heavy_minus_sign:   | N/A                  | Ippotle              |
+| `username`           | *Optional<String>*   | :heavy_minus_sign:   | N/A                  | shippotle@shippo.com |
