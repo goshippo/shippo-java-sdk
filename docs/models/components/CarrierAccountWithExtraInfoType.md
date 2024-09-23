@@ -5,7 +5,7 @@ Authentication method used by this account.
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `DEFAULT_` | default    |
-| `OAUTH`    | oauth      |
+| Name      | Value     |
+| --------- | --------- |
+| `DEFAULT` | default   |
+| `OAUTH`   | oauth     |

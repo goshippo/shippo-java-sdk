@@ -9,4 +9,4 @@ Allowed values available <a href="#tag/Customs-Declaration-Non-Delivery-Option">
 | Name      | Value     |
 | --------- | --------- |
 | `ABANDON` | ABANDON   |
-| `RETURN_` | RETURN    |
+| `RETURN`  | RETURN    |

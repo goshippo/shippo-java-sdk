@@ -16,6 +16,23 @@ Shippo sdk = Shippo.builder()
     .build();
 ```
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Shippo external API.: Use this API to integrate with the Shippo service
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Authentication](#authentication)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
@@ -27,7 +44,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.shippo:sdk:0.3.0'
+implementation 'com.shippo:sdk:0.4.0'
 ```
 
 Maven:
@@ -35,7 +52,7 @@ Maven:
 <dependency>
     <groupId>com.shippo</groupId>
     <artifactId>sdk</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
@@ -118,6 +135,9 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
 ### [addresses()](docs/sdks/addresses/README.md)
 
 * [list](docs/sdks/addresses/README.md#list) - List all addresses
@@ -143,6 +163,11 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [register](docs/sdks/carrieraccounts/README.md#register) - Add a Shippo carrier account
 * [getRegistrationStatus](docs/sdks/carrieraccounts/README.md#getregistrationstatus) - Get Carrier Registration status
 
+### [carrierParcelTemplates()](docs/sdks/carrierparceltemplates/README.md)
+
+* [list](docs/sdks/carrierparceltemplates/README.md#list) - List all carrier parcel templates
+* [get](docs/sdks/carrierparceltemplates/README.md#get) - Retrieve a carrier parcel templates
+
 ### [customsDeclarations()](docs/sdks/customsdeclarations/README.md)
 
 * [list](docs/sdks/customsdeclarations/README.md#list) - List all customs declarations
@@ -155,13 +180,6 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [create](docs/sdks/customsitems/README.md#create) - Create a new customs item
 * [get](docs/sdks/customsitems/README.md#get) - Retrieve a customs item
 
-### [ratesAtCheckout()](docs/sdks/ratesatcheckout/README.md)
-
-* [create](docs/sdks/ratesatcheckout/README.md#create) - Generate a live rates request
-* [getDefaultParcelTemplate](docs/sdks/ratesatcheckout/README.md#getdefaultparceltemplate) - Show current default parcel template
-* [updateDefaultParcelTemplate](docs/sdks/ratesatcheckout/README.md#updatedefaultparceltemplate) - Update default parcel template
-* [deleteDefaultParcelTemplate](docs/sdks/ratesatcheckout/README.md#deletedefaultparceltemplate) - Clear current default parcel template
-
 ### [manifests()](docs/sdks/manifests/README.md)
 
 * [list](docs/sdks/manifests/README.md#list) - List all manifests
@@ -173,11 +191,6 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [list](docs/sdks/orders/README.md#list) - List all orders
 * [create](docs/sdks/orders/README.md#create) - Create a new order
 * [get](docs/sdks/orders/README.md#get) - Retrieve an order
-
-### [carrierParcelTemplates()](docs/sdks/carrierparceltemplates/README.md)
-
-* [list](docs/sdks/carrierparceltemplates/README.md#list) - List all carrier parcel templates
-* [get](docs/sdks/carrierparceltemplates/README.md#get) - Retrieve a carrier parcel templates
 
 ### [parcels()](docs/sdks/parcels/README.md)
 
@@ -194,6 +207,13 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [get](docs/sdks/rates/README.md#get) - Retrieve a rate
 * [listShipmentRates](docs/sdks/rates/README.md#listshipmentrates) - Retrieve shipment rates
 * [listShipmentRatesByCurrencyCode](docs/sdks/rates/README.md#listshipmentratesbycurrencycode) - Retrieve shipment rates in currency
+
+### [ratesAtCheckout()](docs/sdks/ratesatcheckout/README.md)
+
+* [create](docs/sdks/ratesatcheckout/README.md#create) - Generate a live rates request
+* [getDefaultParcelTemplate](docs/sdks/ratesatcheckout/README.md#getdefaultparceltemplate) - Show current default parcel template
+* [updateDefaultParcelTemplate](docs/sdks/ratesatcheckout/README.md#updatedefaultparceltemplate) - Update default parcel template
+* [deleteDefaultParcelTemplate](docs/sdks/ratesatcheckout/README.md#deletedefaultparceltemplate) - Clear current default parcel template
 
 ### [refunds()](docs/sdks/refunds/README.md)
 
@@ -214,6 +234,14 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [create](docs/sdks/shipments/README.md#create) - Create a new shipment
 * [get](docs/sdks/shipments/README.md#get) - Retrieve a shipment
 
+
+### [shippoAccounts()](docs/sdks/shippoaccounts/README.md)
+
+* [list](docs/sdks/shippoaccounts/README.md#list) - List all Shippo Accounts
+* [create](docs/sdks/shippoaccounts/README.md#create) - Create a Shippo Account
+* [get](docs/sdks/shippoaccounts/README.md#get) - Retrieve a Shippo Account
+* [update](docs/sdks/shippoaccounts/README.md#update) - Update a Shippo Account
+
 ### [trackingStatus()](docs/sdks/trackingstatus/README.md)
 
 * [create](docs/sdks/trackingstatus/README.md#create) - Register a tracking webhook
@@ -233,13 +261,6 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [get](docs/sdks/userparceltemplates/README.md#get) - Retrieves a user parcel template
 * [update](docs/sdks/userparceltemplates/README.md#update) - Update an existing user parcel template
 
-### [shippoAccounts()](docs/sdks/shippoaccounts/README.md)
-
-* [list](docs/sdks/shippoaccounts/README.md#list) - List all Shippo Accounts
-* [create](docs/sdks/shippoaccounts/README.md#create) - Create a Shippo Account
-* [get](docs/sdks/shippoaccounts/README.md#get) - Retrieve a Shippo Account
-* [update](docs/sdks/shippoaccounts/README.md#update) - Update a Shippo Account
-
 ### [webhooks()](docs/sdks/webhooks/README.md)
 
 * [createWebhook](docs/sdks/webhooks/README.md#createwebhook) - Create a new webhook
@@ -247,6 +268,8 @@ Review our full guides and references at [https://docs.goshippo.com/](https://do
 * [getWebhook](docs/sdks/webhooks/README.md#getwebhook) - Retrieve a specific webhook
 * [updateWebhook](docs/sdks/webhooks/README.md#updatewebhook) - Update an existing webhook
 * [deleteWebhook](docs/sdks/webhooks/README.md#deletewebhook) - Delete a specific webhook
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 # Development

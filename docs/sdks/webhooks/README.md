@@ -6,6 +6,10 @@
 Webhooks are a way for Shippo to notify your application when a specific event occurs. For example, when a label is purchased or when a shipment tracking status has changed. You can use webhooks to trigger actions in your application, such as sending an email or updating a database.
 <SchemaDefinition schemaRef="#/components/schemas/Webhook"/>
 
+# Webhook Payload
+The payload is the body of the POST request Shippo sends to the URL specified at the time of webhook registration.
+<SchemaDefinition schemaRef="#/components/schemas/WebhookPayload"/>
+
 ### Available Operations
 
 * [createWebhook](#createwebhook) - Create a new webhook
@@ -24,67 +28,54 @@ Creates a new webhook to send notifications to a URL when a specific event occur
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.WebhookEventTypeEnum;
+import com.shippo.sdk.models.components.WebhookUpdateRequest;
+import com.shippo.sdk.models.operations.CreateWebhookResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            WebhookUpdateRequest req = WebhookUpdateRequest.builder()
+        WebhookUpdateRequest req = WebhookUpdateRequest.builder()
                 .event(WebhookEventTypeEnum.BATCH_CREATED)
-                .url("<value>")
+                .url("https://example.com/shippo-webhook")
+                .active(true)
+                .isTest(false)
                 .build();
 
-            CreateWebhookResponse res = sdk.webhooks().createWebhook()
+        CreateWebhookResponse res = sdk.webhooks().createWebhook()
                 .request(req)
                 .call();
 
-            if (res.webhook().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.webhook().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [com.shippo.sdk.models.components.WebhookUpdateRequest](../../models/shared/WebhookUpdateRequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [WebhookUpdateRequest](../../models/shared/WebhookUpdateRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateWebhookResponse>](../../models/operations/CreateWebhookResponse.md)**
+**[CreateWebhookResponse](../../models/operations/CreateWebhookResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## listWebhooks
 
@@ -96,55 +87,38 @@ Returns a list of all webhooks you have created.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.operations.ListWebhooksResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            ListWebhooksResponse res = sdk.webhooks().listWebhooks()
+        ListWebhooksResponse res = sdk.webhooks().listWebhooks()
                 .call();
 
-            if (res.webhookPaginatedList().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.webhookPaginatedList().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
-
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListWebhooksResponse>](../../models/operations/ListWebhooksResponse.md)**
+**[ListWebhooksResponse](../../models/operations/ListWebhooksResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## getWebhook
 
@@ -156,43 +130,25 @@ Returns the details of a specific webhook using the webhook object ID.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.operations.GetWebhookResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            GetWebhookResponse res = sdk.webhooks().getWebhook()
+        GetWebhookResponse res = sdk.webhooks().getWebhook()
                 .webhookId("<value>")
                 .call();
 
-            if (res.webhook().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.webhook().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
@@ -203,15 +159,16 @@ public class Application {
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
 | `webhookId`                          | *String*                             | :heavy_check_mark:                   | Object ID of the webhook to retrieve |
 
-
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetWebhookResponse>](../../models/operations/GetWebhookResponse.md)**
+**[GetWebhookResponse](../../models/operations/GetWebhookResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## updateWebhook
 
@@ -223,67 +180,54 @@ Updates an existing webhook using the webhook object ID.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.WebhookEventTypeEnum;
+import com.shippo.sdk.models.components.WebhookUpdateRequest;
+import com.shippo.sdk.models.operations.UpdateWebhookResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            UpdateWebhookResponse res = sdk.webhooks().updateWebhook()
+        UpdateWebhookResponse res = sdk.webhooks().updateWebhook()
                 .webhookId("<value>")
                 .webhookUpdateRequest(WebhookUpdateRequest.builder()
                     .event(WebhookEventTypeEnum.BATCH_CREATED)
-                    .url("<value>")
+                    .url("https://example.com/shippo-webhook")
+                    .active(true)
+                    .isTest(false)
                     .build())
                 .call();
 
-            if (res.webhook().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.webhook().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `webhookId`                                                                                              | *String*                                                                                                 | :heavy_check_mark:                                                                                       | Object ID of the webhook to retrieve                                                                     |
-| `webhookUpdateRequest`                                                                                   | [com.shippo.sdk.models.components.WebhookUpdateRequest](../../models/components/WebhookUpdateRequest.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
-
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `webhookId`                                                             | *String*                                                                | :heavy_check_mark:                                                      | Object ID of the webhook to retrieve                                    |
+| `webhookUpdateRequest`                                                  | [WebhookUpdateRequest](../../models/components/WebhookUpdateRequest.md) | :heavy_check_mark:                                                      | N/A                                                                     |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.UpdateWebhookResponse>](../../models/operations/UpdateWebhookResponse.md)**
+**[UpdateWebhookResponse](../../models/operations/UpdateWebhookResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## deleteWebhook
 
@@ -295,41 +239,23 @@ Deletes a specific webhook using the webhook object ID.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.operations.DeleteWebhookResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            DeleteWebhookResponse res = sdk.webhooks().deleteWebhook()
+        DeleteWebhookResponse res = sdk.webhooks().deleteWebhook()
                 .webhookId("<value>")
                 .call();
 
-            // handle response
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
@@ -340,12 +266,12 @@ public class Application {
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | `webhookId`                        | *String*                           | :heavy_check_mark:                 | Object ID of the webhook to delete |
 
-
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.DeleteWebhookResponse>](../../models/operations/DeleteWebhookResponse.md)**
+**[DeleteWebhookResponse](../../models/operations/DeleteWebhookResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

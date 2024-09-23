@@ -33,66 +33,55 @@ Returns a list of all order objects.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.components.OrderShopAppEnum;
+import com.shippo.sdk.models.components.OrderStatusEnum;
+import com.shippo.sdk.models.operations.ListOrdersRequest;
+import com.shippo.sdk.models.operations.ListOrdersResponse;
+import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+            .build();
+
+        ListOrdersRequest req = ListOrdersRequest.builder()
+                .orderStatus(List.of(
+                    OrderStatusEnum.PAID))
+                .shopApp(OrderShopAppEnum.SHIPPO)
                 .build();
 
-            ListOrdersResponse res = sdk.orders().list()
-                .page(1L)
-                .results(25L)
-                .shippoApiVersion("2018-02-08")
+        ListOrdersResponse res = sdk.orders().list()
+                .request(req)
                 .call();
 
-            if (res.orderPaginatedList().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.orderPaginatedList().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `page`                                               | *Optional<? extends Long>*                           | :heavy_minus_sign:                                   | The page number you want to select                   |                                                      |
-| `results`                                            | *Optional<? extends Long>*                           | :heavy_minus_sign:                                   | The number of results to return per page (max 100)   |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [ListOrdersRequest](../../models/operations/ListOrdersRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.ListOrdersResponse>](../../models/operations/ListOrdersResponse.md)**
+**[ListOrdersResponse](../../models/operations/ListOrdersResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## create
 
@@ -104,48 +93,45 @@ Creates a new order object.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
+import com.shippo.sdk.models.components.AddressCreateRequest;
+import com.shippo.sdk.models.components.LineItemBase;
+import com.shippo.sdk.models.components.OrderCreateRequest;
+import com.shippo.sdk.models.components.OrderStatusEnum;
+import com.shippo.sdk.models.components.WeightUnitEnum;
+import com.shippo.sdk.models.operations.CreateOrderResponse;
+import java.lang.Exception;
 import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            CreateOrderResponse res = sdk.orders().create()
+        CreateOrderResponse res = sdk.orders().create()
                 .shippoApiVersion("2018-02-08")
                 .orderCreateRequest(OrderCreateRequest.builder()
                     .placedAt("2016-09-23T01:28:12Z")
                     .toAddress(AddressCreateRequest.builder()
-                            .country("US")
-                            .name("Shwan Ippotle")
-                            .company("Shippo")
-                            .street1("215 Clayton St.")
-                            .street3("")
-                            .streetNo("")
-                            .city("San Francisco")
-                            .state("CA")
-                            .zip("94117")
-                            .phone("+1 555 341 9393")
-                            .email("shippotle@shippo.com")
-                            .isResidential(true)
-                            .metadata("Customer ID 123456")
-                            .validate(true)
-                            .build())
+                        .country("US")
+                        .name("Shwan Ippotle")
+                        .company("Shippo")
+                        .street1("215 Clayton St.")
+                        .street3("")
+                        .streetNo("")
+                        .city("San Francisco")
+                        .state("CA")
+                        .zip("94117")
+                        .phone("+1 555 341 9393")
+                        .email("shippotle@shippo.com")
+                        .isResidential(true)
+                        .metadata("Customer ID 123456")
+                        .validate(true)
+                        .build())
                     .currency("USD")
                     .notes("This customer is a VIP")
                     .orderNumber("#1068")
@@ -174,7 +160,7 @@ public class Application {
                         .metadata("Customer ID 123456")
                         .validate(true)
                         .build())
-                    .lineItems(java.util.List.of(
+                    .lineItems(List.of(
                         LineItemBase.builder()
                             .currency("USD")
                             .manufactureCountry("US")
@@ -191,37 +177,30 @@ public class Application {
                     .build())
                 .call();
 
-            if (res.order().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.order().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                   | *Optional<? extends String>*                                                                         | :heavy_minus_sign:                                                                                   | String used to pick a non-default API version to use                                                 | 2018-02-08                                                                                           |
-| `orderCreateRequest`                                                                                 | [com.shippo.sdk.models.components.OrderCreateRequest](../../models/components/OrderCreateRequest.md) | :heavy_check_mark:                                                                                   | Order details.                                                                                       |                                                                                                      |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `shippoApiVersion`                                                  | *Optional<String>*                                                  | :heavy_minus_sign:                                                  | String used to pick a non-default API version to use                | 2018-02-08                                                          |
+| `orderCreateRequest`                                                | [OrderCreateRequest](../../models/components/OrderCreateRequest.md) | :heavy_check_mark:                                                  | Order details.                                                      |                                                                     |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.CreateOrderResponse>](../../models/operations/CreateOrderResponse.md)**
+**[CreateOrderResponse](../../models/operations/CreateOrderResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## get
 
@@ -233,44 +212,26 @@ Retrieves an existing order using an object ID.
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
-import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.shippo.sdk.models.operations.GetOrderResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
+
+        Shippo sdk = Shippo.builder()
                 .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
-                .build();
+            .build();
 
-            GetOrderResponse res = sdk.orders().get()
+        GetOrderResponse res = sdk.orders().get()
                 .orderId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
-            if (res.order().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.order().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
@@ -280,14 +241,14 @@ public class Application {
 | Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | `orderId`                                            | *String*                                             | :heavy_check_mark:                                   | Object ID of the order                               |                                                      |
-| `shippoApiVersion`                                   | *Optional<? extends String>*                         | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
-
+| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
 
 ### Response
 
-**[Optional<? extends com.shippo.sdk.models.operations.GetOrderResponse>](../../models/operations/GetOrderResponse.md)**
+**[GetOrderResponse](../../models/operations/GetOrderResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
