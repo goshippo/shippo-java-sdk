@@ -62,7 +62,7 @@ class PurchaseLabelInternationalSpec extends Specification implements SdkProvide
 
         def customsDeclarationCreateRequest = CustomsDeclarationCreateRequest.builder()
                 .contentsType(CustomsDeclarationContentsTypeEnum.MERCHANDISE)
-                .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN_)
+                .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN)
                 .certify(true)
                 .certifySigner("Tom Marks")
                 .incoterm(CustomsDeclarationIncotermEnum.DDP)
