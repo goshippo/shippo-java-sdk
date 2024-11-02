@@ -10,3 +10,7 @@ targets:
     my-first-target:
         target: java
         source: my-first-source
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/shippo/shippo/my-first-source-code-samples
+            blocking: false

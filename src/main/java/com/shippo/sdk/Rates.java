@@ -74,7 +74,7 @@ public class Rates implements
      * Retrieve a rate
      * Returns an existing rate using a rate object ID.
      * @param rateId Object ID of the rate
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -216,7 +216,7 @@ public class Rates implements
      * @param shipmentId Object ID of the shipment to update
      * @param page The page number you want to select
      * @param results The number of results to return per page (max 100)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

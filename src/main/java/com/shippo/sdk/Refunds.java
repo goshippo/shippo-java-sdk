@@ -76,7 +76,7 @@ public class Refunds implements
     /**
      * Create a refund
      * Creates a new refund object.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param refundRequestBody
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -225,7 +225,7 @@ public class Refunds implements
     /**
      * List all refunds
      * Returns a list all refund objects.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -361,7 +361,7 @@ public class Refunds implements
      * Retrieve a refund
      * Returns an existing rate using a rate object ID.
      * @param refundId Object ID of the refund to update
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
