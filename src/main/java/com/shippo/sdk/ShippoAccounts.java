@@ -43,7 +43,7 @@ import java.util.Optional;
 /**
  * Shippo Accounts are used by Shippo Platform Accounts to create and manage Managed Shippo Accounts. 
  * Managed Shippo Accounts are headless accounts that represent your customers. They are opaque to your end customers, meaning customers do not need to create their own Shippo login or have a billing relationship with Shippo. 
- * They can be used by marketplaces, e-commerce platforms, and third-party logistics providers who want to offer, seamless, built-in shipping functionality to their customers. 
+ * They can be used by marketplaces, e-commerce platforms, and third-party logistics providers who want to offer, seamless, built-in shipping functionality to their customers. See our &lt;a href="https://docs.goshippo.com/docs/platformaccounts/platform_accounts/"&gt;guide&lt;/a&gt; for more details.
  * &lt;SchemaDefinition schemaRef="#/components/schemas/ShippoAccount"/&gt;
  */
 public class ShippoAccounts implements
@@ -61,7 +61,7 @@ public class ShippoAccounts implements
 
     /**
      * List all Shippo Accounts
-     * Returns a list of Shippo Accounts objects
+     * Returns a list of Shippo Managed Accounts objects.
      * @return The call builder
      */
     public ListShippoAccountsRequestBuilder list() {
@@ -70,7 +70,7 @@ public class ShippoAccounts implements
 
     /**
      * List all Shippo Accounts
-     * Returns a list of Shippo Accounts objects
+     * Returns a list of Shippo Managed Accounts objects.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -80,10 +80,10 @@ public class ShippoAccounts implements
     
     /**
      * List all Shippo Accounts
-     * Returns a list of Shippo Accounts objects
+     * Returns a list of Shippo Managed Accounts objects.
      * @param page The page number you want to select
      * @param results The number of results to return per page (max 100)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -205,7 +205,7 @@ public class ShippoAccounts implements
 
     /**
      * Create a Shippo Account
-     * Creates a Shippo Account object
+     * Creates a new &lt;a href="https://docs.goshippo.com/docs/platformaccounts/platform_using_accounts/"&gt;Shippo Managed Account&lt;/a&gt;.
      * @return The call builder
      */
     public CreateShippoAccountRequestBuilder create() {
@@ -214,7 +214,7 @@ public class ShippoAccounts implements
 
     /**
      * Create a Shippo Account
-     * Creates a Shippo Account object
+     * Creates a new &lt;a href="https://docs.goshippo.com/docs/platformaccounts/platform_using_accounts/"&gt;Shippo Managed Account&lt;/a&gt;.
      * @param shippoAccountUpdateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -226,8 +226,8 @@ public class ShippoAccounts implements
     
     /**
      * Create a Shippo Account
-     * Creates a Shippo Account object
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * Creates a new &lt;a href="https://docs.goshippo.com/docs/platformaccounts/platform_using_accounts/"&gt;Shippo Managed Account&lt;/a&gt;.
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param shippoAccountUpdateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -356,7 +356,7 @@ public class ShippoAccounts implements
 
     /**
      * Retrieve a Shippo Account
-     * Returns a Shippo Account using an object ID
+     * Returns a Shippo Managed Account using an object ID.
      * @return The call builder
      */
     public GetShippoAccountRequestBuilder get() {
@@ -365,7 +365,7 @@ public class ShippoAccounts implements
 
     /**
      * Retrieve a Shippo Account
-     * Returns a Shippo Account using an object ID
+     * Returns a Shippo Managed Account using an object ID.
      * @param shippoAccountId Object ID of the ShippoAccount
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -377,9 +377,9 @@ public class ShippoAccounts implements
     
     /**
      * Retrieve a Shippo Account
-     * Returns a Shippo Account using an object ID
+     * Returns a Shippo Managed Account using an object ID.
      * @param shippoAccountId Object ID of the ShippoAccount
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -496,7 +496,7 @@ public class ShippoAccounts implements
 
     /**
      * Update a Shippo Account
-     * Updates a Shippo Account object
+     * Updates a Shippo Managed Account using an object ID.
      * @return The call builder
      */
     public UpdateShippoAccountRequestBuilder update() {
@@ -505,7 +505,7 @@ public class ShippoAccounts implements
 
     /**
      * Update a Shippo Account
-     * Updates a Shippo Account object
+     * Updates a Shippo Managed Account using an object ID.
      * @param shippoAccountId Object ID of the ShippoAccount
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -517,9 +517,9 @@ public class ShippoAccounts implements
     
     /**
      * Update a Shippo Account
-     * Updates a Shippo Account object
+     * Updates a Shippo Managed Account using an object ID.
      * @param shippoAccountId Object ID of the ShippoAccount
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param shippoAccountUpdateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails

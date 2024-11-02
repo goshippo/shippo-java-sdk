@@ -77,7 +77,7 @@ public class CustomsItems implements
      * Returns a list all customs items objects.
      * @param page The page number you want to select
      * @param results The number of results to return per page (max 100)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -221,7 +221,7 @@ public class CustomsItems implements
     /**
      * Create a new customs item
      * Creates a new customs item object.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param customsItemCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -374,7 +374,7 @@ public class CustomsItems implements
      * Returns an existing customs item using an object ID
      * @param customsItemId Object ID of the customs item
      * @param page The page number you want to select
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

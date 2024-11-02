@@ -10,6 +10,6 @@ which is associated with the account but not any specific user.
 
 | Field                | Type                 | Required             | Description          | Example              |
 | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `firstName`          | *Optional<String>*   | :heavy_minus_sign:   | N/A                  | Shwan                |
-| `lastName`           | *Optional<String>*   | :heavy_minus_sign:   | N/A                  | Ippotle              |
-| `username`           | *Optional<String>*   | :heavy_minus_sign:   | N/A                  | shippotle@shippo.com |
+| `firstName`          | *Optional\<String>*  | :heavy_minus_sign:   | N/A                  | Shwan                |
+| `lastName`           | *Optional\<String>*  | :heavy_minus_sign:   | N/A                  | Ippotle              |
+| `username`           | *Optional\<String>*  | :heavy_minus_sign:   | N/A                  | shippotle@shippo.com |

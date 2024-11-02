@@ -97,7 +97,7 @@ public class RatesAtCheckout implements
      * an existing address record or a fully formed address object when entering
      * an address value. You can also enter the object ID of an existing user parcel
      * template or a fully formed user parcel template object as the parcel value.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param liveRateCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -246,7 +246,7 @@ public class RatesAtCheckout implements
     /**
      * Show current default parcel template
      * Retrieve and display the currently configured default parcel template for live rates.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -379,7 +379,7 @@ public class RatesAtCheckout implements
     /**
      * Update default parcel template
      * Update the currently configured default parcel template for live rates. The object_id in the request payload should identify the user parcel template to be the new default.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param defaultParcelTemplateUpdateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -525,7 +525,7 @@ public class RatesAtCheckout implements
     /**
      * Clear current default parcel template
      * Clears the currently configured default parcel template for live rates.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

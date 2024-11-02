@@ -83,7 +83,7 @@ public class Manifests implements
      * Returns a list of all manifest objects.
      * @param page The page number you want to select
      * @param results The number of results to return per page (max 100, default 5)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -227,7 +227,7 @@ public class Manifests implements
     /**
      * Create a new manifest
      * Creates a new manifest object.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param manifestCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -379,7 +379,7 @@ public class Manifests implements
      * Retrieve a manifest
      * Returns an existing manifest using an object ID.
      * @param manifestId Object ID of the manifest to update
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

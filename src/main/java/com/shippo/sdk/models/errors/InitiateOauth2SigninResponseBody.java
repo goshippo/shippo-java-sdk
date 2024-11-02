@@ -20,6 +20,7 @@ import java.util.Optional;
 /**
  * InitiateOauth2SigninResponseBody - Invalid parameters provided by the user
  */
+@SuppressWarnings("serial")
 public class InitiateOauth2SigninResponseBody extends RuntimeException {
 
     @JsonInclude(Include.NON_ABSENT)

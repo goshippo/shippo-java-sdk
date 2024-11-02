@@ -80,7 +80,7 @@ public class TrackingStatus implements
     /**
      * Register a tracking webhook
      * Registers a webhook that will send HTTP notifications to you when the status of your tracked package changes. For more details on creating a webhook, see our guides on &lt;a href="https://docs.goshippo.com/docs/tracking/webhooks/"&gt;Webhooks&lt;/a&gt; and &lt;a href="https://docs.goshippo.com/docs/tracking/tracking/"&gt;Tracking&lt;/a&gt;.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param tracksRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -235,7 +235,7 @@ public class TrackingStatus implements
      * Returns the tracking status of a shipment using a carrier name and a tracking number.
      * @param trackingNumber Tracking number
      * @param carrier Name of the carrier
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
