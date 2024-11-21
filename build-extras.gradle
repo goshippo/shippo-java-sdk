@@ -2,6 +2,15 @@
 // * is referred to in an `apply from` command in `build.gradle`
 // * can be used to customise `build.gradle`
 // * is generated once and not overwritten in SDK generation updates
+
+// Disable tests for publishing b/c we run tests in pipeline already
+// TODO: Find better alternative
+tasks.named('test') {
+    onlyIf {
+        project.hasProperty('runTests')
+    }
+}
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.9.2'
