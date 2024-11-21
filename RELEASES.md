@@ -31,3 +31,13 @@ Based on:
 - Speakeasy CLI 1.401.2 (2.421.3) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [java v0.4.0] .
+
+## 2024-11-21 18:32:17
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.441.2 (2.461.4) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v1.0.0-beta.1] .
+### Releases
+- [Maven Central v1.0.0-beta.1] https://central.sonatype.com/artifact/com.goshippo/sdk/1.0.0-beta.1 - .
