@@ -27,10 +27,10 @@ Creates a new webhook to send notifications to a URL when a specific event occur
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.WebhookEventTypeEnum;
-import com.shippo.sdk.models.components.WebhookUpdateRequest;
-import com.shippo.sdk.models.operations.CreateWebhookResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.WebhookEventTypeEnum;
+import com.goshippo.sdk.models.components.WebhookUpdateRequest;
+import com.goshippo.sdk.models.operations.CreateWebhookResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -72,10 +72,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listWebhooks
 
@@ -86,8 +85,8 @@ Returns a list of all webhooks you have created.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.ListWebhooksResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListWebhooksResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -115,10 +114,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getWebhook
 
@@ -129,8 +127,8 @@ Returns the details of a specific webhook using the webhook object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetWebhookResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetWebhookResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -143,7 +141,7 @@ public class Application {
             .build();
 
         GetWebhookResponse res = sdk.webhooks().getWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .call();
 
         if (res.webhook().isPresent()) {
@@ -165,10 +163,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## updateWebhook
 
@@ -179,10 +176,10 @@ Updates an existing webhook using the webhook object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.WebhookEventTypeEnum;
-import com.shippo.sdk.models.components.WebhookUpdateRequest;
-import com.shippo.sdk.models.operations.UpdateWebhookResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.WebhookEventTypeEnum;
+import com.goshippo.sdk.models.components.WebhookUpdateRequest;
+import com.goshippo.sdk.models.operations.UpdateWebhookResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -195,7 +192,7 @@ public class Application {
             .build();
 
         UpdateWebhookResponse res = sdk.webhooks().updateWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .webhookUpdateRequest(WebhookUpdateRequest.builder()
                     .event(WebhookEventTypeEnum.BATCH_CREATED)
                     .url("https://example.com/shippo-webhook")
@@ -224,10 +221,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## deleteWebhook
 
@@ -238,8 +234,8 @@ Deletes a specific webhook using the webhook object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.DeleteWebhookResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.DeleteWebhookResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -252,7 +248,7 @@ public class Application {
             .build();
 
         DeleteWebhookResponse res = sdk.webhooks().deleteWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .call();
 
         // handle response
@@ -272,6 +268,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

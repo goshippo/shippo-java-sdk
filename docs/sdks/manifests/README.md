@@ -27,8 +27,8 @@ Returns a list of all manifest objects.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.ListManifestsResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListManifestsResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -55,11 +55,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `page`                                                        | *Optional<Long>*                                              | :heavy_minus_sign:                                            | The page number you want to select                            |                                                               |
-| `results`                                                     | *Optional<Long>*                                              | :heavy_minus_sign:                                            | The number of results to return per page (max 100, default 5) |                                                               |
-| `shippoApiVersion`                                            | *Optional<String>*                                            | :heavy_minus_sign:                                            | String used to pick a non-default API version to use          | 2018-02-08                                                    |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `page`                                                                                                                                                             | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The page number you want to select                                                                                                                                 |                                                                                                                                                                    |
+| `results`                                                                                                                                                          | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The number of results to return per page (max 100, default 5)                                                                                                      |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -67,10 +67,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -81,11 +80,11 @@ Creates a new manifest object.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.AddressCreateRequest;
-import com.shippo.sdk.models.components.ManifestCreateRequest;
-import com.shippo.sdk.models.components.ManifestCreateRequestAddressFrom;
-import com.shippo.sdk.models.operations.CreateManifestResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.AddressCreateRequest;
+import com.goshippo.sdk.models.components.ManifestCreateRequest;
+import com.goshippo.sdk.models.components.ManifestCreateRequestAddressFrom;
+import com.goshippo.sdk.models.operations.CreateManifestResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -133,10 +132,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                        | *Optional<String>*                                                        | :heavy_minus_sign:                                                        | String used to pick a non-default API version to use                      | 2018-02-08                                                                |
-| `manifestCreateRequest`                                                   | [ManifestCreateRequest](../../models/components/ManifestCreateRequest.md) | :heavy_check_mark:                                                        | Manifest details and contact info.                                        |                                                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `manifestCreateRequest`                                                                                                                                            | [ManifestCreateRequest](../../models/components/ManifestCreateRequest.md)                                                                                          | :heavy_check_mark:                                                                                                                                                 | Manifest details and contact info.                                                                                                                                 |                                                                                                                                                                    |
 
 ### Response
 
@@ -144,10 +143,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -158,8 +156,8 @@ Returns an existing manifest using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetManifestResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetManifestResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -172,7 +170,7 @@ public class Application {
             .build();
 
         GetManifestResponse res = sdk.manifests().get()
-                .manifestId("<value>")
+                .manifestId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -185,10 +183,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `manifestId`                                         | *String*                                             | :heavy_check_mark:                                   | Object ID of the manifest to update                  |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `manifestId`                                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the manifest to update                                                                                                                                |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -196,6 +194,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

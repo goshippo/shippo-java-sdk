@@ -23,8 +23,8 @@ Returns a list of service group objects.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.ListServiceGroupsResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListServiceGroupsResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -49,9 +49,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -59,10 +59,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -73,11 +72,11 @@ Creates a new service group.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.ServiceGroupAccountAndServiceLevel;
-import com.shippo.sdk.models.components.ServiceGroupCreateRequest;
-import com.shippo.sdk.models.components.ServiceGroupTypeEnum;
-import com.shippo.sdk.models.operations.CreateServiceGroupResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.ServiceGroupAccountAndServiceLevel;
+import com.goshippo.sdk.models.components.ServiceGroupCreateRequest;
+import com.goshippo.sdk.models.components.ServiceGroupTypeEnum;
+import com.goshippo.sdk.models.operations.CreateServiceGroupResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -118,10 +117,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                | *Optional<String>*                                                                | :heavy_minus_sign:                                                                | String used to pick a non-default API version to use                              | 2018-02-08                                                                        |
-| `serviceGroupCreateRequest`                                                       | [ServiceGroupCreateRequest](../../models/components/ServiceGroupCreateRequest.md) | :heavy_check_mark:                                                                | N/A                                                                               |                                                                                   |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `serviceGroupCreateRequest`                                                                                                                                        | [ServiceGroupCreateRequest](../../models/components/ServiceGroupCreateRequest.md)                                                                                  | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
 
 ### Response
 
@@ -129,10 +128,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## update
 
@@ -143,11 +141,11 @@ Updates an existing service group object. <br>The object_id cannot be updated as
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.ServiceGroupAccountAndServiceLevel;
-import com.shippo.sdk.models.components.ServiceGroupTypeEnum;
-import com.shippo.sdk.models.components.ServiceGroupUpdateRequest;
-import com.shippo.sdk.models.operations.UpdateServiceGroupResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.ServiceGroupAccountAndServiceLevel;
+import com.goshippo.sdk.models.components.ServiceGroupTypeEnum;
+import com.goshippo.sdk.models.components.ServiceGroupUpdateRequest;
+import com.goshippo.sdk.models.operations.UpdateServiceGroupResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -190,10 +188,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                          | *Optional<String>*                                                                          | :heavy_minus_sign:                                                                          | String used to pick a non-default API version to use                                        | 2018-02-08                                                                                  |
-| `serviceGroupUpdateRequest`                                                                 | [Optional<ServiceGroupUpdateRequest>](../../models/components/ServiceGroupUpdateRequest.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |                                                                                             |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `serviceGroupUpdateRequest`                                                                                                                                        | [Optional\<ServiceGroupUpdateRequest>](../../models/components/ServiceGroupUpdateRequest.md)                                                                       | :heavy_minus_sign:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
 
 ### Response
 
@@ -201,10 +199,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## delete
 
@@ -215,8 +212,8 @@ Deletes an existing service group using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.DeleteServiceGroupResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.DeleteServiceGroupResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -229,7 +226,7 @@ public class Application {
             .build();
 
         DeleteServiceGroupResponse res = sdk.serviceGroups().delete()
-                .serviceGroupId("<value>")
+                .serviceGroupId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -240,10 +237,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `serviceGroupId`                                     | *String*                                             | :heavy_check_mark:                                   | Object ID of the service group                       |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `serviceGroupId`                                                                                                                                                   | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the service group                                                                                                                                     |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -251,6 +248,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

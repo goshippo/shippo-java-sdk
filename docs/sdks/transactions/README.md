@@ -21,11 +21,11 @@ Returns a list of all transaction objects.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.TrackingStatusEnum;
-import com.shippo.sdk.models.components.TransactionStatusEnum;
-import com.shippo.sdk.models.operations.ListTransactionsRequest;
-import com.shippo.sdk.models.operations.ListTransactionsResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.TrackingStatusEnum;
+import com.goshippo.sdk.models.components.TransactionStatusEnum;
+import com.goshippo.sdk.models.operations.ListTransactionsRequest;
+import com.goshippo.sdk.models.operations.ListTransactionsResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -65,10 +65,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -79,11 +78,11 @@ Creates a new transaction object and purchases the shipping label using a rate o
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.LabelFileTypeEnum;
-import com.shippo.sdk.models.components.TransactionCreateRequest;
-import com.shippo.sdk.models.operations.CreateTransactionRequestBody;
-import com.shippo.sdk.models.operations.CreateTransactionResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.LabelFileTypeEnum;
+import com.goshippo.sdk.models.components.TransactionCreateRequest;
+import com.goshippo.sdk.models.operations.CreateTransactionRequestBody;
+import com.goshippo.sdk.models.operations.CreateTransactionResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -102,6 +101,7 @@ public class Application {
                     .async(false)
                     .labelFileType(LabelFileTypeEnum.PDF4X6)
                     .metadata("Order ID #12345")
+                    .order("adcfdddf8ec64b84ad22772bce3ea37a")
                     .build()))
                 .call();
 
@@ -114,10 +114,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                      | *Optional<String>*                                                                      | :heavy_minus_sign:                                                                      | String used to pick a non-default API version to use                                    | 2018-02-08                                                                              |
-| `requestBody`                                                                           | [CreateTransactionRequestBody](../../models/operations/CreateTransactionRequestBody.md) | :heavy_check_mark:                                                                      | Examples.                                                                               |                                                                                         |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `requestBody`                                                                                                                                                      | [CreateTransactionRequestBody](../../models/operations/CreateTransactionRequestBody.md)                                                                            | :heavy_check_mark:                                                                                                                                                 | Examples.                                                                                                                                                          |                                                                                                                                                                    |
 
 ### Response
 
@@ -125,10 +125,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -139,8 +138,8 @@ Returns an existing transaction using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetTransactionResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetTransactionResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -153,7 +152,7 @@ public class Application {
             .build();
 
         GetTransactionResponse res = sdk.transactions().get()
-                .transactionId("<value>")
+                .transactionId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -166,10 +165,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `transactionId`                                      | *String*                                             | :heavy_check_mark:                                   | Object ID of the transaction to update               |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `transactionId`                                                                                                                                                    | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the transaction to update                                                                                                                             |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -177,6 +176,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

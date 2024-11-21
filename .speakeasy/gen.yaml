@@ -11,6 +11,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
   auth:
     oAuth2ClientCredentialsEnabled: true
+    oAuth2PasswordEnabled: false
 java:
   version: 1.0.0-beta
   additionalDependencies: []
@@ -21,6 +22,10 @@ java:
   companyEmail: support@shippo.com
   companyName: Shippo
   companyURL: www.goshippo.com
+  defaultErrorName: SDKError
+  externalDocs:
+    url: https://github.com/goshippo/shippo-java-sdk
+    version: ""
   flattenGlobalSecurity: true
   githubURL: https://github.com/goshippo/shippo-java-sdk
   groupID: com.goshippo
@@ -32,6 +37,9 @@ java:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  info:
+    descriptions: Maven library which integrates with Shippo Multi Carrier Shipping API. This library provides access to Shippo (goshippo.com) API capabilities. Including label generation, rating, tracking and more.
+    version: ""
   inputModelSuffix: input
   license:
     name: The MIT License (MIT)
@@ -41,9 +49,3 @@ java:
   outputModelSuffix: output
   projectName: api
   templateVersion: v2
-  externalDocs:
-    version: ""
-    url: https://github.com/goshippo/shippo-java-sdk
-  info:
-    version: ""
-    descriptions: Maven library which integrates with Shippo Multi Carrier Shipping API. This library provides access to Shippo (goshippo.com) API capabilities. Including label generation, rating, tracking and more.

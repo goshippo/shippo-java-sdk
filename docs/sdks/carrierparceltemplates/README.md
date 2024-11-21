@@ -27,9 +27,9 @@ List all carrier parcel template objects. <br> Use the following query string pa
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.Include;
-import com.shippo.sdk.models.operations.ListCarrierParcelTemplatesResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.Include;
+import com.goshippo.sdk.models.operations.ListCarrierParcelTemplatesResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -56,11 +56,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `include`                                               | [Optional<Include>](../../models/operations/Include.md) | :heavy_minus_sign:                                      | filter by user or enabled                               |                                                         |
-| `carrier`                                               | *Optional<String>*                                      | :heavy_minus_sign:                                      | filter by specific carrier                              | fedex                                                   |
-| `shippoApiVersion`                                      | *Optional<String>*                                      | :heavy_minus_sign:                                      | String used to pick a non-default API version to use    | 2018-02-08                                              |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `include`                                                                                                                                                          | [Optional\<Include>](../../models/operations/Include.md)                                                                                                           | :heavy_minus_sign:                                                                                                                                                 | filter by user or enabled                                                                                                                                          |                                                                                                                                                                    |
+| `carrier`                                                                                                                                                          | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | filter by specific carrier                                                                                                                                         | fedex                                                                                                                                                              |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -68,10 +68,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -82,8 +81,8 @@ Fetches the parcel template information for a specific carrier parcel template, 
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetCarrierParcelTemplateResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetCarrierParcelTemplateResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -109,10 +108,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `carrierParcelTemplateToken`                                    | *String*                                                        | :heavy_check_mark:                                              | The unique string representation of the carrier parcel template |                                                                 |
-| `shippoApiVersion`                                              | *Optional<String>*                                              | :heavy_minus_sign:                                              | String used to pick a non-default API version to use            | 2018-02-08                                                      |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `carrierParcelTemplateToken`                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | The unique string representation of the carrier parcel template                                                                                                    |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -120,6 +119,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

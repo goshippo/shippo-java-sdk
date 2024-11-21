@@ -28,8 +28,8 @@ Returns a list all of all user parcel template objects.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.ListUserParcelTemplatesResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListUserParcelTemplatesResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -54,9 +54,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -64,10 +64,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -84,11 +83,11 @@ and depth, as well as their units."
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.UserParcelTemplateCreateRequest;
-import com.shippo.sdk.models.components.UserParcelTemplateWithCarrierTemplateCreateRequest;
-import com.shippo.sdk.models.components.WeightUnitEnum;
-import com.shippo.sdk.models.operations.CreateUserParcelTemplateResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.UserParcelTemplateCreateRequest;
+import com.goshippo.sdk.models.components.UserParcelTemplateWithCarrierTemplateCreateRequest;
+import com.goshippo.sdk.models.components.WeightUnitEnum;
+import com.goshippo.sdk.models.operations.CreateUserParcelTemplateResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -117,10 +116,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                            | *Optional<String>*                                                                            | :heavy_minus_sign:                                                                            | String used to pick a non-default API version to use                                          | 2018-02-08                                                                                    |
-| `userParcelTemplateCreateRequest`                                                             | [UserParcelTemplateCreateRequest](../../models/components/UserParcelTemplateCreateRequest.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `userParcelTemplateCreateRequest`                                                                                                                                  | [UserParcelTemplateCreateRequest](../../models/components/UserParcelTemplateCreateRequest.md)                                                                      | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
 
 ### Response
 
@@ -128,10 +127,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## delete
 
@@ -142,8 +140,8 @@ Deletes a user parcel template using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.DeleteUserParcelTemplateResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.DeleteUserParcelTemplateResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -156,7 +154,7 @@ public class Application {
             .build();
 
         DeleteUserParcelTemplateResponse res = sdk.userParcelTemplates().delete()
-                .userParcelTemplateObjectId("<value>")
+                .userParcelTemplateObjectId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -167,10 +165,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `userParcelTemplateObjectId`                         | *String*                                             | :heavy_check_mark:                                   | Object ID of the user parcel template                |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `userParcelTemplateObjectId`                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the user parcel template                                                                                                                              |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -178,10 +176,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -193,8 +190,8 @@ template, identified by the object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetUserParcelTemplateResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetUserParcelTemplateResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -207,7 +204,7 @@ public class Application {
             .build();
 
         GetUserParcelTemplateResponse res = sdk.userParcelTemplates().get()
-                .userParcelTemplateObjectId("<value>")
+                .userParcelTemplateObjectId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -220,10 +217,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `userParcelTemplateObjectId`                         | *String*                                             | :heavy_check_mark:                                   | Object ID of the user parcel template                |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `userParcelTemplateObjectId`                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the user parcel template                                                                                                                              |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -231,10 +228,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## update
 
@@ -245,11 +241,11 @@ Updates an existing user parcel template.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.DistanceUnitEnum;
-import com.shippo.sdk.models.components.UserParcelTemplateUpdateRequest;
-import com.shippo.sdk.models.components.WeightUnitEnum;
-import com.shippo.sdk.models.operations.UpdateUserParcelTemplateResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.DistanceUnitEnum;
+import com.goshippo.sdk.models.components.UserParcelTemplateUpdateRequest;
+import com.goshippo.sdk.models.components.WeightUnitEnum;
+import com.goshippo.sdk.models.operations.UpdateUserParcelTemplateResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -262,7 +258,7 @@ public class Application {
             .build();
 
         UpdateUserParcelTemplateResponse res = sdk.userParcelTemplates().update()
-                .userParcelTemplateObjectId("<value>")
+                .userParcelTemplateObjectId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .userParcelTemplateUpdateRequest(UserParcelTemplateUpdateRequest.builder()
                     .distanceUnit(DistanceUnitEnum.IN)
@@ -284,11 +280,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `userParcelTemplateObjectId`                                                                            | *String*                                                                                                | :heavy_check_mark:                                                                                      | Object ID of the user parcel template                                                                   |                                                                                                         |
-| `shippoApiVersion`                                                                                      | *Optional<String>*                                                                                      | :heavy_minus_sign:                                                                                      | String used to pick a non-default API version to use                                                    | 2018-02-08                                                                                              |
-| `userParcelTemplateUpdateRequest`                                                                       | [Optional<UserParcelTemplateUpdateRequest>](../../models/components/UserParcelTemplateUpdateRequest.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |                                                                                                         |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `userParcelTemplateObjectId`                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the user parcel template                                                                                                                              |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `userParcelTemplateUpdateRequest`                                                                                                                                  | [Optional\<UserParcelTemplateUpdateRequest>](../../models/components/UserParcelTemplateUpdateRequest.md)                                                           | :heavy_minus_sign:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
 
 ### Response
 
@@ -296,6 +292,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
