@@ -30,9 +30,9 @@ By default, if the query parameter is omitted, the `service_levels` property wil
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.ListCarrierAccountsRequest;
-import com.shippo.sdk.models.operations.ListCarrierAccountsResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListCarrierAccountsRequest;
+import com.goshippo.sdk.models.operations.ListCarrierAccountsResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -70,10 +70,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -84,11 +83,11 @@ Creates a new carrier account or connects an existing carrier account to the Shi
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.ConnectExistingOwnAccountRequest;
-import com.shippo.sdk.models.components.ConnectExistingOwnAccountRequestParameters;
-import com.shippo.sdk.models.components.FedExConnectExistingOwnAccountParameters;
-import com.shippo.sdk.models.operations.CreateCarrierAccountResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.ConnectExistingOwnAccountRequest;
+import com.goshippo.sdk.models.components.ConnectExistingOwnAccountRequestParameters;
+import com.goshippo.sdk.models.components.FedExConnectExistingOwnAccountParameters;
+import com.goshippo.sdk.models.operations.CreateCarrierAccountResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -129,10 +128,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     | Example                                                                                         |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                              | *Optional<String>*                                                                              | :heavy_minus_sign:                                                                              | String used to pick a non-default API version to use                                            | 2018-02-08                                                                                      |
-| `connectExistingOwnAccountRequest`                                                              | [ConnectExistingOwnAccountRequest](../../models/components/ConnectExistingOwnAccountRequest.md) | :heavy_check_mark:                                                                              | Examples.                                                                                       |                                                                                                 |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `connectExistingOwnAccountRequest`                                                                                                                                 | [ConnectExistingOwnAccountRequest](../../models/components/ConnectExistingOwnAccountRequest.md)                                                                    | :heavy_check_mark:                                                                                                                                                 | Examples.                                                                                                                                                          |                                                                                                                                                                    |
 
 ### Response
 
@@ -140,10 +139,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -154,8 +152,8 @@ Returns an existing carrier account using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetCarrierAccountResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetCarrierAccountResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -168,7 +166,7 @@ public class Application {
             .build();
 
         GetCarrierAccountResponse res = sdk.carrierAccounts().get()
-                .carrierAccountId("<value>")
+                .carrierAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -181,10 +179,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `carrierAccountId`                                   | *String*                                             | :heavy_check_mark:                                   | Object ID of the carrier account                     |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `carrierAccountId`                                                                                                                                                 | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the carrier account                                                                                                                                   |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -192,10 +190,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## update
 
@@ -206,11 +203,11 @@ Updates an existing carrier account object. The account_id and carrier can't be 
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.CarrierAccountBase;
-import com.shippo.sdk.models.components.CarrierAccountBaseParameters;
-import com.shippo.sdk.models.components.UPSConnectExistingOwnAccountParameters;
-import com.shippo.sdk.models.operations.UpdateCarrierAccountResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.CarrierAccountBase;
+import com.goshippo.sdk.models.components.CarrierAccountBaseParameters;
+import com.goshippo.sdk.models.components.UPSConnectExistingOwnAccountParameters;
+import com.goshippo.sdk.models.operations.UpdateCarrierAccountResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -223,7 +220,7 @@ public class Application {
             .build();
 
         UpdateCarrierAccountResponse res = sdk.carrierAccounts().update()
-                .carrierAccountId("<value>")
+                .carrierAccountId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .carrierAccountBase(CarrierAccountBase.builder()
                     .accountId("****")
@@ -264,11 +261,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `carrierAccountId`                                                            | *String*                                                                      | :heavy_check_mark:                                                            | Object ID of the carrier account                                              |                                                                               |
-| `shippoApiVersion`                                                            | *Optional<String>*                                                            | :heavy_minus_sign:                                                            | String used to pick a non-default API version to use                          | 2018-02-08                                                                    |
-| `carrierAccountBase`                                                          | [Optional<CarrierAccountBase>](../../models/components/CarrierAccountBase.md) | :heavy_minus_sign:                                                            | Examples.                                                                     |                                                                               |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `carrierAccountId`                                                                                                                                                 | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the carrier account                                                                                                                                   |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `carrierAccountBase`                                                                                                                                               | [Optional\<CarrierAccountBase>](../../models/components/CarrierAccountBase.md)                                                                                     | :heavy_minus_sign:                                                                                                                                                 | Examples.                                                                                                                                                          |                                                                                                                                                                    |
 
 ### Response
 
@@ -276,10 +273,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## initiateOauth2Signin
 
@@ -290,11 +286,11 @@ Used by client applications to setup or reconnect an existing carrier account wi
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
-import com.shippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
-import com.shippo.sdk.models.errors.InitiateOauth2SigninResponseBody;
-import com.shippo.sdk.models.operations.InitiateOauth2SigninResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
+import com.goshippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
+import com.goshippo.sdk.models.errors.InitiateOauth2SigninResponseBody;
+import com.goshippo.sdk.models.operations.InitiateOauth2SigninResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -307,7 +303,7 @@ public class Application {
             .build();
 
         InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
-                .carrierAccountObjectId("<value>")
+                .carrierAccountObjectId("<id>")
                 .redirectUri("https://enlightened-mortise.com/")
                 .state("Louisiana")
                 .shippoApiVersion("2018-02-08")
@@ -324,8 +320,8 @@ public class Application {
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `carrierAccountObjectId`                                                                                                                                                                                       | *String*                                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                                             | The carrier account ID (UUID) to start a signin process.                                                                                                                                                       |                                                                                                                                                                                                                |
 | `redirectUri`                                                                                                                                                                                                  | *String*                                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                                             | Callback URL. The URL that tells the authorization server where to send the user back to after they approve the request.                                                                                       |                                                                                                                                                                                                                |
-| `state`                                                                                                                                                                                                        | *Optional<String>*                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                             | A random string generated by the consuming application and included in the request to prevent CSRF attacks. The consuming application checks that the same value is returned after the user authorizes Shippo. |                                                                                                                                                                                                                |
-| `shippoApiVersion`                                                                                                                                                                                             | *Optional<String>*                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                             | String used to pick a non-default API version to use                                                                                                                                                           | 2018-02-08                                                                                                                                                                                                     |
+| `state`                                                                                                                                                                                                        | *Optional\<String>*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                             | A random string generated by the consuming application and included in the request to prevent CSRF attacks. The consuming application checks that the same value is returned after the user authorizes Shippo. |                                                                                                                                                                                                                |
+| `shippoApiVersion`                                                                                                                                                                                             | *Optional\<String>*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                             | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.                                             | 2018-02-08                                                                                                                                                                                                     |
 
 ### Response
 
@@ -333,13 +329,12 @@ public class Application {
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | models/errors/InitiateOauth2SigninResponseBody                        | 400                                                                   | application/json                                                      |
 | models/errors/InitiateOauth2SigninCarrierAccountsResponseBody         | 401                                                                   | application/json                                                      |
 | models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404                                                                   | application/json                                                      |
-| models/errors/SDKError                                                | 4xx-5xx                                                               | \*\/*                                                                 |
-
+| models/errors/SDKError                                                | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## register
 
@@ -350,11 +345,11 @@ Adds a Shippo carrier account
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.CarrierAccountCorreosCreateRequest;
-import com.shippo.sdk.models.components.CarrierAccountCorreosCreateRequestParameters;
-import com.shippo.sdk.models.operations.RegisterCarrierAccountRequestBody;
-import com.shippo.sdk.models.operations.RegisterCarrierAccountResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.CarrierAccountCorreosCreateRequest;
+import com.goshippo.sdk.models.components.CarrierAccountCorreosCreateRequestParameters;
+import com.goshippo.sdk.models.operations.RegisterCarrierAccountRequestBody;
+import com.goshippo.sdk.models.operations.RegisterCarrierAccountResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -384,10 +379,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                | *Optional<String>*                                                                                | :heavy_minus_sign:                                                                                | String used to pick a non-default API version to use                                              | 2018-02-08                                                                                        |
-| `requestBody`                                                                                     | [RegisterCarrierAccountRequestBody](../../models/operations/RegisterCarrierAccountRequestBody.md) | :heavy_check_mark:                                                                                | Examples.                                                                                         |                                                                                                   |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `requestBody`                                                                                                                                                      | [RegisterCarrierAccountRequestBody](../../models/operations/RegisterCarrierAccountRequestBody.md)                                                                  | :heavy_check_mark:                                                                                                                                                 | Examples.                                                                                                                                                          |                                                                                                                                                                    |
 
 ### Response
 
@@ -395,10 +390,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getRegistrationStatus
 
@@ -409,9 +403,9 @@ Returns the registration status for the given account for the given carrier
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.Carrier;
-import com.shippo.sdk.models.operations.GetCarrierRegistrationStatusResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.Carrier;
+import com.goshippo.sdk.models.operations.GetCarrierRegistrationStatusResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -437,10 +431,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `carrier`                                            | [Carrier](../../models/operations/Carrier.md)        | :heavy_check_mark:                                   | filter by specific carrier                           |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `carrier`                                                                                                                                                          | [Carrier](../../models/operations/Carrier.md)                                                                                                                      | :heavy_check_mark:                                                                                                                                                 | filter by specific carrier                                                                                                                                         |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -448,6 +442,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

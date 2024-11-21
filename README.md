@@ -64,33 +64,25 @@ Maven:
 package hello.world;
 
 import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.*;
 import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.models.operations.*;
 import com.shippo.sdk.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
+
 import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
         try {
             Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
-                // the API version can be globally set, though this is normally not required
-                // .shippoApiVersion("<YYYY-MM-DD>")
-                .build();
+                    .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                    // the API version can be globally set, though this is normally not required
+                    // .shippoApiVersion("<YYYY-MM-DD>")
+                    .build();
 
             ListAddressesResponse res = sdk.addresses().list()
-                .page(1L)
-                .results(5L)
-                .call();
+                    .page(1L)
+                    .results(5L)
+                    .call();
 
             if (res.addressPaginatedList().isPresent()) {
                 // handle response
@@ -116,6 +108,44 @@ public class Application {
 Review our full guides and references at [https://docs.goshippo.com/](https://docs.goshippo.com/).
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
+
+<!-- Start SDK Installation [installation] -->
+## SDK Installation
+
+### Getting started
+
+JDK 11 or later is required.
+
+The samples below show how a published SDK artifact is used:
+
+Gradle:
+```groovy
+implementation 'com.goshippo:sdk:1.0.0-beta'
+```
+
+Maven:
+```xml
+<dependency>
+    <groupId>com.goshippo</groupId>
+    <artifactId>sdk</artifactId>
+    <version>1.0.0-beta</version>
+</dependency>
+```
+
+### How to build
+After cloning the git repository to your file system you can build the SDK artifact from source to the `build` directory by running `./gradlew build` on *nix systems or `gradlew.bat` on Windows systems.
+
+If you wish to build from source and publish the SDK artifact to your local Maven repository (on your filesystem) then use the following command (after cloning the git repo locally):
+
+On *nix:
+```bash
+./gradlew publishToMavenLocal -Pskip.signing
+```
+On Windows:
+```bash
+gradlew.bat publishToMavenLocal -Pskip.signing
+```
+<!-- End SDK Installation [installation] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations

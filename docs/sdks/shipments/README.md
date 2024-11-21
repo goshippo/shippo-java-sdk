@@ -42,9 +42,9 @@ Optional path parameters:<br>
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.ListShipmentsRequest;
-import com.shippo.sdk.models.operations.ListShipmentsResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListShipmentsRequest;
+import com.goshippo.sdk.models.operations.ListShipmentsResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -82,10 +82,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -96,32 +95,32 @@ Creates a new shipment object.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.AddressCreateRequest;
-import com.shippo.sdk.models.components.AddressFrom;
-import com.shippo.sdk.models.components.AddressReturn;
-import com.shippo.sdk.models.components.AddressTo;
-import com.shippo.sdk.models.components.Cod;
-import com.shippo.sdk.models.components.CustomerReference;
-import com.shippo.sdk.models.components.DepartmentNumber;
-import com.shippo.sdk.models.components.Insurance;
-import com.shippo.sdk.models.components.InvoiceNumber;
-import com.shippo.sdk.models.components.ParcelCreateFromTemplateRequest;
-import com.shippo.sdk.models.components.ParcelExtra;
-import com.shippo.sdk.models.components.ParcelInsurance;
-import com.shippo.sdk.models.components.ParcelInsuranceProvider;
-import com.shippo.sdk.models.components.ParcelTemplateEnumSet;
-import com.shippo.sdk.models.components.ParcelTemplateFedExEnum;
-import com.shippo.sdk.models.components.Parcels;
-import com.shippo.sdk.models.components.PaymentMethod;
-import com.shippo.sdk.models.components.PoNumber;
-import com.shippo.sdk.models.components.RmaNumber;
-import com.shippo.sdk.models.components.ShipmentCreateRequest;
-import com.shippo.sdk.models.components.ShipmentCreateRequestCustomsDeclaration;
-import com.shippo.sdk.models.components.ShipmentExtra;
-import com.shippo.sdk.models.components.UPSReferenceFields;
-import com.shippo.sdk.models.components.WeightUnitEnum;
-import com.shippo.sdk.models.operations.CreateShipmentResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.AddressCreateRequest;
+import com.goshippo.sdk.models.components.AddressFrom;
+import com.goshippo.sdk.models.components.AddressReturn;
+import com.goshippo.sdk.models.components.AddressTo;
+import com.goshippo.sdk.models.components.Cod;
+import com.goshippo.sdk.models.components.CustomerReference;
+import com.goshippo.sdk.models.components.DepartmentNumber;
+import com.goshippo.sdk.models.components.Insurance;
+import com.goshippo.sdk.models.components.InvoiceNumber;
+import com.goshippo.sdk.models.components.ParcelCreateFromTemplateRequest;
+import com.goshippo.sdk.models.components.ParcelExtra;
+import com.goshippo.sdk.models.components.ParcelInsurance;
+import com.goshippo.sdk.models.components.ParcelInsuranceProvider;
+import com.goshippo.sdk.models.components.ParcelTemplateEnumSet;
+import com.goshippo.sdk.models.components.ParcelTemplateFedExEnum;
+import com.goshippo.sdk.models.components.Parcels;
+import com.goshippo.sdk.models.components.PaymentMethod;
+import com.goshippo.sdk.models.components.PoNumber;
+import com.goshippo.sdk.models.components.RmaNumber;
+import com.goshippo.sdk.models.components.ShipmentCreateRequest;
+import com.goshippo.sdk.models.components.ShipmentCreateRequestCustomsDeclaration;
+import com.goshippo.sdk.models.components.ShipmentExtra;
+import com.goshippo.sdk.models.components.UPSReferenceFields;
+import com.goshippo.sdk.models.components.WeightUnitEnum;
+import com.goshippo.sdk.models.operations.CreateShipmentResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -294,10 +293,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                        | *Optional<String>*                                                        | :heavy_minus_sign:                                                        | String used to pick a non-default API version to use                      | 2018-02-08                                                                |
-| `shipmentCreateRequest`                                                   | [ShipmentCreateRequest](../../models/components/ShipmentCreateRequest.md) | :heavy_check_mark:                                                        | Shipment details and contact info.                                        |                                                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `shipmentCreateRequest`                                                                                                                                            | [ShipmentCreateRequest](../../models/components/ShipmentCreateRequest.md)                                                                                          | :heavy_check_mark:                                                                                                                                                 | Shipment details and contact info.                                                                                                                                 |                                                                                                                                                                    |
 
 ### Response
 
@@ -305,10 +304,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -319,8 +317,8 @@ Returns an existing shipment using an object ID
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetShipmentResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetShipmentResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -333,7 +331,7 @@ public class Application {
             .build();
 
         GetShipmentResponse res = sdk.shipments().get()
-                .shipmentId("<value>")
+                .shipmentId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -346,10 +344,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `shipmentId`                                         | *String*                                             | :heavy_check_mark:                                   | Object ID of the shipment to update                  |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shipmentId`                                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the shipment to update                                                                                                                                |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -357,6 +355,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

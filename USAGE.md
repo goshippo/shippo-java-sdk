@@ -2,8 +2,8 @@
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.ListAddressesResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListAddressesResponse;
 import java.lang.Exception;
 
 public class Application {

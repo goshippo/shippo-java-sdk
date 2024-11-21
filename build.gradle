@@ -42,7 +42,7 @@ model {
 jar {
     dependsOn(":generatePomFileForMavenPublication")
 
-    into("META-INF/maven/com.shippo/sdk") {
+    into("META-INF/maven/com.goshippo/sdk") {
         from("$buildDir/pom.xml")
     }
 }
@@ -61,8 +61,8 @@ tasks.withType(Javadoc) {
   options.addStringOption('Xdoclint:none', '-quiet')
 }
 
-group = "com.shippo"
-version = "0.4.0"
+group = "com.goshippo"
+version = "1.0.0-beta"
 
 sourcesJar {
     archiveBaseName = "sdk"
@@ -77,19 +77,19 @@ publishing {
 
     publications {
         maven(MavenPublication) {
-            groupId = 'com.shippo'
+            groupId = 'com.goshippo'
             artifactId = 'sdk'
-            version = '0.4.0'
+            version = '1.0.0-beta'
 
             from components.java
 
             pom {
-                name = 'My Company Java SDK'
-                description = 'SDK enabling Java developers to easily integrate with the My Company API.'
-                url = 'https://github.com/owner/repo'
+                name = 'Shippo Java SDK'
+                description = 'SDK enabling Java developers to easily integrate with the Shippo API.'
+                url = 'https://https://github.com/goshippo/shippo-java-sdk'
                 scm {
-                    url = 'github.com/owner/repo'
-                    connection = 'scm:git:ssh://git@github.com/owner/repo.git'
+                    url = 'https://github.com/goshippo/shippo-java-sdk'
+                    connection = 'scm:git:ssh://git@https://github.com/goshippo/shippo-java-sdk.git'
                 }
                 licenses {
                     license {
@@ -99,14 +99,14 @@ publishing {
                 }
                 developers {
                     developer {
-                        name = 'My Company'
-                        organization = 'My Company'
-                        email = 'info@mycompany.com'
+                        name = 'Shippo'
+                        organization = 'Shippo'
+                        email = 'support@shippo.com'
                     }
                 }
                 organization {
-                    name = 'My Company'
-                    url = 'www.mycompany.com'
+                    name = 'Shippo'
+                    url = 'www.goshippo.com'
                 }
             }
         }
@@ -123,10 +123,11 @@ if (!project.hasProperty('skip.signing')) {
 }
 
 dependencies {
+    api 'com.fasterxml.jackson.core:jackson-annotations:2.17.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.2'
-    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
+    api('org.openapitools:jackson-databind-nullable:0.2.6') {exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'}
     implementation 'org.apache.httpcomponents:httpclient:4.5.14'
     implementation 'org.apache.httpcomponents:httpmime:4.5.14'
     implementation 'commons-io:commons-io:2.15.1'

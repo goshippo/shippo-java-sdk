@@ -20,13 +20,13 @@ Creates a pickup object. This request is for a carrier to come to a specified lo
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.AddressCompleteCreateRequest;
-import com.shippo.sdk.models.components.BuildingLocationType;
-import com.shippo.sdk.models.components.BuildingType;
-import com.shippo.sdk.models.components.Location;
-import com.shippo.sdk.models.components.PickupBase;
-import com.shippo.sdk.models.operations.CreatePickupResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.AddressCompleteCreateRequest;
+import com.goshippo.sdk.models.components.BuildingLocationType;
+import com.goshippo.sdk.models.components.BuildingType;
+import com.goshippo.sdk.models.components.Location;
+import com.goshippo.sdk.models.components.PickupBase;
+import com.goshippo.sdk.models.operations.CreatePickupResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -81,10 +81,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              | Example                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `shippoApiVersion`                                                                                                                       | *Optional<String>*                                                                                                                       | :heavy_minus_sign:                                                                                                                       | String used to pick a non-default API version to use                                                                                     | 2018-02-08                                                                                                                               |
-| `pickupBase`                                                                                                                             | [PickupBase](../../models/components/PickupBase.md)                                                                                      | :heavy_check_mark:                                                                                                                       | Shippo’s pickups endpoint allows you to schedule pickups with USPS and DHL Express for eligible shipments that you have already created. |                                                                                                                                          |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `pickupBase`                                                                                                                                                       | [PickupBase](../../models/components/PickupBase.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                 | Shippo’s pickups endpoint allows you to schedule pickups with USPS and DHL Express for eligible shipments that you have already created.                           |                                                                                                                                                                    |
 
 ### Response
 
@@ -92,6 +92,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

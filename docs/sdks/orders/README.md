@@ -32,11 +32,11 @@ Returns a list of all order objects.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.OrderShopAppEnum;
-import com.shippo.sdk.models.components.OrderStatusEnum;
-import com.shippo.sdk.models.operations.ListOrdersRequest;
-import com.shippo.sdk.models.operations.ListOrdersResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.OrderShopAppEnum;
+import com.goshippo.sdk.models.components.OrderStatusEnum;
+import com.goshippo.sdk.models.operations.ListOrdersRequest;
+import com.goshippo.sdk.models.operations.ListOrdersResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -78,10 +78,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## create
 
@@ -92,13 +91,13 @@ Creates a new order object.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.AddressCreateRequest;
-import com.shippo.sdk.models.components.LineItemBase;
-import com.shippo.sdk.models.components.OrderCreateRequest;
-import com.shippo.sdk.models.components.OrderStatusEnum;
-import com.shippo.sdk.models.components.WeightUnitEnum;
-import com.shippo.sdk.models.operations.CreateOrderResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.AddressCreateRequest;
+import com.goshippo.sdk.models.components.LineItemBase;
+import com.goshippo.sdk.models.components.OrderCreateRequest;
+import com.goshippo.sdk.models.components.OrderStatusEnum;
+import com.goshippo.sdk.models.components.WeightUnitEnum;
+import com.goshippo.sdk.models.operations.CreateOrderResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -186,10 +185,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `shippoApiVersion`                                                  | *Optional<String>*                                                  | :heavy_minus_sign:                                                  | String used to pick a non-default API version to use                | 2018-02-08                                                          |
-| `orderCreateRequest`                                                | [OrderCreateRequest](../../models/components/OrderCreateRequest.md) | :heavy_check_mark:                                                  | Order details.                                                      |                                                                     |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `orderCreateRequest`                                                                                                                                               | [OrderCreateRequest](../../models/components/OrderCreateRequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                 | Order details.                                                                                                                                                     |                                                                                                                                                                    |
 
 ### Response
 
@@ -197,10 +196,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -211,8 +209,8 @@ Retrieves an existing order using an object ID.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetOrderResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetOrderResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -225,7 +223,7 @@ public class Application {
             .build();
 
         GetOrderResponse res = sdk.orders().get()
-                .orderId("<value>")
+                .orderId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -238,10 +236,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `orderId`                                            | *String*                                             | :heavy_check_mark:                                   | Object ID of the order                               |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `orderId`                                                                                                                                                          | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the order                                                                                                                                             |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -249,6 +247,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

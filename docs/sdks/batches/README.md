@@ -31,35 +31,35 @@ Creates a new batch object for purchasing shipping labels for many shipments at 
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.AddressCreateRequest;
-import com.shippo.sdk.models.components.AddressFrom;
-import com.shippo.sdk.models.components.AddressReturn;
-import com.shippo.sdk.models.components.AddressTo;
-import com.shippo.sdk.models.components.BatchCreateRequest;
-import com.shippo.sdk.models.components.BatchShipmentCreateRequest;
-import com.shippo.sdk.models.components.Cod;
-import com.shippo.sdk.models.components.CustomerReference;
-import com.shippo.sdk.models.components.DepartmentNumber;
-import com.shippo.sdk.models.components.Insurance;
-import com.shippo.sdk.models.components.InvoiceNumber;
-import com.shippo.sdk.models.components.LabelFileTypeEnum;
-import com.shippo.sdk.models.components.ParcelCreateFromTemplateRequest;
-import com.shippo.sdk.models.components.ParcelExtra;
-import com.shippo.sdk.models.components.ParcelInsurance;
-import com.shippo.sdk.models.components.ParcelInsuranceProvider;
-import com.shippo.sdk.models.components.ParcelTemplateEnumSet;
-import com.shippo.sdk.models.components.ParcelTemplateFedExEnum;
-import com.shippo.sdk.models.components.Parcels;
-import com.shippo.sdk.models.components.PaymentMethod;
-import com.shippo.sdk.models.components.PoNumber;
-import com.shippo.sdk.models.components.RmaNumber;
-import com.shippo.sdk.models.components.ShipmentCreateRequest;
-import com.shippo.sdk.models.components.ShipmentCreateRequestCustomsDeclaration;
-import com.shippo.sdk.models.components.ShipmentExtra;
-import com.shippo.sdk.models.components.UPSReferenceFields;
-import com.shippo.sdk.models.components.WeightUnitEnum;
-import com.shippo.sdk.models.operations.CreateBatchResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.AddressCreateRequest;
+import com.goshippo.sdk.models.components.AddressFrom;
+import com.goshippo.sdk.models.components.AddressReturn;
+import com.goshippo.sdk.models.components.AddressTo;
+import com.goshippo.sdk.models.components.BatchCreateRequest;
+import com.goshippo.sdk.models.components.BatchShipmentCreateRequest;
+import com.goshippo.sdk.models.components.Cod;
+import com.goshippo.sdk.models.components.CustomerReference;
+import com.goshippo.sdk.models.components.DepartmentNumber;
+import com.goshippo.sdk.models.components.Insurance;
+import com.goshippo.sdk.models.components.InvoiceNumber;
+import com.goshippo.sdk.models.components.LabelFileTypeEnum;
+import com.goshippo.sdk.models.components.ParcelCreateFromTemplateRequest;
+import com.goshippo.sdk.models.components.ParcelExtra;
+import com.goshippo.sdk.models.components.ParcelInsurance;
+import com.goshippo.sdk.models.components.ParcelInsuranceProvider;
+import com.goshippo.sdk.models.components.ParcelTemplateEnumSet;
+import com.goshippo.sdk.models.components.ParcelTemplateFedExEnum;
+import com.goshippo.sdk.models.components.Parcels;
+import com.goshippo.sdk.models.components.PaymentMethod;
+import com.goshippo.sdk.models.components.PoNumber;
+import com.goshippo.sdk.models.components.RmaNumber;
+import com.goshippo.sdk.models.components.ShipmentCreateRequest;
+import com.goshippo.sdk.models.components.ShipmentCreateRequestCustomsDeclaration;
+import com.goshippo.sdk.models.components.ShipmentExtra;
+import com.goshippo.sdk.models.components.UPSReferenceFields;
+import com.goshippo.sdk.models.components.WeightUnitEnum;
+import com.goshippo.sdk.models.operations.CreateBatchResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -244,10 +244,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `shippoApiVersion`                                                  | *Optional<String>*                                                  | :heavy_minus_sign:                                                  | String used to pick a non-default API version to use                | 2018-02-08                                                          |
-| `batchCreateRequest`                                                | [BatchCreateRequest](../../models/components/BatchCreateRequest.md) | :heavy_check_mark:                                                  | Batch details.                                                      |                                                                     |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `batchCreateRequest`                                                                                                                                               | [BatchCreateRequest](../../models/components/BatchCreateRequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                 | Batch details.                                                                                                                                                     |                                                                                                                                                                    |
 
 ### Response
 
@@ -255,10 +255,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## get
 
@@ -272,8 +271,8 @@ For more details on filtering results, see our guide on <a href="https://docs.go
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.GetBatchResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.GetBatchResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -286,7 +285,7 @@ public class Application {
             .build();
 
         GetBatchResponse res = sdk.batches().get()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -299,10 +298,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `batchId`                                            | *String*                                             | :heavy_check_mark:                                   | Object ID of the batch                               |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `batchId`                                                                                                                                                          | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the batch                                                                                                                                             |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -310,10 +309,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## addShipments
 
@@ -324,32 +322,32 @@ Adds batch shipments to an existing batch.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.AddressCreateRequest;
-import com.shippo.sdk.models.components.AddressFrom;
-import com.shippo.sdk.models.components.AddressReturn;
-import com.shippo.sdk.models.components.AddressTo;
-import com.shippo.sdk.models.components.BatchShipmentCreateRequest;
-import com.shippo.sdk.models.components.Cod;
-import com.shippo.sdk.models.components.CustomerReference;
-import com.shippo.sdk.models.components.DepartmentNumber;
-import com.shippo.sdk.models.components.DistanceUnitEnum;
-import com.shippo.sdk.models.components.Insurance;
-import com.shippo.sdk.models.components.InvoiceNumber;
-import com.shippo.sdk.models.components.ParcelCreateRequest;
-import com.shippo.sdk.models.components.ParcelExtra;
-import com.shippo.sdk.models.components.ParcelInsurance;
-import com.shippo.sdk.models.components.ParcelInsuranceProvider;
-import com.shippo.sdk.models.components.Parcels;
-import com.shippo.sdk.models.components.PaymentMethod;
-import com.shippo.sdk.models.components.PoNumber;
-import com.shippo.sdk.models.components.RmaNumber;
-import com.shippo.sdk.models.components.ShipmentCreateRequest;
-import com.shippo.sdk.models.components.ShipmentCreateRequestCustomsDeclaration;
-import com.shippo.sdk.models.components.ShipmentExtra;
-import com.shippo.sdk.models.components.UPSReferenceFields;
-import com.shippo.sdk.models.components.WeightUnitEnum;
-import com.shippo.sdk.models.operations.AddShipmentsToBatchResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.components.AddressCreateRequest;
+import com.goshippo.sdk.models.components.AddressFrom;
+import com.goshippo.sdk.models.components.AddressReturn;
+import com.goshippo.sdk.models.components.AddressTo;
+import com.goshippo.sdk.models.components.BatchShipmentCreateRequest;
+import com.goshippo.sdk.models.components.Cod;
+import com.goshippo.sdk.models.components.CustomerReference;
+import com.goshippo.sdk.models.components.DepartmentNumber;
+import com.goshippo.sdk.models.components.DistanceUnitEnum;
+import com.goshippo.sdk.models.components.Insurance;
+import com.goshippo.sdk.models.components.InvoiceNumber;
+import com.goshippo.sdk.models.components.ParcelCreateRequest;
+import com.goshippo.sdk.models.components.ParcelExtra;
+import com.goshippo.sdk.models.components.ParcelInsurance;
+import com.goshippo.sdk.models.components.ParcelInsuranceProvider;
+import com.goshippo.sdk.models.components.Parcels;
+import com.goshippo.sdk.models.components.PaymentMethod;
+import com.goshippo.sdk.models.components.PoNumber;
+import com.goshippo.sdk.models.components.RmaNumber;
+import com.goshippo.sdk.models.components.ShipmentCreateRequest;
+import com.goshippo.sdk.models.components.ShipmentCreateRequestCustomsDeclaration;
+import com.goshippo.sdk.models.components.ShipmentExtra;
+import com.goshippo.sdk.models.components.UPSReferenceFields;
+import com.goshippo.sdk.models.components.WeightUnitEnum;
+import com.goshippo.sdk.models.operations.AddShipmentsToBatchResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -363,7 +361,7 @@ public class Application {
             .build();
 
         AddShipmentsToBatchResponse res = sdk.batches().addShipments()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .requestBody(List.of(
                     BatchShipmentCreateRequest.builder()
@@ -532,11 +530,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `batchId`                                                                                 | *String*                                                                                  | :heavy_check_mark:                                                                        | Object ID of the batch                                                                    |                                                                                           |
-| `shippoApiVersion`                                                                        | *Optional<String>*                                                                        | :heavy_minus_sign:                                                                        | String used to pick a non-default API version to use                                      | 2018-02-08                                                                                |
-| `requestBody`                                                                             | List<[BatchShipmentCreateRequest](../../models/components/BatchShipmentCreateRequest.md)> | :heavy_check_mark:                                                                        | Array of shipments to add to the batch                                                    |                                                                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `batchId`                                                                                                                                                          | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the batch                                                                                                                                             |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `requestBody`                                                                                                                                                      | List\<[BatchShipmentCreateRequest](../../models/components/BatchShipmentCreateRequest.md)>                                                                         | :heavy_check_mark:                                                                                                                                                 | Array of shipments to add to the batch                                                                                                                             |                                                                                                                                                                    |
 
 ### Response
 
@@ -544,10 +542,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## purchase
 
@@ -561,8 +558,8 @@ When all the shipments are purchased, the status will change to `PURCHASED` and 
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.PurchaseBatchResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.PurchaseBatchResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -575,7 +572,7 @@ public class Application {
             .build();
 
         PurchaseBatchResponse res = sdk.batches().purchase()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -588,10 +585,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `batchId`                                            | *String*                                             | :heavy_check_mark:                                   | Object ID of the batch                               |                                                      |
-| `shippoApiVersion`                                   | *Optional<String>*                                   | :heavy_minus_sign:                                   | String used to pick a non-default API version to use | 2018-02-08                                           |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `batchId`                                                                                                                                                          | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the batch                                                                                                                                             |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -599,10 +596,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## removeShipments
 
@@ -613,8 +609,8 @@ Removes shipments from an existing batch shipment.
 ```java
 package hello.world;
 
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.operations.RemoveShipmentsFromBatchResponse;
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.RemoveShipmentsFromBatchResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -628,7 +624,7 @@ public class Application {
             .build();
 
         RemoveShipmentsFromBatchResponse res = sdk.batches().removeShipments()
-                .batchId("<value>")
+                .batchId("<id>")
                 .shippoApiVersion("2018-02-08")
                 .requestBody(List.of(
                     "<value>"))
@@ -643,11 +639,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                              | Type                                                   | Required                                               | Description                                            | Example                                                |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `batchId`                                              | *String*                                               | :heavy_check_mark:                                     | Object ID of the batch                                 |                                                        |
-| `shippoApiVersion`                                     | *Optional<String>*                                     | :heavy_minus_sign:                                     | String used to pick a non-default API version to use   | 2018-02-08                                             |
-| `requestBody`                                          | List<*String*>                                         | :heavy_check_mark:                                     | Array of shipments object ids to remove from the batch |                                                        |
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `batchId`                                                                                                                                                          | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the batch                                                                                                                                             |                                                                                                                                                                    |
+| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| `requestBody`                                                                                                                                                      | List\<*String*>                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                 | Array of shipments object ids to remove from the batch                                                                                                             |                                                                                                                                                                    |
 
 ### Response
 
@@ -655,6 +651,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
