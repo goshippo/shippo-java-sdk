@@ -72,10 +72,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listWebhooks
 
@@ -115,10 +114,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getWebhook
 
@@ -143,7 +141,7 @@ public class Application {
             .build();
 
         GetWebhookResponse res = sdk.webhooks().getWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .call();
 
         if (res.webhook().isPresent()) {
@@ -165,10 +163,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## updateWebhook
 
@@ -195,7 +192,7 @@ public class Application {
             .build();
 
         UpdateWebhookResponse res = sdk.webhooks().updateWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .webhookUpdateRequest(WebhookUpdateRequest.builder()
                     .event(WebhookEventTypeEnum.BATCH_CREATED)
                     .url("https://example.com/shippo-webhook")
@@ -224,10 +221,9 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
-
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## deleteWebhook
 
@@ -252,7 +248,7 @@ public class Application {
             .build();
 
         DeleteWebhookResponse res = sdk.webhooks().deleteWebhook()
-                .webhookId("<value>")
+                .webhookId("<id>")
                 .call();
 
         // handle response
@@ -272,6 +268,6 @@ public class Application {
 
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

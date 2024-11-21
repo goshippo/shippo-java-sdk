@@ -44,6 +44,10 @@ public class InstantTransactionCreateRequest {
     @JsonProperty("shipment")
     private ShipmentCreateRequest shipment;
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("order")
+    private Optional<String> order;
+
     @JsonCreator
     public InstantTransactionCreateRequest(
             @JsonProperty("async") Optional<Boolean> async,
@@ -51,26 +55,29 @@ public class InstantTransactionCreateRequest {
             @JsonProperty("label_file_type") Optional<? extends LabelFileType> labelFileType,
             @JsonProperty("metadata") Optional<String> metadata,
             @JsonProperty("servicelevel_token") String servicelevelToken,
-            @JsonProperty("shipment") ShipmentCreateRequest shipment) {
+            @JsonProperty("shipment") ShipmentCreateRequest shipment,
+            @JsonProperty("order") Optional<String> order) {
         Utils.checkNotNull(async, "async");
         Utils.checkNotNull(carrierAccount, "carrierAccount");
         Utils.checkNotNull(labelFileType, "labelFileType");
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(servicelevelToken, "servicelevelToken");
         Utils.checkNotNull(shipment, "shipment");
+        Utils.checkNotNull(order, "order");
         this.async = async;
         this.carrierAccount = carrierAccount;
         this.labelFileType = labelFileType;
         this.metadata = metadata;
         this.servicelevelToken = servicelevelToken;
         this.shipment = shipment;
+        this.order = order;
     }
     
     public InstantTransactionCreateRequest(
             String carrierAccount,
             String servicelevelToken,
             ShipmentCreateRequest shipment) {
-        this(Optional.empty(), carrierAccount, Optional.empty(), Optional.empty(), servicelevelToken, shipment);
+        this(Optional.empty(), carrierAccount, Optional.empty(), Optional.empty(), servicelevelToken, shipment, Optional.empty());
     }
 
     @JsonIgnore
@@ -102,6 +109,11 @@ public class InstantTransactionCreateRequest {
     @JsonIgnore
     public ShipmentCreateRequest shipment() {
         return shipment;
+    }
+
+    @JsonIgnore
+    public Optional<String> order() {
+        return order;
     }
 
     public final static Builder builder() {
@@ -161,6 +173,18 @@ public class InstantTransactionCreateRequest {
         this.shipment = shipment;
         return this;
     }
+
+    public InstantTransactionCreateRequest withOrder(String order) {
+        Utils.checkNotNull(order, "order");
+        this.order = Optional.ofNullable(order);
+        return this;
+    }
+
+    public InstantTransactionCreateRequest withOrder(Optional<String> order) {
+        Utils.checkNotNull(order, "order");
+        this.order = order;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -177,7 +201,8 @@ public class InstantTransactionCreateRequest {
             Objects.deepEquals(this.labelFileType, other.labelFileType) &&
             Objects.deepEquals(this.metadata, other.metadata) &&
             Objects.deepEquals(this.servicelevelToken, other.servicelevelToken) &&
-            Objects.deepEquals(this.shipment, other.shipment);
+            Objects.deepEquals(this.shipment, other.shipment) &&
+            Objects.deepEquals(this.order, other.order);
     }
     
     @Override
@@ -188,7 +213,8 @@ public class InstantTransactionCreateRequest {
             labelFileType,
             metadata,
             servicelevelToken,
-            shipment);
+            shipment,
+            order);
     }
     
     @Override
@@ -199,7 +225,8 @@ public class InstantTransactionCreateRequest {
                 "labelFileType", labelFileType,
                 "metadata", metadata,
                 "servicelevelToken", servicelevelToken,
-                "shipment", shipment);
+                "shipment", shipment,
+                "order", order);
     }
     
     public final static class Builder {
@@ -214,7 +241,9 @@ public class InstantTransactionCreateRequest {
  
         private String servicelevelToken;
  
-        private ShipmentCreateRequest shipment;  
+        private ShipmentCreateRequest shipment;
+ 
+        private Optional<String> order = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -273,6 +302,18 @@ public class InstantTransactionCreateRequest {
             this.shipment = shipment;
             return this;
         }
+
+        public Builder order(String order) {
+            Utils.checkNotNull(order, "order");
+            this.order = Optional.ofNullable(order);
+            return this;
+        }
+
+        public Builder order(Optional<String> order) {
+            Utils.checkNotNull(order, "order");
+            this.order = order;
+            return this;
+        }
         
         public InstantTransactionCreateRequest build() {
             if (async == null) {
@@ -283,7 +324,8 @@ public class InstantTransactionCreateRequest {
                 labelFileType,
                 metadata,
                 servicelevelToken,
-                shipment);
+                shipment,
+                order);
         }
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_Async =

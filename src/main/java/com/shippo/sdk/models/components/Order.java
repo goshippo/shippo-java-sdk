@@ -161,7 +161,7 @@ public class Order {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("transactions")
-    private Optional<? extends List<String>> transactions;
+    private Optional<? extends List<Transactions>> transactions;
 
     @JsonCreator
     public Order(
@@ -184,7 +184,7 @@ public class Order {
             @JsonProperty("object_id") Optional<String> objectId,
             @JsonProperty("object_owner") Optional<String> objectOwner,
             @JsonProperty("shop_app") Optional<? extends OrderShopAppEnum> shopApp,
-            @JsonProperty("transactions") Optional<? extends List<String>> transactions) {
+            @JsonProperty("transactions") Optional<? extends List<Transactions>> transactions) {
         Utils.checkNotNull(currency, "currency");
         Utils.checkNotNull(notes, "notes");
         Utils.checkNotNull(orderNumber, "orderNumber");
@@ -399,8 +399,8 @@ public class Order {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<List<String>> transactions() {
-        return (Optional<List<String>>) transactions;
+    public Optional<List<Transactions>> transactions() {
+        return (Optional<List<Transactions>>) transactions;
     }
 
     public final static Builder builder() {
@@ -741,7 +741,7 @@ public class Order {
      * Array of &lt;a href="#tag/Transactions"&gt;transaction&lt;/a&gt; objects representing all shipping labels purchased for this order.
      * All objects are returned expanded with a limited number of fields by default.
      */
-    public Order withTransactions(List<String> transactions) {
+    public Order withTransactions(List<Transactions> transactions) {
         Utils.checkNotNull(transactions, "transactions");
         this.transactions = Optional.ofNullable(transactions);
         return this;
@@ -751,7 +751,7 @@ public class Order {
      * Array of &lt;a href="#tag/Transactions"&gt;transaction&lt;/a&gt; objects representing all shipping labels purchased for this order.
      * All objects are returned expanded with a limited number of fields by default.
      */
-    public Order withTransactions(Optional<? extends List<String>> transactions) {
+    public Order withTransactions(Optional<? extends List<Transactions>> transactions) {
         Utils.checkNotNull(transactions, "transactions");
         this.transactions = transactions;
         return this;
@@ -879,7 +879,7 @@ public class Order {
  
         private Optional<? extends OrderShopAppEnum> shopApp = Optional.empty();
  
-        private Optional<? extends List<String>> transactions = Optional.empty();  
+        private Optional<? extends List<Transactions>> transactions = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -1219,7 +1219,7 @@ public class Order {
          * Array of &lt;a href="#tag/Transactions"&gt;transaction&lt;/a&gt; objects representing all shipping labels purchased for this order.
          * All objects are returned expanded with a limited number of fields by default.
          */
-        public Builder transactions(List<String> transactions) {
+        public Builder transactions(List<Transactions> transactions) {
             Utils.checkNotNull(transactions, "transactions");
             this.transactions = Optional.ofNullable(transactions);
             return this;
@@ -1229,7 +1229,7 @@ public class Order {
          * Array of &lt;a href="#tag/Transactions"&gt;transaction&lt;/a&gt; objects representing all shipping labels purchased for this order.
          * All objects are returned expanded with a limited number of fields by default.
          */
-        public Builder transactions(Optional<? extends List<String>> transactions) {
+        public Builder transactions(Optional<? extends List<Transactions>> transactions) {
             Utils.checkNotNull(transactions, "transactions");
             this.transactions = transactions;
             return this;

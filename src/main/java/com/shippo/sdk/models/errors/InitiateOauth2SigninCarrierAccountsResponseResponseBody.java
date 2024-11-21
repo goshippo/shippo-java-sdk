@@ -20,6 +20,7 @@ import java.util.Optional;
 /**
  * InitiateOauth2SigninCarrierAccountsResponseResponseBody - Invalid carrier account provided by the user
  */
+@SuppressWarnings("serial")
 public class InitiateOauth2SigninCarrierAccountsResponseResponseBody extends RuntimeException {
 
     @JsonInclude(Include.NON_ABSENT)

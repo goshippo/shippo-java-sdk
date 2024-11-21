@@ -42,25 +42,32 @@ public class TransactionCreateRequest {
     @JsonProperty("rate")
     private String rate;
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("order")
+    private Optional<String> order;
+
     @JsonCreator
     public TransactionCreateRequest(
             @JsonProperty("async") Optional<Boolean> async,
             @JsonProperty("label_file_type") Optional<? extends LabelFileTypeEnum> labelFileType,
             @JsonProperty("metadata") Optional<String> metadata,
-            @JsonProperty("rate") String rate) {
+            @JsonProperty("rate") String rate,
+            @JsonProperty("order") Optional<String> order) {
         Utils.checkNotNull(async, "async");
         Utils.checkNotNull(labelFileType, "labelFileType");
         Utils.checkNotNull(metadata, "metadata");
         Utils.checkNotNull(rate, "rate");
+        Utils.checkNotNull(order, "order");
         this.async = async;
         this.labelFileType = labelFileType;
         this.metadata = metadata;
         this.rate = rate;
+        this.order = order;
     }
     
     public TransactionCreateRequest(
             String rate) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), rate);
+        this(Optional.empty(), Optional.empty(), Optional.empty(), rate, Optional.empty());
     }
 
     @JsonIgnore
@@ -86,6 +93,11 @@ public class TransactionCreateRequest {
     @JsonIgnore
     public String rate() {
         return rate;
+    }
+
+    @JsonIgnore
+    public Optional<String> order() {
+        return order;
     }
 
     public final static Builder builder() {
@@ -141,6 +153,18 @@ public class TransactionCreateRequest {
         this.rate = rate;
         return this;
     }
+
+    public TransactionCreateRequest withOrder(String order) {
+        Utils.checkNotNull(order, "order");
+        this.order = Optional.ofNullable(order);
+        return this;
+    }
+
+    public TransactionCreateRequest withOrder(Optional<String> order) {
+        Utils.checkNotNull(order, "order");
+        this.order = order;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -155,7 +179,8 @@ public class TransactionCreateRequest {
             Objects.deepEquals(this.async, other.async) &&
             Objects.deepEquals(this.labelFileType, other.labelFileType) &&
             Objects.deepEquals(this.metadata, other.metadata) &&
-            Objects.deepEquals(this.rate, other.rate);
+            Objects.deepEquals(this.rate, other.rate) &&
+            Objects.deepEquals(this.order, other.order);
     }
     
     @Override
@@ -164,7 +189,8 @@ public class TransactionCreateRequest {
             async,
             labelFileType,
             metadata,
-            rate);
+            rate,
+            order);
     }
     
     @Override
@@ -173,7 +199,8 @@ public class TransactionCreateRequest {
                 "async", async,
                 "labelFileType", labelFileType,
                 "metadata", metadata,
-                "rate", rate);
+                "rate", rate,
+                "order", order);
     }
     
     public final static class Builder {
@@ -184,7 +211,9 @@ public class TransactionCreateRequest {
  
         private Optional<String> metadata = Optional.empty();
  
-        private String rate;  
+        private String rate;
+ 
+        private Optional<String> order = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -239,6 +268,18 @@ public class TransactionCreateRequest {
             this.rate = rate;
             return this;
         }
+
+        public Builder order(String order) {
+            Utils.checkNotNull(order, "order");
+            this.order = Optional.ofNullable(order);
+            return this;
+        }
+
+        public Builder order(Optional<String> order) {
+            Utils.checkNotNull(order, "order");
+            this.order = order;
+            return this;
+        }
         
         public TransactionCreateRequest build() {
             if (async == null) {
@@ -247,7 +288,8 @@ public class TransactionCreateRequest {
                 async,
                 labelFileType,
                 metadata,
-                rate);
+                rate,
+                order);
         }
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_Async =

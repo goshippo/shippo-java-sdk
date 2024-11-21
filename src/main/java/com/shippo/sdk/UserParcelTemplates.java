@@ -88,7 +88,7 @@ public class UserParcelTemplates implements
     /**
      * List all user parcel templates
      * Returns a list all of all user parcel template objects.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -241,7 +241,7 @@ public class UserParcelTemplates implements
      * plus the weight fields (**weight** and **weight_unit**). Otherwise, omit
      * the template field and pass the other fields, for the weight, length, height,
      * and depth, as well as their units."
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param userParcelTemplateCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -393,7 +393,7 @@ public class UserParcelTemplates implements
      * Delete a user parcel template
      * Deletes a user parcel template using an object ID.
      * @param userParcelTemplateObjectId Object ID of the user parcel template
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -525,7 +525,7 @@ public class UserParcelTemplates implements
      * Returns the parcel template information for a specific user parcel
      * template, identified by the object ID.
      * @param userParcelTemplateObjectId Object ID of the user parcel template
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -665,7 +665,7 @@ public class UserParcelTemplates implements
      * Update an existing user parcel template
      * Updates an existing user parcel template.
      * @param userParcelTemplateObjectId Object ID of the user parcel template
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param userParcelTemplateUpdateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails

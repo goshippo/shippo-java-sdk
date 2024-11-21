@@ -78,7 +78,7 @@ public class CustomsDeclarations implements
      * Returns a a list of all customs declaration objects
      * @param page The page number you want to select
      * @param results The number of results to return per page (max 100, default 5)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -222,7 +222,7 @@ public class CustomsDeclarations implements
     /**
      * Create a new customs declaration
      * Creates a new customs declaration object
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param customsDeclarationCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -375,7 +375,7 @@ public class CustomsDeclarations implements
      * Returns an existing customs declaration using an object ID
      * @param customsDeclarationId Object ID of the customs declaration
      * @param page The page number you want to select
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

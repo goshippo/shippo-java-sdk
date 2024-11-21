@@ -68,7 +68,7 @@ public class Pickups implements
     /**
      * Create a pickup
      * Creates a pickup object. This request is for a carrier to come to a specified location to take a package for shipping.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param pickupBase
      * @return The response from the API call
      * @throws Exception if the API call fails

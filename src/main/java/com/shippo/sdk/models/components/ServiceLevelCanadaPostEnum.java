@@ -21,6 +21,9 @@ import java.lang.String;
  * | canada_post_small_packet_usa_air | Small Packet USA Air|
  * | canada_post_tracked_packet_international | Tracked Packet International|
  * | canada_post_small_packet_international_air | Small Package International Air|
+ * | canada_post_small_packet_international_surface  | Small Packet International Surface
+ * | canada_post_international_parcel_surface  | International Parcel Surface
+ * | canada_post_international_parcel_air  | International Parcel Air
  * 
  */
 public enum ServiceLevelCanadaPostEnum {
@@ -34,7 +37,10 @@ public enum ServiceLevelCanadaPostEnum {
     CANADA_POST_TRACKED_PACKET_USA("canada_post_tracked_packet_usa"),
     CANADA_POST_SMALL_PACKET_USA_AIR("canada_post_small_packet_usa_air"),
     CANADA_POST_TRACKED_PACKET_INTERNATIONAL("canada_post_tracked_packet_international"),
-    CANADA_POST_SMALL_PACKET_INTERNATIONAL_AIR("canada_post_small_packet_international_air");
+    CANADA_POST_SMALL_PACKET_INTERNATIONAL_AIR("canada_post_small_packet_international_air"),
+    CANADA_POST_SMALL_PACKET_INTERNATIONAL_SURFACE("canada_post_small_packet_international_surface"),
+    CANADA_POST_INTERNATIONAL_PARCEL_SURFACE("canada_post_international_parcel_surface"),
+    CANADA_POST_INTERNATIONAL_PARCEL_AIR("canada_post_international_parcel_air");
 
     @JsonValue
     private final String value;

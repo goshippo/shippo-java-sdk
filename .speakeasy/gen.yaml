@@ -11,8 +11,9 @@ generation:
     requestResponseComponentNamesFeb2024: true
   auth:
     oAuth2ClientCredentialsEnabled: true
+    oAuth2PasswordEnabled: false
 java:
-  version: 0.4.0
+  version: 0.5.0
   additionalDependencies: []
   additionalPlugins:
     - id 'groovy'
@@ -21,6 +22,7 @@ java:
   companyEmail: info@mycompany.com
   companyName: My Company
   companyURL: www.mycompany.com
+  defaultErrorName: SDKError
   flattenGlobalSecurity: true
   githubURL: github.com/owner/repo
   groupID: com.shippo

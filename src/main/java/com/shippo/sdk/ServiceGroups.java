@@ -79,7 +79,7 @@ public class ServiceGroups implements
     /**
      * List all service groups
      * Returns a list of service group objects.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -214,7 +214,7 @@ public class ServiceGroups implements
     /**
      * Create a new service group
      * Creates a new service group.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param serviceGroupCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -363,7 +363,7 @@ public class ServiceGroups implements
     /**
      * Update an existing service group
      * Updates an existing service group object. &lt;br&gt;The object_id cannot be updated as it is the unique identifier for the object.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param serviceGroupUpdateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -512,7 +512,7 @@ public class ServiceGroups implements
      * Delete a service group
      * Deletes an existing service group using an object ID.
      * @param serviceGroupId Object ID of the service group
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

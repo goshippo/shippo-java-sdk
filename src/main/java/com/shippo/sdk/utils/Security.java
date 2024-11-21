@@ -108,7 +108,7 @@ public final class Security {
                         break;
                     case "query":
                         request.addQueryParam(
-                                securityMetadata.name, Utils.valToString(value));
+                                securityMetadata.name, Utils.valToString(value), false);
                         break;
                     case "cookie":
                         request.addHeader("Cookie",
@@ -123,7 +123,9 @@ public final class Security {
                 request.addHeader(securityMetadata.name, Utils.prefixBearer(Utils.valToString(value)));
                 break;
             case "oauth2":
-                request.addHeader(securityMetadata.name, Utils.prefixBearer(Utils.valToString(value)));
+                if (!"client_credentials".equals(schemeMetadata.subtype)) {
+                    request.addHeader(securityMetadata.name, Utils.prefixBearer(Utils.valToString(value)));
+                }
                 break;
             case "http":
                 switch (schemeMetadata.subtype) {

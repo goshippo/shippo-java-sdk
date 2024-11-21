@@ -88,7 +88,7 @@ public class CarrierParcelTemplates implements
      * &lt;/ul&gt;
      * @param include filter by user or enabled
      * @param carrier filter by specific carrier
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -233,7 +233,7 @@ public class CarrierParcelTemplates implements
      * Retrieve a carrier parcel templates
      * Fetches the parcel template information for a specific carrier parcel template, identified by the token.
      * @param carrierParcelTemplateToken The unique string representation of the carrier parcel template
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

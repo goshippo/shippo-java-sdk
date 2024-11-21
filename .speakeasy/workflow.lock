@@ -1,18 +1,20 @@
-speakeasyVersion: 1.401.2
+speakeasyVersion: 1.441.1
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:2684acfecc914d3657a98e93c7741f5d49d5bf5e42cafa73545d0d9ce16c407e
-        sourceBlobDigest: sha256:d20d1d724adbc75bf8db343aa4c16e626daaadbb57e55e4d1b486ea2277b1bb5
+        sourceRevisionDigest: sha256:295701d123492b0f995c240eff749a3d936e0b1d046a602c5cdb576f55dba74c
+        sourceBlobDigest: sha256:b267e444289e13e5381eb13cc6671b99c9498b3c6f27111df668633f7ebb7f43
         tags:
             - latest
-            - main
+            - speakeasy-sdk-regen-1728087603
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:2684acfecc914d3657a98e93c7741f5d49d5bf5e42cafa73545d0d9ce16c407e
-        sourceBlobDigest: sha256:d20d1d724adbc75bf8db343aa4c16e626daaadbb57e55e4d1b486ea2277b1bb5
+        sourceRevisionDigest: sha256:295701d123492b0f995c240eff749a3d936e0b1d046a602c5cdb576f55dba74c
+        sourceBlobDigest: sha256:b267e444289e13e5381eb13cc6671b99c9498b3c6f27111df668633f7ebb7f43
+        codeSamplesNamespace: my-first-source-code-samples
+        codeSamplesRevisionDigest: sha256:2406eb24893c61e0d8ed443172b591bea47a96d0e15838fd2b868adfbb7d3093
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -26,3 +28,7 @@ workflow:
         my-first-target:
             target: java
             source: my-first-source
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/shippo/shippo/my-first-source-code-samples
+                blocking: false

@@ -20,6 +20,7 @@ import java.util.Optional;
 /**
  * InitiateOauth2SigninCarrierAccountsResponseBody - Invalid ShippoToken or unsupported carrier account provided by the user
  */
+@SuppressWarnings("serial")
 public class InitiateOauth2SigninCarrierAccountsResponseBody extends RuntimeException {
 
     @JsonInclude(Include.NON_ABSENT)

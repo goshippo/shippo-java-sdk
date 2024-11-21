@@ -98,7 +98,7 @@ public class ServiceGroup {
     private Optional<Boolean> isActive;
 
     @JsonProperty("service_levels")
-    private List<ServiceLevelWithParent> serviceLevels;
+    private List<ServiceGroupAccountAndServiceLevel> serviceLevels;
 
     @JsonCreator
     public ServiceGroup(
@@ -112,7 +112,7 @@ public class ServiceGroup {
             @JsonProperty("type") ServiceGroupTypeEnum type,
             @JsonProperty("object_id") String objectId,
             @JsonProperty("is_active") Optional<Boolean> isActive,
-            @JsonProperty("service_levels") List<ServiceLevelWithParent> serviceLevels) {
+            @JsonProperty("service_levels") List<ServiceGroupAccountAndServiceLevel> serviceLevels) {
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(flatRate, "flatRate");
         Utils.checkNotNull(flatRateCurrency, "flatRateCurrency");
@@ -142,7 +142,7 @@ public class ServiceGroup {
             String name,
             ServiceGroupTypeEnum type,
             String objectId,
-            List<ServiceLevelWithParent> serviceLevels) {
+            List<ServiceGroupAccountAndServiceLevel> serviceLevels) {
         this(description, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), type, objectId, Optional.empty(), serviceLevels);
     }
 
@@ -236,7 +236,7 @@ public class ServiceGroup {
     }
 
     @JsonIgnore
-    public List<ServiceLevelWithParent> serviceLevels() {
+    public List<ServiceGroupAccountAndServiceLevel> serviceLevels() {
         return serviceLevels;
     }
 
@@ -403,7 +403,7 @@ public class ServiceGroup {
         return this;
     }
 
-    public ServiceGroup withServiceLevels(List<ServiceLevelWithParent> serviceLevels) {
+    public ServiceGroup withServiceLevels(List<ServiceGroupAccountAndServiceLevel> serviceLevels) {
         Utils.checkNotNull(serviceLevels, "serviceLevels");
         this.serviceLevels = serviceLevels;
         return this;
@@ -486,7 +486,7 @@ public class ServiceGroup {
  
         private Optional<Boolean> isActive = Optional.empty();
  
-        private List<ServiceLevelWithParent> serviceLevels;  
+        private List<ServiceGroupAccountAndServiceLevel> serviceLevels;  
         
         private Builder() {
           // force use of static builder() method
@@ -651,7 +651,7 @@ public class ServiceGroup {
             return this;
         }
 
-        public Builder serviceLevels(List<ServiceLevelWithParent> serviceLevels) {
+        public Builder serviceLevels(List<ServiceGroupAccountAndServiceLevel> serviceLevels) {
             Utils.checkNotNull(serviceLevels, "serviceLevels");
             this.serviceLevels = serviceLevels;
             return this;

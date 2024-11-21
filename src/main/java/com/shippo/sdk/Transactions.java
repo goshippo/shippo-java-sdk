@@ -198,7 +198,7 @@ public class Transactions implements
     /**
      * Create a shipping label
      * Creates a new transaction object and purchases the shipping label using a rate object that has previously been created. &lt;br&gt; OR &lt;br&gt; Creates a new transaction object and purchases the shipping label instantly using shipment details, an existing carrier account, and an existing service level token.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param requestBody Examples.
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -350,7 +350,7 @@ public class Transactions implements
      * Retrieve a shipping label
      * Returns an existing transaction using an object ID.
      * @param transactionId Object ID of the transaction to update
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

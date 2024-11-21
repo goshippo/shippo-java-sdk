@@ -81,7 +81,7 @@ public class Addresses implements
      * Returns a list of all address objects that have been created in this account.
      * @param page The page number you want to select
      * @param results The number of results to return per page (max 100, default 5)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -225,7 +225,7 @@ public class Addresses implements
     /**
      * Create a new address
      * Creates a new address object. You can use address objects to create new shipments, calculate rates, and to create orders.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param addressCreateRequest Address represents the address as retrieved from the database
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -377,7 +377,7 @@ public class Addresses implements
      * Retrieve an address
      * Returns an existing address using an object ID.
      * @param addressId Object ID of the address
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -517,7 +517,7 @@ public class Addresses implements
      * Validate an address
      * Validates an existing address using an object ID
      * @param addressId Object ID of the address
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

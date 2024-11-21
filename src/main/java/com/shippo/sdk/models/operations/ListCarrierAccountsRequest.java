@@ -54,7 +54,7 @@ public class ListCarrierAccountsRequest {
     private Optional<Long> results;
 
     /**
-     * String used to pick a non-default API version to use
+     * Optional string used to pick a non-default API version to use. See our &lt;a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/"&gt;API version&lt;/a&gt; guide.
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=SHIPPO-API-VERSION")
     private Optional<String> shippoApiVersion;
@@ -127,7 +127,7 @@ public class ListCarrierAccountsRequest {
     }
 
     /**
-     * String used to pick a non-default API version to use
+     * Optional string used to pick a non-default API version to use. See our &lt;a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/"&gt;API version&lt;/a&gt; guide.
      */
     @JsonIgnore
     public Optional<String> shippoApiVersion() {
@@ -229,7 +229,7 @@ public class ListCarrierAccountsRequest {
     }
 
     /**
-     * String used to pick a non-default API version to use
+     * Optional string used to pick a non-default API version to use. See our &lt;a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/"&gt;API version&lt;/a&gt; guide.
      */
     public ListCarrierAccountsRequest withShippoApiVersion(String shippoApiVersion) {
         Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
@@ -238,7 +238,7 @@ public class ListCarrierAccountsRequest {
     }
 
     /**
-     * String used to pick a non-default API version to use
+     * Optional string used to pick a non-default API version to use. See our &lt;a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/"&gt;API version&lt;/a&gt; guide.
      */
     public ListCarrierAccountsRequest withShippoApiVersion(Optional<String> shippoApiVersion) {
         Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
@@ -395,7 +395,7 @@ public class ListCarrierAccountsRequest {
         }
 
         /**
-         * String used to pick a non-default API version to use
+         * Optional string used to pick a non-default API version to use. See our &lt;a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/"&gt;API version&lt;/a&gt; guide.
          */
         public Builder shippoApiVersion(String shippoApiVersion) {
             Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
@@ -404,7 +404,7 @@ public class ListCarrierAccountsRequest {
         }
 
         /**
-         * String used to pick a non-default API version to use
+         * Optional string used to pick a non-default API version to use. See our &lt;a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/"&gt;API version&lt;/a&gt; guide.
          */
         public Builder shippoApiVersion(Optional<String> shippoApiVersion) {
             Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");

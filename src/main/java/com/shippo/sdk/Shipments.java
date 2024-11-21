@@ -236,7 +236,7 @@ public class Shipments implements
     /**
      * Create a new shipment
      * Creates a new shipment object.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param shipmentCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -388,7 +388,7 @@ public class Shipments implements
      * Retrieve a shipment
      * Returns an existing shipment using an object ID
      * @param shipmentId Object ID of the shipment to update
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

@@ -81,7 +81,7 @@ public class Parcels implements
      * Returns a list of all parcel objects.
      * @param page The page number you want to select
      * @param results The number of results to return per page (max 100)
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -225,7 +225,7 @@ public class Parcels implements
     /**
      * Create a new parcel
      * Creates a new parcel object.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param requestBody Parcel details.
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -377,7 +377,7 @@ public class Parcels implements
      * Retrieve an existing parcel
      * Returns parcel details using an existing parcel object ID (this will not return parcel details associated with un-purchased shipment/rate parcel object IDs).
      * @param parcelId Object ID of the parcel
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */

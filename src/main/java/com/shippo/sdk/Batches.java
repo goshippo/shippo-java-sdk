@@ -92,7 +92,7 @@ public class Batches implements
     /**
      * Create a batch
      * Creates a new batch object for purchasing shipping labels for many shipments at once. Batches are created asynchronously. This means that the API response won't include your batch shipments yet. You need to retrieve the batch later to verify that all batch shipments are valid.
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param batchCreateRequest
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -253,7 +253,7 @@ public class Batches implements
      * status, for example, by passing a query param like `?object_results=creation_failed`. &lt;br&gt; 
      * For more details on filtering results, see our guide on &lt;a href="https://docs.goshippo.com/docs/api_concepts/filtering/" target="blank"&gt; filtering&lt;/a&gt;.
      * @param batchId Object ID of the batch
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -395,7 +395,7 @@ public class Batches implements
      * Add shipments to a batch
      * Adds batch shipments to an existing batch.
      * @param batchId Object ID of the batch
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param requestBody Array of shipments to add to the batch
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -560,7 +560,7 @@ public class Batches implements
      * When all the shipments are purchased, the status will change to `PURCHASED` and you will receive a 
      * `batch_purchased` webhook indicating that the batch has been purchased
      * @param batchId Object ID of the batch
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -702,7 +702,7 @@ public class Batches implements
      * Remove shipments from a batch
      * Removes shipments from an existing batch shipment.
      * @param batchId Object ID of the batch
-     * @param shippoApiVersion String used to pick a non-default API version to use
+     * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @param requestBody Array of shipments object ids to remove from the batch
      * @return The response from the API call
      * @throws Exception if the API call fails
