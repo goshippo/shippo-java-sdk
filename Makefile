@@ -1,7 +1,13 @@
 BUILD_DIR=./build/
 LOCAL_SPEC_FILE=${BUILD_DIR}public-api.yaml
 
-check: test
+check: build test
+
+clean:
+	rm -rf ./build
+
+build:
+	./gradlew build
 
 test:
 	./gradlew test
