@@ -1,19 +1,20 @@
-speakeasyVersion: 1.441.1
+speakeasyVersion: 1.441.2
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:9627d5070a4f07da7f5477caf13cb84b0fa477fef32e716629630248b09349b3
-        sourceBlobDigest: sha256:cb17e1095674471608b63041b0cd3a59f9f47028eeb45c5f22004f7f6fbb19c1
+        sourceRevisionDigest: sha256:b7a5f00224fde68f5c68a9f4dd3d077b0d25f491e519ffc69758b407a0e2909c
+        sourceBlobDigest: sha256:b267e444289e13e5381eb13cc6671b99c9498b3c6f27111df668633f7ebb7f43
         tags:
             - latest
+            - speakeasy-sdk-regen-1732213941
 targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:9627d5070a4f07da7f5477caf13cb84b0fa477fef32e716629630248b09349b3
-        sourceBlobDigest: sha256:cb17e1095674471608b63041b0cd3a59f9f47028eeb45c5f22004f7f6fbb19c1
+        sourceRevisionDigest: sha256:b7a5f00224fde68f5c68a9f4dd3d077b0d25f491e519ffc69758b407a0e2909c
+        sourceBlobDigest: sha256:b267e444289e13e5381eb13cc6671b99c9498b3c6f27111df668633f7ebb7f43
         codeSamplesNamespace: my-first-source-code-samples
-        codeSamplesRevisionDigest: sha256:bdad0d51db4fe89fe0123c96bd9fb5d22a650ae33f9fcc291de08e1dd7ae750c
+        codeSamplesRevisionDigest: sha256:45c308b6146e78c1e75de14d33c990910dba6e191df6adb384da7a1f35aa73df
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -27,6 +28,12 @@ workflow:
         my-first-target:
             target: java
             source: my-first-source
+            publish:
+                java:
+                    ossrhUsername: lucas-shippo
+                    ossrhPassword: $ossrh_password
+                    gpgSecretKey: $java_gpg_secret_key
+                    gpgPassPhrase: $java_gpg_passphrase
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/shippo/shippo/my-first-source-code-samples

@@ -44,83 +44,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.shippo:sdk:1.0.0-beta'
-```
-
-Maven:
-```xml
-<dependency>
-    <groupId>com.shippo</groupId>
-    <artifactId>sdk</artifactId>
-    <version>1.0.0-beta</version>
-</dependency>
-```
-
-## SDK Example Usage
-
-### Example
-
-```java
-package hello.world;
-
-import com.shippo.sdk.Shippo;
-import com.shippo.sdk.models.components.Security;
-import com.shippo.sdk.utils.EventStream;
-
-import org.openapitools.jackson.nullable.JsonNullable;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-        try {
-            Shippo sdk = Shippo.builder()
-                    .apiKeyHeader("<YOUR_API_KEY_HERE>")
-                    // the API version can be globally set, though this is normally not required
-                    // .shippoApiVersion("<YYYY-MM-DD>")
-                    .build();
-
-            ListAddressesResponse res = sdk.addresses().list()
-                    .page(1L)
-                    .results(5L)
-                    .call();
-
-            if (res.addressPaginatedList().isPresent()) {
-                // handle response
-            }
-        } catch (com.shippo.sdk.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-    }
-}
-```
-
-<!-- No SDK Example Usage [usage] -->
-<!-- No Error Handling [errors] -->
-<!-- No Server Selection [server] -->
-<!-- No Authentication [security] -->
-<!-- No Global Parameters [global-parameters] -->
-
-## Documentation
-Review our full guides and references at [https://docs.goshippo.com/](https://docs.goshippo.com/).
-
-<!-- Placeholder for Future Speakeasy SDK Sections -->
-
-<!-- Start SDK Installation [installation] -->
-## SDK Installation
-
-### Getting started
-
-JDK 11 or later is required.
-
-The samples below show how a published SDK artifact is used:
-
-Gradle:
-```groovy
-implementation 'com.goshippo:sdk:1.0.0-beta'
+implementation 'com.goshippo:sdk:1.0.0-beta.1'
 ```
 
 Maven:
@@ -128,7 +52,7 @@ Maven:
 <dependency>
     <groupId>com.goshippo</groupId>
     <artifactId>sdk</artifactId>
-    <version>1.0.0-beta</version>
+    <version>1.0.0-beta.1</version>
 </dependency>
 ```
 
@@ -146,6 +70,41 @@ On Windows:
 gradlew.bat publishToMavenLocal -Pskip.signing
 ```
 <!-- End SDK Installation [installation] -->
+
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
+```java
+package hello.world;
+
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListAddressesResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Shippo sdk = Shippo.builder()
+                .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                .shippoApiVersion("2018-02-08")
+            .build();
+
+        ListAddressesResponse res = sdk.addresses().list()
+                .page(1L)
+                .results(5L)
+                .shippoApiVersion("2018-02-08")
+                .call();
+
+        if (res.addressPaginatedList().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+<!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -304,4 +263,131 @@ Feel free to open a PR or a Github issue as a proof of concept and we'll do our 
 Connect with multiple different carriers, get discounted shipping labels, track parcels, and much more with just one integration.
 You can use your own carrier accounts or take advantage of our discounted rates with the Shippo carrier accounts.
 Using Shippo makes it easy to deal with multiple carrier integrations, rate shopping, tracking and other parts of the shipping workflow.
-We provide the API and web app for all your shipping needs.
+We provide the API and web app for all your shipping needs.<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+
+By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `initiateOauth2Signin` method throws the following exceptions:
+
+| Error Type                                                            | Status Code | Content Type     |
+| --------------------------------------------------------------------- | ----------- | ---------------- |
+| models/errors/InitiateOauth2SigninResponseBody                        | 400         | application/json |
+| models/errors/InitiateOauth2SigninCarrierAccountsResponseBody         | 401         | application/json |
+| models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404         | application/json |
+| models/errors/SDKError                                                | 4XX, 5XX    | \*/\*            |
+
+### Example
+
+```java
+package hello.world;
+
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
+import com.goshippo.sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
+import com.goshippo.sdk.models.errors.InitiateOauth2SigninResponseBody;
+import com.goshippo.sdk.models.operations.InitiateOauth2SigninResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws InitiateOauth2SigninResponseBody, InitiateOauth2SigninCarrierAccountsResponseBody, InitiateOauth2SigninCarrierAccountsResponseResponseBody, Exception {
+
+        Shippo sdk = Shippo.builder()
+                .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                .shippoApiVersion("2018-02-08")
+            .build();
+
+        InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
+                .carrierAccountObjectId("<id>")
+                .redirectUri("https://enlightened-mortise.com/")
+                .state("Louisiana")
+                .shippoApiVersion("2018-02-08")
+                .call();
+
+        // handle response
+    }
+}
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
+```java
+package hello.world;
+
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListAddressesResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Shippo sdk = Shippo.builder()
+                .serverURL("https://api.goshippo.com")
+                .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                .shippoApiVersion("2018-02-08")
+            .build();
+
+        ListAddressesResponse res = sdk.addresses().list()
+                .page(1L)
+                .results(5L)
+                .shippoApiVersion("2018-02-08")
+                .call();
+
+        if (res.addressPaginatedList().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+<!-- End Server Selection [server] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name           | Type   | Scheme  |
+| -------------- | ------ | ------- |
+| `apiKeyHeader` | apiKey | API key |
+
+To authenticate with the API the `apiKeyHeader` parameter must be set when initializing the SDK client instance. For example:
+```java
+package hello.world;
+
+import com.goshippo.sdk.Shippo;
+import com.goshippo.sdk.models.operations.ListAddressesResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Shippo sdk = Shippo.builder()
+                .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                .shippoApiVersion("2018-02-08")
+            .build();
+
+        ListAddressesResponse res = sdk.addresses().list()
+                .page(1L)
+                .results(5L)
+                .shippoApiVersion("2018-02-08")
+                .call();
+
+        if (res.addressPaginatedList().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+<!-- End Authentication [security] -->
+
+
