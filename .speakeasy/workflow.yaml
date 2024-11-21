@@ -10,6 +10,12 @@ targets:
     my-first-target:
         target: java
         source: my-first-source
+        publish:
+            java:
+                ossrhUsername: lucas-shippo
+                ossrhPassword: $ossrh_password
+                gpgSecretKey: $java_gpg_secret_key
+                gpgPassPhrase: $java_gpg_passphrase
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/shippo/shippo/my-first-source-code-samples
