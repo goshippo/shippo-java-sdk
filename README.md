@@ -12,7 +12,7 @@ your own token.
 For example.
 ```
 Shippo sdk = Shippo.builder()
-    .apiKeyHeader("shippo_test_595d9cb0c0e14497bf07e75ecfec6c6d")
+    .apiKeyHeader("<YOUR_API_KEY_HERE>")
     .build();
 ```
 
@@ -44,7 +44,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.shippo:sdk:0.4.0'
+implementation 'com.shippo:sdk:1.0.0-beta'
 ```
 
 Maven:
@@ -52,24 +52,9 @@ Maven:
 <dependency>
     <groupId>com.shippo</groupId>
     <artifactId>sdk</artifactId>
-    <version>0.4.0</version>
+    <version>1.0.0-beta</version>
 </dependency>
 ```
-
-### How to build
-After cloning the git repository to your file system you can build the SDK artifact from source to the `build` directory by running `./gradlew build` on *nix systems or `gradlew.bat` on Windows systems.
-
-If you wish to build from source and publish the SDK artifact to your local Maven repository (on your filesystem) then use the following command (after cloning the git repo locally):
-
-On *nix:
-```bash
-./gradlew publishToMavenLocal -Pskip.signing
-```
-On Windows:
-```bash
-gradlew.bat publishToMavenLocal -Pskip.signing
-```
-<!-- End SDK Installation [installation] -->
 
 ## SDK Example Usage
 
@@ -285,4 +270,8 @@ looking for the latest version.
 While we value open-source contributions to this SDK, this library is generated programmatically.
 Feel free to open a PR or a Github issue as a proof of concept and we'll do our best to include it in a future release!
 
-### SDK Created by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
+## About Shippo
+Connect with multiple different carriers, get discounted shipping labels, track parcels, and much more with just one integration.
+You can use your own carrier accounts or take advantage of our discounted rates with the Shippo carrier accounts.
+Using Shippo makes it easy to deal with multiple carrier integrations, rate shopping, tracking and other parts of the shipping workflow.
+We provide the API and web app for all your shipping needs.
