@@ -1,7 +1,7 @@
 BUILD_DIR=./build/
 LOCAL_SPEC_FILE=${BUILD_DIR}public-api.yaml
 
-check: build test
+check: test
 
 clean:
 	rm -rf ./build
@@ -10,7 +10,7 @@ build:
 	./gradlew build
 
 test:
-	./gradlew test
+	./gradlew test -PrunTests
 
 speakeasy-install: # dev task, locally install the speakeasy CLI
 	brew install speakeasy-api/homebrew-tap/speakeasy

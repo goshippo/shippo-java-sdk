@@ -5,7 +5,7 @@ permissions:
   pull-requests: write
   statuses: write
   id-token: write
-"on":
+on:
   push:
     branches:
       - main
@@ -23,4 +23,3 @@ jobs:
       java_gpg_secret_key: ${{ secrets.JAVA_GPG_SECRET_KEY }}
       ossrh_password: ${{ secrets.OSSRH_PASSWORD }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
-      SHIPPO_TOKEN: ${{ secrets.SHIPPO_TOKEN }}
