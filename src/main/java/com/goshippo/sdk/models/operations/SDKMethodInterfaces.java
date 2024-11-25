@@ -73,6 +73,8 @@ public class SDKMethodInterfaces {
     public interface MethodCallGetBatch {
         GetBatchResponse get(
             String batchId,
+            Optional<Long> page,
+            Optional<Long> results,
             Optional<String> shippoApiVersion) throws Exception;
     }
 

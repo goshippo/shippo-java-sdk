@@ -7,8 +7,11 @@ package com.goshippo.sdk.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.goshippo.sdk.utils.LazySingletonValue;
 import com.goshippo.sdk.utils.SpeakeasyMetadata;
 import com.goshippo.sdk.utils.Utils;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
@@ -24,6 +27,18 @@ public class GetBatchRequest {
     private String batchId;
 
     /**
+     * The page number you want to select
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")
+    private Optional<Long> page;
+
+    /**
+     * The number of results to return per page (max 100, default 5)
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=results")
+    private Optional<Long> results;
+
+    /**
      * Optional string used to pick a non-default API version to use. See our &lt;a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/"&gt;API version&lt;/a&gt; guide.
      */
     @SpeakeasyMetadata("header:style=simple,explode=false,name=SHIPPO-API-VERSION")
@@ -32,16 +47,22 @@ public class GetBatchRequest {
     @JsonCreator
     public GetBatchRequest(
             String batchId,
+            Optional<Long> page,
+            Optional<Long> results,
             Optional<String> shippoApiVersion) {
         Utils.checkNotNull(batchId, "batchId");
+        Utils.checkNotNull(page, "page");
+        Utils.checkNotNull(results, "results");
         Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
         this.batchId = batchId;
+        this.page = page;
+        this.results = results;
         this.shippoApiVersion = shippoApiVersion;
     }
     
     public GetBatchRequest(
             String batchId) {
-        this(batchId, Optional.empty());
+        this(batchId, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -50,6 +71,22 @@ public class GetBatchRequest {
     @JsonIgnore
     public String batchId() {
         return batchId;
+    }
+
+    /**
+     * The page number you want to select
+     */
+    @JsonIgnore
+    public Optional<Long> page() {
+        return page;
+    }
+
+    /**
+     * The number of results to return per page (max 100, default 5)
+     */
+    @JsonIgnore
+    public Optional<Long> results() {
+        return results;
     }
 
     /**
@@ -70,6 +107,42 @@ public class GetBatchRequest {
     public GetBatchRequest withBatchId(String batchId) {
         Utils.checkNotNull(batchId, "batchId");
         this.batchId = batchId;
+        return this;
+    }
+
+    /**
+     * The page number you want to select
+     */
+    public GetBatchRequest withPage(long page) {
+        Utils.checkNotNull(page, "page");
+        this.page = Optional.ofNullable(page);
+        return this;
+    }
+
+    /**
+     * The page number you want to select
+     */
+    public GetBatchRequest withPage(Optional<Long> page) {
+        Utils.checkNotNull(page, "page");
+        this.page = page;
+        return this;
+    }
+
+    /**
+     * The number of results to return per page (max 100, default 5)
+     */
+    public GetBatchRequest withResults(long results) {
+        Utils.checkNotNull(results, "results");
+        this.results = Optional.ofNullable(results);
+        return this;
+    }
+
+    /**
+     * The number of results to return per page (max 100, default 5)
+     */
+    public GetBatchRequest withResults(Optional<Long> results) {
+        Utils.checkNotNull(results, "results");
+        this.results = results;
         return this;
     }
 
@@ -102,6 +175,8 @@ public class GetBatchRequest {
         GetBatchRequest other = (GetBatchRequest) o;
         return 
             Objects.deepEquals(this.batchId, other.batchId) &&
+            Objects.deepEquals(this.page, other.page) &&
+            Objects.deepEquals(this.results, other.results) &&
             Objects.deepEquals(this.shippoApiVersion, other.shippoApiVersion);
     }
     
@@ -109,6 +184,8 @@ public class GetBatchRequest {
     public int hashCode() {
         return Objects.hash(
             batchId,
+            page,
+            results,
             shippoApiVersion);
     }
     
@@ -116,12 +193,18 @@ public class GetBatchRequest {
     public String toString() {
         return Utils.toString(GetBatchRequest.class,
                 "batchId", batchId,
+                "page", page,
+                "results", results,
                 "shippoApiVersion", shippoApiVersion);
     }
     
     public final static class Builder {
  
         private String batchId;
+ 
+        private Optional<Long> page;
+ 
+        private Optional<Long> results;
  
         private Optional<String> shippoApiVersion = Optional.empty();  
         
@@ -135,6 +218,42 @@ public class GetBatchRequest {
         public Builder batchId(String batchId) {
             Utils.checkNotNull(batchId, "batchId");
             this.batchId = batchId;
+            return this;
+        }
+
+        /**
+         * The page number you want to select
+         */
+        public Builder page(long page) {
+            Utils.checkNotNull(page, "page");
+            this.page = Optional.ofNullable(page);
+            return this;
+        }
+
+        /**
+         * The page number you want to select
+         */
+        public Builder page(Optional<Long> page) {
+            Utils.checkNotNull(page, "page");
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * The number of results to return per page (max 100, default 5)
+         */
+        public Builder results(long results) {
+            Utils.checkNotNull(results, "results");
+            this.results = Optional.ofNullable(results);
+            return this;
+        }
+
+        /**
+         * The number of results to return per page (max 100, default 5)
+         */
+        public Builder results(Optional<Long> results) {
+            Utils.checkNotNull(results, "results");
+            this.results = results;
             return this;
         }
 
@@ -157,10 +276,29 @@ public class GetBatchRequest {
         }
         
         public GetBatchRequest build() {
-            return new GetBatchRequest(
+            if (page == null) {
+                page = _SINGLETON_VALUE_Page.value();
+            }
+            if (results == null) {
+                results = _SINGLETON_VALUE_Results.value();
+            }            return new GetBatchRequest(
                 batchId,
+                page,
+                results,
                 shippoApiVersion);
         }
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Page =
+                new LazySingletonValue<>(
+                        "page",
+                        "1",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Results =
+                new LazySingletonValue<>(
+                        "results",
+                        "5",
+                        new TypeReference<Optional<Long>>() {});
     }
 }
 
