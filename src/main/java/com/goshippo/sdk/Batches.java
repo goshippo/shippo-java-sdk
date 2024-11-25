@@ -35,6 +35,7 @@ import com.goshippo.sdk.utils.Utils.JsonShape;
 import com.goshippo.sdk.utils.Utils;
 import java.io.InputStream;
 import java.lang.Exception;
+import java.lang.Long;
 import java.lang.Object;
 import java.lang.String;
 import java.net.http.HttpRequest;
@@ -243,7 +244,7 @@ public class Batches implements
      */
     public GetBatchResponse get(
             String batchId) throws Exception {
-        return get(batchId, Optional.empty());
+        return get(batchId, Optional.empty(), Optional.empty(), Optional.empty());
     }
     
     /**
@@ -253,17 +254,23 @@ public class Batches implements
      * status, for example, by passing a query param like `?object_results=creation_failed`. &lt;br&gt; 
      * For more details on filtering results, see our guide on &lt;a href="https://docs.goshippo.com/docs/api_concepts/filtering/" target="blank"&gt; filtering&lt;/a&gt;.
      * @param batchId Object ID of the batch
+     * @param page The page number you want to select
+     * @param results The number of results to return per page (max 100, default 5)
      * @param shippoApiVersion Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public GetBatchResponse get(
             String batchId,
+            Optional<Long> page,
+            Optional<Long> results,
             Optional<String> shippoApiVersion) throws Exception {
         GetBatchRequest request =
             GetBatchRequest
                 .builder()
                 .batchId(batchId)
+                .page(page)
+                .results(results)
                 .shippoApiVersion(shippoApiVersion)
                 .build();
         
@@ -278,6 +285,11 @@ public class Batches implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
+
+        _req.addQueryParams(Utils.getQueryParams(
+                GetBatchRequest.class,
+                request, 
+                this.sdkConfiguration.globals));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
 
         Utils.configureSecurity(_req,  

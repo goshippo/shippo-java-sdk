@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 83c79445-e1aa-4008-8835-519234c13f68
 management:
-  docChecksum: bf61704a99aaaf3476d24bb0d505a88c
+  docChecksum: bda7f4add5fb510fe4737e3adbe45aea
   docVersion: "2018-02-08"
-  speakeasyVersion: 1.441.2
+  speakeasyVersion: 1.445.2
   generationVersion: 2.461.4
-  releaseVersion: 1.0.0-beta.1
-  configChecksum: 8a2d90092207cde728720bd7a0fbc889
+  releaseVersion: 1.0.0-beta.2
+  configChecksum: 057bc6ab5654228aa14c5d86eece1a3d
   repoURL: https://github.com/goshippo/shippo-java-sdk.git
   published: true
 features:
@@ -442,27 +442,6 @@ generatedFiles:
   - docs/models/webhooks/BatchResponse.md
   - docs/models/webhooks/TrackResponse.md
   - docs/models/webhooks/TransactionResponse.md
-  - docs/sdks/addresses/README.md
-  - docs/sdks/batches/README.md
-  - docs/sdks/carrieraccounts/README.md
-  - docs/sdks/carrierparceltemplates/README.md
-  - docs/sdks/customsdeclarations/README.md
-  - docs/sdks/customsitems/README.md
-  - docs/sdks/manifests/README.md
-  - docs/sdks/orders/README.md
-  - docs/sdks/parcels/README.md
-  - docs/sdks/pickups/README.md
-  - docs/sdks/rates/README.md
-  - docs/sdks/ratesatcheckout/README.md
-  - docs/sdks/refunds/README.md
-  - docs/sdks/servicegroups/README.md
-  - docs/sdks/shipments/README.md
-  - docs/sdks/shippo/README.md
-  - docs/sdks/shippoaccounts/README.md
-  - docs/sdks/trackingstatus/README.md
-  - docs/sdks/transactions/README.md
-  - docs/sdks/userparceltemplates/README.md
-  - docs/sdks/webhooks/README.md
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
@@ -1068,6 +1047,7 @@ examples:
       parameters:
         path:
           BatchId: "<value>"
+        query: {}
         header:
           SHIPPO-API-VERSION: "2018-02-08"
       responses:
