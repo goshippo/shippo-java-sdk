@@ -24,6 +24,10 @@ public abstract class SdkProvider {
         return getCarrierAccounts(carrier).get(0);
     }
 
+    public String getDefaultCarrierAccountObjectId() throws Exception {
+        return getCarrierAccounts(CarriersEnum.USPS).get(0).objectId().get();
+    }
+
     public List<CarrierAccountWithExtraInfo> getCarrierAccounts(CarriersEnum carrier) throws Exception {
         final var request = ListCarrierAccountsRequest.builder()
                 .carrier(carrier)
