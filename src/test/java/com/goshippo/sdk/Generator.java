@@ -56,13 +56,13 @@ public class Generator {
                 .build();
     }
 
-    public BatchCreateRequest buildBatchCreateRequest(ShipmentCreateRequest shipment, String carrierAccountObjectId) {
+    public BatchCreateRequest buildBatchCreateRequest(String carrierAccountObjectId) {
         return BatchCreateRequest.builder()
                 .defaultCarrierAccount(carrierAccountObjectId)
                 .defaultServicelevelToken("usps_priority")
                 .batchShipments(List.of(
                         BatchShipmentCreateRequest.builder()
-                                .shipment(shipment)
+                                .shipment(buildShipmentCreateRequest())
                                 .carrierAccount(carrierAccountObjectId)
                                 .build()))
                 .build();

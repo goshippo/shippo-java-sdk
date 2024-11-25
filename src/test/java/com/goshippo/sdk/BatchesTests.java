@@ -18,10 +18,7 @@ public class BatchesTests extends SdkProvider {
     @Order(1)
     public void shouldCreateBatch() throws Exception {
 
-        final var shipment = generator.buildShipmentCreateRequest();
-
         final var request = generator.buildBatchCreateRequest(
-                shipment,
                 getDefaultCarrierAccountObjectId());
 
         final var response = getSdk().batches().create()
