@@ -79,8 +79,8 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.operations.ListAddressesResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.operations.ListAddressesResponse;
 
 import java.lang.Exception;
 
@@ -283,11 +283,11 @@ By default, an API error will throw a `models/errors/SDKError` exception. When c
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
-import com.goshippo.shippoSDK.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
-import com.goshippo.shippoSDK.models.errors.InitiateOauth2SigninResponseBody;
-import com.goshippo.shippoSDK.models.operations.InitiateOauth2SigninResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
+import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
+import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninResponseBody;
+import com.goshippo.shippo_sdk.models.operations.InitiateOauth2SigninResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -321,8 +321,8 @@ The default server can also be overridden globally using the `.serverURL(String 
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.operations.ListAddressesResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.operations.ListAddressesResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -364,8 +364,8 @@ To authenticate with the API the `apiKeyHeader` parameter must be set when initi
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.operations.ListAddressesResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.operations.ListAddressesResponse;
 import java.lang.Exception;
 
 public class Application {

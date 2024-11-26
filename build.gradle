@@ -42,9 +42,9 @@ model {
 
 jar {
     dependsOn(":generatePomFileForMavenPublication")
-    archiveBaseName = "shippoSDK"
+    archiveBaseName = "shippo-sdk"
 
-    into("META-INF/maven/com.goshippo/shippoSDK") {
+    into("META-INF/maven/com.goshippo/shippo-sdk") {
         from("$buildDir/pom.xml")
     }
 }
@@ -64,14 +64,14 @@ tasks.withType(Javadoc) {
 }
 
 group = "com.goshippo"
-version = "1.0.0-beta.5"
+version = "1.0.0-beta.6"
 
 sourcesJar {
-    archiveBaseName = "shippoSDK"
+    archiveBaseName = "shippo-sdk"
 }
 
 javadocJar {
-    archiveBaseName = "shippoSDK"
+    archiveBaseName = "shippo-sdk"
 }
 sonatypeCentralUpload {
     // This is your Sonatype generated username
@@ -81,9 +81,9 @@ sonatypeCentralUpload {
 
     // This is a list of files to upload. Ideally you would point to your jar file, source and javadoc jar (required by central)
     archives = files(
-      "$buildDir/libs/shippoSDK-${version}.jar",
-      "$buildDir/libs/shippoSDK-${version}-sources.jar",
-      "$buildDir/libs/shippoSDK-${version}-javadoc.jar"
+      "$buildDir/libs/shippo-sdk-${version}.jar",
+      "$buildDir/libs/shippo-sdk-${version}-sources.jar",
+      "$buildDir/libs/shippo-sdk-${version}-javadoc.jar"
     )
 
     // This is the pom file to upload. This is required by central
@@ -101,8 +101,8 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.goshippo'
-            artifactId = 'shippoSDK'
-            version = '1.0.0-beta.5'
+            artifactId = 'shippo-sdk'
+            version = '1.0.0-beta.6'
 
             from components.java
 
