@@ -21,6 +21,12 @@ import java.util.Optional;
 public class ListShipmentsRequest {
 
     /**
+     * The page token for paginated results
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=page_token")
+    private Optional<String> pageToken;
+
+    /**
      * The page number you want to select
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=page")
@@ -64,6 +70,7 @@ public class ListShipmentsRequest {
 
     @JsonCreator
     public ListShipmentsRequest(
+            Optional<String> pageToken,
             Optional<Long> page,
             Optional<Long> results,
             Optional<String> objectCreatedGt,
@@ -71,6 +78,7 @@ public class ListShipmentsRequest {
             Optional<String> objectCreatedLt,
             Optional<String> objectCreatedLte,
             Optional<String> shippoApiVersion) {
+        Utils.checkNotNull(pageToken, "pageToken");
         Utils.checkNotNull(page, "page");
         Utils.checkNotNull(results, "results");
         Utils.checkNotNull(objectCreatedGt, "objectCreatedGt");
@@ -78,6 +86,7 @@ public class ListShipmentsRequest {
         Utils.checkNotNull(objectCreatedLt, "objectCreatedLt");
         Utils.checkNotNull(objectCreatedLte, "objectCreatedLte");
         Utils.checkNotNull(shippoApiVersion, "shippoApiVersion");
+        this.pageToken = pageToken;
         this.page = page;
         this.results = results;
         this.objectCreatedGt = objectCreatedGt;
@@ -88,7 +97,15 @@ public class ListShipmentsRequest {
     }
     
     public ListShipmentsRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * The page token for paginated results
+     */
+    @JsonIgnore
+    public Optional<String> pageToken() {
+        return pageToken;
     }
 
     /**
@@ -149,6 +166,24 @@ public class ListShipmentsRequest {
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * The page token for paginated results
+     */
+    public ListShipmentsRequest withPageToken(String pageToken) {
+        Utils.checkNotNull(pageToken, "pageToken");
+        this.pageToken = Optional.ofNullable(pageToken);
+        return this;
+    }
+
+    /**
+     * The page token for paginated results
+     */
+    public ListShipmentsRequest withPageToken(Optional<String> pageToken) {
+        Utils.checkNotNull(pageToken, "pageToken");
+        this.pageToken = pageToken;
+        return this;
     }
 
     /**
@@ -287,6 +322,7 @@ public class ListShipmentsRequest {
         }
         ListShipmentsRequest other = (ListShipmentsRequest) o;
         return 
+            Objects.deepEquals(this.pageToken, other.pageToken) &&
             Objects.deepEquals(this.page, other.page) &&
             Objects.deepEquals(this.results, other.results) &&
             Objects.deepEquals(this.objectCreatedGt, other.objectCreatedGt) &&
@@ -299,6 +335,7 @@ public class ListShipmentsRequest {
     @Override
     public int hashCode() {
         return Objects.hash(
+            pageToken,
             page,
             results,
             objectCreatedGt,
@@ -311,6 +348,7 @@ public class ListShipmentsRequest {
     @Override
     public String toString() {
         return Utils.toString(ListShipmentsRequest.class,
+                "pageToken", pageToken,
                 "page", page,
                 "results", results,
                 "objectCreatedGt", objectCreatedGt,
@@ -321,6 +359,8 @@ public class ListShipmentsRequest {
     }
     
     public final static class Builder {
+ 
+        private Optional<String> pageToken = Optional.empty();
  
         private Optional<Long> page;
  
@@ -338,6 +378,24 @@ public class ListShipmentsRequest {
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * The page token for paginated results
+         */
+        public Builder pageToken(String pageToken) {
+            Utils.checkNotNull(pageToken, "pageToken");
+            this.pageToken = Optional.ofNullable(pageToken);
+            return this;
+        }
+
+        /**
+         * The page token for paginated results
+         */
+        public Builder pageToken(Optional<String> pageToken) {
+            Utils.checkNotNull(pageToken, "pageToken");
+            this.pageToken = pageToken;
+            return this;
         }
 
         /**
@@ -473,6 +531,7 @@ public class ListShipmentsRequest {
             if (results == null) {
                 results = _SINGLETON_VALUE_Results.value();
             }            return new ListShipmentsRequest(
+                pageToken,
                 page,
                 results,
                 objectCreatedGt,

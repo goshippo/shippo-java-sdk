@@ -51,3 +51,13 @@ Based on:
 - [java v1.0.0-beta.2] .
 ### Releases
 - [Maven Central v1.0.0-beta.2] https://central.sonatype.com/artifact/com.goshippo/sdk/1.0.0-beta.2 - .
+
+## 2024-11-26 16:00:43
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.447.0 (2.463.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v1.0.0-beta.3] .
+### Releases
+- [Maven Central v1.0.0-beta.3] https://central.sonatype.com/artifact/com.goshippo/sdk/1.0.0-beta.3 - .
