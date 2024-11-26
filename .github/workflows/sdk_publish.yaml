@@ -14,7 +14,7 @@ on:
   workflow_dispatch: {}
 jobs:
   publish:
-    uses: goshippo/speakeasy-sdk-generation-action/.github/workflows/sdk-publish.yaml@debugging-publish
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       java_gpg_passphrase: ${{ secrets.JAVA_GPG_PASSPHRASE }}
