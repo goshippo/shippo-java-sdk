@@ -36,17 +36,21 @@ jobs:
         run: |
           ./gradlew jreleaserConfig
 
-      - name: Clean Project
+      - name: Clean & Build Project
         run: |
-          ./gradlew clean
+          ./gradlew clean build --no-daemon
 
       - name: Stage Artifact
         run: |
-          ./gradlew publish
+          ./gradlew publish --no-daemon
+
+      - name: Dry Run
+        run: |
+          ./gradlew jreleaserFullRelease --dry-run
 
       - name: Full Release
         run: |
-          ./gradlew jreleaserFullRelease --dry-run
+          ./gradlew jreleaserFullRelease --no-daemon
 
       - name: Check Status
         run: |
