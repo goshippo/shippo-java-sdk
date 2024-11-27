@@ -24,13 +24,19 @@ Shippo external API.: Use this API to integrate with the Shippo service
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [<img src="https://docs.goshippo.com/images/Logo.png" width="30" alt="Shippo logo"> Shippo Java SDK](#img-srchttpsdocsgoshippocomimageslogopng-width30-altshippo-logo-shippo-java-sdk)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
+  * [About Shippo](#about-shippo)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Authentication](#authentication)
 
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -79,8 +85,8 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.operations.ListAddressesResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.operations.ListAddressesResponse;
 
 import java.lang.Exception;
 
@@ -283,11 +289,11 @@ By default, an API error will throw a `models/errors/SDKError` exception. When c
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
-import com.goshippo.shippoSDK.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
-import com.goshippo.shippoSDK.models.errors.InitiateOauth2SigninResponseBody;
-import com.goshippo.shippoSDK.models.operations.InitiateOauth2SigninResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
+import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
+import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninResponseBody;
+import com.goshippo.shippo_sdk.models.operations.InitiateOauth2SigninResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -321,8 +327,8 @@ The default server can also be overridden globally using the `.serverURL(String 
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.operations.ListAddressesResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.operations.ListAddressesResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -364,8 +370,8 @@ To authenticate with the API the `apiKeyHeader` parameter must be set when initi
 ```java
 package hello.world;
 
-import com.goshippo.shippoSDK.Shippo;
-import com.goshippo.shippoSDK.models.operations.ListAddressesResponse;
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.models.operations.ListAddressesResponse;
 import java.lang.Exception;
 
 public class Application {

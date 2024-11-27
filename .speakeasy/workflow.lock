@@ -1,9 +1,9 @@
-speakeasyVersion: 1.447.2
+speakeasyVersion: 1.448.2
 sources:
     my-first-source:
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:030038a1fd1ba2c5e90a725e3c516861b549e455b264cca99da98f235bf0b32f
-        sourceBlobDigest: sha256:8c66d55b10c00886e8fd1f2b6ea6b233bccf17f622fed046dcf302d5da3f91f5
+        sourceRevisionDigest: sha256:480494c08f99f68cd119fdb481d81d31d37e4e22211cc6fd8a5197857b7580b4
+        sourceBlobDigest: sha256:422c969f0c8ded72f1dc9d756407a9d51740270b9d16fd9c4f4a9d50f4e714ba
         tags:
             - latest
             - "2018-02-08"
@@ -11,10 +11,10 @@ targets:
     my-first-target:
         source: my-first-source
         sourceNamespace: my-first-source
-        sourceRevisionDigest: sha256:030038a1fd1ba2c5e90a725e3c516861b549e455b264cca99da98f235bf0b32f
-        sourceBlobDigest: sha256:8c66d55b10c00886e8fd1f2b6ea6b233bccf17f622fed046dcf302d5da3f91f5
+        sourceRevisionDigest: sha256:480494c08f99f68cd119fdb481d81d31d37e4e22211cc6fd8a5197857b7580b4
+        sourceBlobDigest: sha256:422c969f0c8ded72f1dc9d756407a9d51740270b9d16fd9c4f4a9d50f4e714ba
         codeSamplesNamespace: my-first-source-java-code-samples
-        codeSamplesRevisionDigest: sha256:ee4ad78b96b9cbba8da9e8a06576bfa9c5f3498d8b50dcce45185178f64eae09
+        codeSamplesRevisionDigest: sha256:2b960672ec02abfbb6692e804ee954c218ece797c765654fab7f71084709ef08
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -30,7 +30,7 @@ workflow:
             source: my-first-source
             publish:
                 java:
-                    ossrhUsername: lucas-shippo
+                    ossrhUsername: $ossrh_username
                     ossrhPassword: $ossrh_password
                     gpgSecretKey: $java_gpg_secret_key
                     gpgPassPhrase: $java_gpg_passphrase

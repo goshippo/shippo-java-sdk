@@ -3,14 +3,6 @@
 // * can be used to customise `build.gradle`
 // * is generated once and not overwritten in SDK generation updates
 
-// Disable tests for publishing b/c we run tests in pipeline already
-// TODO: Find better alternative
-tasks.named('test') {
-    onlyIf {
-        project.hasProperty('runTests')
-    }
-}
-
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.9.2'
@@ -21,5 +13,41 @@ test {
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
+    }
+}
+// Disable tests for publishing b/c we run tests in pipeline already
+// TODO: Find better alternative
+tasks.named('test') {
+    onlyIf {
+        project.hasProperty('runTests')
+    }
+}
+
+repositories {
+    maven {
+        url = layout.buildDirectory.dir('target/staging-deploy')
+    }
+}
+
+jreleaser {
+    signing {
+        active = 'ALWAYS'
+        armored = true
+        verify = false
+        passphrase = System.getenv("JRELEASER_GPG_PASSPHRASE")
+        secretKey = System.getenv("JRELEASER_GPG_SECRET_KEY")
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    username = System.getenv("JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_USERNAME")
+                    password = System.getenv("JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_PASSWORD")
+                    stagingRepository('target/staging-deploy')
+                }
+            }
+        }
     }
 }
