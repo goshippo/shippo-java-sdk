@@ -16,10 +16,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      sonatype_passphrase: ${{ secrets.SONATYPE_PASSPHRASE }}
-      sonatype_secret_key: ${{ secrets.SONATYPE_SECRET_KEY }}
-      sonatype_password: ${{ secrets.SONATYPE_PASSWORD }}
-      sonatype_username: ${{ secrets.SONATYPE_USERNAME }}
+      JRELEASER_GPG_PASSPHRASE: ${{ secrets.SONATYPE_PASSPHRASE }}
+      JRELEASER_GPG_SECRET_KEY: ${{ secrets.SONATYPE_SECRET_KEY }}
+      JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+      JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+      JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

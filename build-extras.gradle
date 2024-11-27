@@ -34,8 +34,8 @@ jreleaser {
         active = 'ALWAYS'
         armored = true
         verify = false
-        passphrase = System.getenv("SONATYPE_PASSPHRASE")
-        secretKey = System.getenv("SONATYPE_SECRET_KEY")
+        passphrase = System.getenv("JRELEASER_GPG_PASSPHRASE")
+        secretKey = System.getenv("JRELEASER_GPG_SECRET_KEY")
     }
     deploy {
         maven {
@@ -43,8 +43,8 @@ jreleaser {
                 sonatype {
                     active = 'ALWAYS'
                     url = 'https://central.sonatype.com/api/v1/publisher'
-                    username = System.getenv("SONATYPE_USERNAME")
-                    password = System.getenv("SONATYPE_PASSWORD")
+                    username = System.getenv("JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_USERNAME")
+                    password = System.getenv("JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_PASSWORD")
                     stagingRepository('target/staging-deploy')
                 }
             }
