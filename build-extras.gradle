@@ -34,8 +34,8 @@ jreleaser {
         active = 'ALWAYS'
         armored = true
         verify = false
-        passphrase = System.getenv("SIGNING_KEY_PASSPHRASE")
-        secretKey = System.getenv("SONATYPE_SIGNING_KEY")
+        passphrase = System.getenv("SONATYPE_PASSPHRASE")
+        secretKey = System.getenv("SONATYPE_SECRET_KEY")
     }
     deploy {
         maven {
