@@ -27,8 +27,8 @@ class SDKConfiguration {
     public int serverIdx = 0;
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "2018-02-08";
-    public static final String SDK_VERSION = "1.0.0-beta.7";
-    public static final String GEN_VERSION = "2.463.1";
+    public static final String SDK_VERSION = "1.0.0-beta";
+    public static final String GEN_VERSION = "2.467.4";
     private static final String BASE_PACKAGE = "com.goshippo.shippo_sdk";
     public static final String USER_AGENT = 
             String.format("speakeasy-sdk/%s %s %s %s %s", 

@@ -13,10 +13,10 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 java:
-  version: 1.0.0-beta.7
+  version: 1.0.0-beta
   additionalDependencies: []
   additionalPlugins:
-    - id 'groovy'
+    - id 'org.jreleaser' version '1.15.0'
   artifactID: shippo-sdk
   clientServerStatusCodesAsErrors: true
   companyEmail: support@shippo.com
