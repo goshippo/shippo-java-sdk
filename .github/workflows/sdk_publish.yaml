@@ -14,48 +14,13 @@ on:
   workflow_dispatch: {}
 jobs:
   publish:
-    runs-on: ubuntu-latest
-    env:
-      JRELEASER_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-      JRELEASER_GPG_SECRET_KEY: ${{ secrets.GPG_SECRET_KEY }}
-      JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_PASSWORD: ${{ secrets.MAVENCENTRAL_PASSWORD }}
-      JRELEASER_DEPLOY_MAVEN_MAVENCENTRAL_USERNAME: ${{ secrets.MAVENCENTRAL_USERNAME }}
-      JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '11'
-          cache: 'gradle'
-
-      - name: Verify Config
-        run: |
-          ./gradlew jreleaserConfig
-
-      - name: Clean & Build Project
-        run: |
-          ./gradlew clean build --no-daemon
-
-      - name: Stage Artifact
-        run: |
-          ./gradlew publish --no-daemon
-
-      - name: Dry Run
-        run: |
-          ./gradlew jreleaserFullRelease --dry-run
-
-      - name: Full Release
-        run: |
-          ./gradlew jreleaserFullRelease --no-daemon
-
-      - name: Check Status
-        run: |
-          STATUS=$?
-          if [ $STATUS -ne 0 ]; then
-            echo "Error occurred during publishing"
-            exit $STATUS
-          fi
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
+    with:
+      target: my-first-target
+    secrets:
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      java_gpg_passphrase: ${{ secrets.JAVA_GPG_PASSPHRASE }}
+      java_gpg_secret_key: ${{ secrets.JAVA_GPG_SECRET_KEY }}
+      ossrh_password: ${{ secrets.OSSRH_PASSWORD }}
+      ossrh_username: ${{ secrets.OSSRH_USERNAME }}
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
