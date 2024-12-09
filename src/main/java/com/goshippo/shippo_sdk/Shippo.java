@@ -12,6 +12,7 @@ import com.goshippo.shippo_sdk.utils.Utils;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * Shippo external API.: Use this API to integrate with the Shippo service
@@ -542,9 +543,16 @@ public class Shippo {
             return this;
         }
         
-        // Visible for testing, will be accessed via reflection
-        void _hooks(com.goshippo.shippo_sdk.utils.Hooks hooks) {
-            sdkConfiguration.setHooks(hooks);    
+        // Visible for testing, may be accessed via reflection in tests
+        Builder _hooks(com.goshippo.shippo_sdk.utils.Hooks hooks) {
+            sdkConfiguration.setHooks(hooks);  
+            return this;  
+        }
+        
+        // Visible for testing, may be accessed via reflection in tests
+        Builder _hooks(Consumer<? super com.goshippo.shippo_sdk.utils.Hooks> consumer) {
+            consumer.accept(sdkConfiguration.hooks());
+            return this;    
         }
         
         /**

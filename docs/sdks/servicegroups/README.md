@@ -170,6 +170,14 @@ public class Application {
                         ServiceGroupAccountAndServiceLevel.builder()
                             .accountObjectId("80feb1633d4a43c898f0058506cfd82d")
                             .serviceLevelToken("ups_next_day_air_saver")
+                            .build(),
+                        ServiceGroupAccountAndServiceLevel.builder()
+                            .accountObjectId("80feb1633d4a43c898f0058506cfd82d")
+                            .serviceLevelToken("ups_next_day_air_saver")
+                            .build(),
+                        ServiceGroupAccountAndServiceLevel.builder()
+                            .accountObjectId("80feb1633d4a43c898f0058506cfd82d")
+                            .serviceLevelToken("ups_next_day_air_saver")
                             .build()))
                     .flatRate("5")
                     .flatRateCurrency("USD")
@@ -226,7 +234,7 @@ public class Application {
             .build();
 
         DeleteServiceGroupResponse res = sdk.serviceGroups().delete()
-                .serviceGroupId("<id>")
+                .serviceGroupId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

@@ -148,7 +148,7 @@ public class Application {
             .build();
 
         GetShippoAccountResponse res = sdk.shippoAccounts().get()
-                .shippoAccountId("<id>")
+                .shippoAccountId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -200,7 +200,7 @@ public class Application {
             .build();
 
         UpdateShippoAccountResponse res = sdk.shippoAccounts().update()
-                .shippoAccountId("<id>")
+                .shippoAccountId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .shippoAccountUpdateRequest(ShippoAccountUpdateRequest.builder()
                     .email("hippo@shippo.com")

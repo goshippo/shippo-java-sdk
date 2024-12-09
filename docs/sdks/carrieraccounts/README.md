@@ -166,7 +166,7 @@ public class Application {
             .build();
 
         GetCarrierAccountResponse res = sdk.carrierAccounts().get()
-                .carrierAccountId("<id>")
+                .carrierAccountId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -220,7 +220,7 @@ public class Application {
             .build();
 
         UpdateCarrierAccountResponse res = sdk.carrierAccounts().update()
-                .carrierAccountId("<id>")
+                .carrierAccountId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .carrierAccountBase(CarrierAccountBase.builder()
                     .accountId("****")
@@ -240,7 +240,7 @@ public class Application {
                         .hasInvoice(false)
                         .phone("1112223333")
                         .title("Manager")
-                        .upsAgreements(false)
+                        .upsAgreements(true)
                         .aiaCountryIso2("US")
                         .billingAddressStreet2("STE 200")
                         .currencyCode("USD")
@@ -303,9 +303,9 @@ public class Application {
             .build();
 
         InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
-                .carrierAccountObjectId("<id>")
+                .carrierAccountObjectId("<value>")
                 .redirectUri("https://enlightened-mortise.com/")
-                .state("Louisiana")
+                .state("Florida")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -346,8 +346,8 @@ Adds a Shippo carrier account
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.CarrierAccountCorreosCreateRequest;
-import com.goshippo.shippo_sdk.models.components.CarrierAccountCorreosCreateRequestParameters;
+import com.goshippo.shippo_sdk.models.components.CarrierAccountUPSCreateRequest;
+import com.goshippo.shippo_sdk.models.components.CarrierAccountUPSCreateRequestParameters;
 import com.goshippo.shippo_sdk.models.operations.RegisterCarrierAccountRequestBody;
 import com.goshippo.shippo_sdk.models.operations.RegisterCarrierAccountResponse;
 import java.lang.Exception;
@@ -363,9 +363,27 @@ public class Application {
 
         RegisterCarrierAccountResponse res = sdk.carrierAccounts().register()
                 .shippoApiVersion("2018-02-08")
-                .requestBody(RegisterCarrierAccountRequestBody.of(CarrierAccountCorreosCreateRequest.builder()
-                    .carrier("correos")
-                    .parameters(CarrierAccountCorreosCreateRequestParameters.builder()
+                .requestBody(RegisterCarrierAccountRequestBody.of(CarrierAccountUPSCreateRequest.builder()
+                    .carrier("ups")
+                    .parameters(CarrierAccountUPSCreateRequestParameters.builder()
+                        .billingAddressCity("San Francisco")
+                        .billingAddressCountryIso2("US")
+                        .billingAddressState("CA")
+                        .billingAddressStreet1("731 Market St")
+                        .billingAddressZip("94103")
+                        .pickupAddressCity("San Francisco")
+                        .pickupAddressCountryIso2("US")
+                        .pickupAddressState("CA")
+                        .pickupAddressStreet1("731 Market St")
+                        .pickupAddressZip("94103")
+                        .upsAgreements(true)
+                        .billingAddressStreet2("STE 200")
+                        .company("Shippo")
+                        .email("hippo@shippo.com")
+                        .fullName("Shippo Meister")
+                        .phone("1112223333")
+                        .pickupAddressSameAsBillingAddress(false)
+                        .pickupAddressStreet2("STE 200")
                         .build())
                     .build()))
                 .call();
