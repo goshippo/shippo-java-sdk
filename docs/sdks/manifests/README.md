@@ -170,7 +170,7 @@ public class Application {
             .build();
 
         GetManifestResponse res = sdk.manifests().get()
-                .manifestId("<id>")
+                .manifestId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

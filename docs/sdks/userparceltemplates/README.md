@@ -154,7 +154,7 @@ public class Application {
             .build();
 
         DeleteUserParcelTemplateResponse res = sdk.userParcelTemplates().delete()
-                .userParcelTemplateObjectId("<id>")
+                .userParcelTemplateObjectId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -204,7 +204,7 @@ public class Application {
             .build();
 
         GetUserParcelTemplateResponse res = sdk.userParcelTemplates().get()
-                .userParcelTemplateObjectId("<id>")
+                .userParcelTemplateObjectId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -258,7 +258,7 @@ public class Application {
             .build();
 
         UpdateUserParcelTemplateResponse res = sdk.userParcelTemplates().update()
-                .userParcelTemplateObjectId("<id>")
+                .userParcelTemplateObjectId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .userParcelTemplateUpdateRequest(UserParcelTemplateUpdateRequest.builder()
                     .distanceUnit(DistanceUnitEnum.IN)
