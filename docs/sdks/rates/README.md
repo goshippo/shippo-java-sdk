@@ -35,7 +35,7 @@ public class Application {
             .build();
 
         GetRateResponse res = sdk.rates().get()
-                .rateId("<id>")
+                .rateId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -86,7 +86,7 @@ public class Application {
             .build();
 
         ListShipmentRatesResponse res = sdk.rates().listShipmentRates()
-                .shipmentId("<id>")
+                .shipmentId("<value>")
                 .page(1L)
                 .results(25L)
                 .shippoApiVersion("2018-02-08")
@@ -148,7 +148,7 @@ public class Application {
             .build();
 
         ListShipmentRatesByCurrencyCodeRequest req = ListShipmentRatesByCurrencyCodeRequest.builder()
-                .shipmentId("<id>")
+                .shipmentId("<value>")
                 .currencyCode("USD")
                 .build();
 

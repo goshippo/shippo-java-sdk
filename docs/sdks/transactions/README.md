@@ -152,7 +152,7 @@ public class Application {
             .build();
 
         GetTransactionResponse res = sdk.transactions().get()
-                .transactionId("<id>")
+                .transactionId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

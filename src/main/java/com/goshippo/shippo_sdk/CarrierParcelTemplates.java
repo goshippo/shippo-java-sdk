@@ -119,10 +119,10 @@ public class CarrierParcelTemplates implements
                 request, 
                 this.sdkConfiguration.globals));
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -130,7 +130,7 @@ public class CarrierParcelTemplates implements
                   new BeforeRequestContextImpl(
                       "ListCarrierParcelTemplates", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -141,7 +141,7 @@ public class CarrierParcelTemplates implements
                         new AfterErrorContextImpl(
                             "ListCarrierParcelTemplates",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -150,7 +150,7 @@ public class CarrierParcelTemplates implements
                         new AfterSuccessContextImpl(
                             "ListCarrierParcelTemplates",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -159,7 +159,7 @@ public class CarrierParcelTemplates implements
                         new AfterErrorContextImpl(
                             "ListCarrierParcelTemplates",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -259,10 +259,10 @@ public class CarrierParcelTemplates implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -270,7 +270,7 @@ public class CarrierParcelTemplates implements
                   new BeforeRequestContextImpl(
                       "GetCarrierParcelTemplate", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -281,7 +281,7 @@ public class CarrierParcelTemplates implements
                         new AfterErrorContextImpl(
                             "GetCarrierParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -290,7 +290,7 @@ public class CarrierParcelTemplates implements
                         new AfterSuccessContextImpl(
                             "GetCarrierParcelTemplate",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -299,7 +299,7 @@ public class CarrierParcelTemplates implements
                         new AfterErrorContextImpl(
                             "GetCarrierParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }

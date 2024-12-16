@@ -152,7 +152,7 @@ public class Application {
             .build();
 
         GetCustomsItemResponse res = sdk.customsItems().get()
-                .customsItemId("<id>")
+                .customsItemId("<value>")
                 .page(1L)
                 .shippoApiVersion("2018-02-08")
                 .call();

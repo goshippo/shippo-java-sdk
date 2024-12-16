@@ -139,7 +139,7 @@ public class Application {
             .build();
 
         GetRefundResponse res = sdk.refunds().get()
-                .refundId("<id>")
+                .refundId("<value>")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

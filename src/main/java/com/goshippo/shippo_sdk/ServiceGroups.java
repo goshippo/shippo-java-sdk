@@ -101,10 +101,10 @@ public class ServiceGroups implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -112,7 +112,7 @@ public class ServiceGroups implements
                   new BeforeRequestContextImpl(
                       "ListServiceGroups", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -123,7 +123,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "ListServiceGroups",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -132,7 +132,7 @@ public class ServiceGroups implements
                         new AfterSuccessContextImpl(
                             "ListServiceGroups",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -141,7 +141,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "ListServiceGroups",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -252,10 +252,10 @@ public class ServiceGroups implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -263,7 +263,7 @@ public class ServiceGroups implements
                   new BeforeRequestContextImpl(
                       "CreateServiceGroup", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -274,7 +274,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "CreateServiceGroup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -283,7 +283,7 @@ public class ServiceGroups implements
                         new AfterSuccessContextImpl(
                             "CreateServiceGroup",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -292,7 +292,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "CreateServiceGroup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -398,10 +398,10 @@ public class ServiceGroups implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -409,7 +409,7 @@ public class ServiceGroups implements
                   new BeforeRequestContextImpl(
                       "UpdateServiceGroup", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -420,7 +420,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "UpdateServiceGroup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -429,7 +429,7 @@ public class ServiceGroups implements
                         new AfterSuccessContextImpl(
                             "UpdateServiceGroup",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -438,7 +438,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "UpdateServiceGroup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -538,10 +538,10 @@ public class ServiceGroups implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -549,7 +549,7 @@ public class ServiceGroups implements
                   new BeforeRequestContextImpl(
                       "DeleteServiceGroup", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -560,7 +560,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "DeleteServiceGroup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -569,7 +569,7 @@ public class ServiceGroups implements
                         new AfterSuccessContextImpl(
                             "DeleteServiceGroup",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -578,7 +578,7 @@ public class ServiceGroups implements
                         new AfterErrorContextImpl(
                             "DeleteServiceGroup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
