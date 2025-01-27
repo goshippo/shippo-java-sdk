@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ParcelTemplateUPSEnum - |Token | Name | Dimensions|
@@ -73,5 +75,14 @@ public enum ParcelTemplateUPSEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ParcelTemplateUPSEnum> fromValue(String value) {
+        for (ParcelTemplateUPSEnum o: ParcelTemplateUPSEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

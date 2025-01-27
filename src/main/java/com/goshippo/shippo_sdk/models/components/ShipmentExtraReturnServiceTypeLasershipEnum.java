@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ShipmentExtraReturnServiceTypeLasershipEnum {
     NO_RETURN("NO_RETURN");
@@ -19,5 +21,14 @@ public enum ShipmentExtraReturnServiceTypeLasershipEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ShipmentExtraReturnServiceTypeLasershipEnum> fromValue(String value) {
+        for (ShipmentExtraReturnServiceTypeLasershipEnum o: ShipmentExtraReturnServiceTypeLasershipEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

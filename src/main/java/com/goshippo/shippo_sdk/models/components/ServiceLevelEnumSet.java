@@ -89,11 +89,6 @@ public class ServiceLevelEnumSet {
         return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelChronopostEnum>(){}));
     }
 
-    public static ServiceLevelEnumSet of(ServiceLevelCouriersPleaseEnum value) {
-        Utils.checkNotNull(value, "value");
-        return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelCouriersPleaseEnum>(){}));
-    }
-
     public static ServiceLevelEnumSet of(ServiceLevelCorreosEspanaEnum value) {
         Utils.checkNotNull(value, "value");
         return new ServiceLevelEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceLevelCorreosEspanaEnum>(){}));
@@ -239,7 +234,6 @@ public class ServiceLevelEnumSet {
      * <li>{@code com.goshippo.shippo_sdk.models.components.ServiceLevelCanadaPostEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ServiceLevelCDLEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ServiceLevelChronopostEnum}</li>
-     * <li>{@code com.goshippo.shippo_sdk.models.components.ServiceLevelCouriersPleaseEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ServiceLevelCorreosEspanaEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ServiceLevelColissimoEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ServiceLevelPurolatorEnum}</li>
@@ -331,7 +325,6 @@ public class ServiceLevelEnumSet {
                   TypeReferenceWithShape.of(new TypeReference<ServiceLevelPurolatorEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ServiceLevelColissimoEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ServiceLevelCorreosEspanaEnum>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ServiceLevelCouriersPleaseEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ServiceLevelChronopostEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ServiceLevelCDLEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ServiceLevelCanadaPostEnum>() {}, JsonShape.DEFAULT),

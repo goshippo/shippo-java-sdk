@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ParcelInsuranceProvider - To have insurance cover provided by a carrier directly instead of Shippo's provider (XCover), set provider to `FEDEX`, `UPS`, or `ONTRAC`.
@@ -24,5 +26,14 @@ public enum ParcelInsuranceProvider {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ParcelInsuranceProvider> fromValue(String value) {
+        for (ParcelInsuranceProvider o: ParcelInsuranceProvider.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum AddressValidationResultsMessageCodeEnum {
     VERIFICATION_ERROR("verification_error"),
@@ -78,5 +80,14 @@ public enum AddressValidationResultsMessageCodeEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<AddressValidationResultsMessageCodeEnum> fromValue(String value) {
+        for (AddressValidationResultsMessageCodeEnum o: AddressValidationResultsMessageCodeEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

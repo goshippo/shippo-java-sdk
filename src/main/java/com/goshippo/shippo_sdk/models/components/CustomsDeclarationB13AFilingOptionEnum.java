@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CustomsDeclarationB13AFilingOptionEnum - B13A Option details are obtained by filing a B13A Canada Export Declaration via the Canadian Export Reporting System (CERS). 
@@ -26,5 +28,14 @@ public enum CustomsDeclarationB13AFilingOptionEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CustomsDeclarationB13AFilingOptionEnum> fromValue(String value) {
+        for (CustomsDeclarationB13AFilingOptionEnum o: CustomsDeclarationB13AFilingOptionEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

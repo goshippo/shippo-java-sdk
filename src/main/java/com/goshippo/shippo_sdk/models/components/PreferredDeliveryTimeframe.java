@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PreferredDeliveryTimeframe - Required for DHL Germany Paket Sameday. Designates a desired timeframe for delivery. Format is `HHMMHHMM`
@@ -27,5 +29,14 @@ public enum PreferredDeliveryTimeframe {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<PreferredDeliveryTimeframe> fromValue(String value) {
+        for (PreferredDeliveryTimeframe o: PreferredDeliveryTimeframe.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

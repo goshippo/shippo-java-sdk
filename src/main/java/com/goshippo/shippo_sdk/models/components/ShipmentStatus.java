@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ShipmentStatus - `Waiting` shipments have been successfully submitted but not yet been processed. 
@@ -28,5 +30,14 @@ public enum ShipmentStatus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ShipmentStatus> fromValue(String value) {
+        for (ShipmentStatus o: ShipmentStatus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

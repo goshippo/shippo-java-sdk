@@ -19,7 +19,6 @@
 | collect_plus | CollectPlus|
 | correios_br | CorreiosBR|
 | correos_espana | Correos España |
-| couriersplease | Couriers Please|
 | colissimo | Colissimo|
 | deutsche_post | Deutsche Post|
 | dhl_benelux | DHL Benelux|
@@ -86,7 +85,6 @@
 | `COLLECT_PLUS`       | collect_plus         |
 | `CORREIOS_BR`        | correios_br          |
 | `CORREOS_ESPANA`     | correos_espana       |
-| `COURIERSPLEASE`     | couriersplease       |
 | `COLISSIMO`          | colissimo            |
 | `DEUTSCHE_POST`      | deutsche_post        |
 | `DHL_BENELUX`        | dhl_benelux          |

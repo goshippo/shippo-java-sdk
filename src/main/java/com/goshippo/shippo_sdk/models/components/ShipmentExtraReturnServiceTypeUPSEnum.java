@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ShipmentExtraReturnServiceTypeUPSEnum {
     PRINT_AND_MAIL("PRINT_AND_MAIL"),
@@ -22,5 +24,14 @@ public enum ShipmentExtraReturnServiceTypeUPSEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ShipmentExtraReturnServiceTypeUPSEnum> fromValue(String value) {
+        for (ShipmentExtraReturnServiceTypeUPSEnum o: ShipmentExtraReturnServiceTypeUPSEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

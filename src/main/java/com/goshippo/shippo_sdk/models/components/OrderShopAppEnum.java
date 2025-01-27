@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrderShopAppEnum - Platform the order was created on and, if applicable, imported from. 
@@ -37,5 +39,14 @@ public enum OrderShopAppEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<OrderShopAppEnum> fromValue(String value) {
+        for (OrderShopAppEnum o: OrderShopAppEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

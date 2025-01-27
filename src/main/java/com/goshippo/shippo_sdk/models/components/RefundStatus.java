@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RefundStatus - Indicates the status of the Refund.
@@ -25,5 +27,14 @@ public enum RefundStatus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<RefundStatus> fromValue(String value) {
+        for (RefundStatus o: RefundStatus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

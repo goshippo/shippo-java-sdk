@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ServiceLevelAPCPostalEnum - |Token | Service name|
@@ -41,5 +43,14 @@ public enum ServiceLevelAPCPostalEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ServiceLevelAPCPostalEnum> fromValue(String value) {
+        for (ServiceLevelAPCPostalEnum o: ServiceLevelAPCPostalEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DangerousGoodsCode - Dangerous Goods Code (DHL eCommerce only). See &lt;a href="https://api-legacy.dhlecs.com/docs/v2/appendix.html#dangerous-goods"&gt;Category Codes&lt;/a&gt;
@@ -30,5 +32,14 @@ public enum DangerousGoodsCode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DangerousGoodsCode> fromValue(String value) {
+        for (DangerousGoodsCode o: DangerousGoodsCode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

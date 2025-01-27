@@ -57,11 +57,6 @@ public class ParcelTemplateEnumSet {
         return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateDPDUKEnum>(){}));
     }
 
-    public static ParcelTemplateEnumSet of(ParcelTemplateCouriersPleaseEnum value) {
-        Utils.checkNotNull(value, "value");
-        return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateCouriersPleaseEnum>(){}));
-    }
-
     public static ParcelTemplateEnumSet of(ParcelTemplateAramexAustraliaEnum value) {
         Utils.checkNotNull(value, "value");
         return new ParcelTemplateEnumSet(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParcelTemplateAramexAustraliaEnum>(){}));
@@ -75,7 +70,6 @@ public class ParcelTemplateEnumSet {
      * <li>{@code com.goshippo.shippo_sdk.models.components.ParcelTemplateUSPSEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ParcelTemplateDHLeCommerceEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ParcelTemplateDPDUKEnum}</li>
-     * <li>{@code com.goshippo.shippo_sdk.models.components.ParcelTemplateCouriersPleaseEnum}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.ParcelTemplateAramexAustraliaEnum}</li>
      * </ul>
      * 
@@ -117,7 +111,6 @@ public class ParcelTemplateEnumSet {
         public _Deserializer() {
             super(ParcelTemplateEnumSet.class, false,
                   TypeReferenceWithShape.of(new TypeReference<ParcelTemplateAramexAustraliaEnum>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ParcelTemplateCouriersPleaseEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ParcelTemplateDPDUKEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ParcelTemplateDHLeCommerceEnum>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ParcelTemplateUSPSEnum>() {}, JsonShape.DEFAULT),

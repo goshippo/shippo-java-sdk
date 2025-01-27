@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CustomsDeclarationEelPfcEnum - EEL / PFC type of the shipment. For most shipments from the US to CA, `NOEEI_30_36` is applicable; for most 
@@ -28,5 +30,14 @@ public enum CustomsDeclarationEelPfcEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CustomsDeclarationEelPfcEnum> fromValue(String value) {
+        for (CustomsDeclarationEelPfcEnum o: CustomsDeclarationEelPfcEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

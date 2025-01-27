@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CarrierAccountWithExtraInfoStatus - Current authentication status. Possible values: 'disconnected' (authorization lost, reconnect needed), 'connected' (authorized and active), 'authorization_pending' (awaiting initial authorization flow).
@@ -24,5 +26,14 @@ public enum CarrierAccountWithExtraInfoStatus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CarrierAccountWithExtraInfoStatus> fromValue(String value) {
+        for (CarrierAccountWithExtraInfoStatus o: CarrierAccountWithExtraInfoStatus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CustomsDeclarationCreateRequestType - Party to be billed for duties.
@@ -24,5 +26,14 @@ public enum CustomsDeclarationCreateRequestType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CustomsDeclarationCreateRequestType> fromValue(String value) {
+        for (CustomsDeclarationCreateRequestType o: CustomsDeclarationCreateRequestType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

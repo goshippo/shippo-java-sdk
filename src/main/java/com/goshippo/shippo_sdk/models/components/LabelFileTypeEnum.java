@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * LabelFileTypeEnum - Print format of the &lt;a href="https://docs.goshippo.com/docs/shipments/shippinglabelsizes/"&gt;label&lt;/a&gt;. If empty, will use the default format set from 
@@ -32,5 +34,14 @@ public enum LabelFileTypeEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<LabelFileTypeEnum> fromValue(String value) {
+        for (LabelFileTypeEnum o: LabelFileTypeEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

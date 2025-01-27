@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ServiceLevelCorreosEspanaEnum - |Token | Service name|
@@ -27,5 +29,14 @@ public enum ServiceLevelCorreosEspanaEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ServiceLevelCorreosEspanaEnum> fromValue(String value) {
+        for (ServiceLevelCorreosEspanaEnum o: ServiceLevelCorreosEspanaEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

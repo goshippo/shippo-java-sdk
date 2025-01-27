@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CustomsDeclarationIncotermEnum - The incoterm reference of the shipment. FCA is available for DHL Express and FedEx only. 
@@ -29,5 +31,14 @@ public enum CustomsDeclarationIncotermEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CustomsDeclarationIncotermEnum> fromValue(String value) {
+        for (CustomsDeclarationIncotermEnum o: CustomsDeclarationIncotermEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

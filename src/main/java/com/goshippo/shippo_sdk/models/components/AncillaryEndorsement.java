@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AncillaryEndorsement - Specify an ancillary service endorsement to provide the USPS with instructions on how to handle undeliverable-as-addressed pieces (DHL eCommerce only).
@@ -23,5 +25,14 @@ public enum AncillaryEndorsement {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<AncillaryEndorsement> fromValue(String value) {
+        for (AncillaryEndorsement o: AncillaryEndorsement.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

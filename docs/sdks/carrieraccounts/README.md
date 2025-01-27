@@ -45,6 +45,8 @@ public class Application {
             .build();
 
         ListCarrierAccountsRequest req = ListCarrierAccountsRequest.builder()
+                .page(1L)
+                .results(5L)
                 .build();
 
         ListCarrierAccountsResponse res = sdk.carrierAccounts().list()
@@ -86,9 +88,9 @@ package hello.world;
 import com.goshippo.shippo_sdk.Shippo;
 import com.goshippo.shippo_sdk.models.components.ConnectExistingOwnAccountRequest;
 import com.goshippo.shippo_sdk.models.components.ConnectExistingOwnAccountRequestParameters;
-import com.goshippo.shippo_sdk.models.components.FedExConnectExistingOwnAccountParameters;
 import com.goshippo.shippo_sdk.models.operations.CreateCarrierAccountResponse;
 import java.lang.Exception;
+import java.util.Map;
 
 public class Application {
 
@@ -104,16 +106,15 @@ public class Application {
                 .connectExistingOwnAccountRequest(ConnectExistingOwnAccountRequest.builder()
                     .accountId("321123")
                     .carrier("fedex")
-                    .parameters(ConnectExistingOwnAccountRequestParameters.of(FedExConnectExistingOwnAccountParameters.builder()
-                        .firstName("Loyal")
-                        .lastName("Collier")
-                        .phoneNumber("(890) 307-8579")
-                        .fromAddressSt("<value>")
-                        .fromAddressCity("<value>")
-                        .fromAddressState("<value>")
-                        .fromAddressZip("<value>")
-                        .fromAddressCountryIso2("<value>")
-                        .build()))
+                    .parameters(ConnectExistingOwnAccountRequestParameters.of(Map.ofEntries(
+                        Map.entry("first_name", "Loyal"),
+                        Map.entry("last_name", "Collier"),
+                        Map.entry("phone_number", "(890) 307-8579"),
+                        Map.entry("from_address_st", "<value>"),
+                        Map.entry("from_address_city", "<value>"),
+                        Map.entry("from_address_state", "<value>"),
+                        Map.entry("from_address_zip", "<value>"),
+                        Map.entry("from_address_country_iso2", "<value>"))))
                     .metadata("FEDEX Account")
                     .test(false)
                     .build())
@@ -206,9 +207,9 @@ package hello.world;
 import com.goshippo.shippo_sdk.Shippo;
 import com.goshippo.shippo_sdk.models.components.CarrierAccountBase;
 import com.goshippo.shippo_sdk.models.components.CarrierAccountBaseParameters;
-import com.goshippo.shippo_sdk.models.components.UPSConnectExistingOwnAccountParameters;
 import com.goshippo.shippo_sdk.models.operations.UpdateCarrierAccountResponse;
 import java.lang.Exception;
+import java.util.Map;
 
 public class Application {
 
@@ -225,30 +226,29 @@ public class Application {
                 .carrierAccountBase(CarrierAccountBase.builder()
                     .accountId("****")
                     .carrier("usps")
-                    .parameters(CarrierAccountBaseParameters.of(UPSConnectExistingOwnAccountParameters.builder()
-                        .accountNumber("94567e")
-                        .billingAddressCity("San Francisco")
-                        .billingAddressCountryIso2("US")
-                        .billingAddressState("CA")
-                        .billingAddressStreet1("731 Market St")
-                        .billingAddressZip("94103")
-                        .collecCountryIso2("US")
-                        .collecZip("94103")
-                        .company("Shippo")
-                        .email("hippo@shippo.com")
-                        .fullName("Shippo Meister")
-                        .hasInvoice(false)
-                        .phone("1112223333")
-                        .title("Manager")
-                        .upsAgreements(false)
-                        .aiaCountryIso2("US")
-                        .billingAddressStreet2("STE 200")
-                        .currencyCode("USD")
-                        .invoiceControlid("1234")
-                        .invoiceDate("20210529")
-                        .invoiceNumber("1112234")
-                        .invoiceValue("11.23")
-                        .build()))
+                    .parameters(CarrierAccountBaseParameters.of(Map.ofEntries(
+                        Map.entry("account_number", "94567e"),
+                        Map.entry("aia_country_iso2", "US"),
+                        Map.entry("billing_address_city", "San Francisco"),
+                        Map.entry("billing_address_country_iso2", "US"),
+                        Map.entry("billing_address_state", "CA"),
+                        Map.entry("billing_address_street1", "731 Market St"),
+                        Map.entry("billing_address_street2", "STE 200"),
+                        Map.entry("billing_address_zip", "94103"),
+                        Map.entry("collec_country_iso2", "US"),
+                        Map.entry("collec_zip", "94103"),
+                        Map.entry("company", "Shippo"),
+                        Map.entry("currency_code", "USD"),
+                        Map.entry("email", "hippo@shippo.com"),
+                        Map.entry("full_name", "Shippo Meister"),
+                        Map.entry("has_invoice", false),
+                        Map.entry("invoice_controlid", "1234"),
+                        Map.entry("invoice_date", "20210529"),
+                        Map.entry("invoice_number", "1112234"),
+                        Map.entry("invoice_value", "11.23"),
+                        Map.entry("phone", "1112223333"),
+                        Map.entry("title", "Manager"),
+                        Map.entry("ups_agreements", true))))
                     .build())
                 .call();
 
@@ -305,7 +305,7 @@ public class Application {
         InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
                 .carrierAccountObjectId("<id>")
                 .redirectUri("https://enlightened-mortise.com/")
-                .state("Louisiana")
+                .state("Florida")
                 .shippoApiVersion("2018-02-08")
                 .call();
 
@@ -346,8 +346,8 @@ Adds a Shippo carrier account
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.CarrierAccountCorreosCreateRequest;
-import com.goshippo.shippo_sdk.models.components.CarrierAccountCorreosCreateRequestParameters;
+import com.goshippo.shippo_sdk.models.components.CarrierAccountChronopostCreateRequest;
+import com.goshippo.shippo_sdk.models.components.CarrierAccountChronopostCreateRequestParameters;
 import com.goshippo.shippo_sdk.models.operations.RegisterCarrierAccountRequestBody;
 import com.goshippo.shippo_sdk.models.operations.RegisterCarrierAccountResponse;
 import java.lang.Exception;
@@ -363,9 +363,9 @@ public class Application {
 
         RegisterCarrierAccountResponse res = sdk.carrierAccounts().register()
                 .shippoApiVersion("2018-02-08")
-                .requestBody(RegisterCarrierAccountRequestBody.of(CarrierAccountCorreosCreateRequest.builder()
+                .requestBody(RegisterCarrierAccountRequestBody.of(CarrierAccountChronopostCreateRequest.builder()
                     .carrier("correos")
-                    .parameters(CarrierAccountCorreosCreateRequestParameters.builder()
+                    .parameters(CarrierAccountChronopostCreateRequestParameters.builder()
                         .build())
                     .build()))
                 .call();
