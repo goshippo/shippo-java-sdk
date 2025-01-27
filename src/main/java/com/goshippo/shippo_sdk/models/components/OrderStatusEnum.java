@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrderStatusEnum - Current state of the order. See the &lt;a href="https://docs.goshippo.com/docs/orders/orders/"&gt;orders tutorial&lt;/a&gt; 
@@ -29,5 +31,14 @@ public enum OrderStatusEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<OrderStatusEnum> fromValue(String value) {
+        for (OrderStatusEnum o: OrderStatusEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

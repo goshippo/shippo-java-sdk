@@ -308,7 +308,7 @@ public class Application {
         InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
                 .carrierAccountObjectId("<id>")
                 .redirectUri("https://enlightened-mortise.com/")
-                .state("Louisiana")
+                .state("Florida")
                 .shippoApiVersion("2018-02-08")
                 .call();
 

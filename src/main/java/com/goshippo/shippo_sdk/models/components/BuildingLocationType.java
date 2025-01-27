@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BuildingLocationType - Where your parcels will be available for pickup. "Security Deck" and "Shipping Dock" are only 
@@ -34,5 +36,14 @@ public enum BuildingLocationType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<BuildingLocationType> fromValue(String value) {
+        for (BuildingLocationType o: BuildingLocationType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -50,6 +50,8 @@ public class Application {
             .build();
 
         ListOrdersRequest req = ListOrdersRequest.builder()
+                .page(1L)
+                .results(25L)
                 .orderStatus(List.of(
                     OrderStatusEnum.PAID))
                 .shopApp(OrderShopAppEnum.SHIPPO)
@@ -160,6 +162,19 @@ public class Application {
                         .validate(true)
                         .build())
                     .lineItems(List.of(
+                        LineItemBase.builder()
+                            .currency("USD")
+                            .manufactureCountry("US")
+                            .maxDeliveryTime(OffsetDateTime.parse("2016-07-23T00:00:00Z"))
+                            .maxShipTime(OffsetDateTime.parse("2016-07-23T00:00:00Z"))
+                            .quantity(20L)
+                            .sku("HM-123")
+                            .title("Hippo Magazines")
+                            .totalPrice("12.1")
+                            .variantTitle("June Edition")
+                            .weight("0.4")
+                            .weightUnit(WeightUnitEnum.LB)
+                            .build(),
                         LineItemBase.builder()
                             .currency("USD")
                             .manufactureCountry("US")

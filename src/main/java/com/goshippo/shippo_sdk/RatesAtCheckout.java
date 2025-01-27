@@ -135,10 +135,10 @@ public class RatesAtCheckout implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -146,7 +146,7 @@ public class RatesAtCheckout implements
                   new BeforeRequestContextImpl(
                       "CreateLiveRate", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -157,7 +157,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "CreateLiveRate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -166,7 +166,7 @@ public class RatesAtCheckout implements
                         new AfterSuccessContextImpl(
                             "CreateLiveRate",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -175,7 +175,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "CreateLiveRate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -207,7 +207,15 @@ public class RatesAtCheckout implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -268,10 +276,10 @@ public class RatesAtCheckout implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -279,7 +287,7 @@ public class RatesAtCheckout implements
                   new BeforeRequestContextImpl(
                       "GetDefaultParcelTemplate", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -290,7 +298,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "GetDefaultParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -299,7 +307,7 @@ public class RatesAtCheckout implements
                         new AfterSuccessContextImpl(
                             "GetDefaultParcelTemplate",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -308,7 +316,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "GetDefaultParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -340,7 +348,15 @@ public class RatesAtCheckout implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -414,10 +430,10 @@ public class RatesAtCheckout implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -425,7 +441,7 @@ public class RatesAtCheckout implements
                   new BeforeRequestContextImpl(
                       "UpdateDefaultParcelTemplate", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -436,7 +452,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "UpdateDefaultParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -445,7 +461,7 @@ public class RatesAtCheckout implements
                         new AfterSuccessContextImpl(
                             "UpdateDefaultParcelTemplate",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -454,7 +470,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "UpdateDefaultParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -486,7 +502,15 @@ public class RatesAtCheckout implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -547,10 +571,10 @@ public class RatesAtCheckout implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, this.sdkConfiguration.globals));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -558,7 +582,7 @@ public class RatesAtCheckout implements
                   new BeforeRequestContextImpl(
                       "DeleteDefaultParcelTemplate", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -569,7 +593,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "DeleteDefaultParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -578,7 +602,7 @@ public class RatesAtCheckout implements
                         new AfterSuccessContextImpl(
                             "DeleteDefaultParcelTemplate",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -587,7 +611,7 @@ public class RatesAtCheckout implements
                         new AfterErrorContextImpl(
                             "DeleteDefaultParcelTemplate",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -608,7 +632,15 @@ public class RatesAtCheckout implements
             // no content 
             return _res;
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 

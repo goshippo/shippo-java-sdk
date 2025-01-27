@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TransactionStatusEnum - Indicates the status of the Transaction.
@@ -28,5 +30,14 @@ public enum TransactionStatusEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<TransactionStatusEnum> fromValue(String value) {
+        for (TransactionStatusEnum o: TransactionStatusEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

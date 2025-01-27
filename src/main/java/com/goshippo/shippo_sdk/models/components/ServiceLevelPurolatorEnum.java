@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ServiceLevelPurolatorEnum - |Token | Service name|
@@ -59,5 +61,14 @@ public enum ServiceLevelPurolatorEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ServiceLevelPurolatorEnum> fromValue(String value) {
+        for (ServiceLevelPurolatorEnum o: ServiceLevelPurolatorEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -40,6 +40,8 @@ public class Application {
         ListTransactionsRequest req = ListTransactionsRequest.builder()
                 .objectStatus(TransactionStatusEnum.SUCCESS)
                 .trackingStatus(TrackingStatusEnum.DELIVERED)
+                .page(1L)
+                .results(25L)
                 .build();
 
         ListTransactionsResponse res = sdk.transactions().list()

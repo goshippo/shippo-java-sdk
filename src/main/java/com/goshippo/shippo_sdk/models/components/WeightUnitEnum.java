@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WeightUnitEnum - The unit used for weight.
@@ -25,5 +27,14 @@ public enum WeightUnitEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<WeightUnitEnum> fromValue(String value) {
+        for (WeightUnitEnum o: WeightUnitEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

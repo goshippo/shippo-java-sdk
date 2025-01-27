@@ -102,10 +102,10 @@ public class Webhooks implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -113,7 +113,7 @@ public class Webhooks implements
                   new BeforeRequestContextImpl(
                       "createWebhook", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -124,7 +124,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "createWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -133,7 +133,7 @@ public class Webhooks implements
                         new AfterSuccessContextImpl(
                             "createWebhook",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -142,7 +142,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "createWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -174,7 +174,15 @@ public class Webhooks implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -216,10 +224,10 @@ public class Webhooks implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -227,7 +235,7 @@ public class Webhooks implements
                   new BeforeRequestContextImpl(
                       "listWebhooks", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -238,7 +246,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "listWebhooks",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -247,7 +255,7 @@ public class Webhooks implements
                         new AfterSuccessContextImpl(
                             "listWebhooks",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -256,7 +264,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "listWebhooks",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -288,7 +296,15 @@ public class Webhooks implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -340,10 +356,10 @@ public class Webhooks implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -351,7 +367,7 @@ public class Webhooks implements
                   new BeforeRequestContextImpl(
                       "getWebhook", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -362,7 +378,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "getWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -371,7 +387,7 @@ public class Webhooks implements
                         new AfterSuccessContextImpl(
                             "getWebhook",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -380,7 +396,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "getWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -412,7 +428,15 @@ public class Webhooks implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -480,10 +504,10 @@ public class Webhooks implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -491,7 +515,7 @@ public class Webhooks implements
                   new BeforeRequestContextImpl(
                       "updateWebhook", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -502,7 +526,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "updateWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -511,7 +535,7 @@ public class Webhooks implements
                         new AfterSuccessContextImpl(
                             "updateWebhook",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -520,7 +544,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "updateWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -552,7 +576,15 @@ public class Webhooks implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 
@@ -604,10 +636,10 @@ public class Webhooks implements
         _req.addHeader("Accept", "*/*")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -615,7 +647,7 @@ public class Webhooks implements
                   new BeforeRequestContextImpl(
                       "deleteWebhook", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -626,7 +658,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "deleteWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -635,7 +667,7 @@ public class Webhooks implements
                         new AfterSuccessContextImpl(
                             "deleteWebhook",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -644,7 +676,7 @@ public class Webhooks implements
                         new AfterErrorContextImpl(
                             "deleteWebhook",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -665,7 +697,15 @@ public class Webhooks implements
             // no content 
             return _res;
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             // no content 
             throw new SDKError(
                     _httpRes, 

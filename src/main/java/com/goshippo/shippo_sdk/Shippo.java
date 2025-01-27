@@ -4,14 +4,15 @@
 
 package com.goshippo.shippo_sdk;
 
-import com.goshippo.shippo_sdk.models.operations.SDKMethodInterfaces.*;
 import com.goshippo.shippo_sdk.utils.HTTPClient;
 import com.goshippo.shippo_sdk.utils.RetryConfig;
 import com.goshippo.shippo_sdk.utils.SpeakeasyHTTPClient;
 import com.goshippo.shippo_sdk.utils.Utils;
 import java.lang.String;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * Shippo external API.: Use this API to integrate with the Shippo service
@@ -534,7 +535,7 @@ public class Shippo {
          */
         public Builder shippoApiVersion(String shippoApiVersion) {
             if (!this.sdkConfiguration.globals.get("parameters").containsKey("header")) {
-                this.sdkConfiguration.globals.get("parameters").put("header", new java.util.HashMap<>());
+                this.sdkConfiguration.globals.get("parameters").put("header", new HashMap<>());
             }
 
             this.sdkConfiguration.globals.get("parameters").get("header").put("shippoApiVersion", shippoApiVersion);
@@ -542,9 +543,16 @@ public class Shippo {
             return this;
         }
         
-        // Visible for testing, will be accessed via reflection
-        void _hooks(com.goshippo.shippo_sdk.utils.Hooks hooks) {
-            sdkConfiguration.setHooks(hooks);    
+        // Visible for testing, may be accessed via reflection in tests
+        Builder _hooks(com.goshippo.shippo_sdk.utils.Hooks hooks) {
+            sdkConfiguration.setHooks(hooks);  
+            return this;  
+        }
+        
+        // Visible for testing, may be accessed via reflection in tests
+        Builder _hooks(Consumer<? super com.goshippo.shippo_sdk.utils.Hooks> consumer) {
+            consumer.accept(sdkConfiguration.hooks());
+            return this;    
         }
         
         /**

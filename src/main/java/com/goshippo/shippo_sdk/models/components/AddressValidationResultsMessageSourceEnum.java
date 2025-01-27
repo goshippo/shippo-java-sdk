@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum AddressValidationResultsMessageSourceEnum {
     SHIPPO_ADDRESS_VALIDATOR("Shippo Address Validator"),
@@ -20,5 +22,14 @@ public enum AddressValidationResultsMessageSourceEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<AddressValidationResultsMessageSourceEnum> fromValue(String value) {
+        for (AddressValidationResultsMessageSourceEnum o: AddressValidationResultsMessageSourceEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

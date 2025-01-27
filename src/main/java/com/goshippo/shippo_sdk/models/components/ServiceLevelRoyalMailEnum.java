@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ServiceLevelRoyalMailEnum - |Token | Service name|
@@ -63,5 +65,14 @@ public enum ServiceLevelRoyalMailEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ServiceLevelRoyalMailEnum> fromValue(String value) {
+        for (ServiceLevelRoyalMailEnum o: ServiceLevelRoyalMailEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

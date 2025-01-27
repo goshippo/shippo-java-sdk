@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ServiceLevelParcelforceEnum - |Token | Service name|
@@ -29,5 +31,14 @@ public enum ServiceLevelParcelforceEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ServiceLevelParcelforceEnum> fromValue(String value) {
+        for (ServiceLevelParcelforceEnum o: ServiceLevelParcelforceEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

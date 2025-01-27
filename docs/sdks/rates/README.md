@@ -150,6 +150,8 @@ public class Application {
         ListShipmentRatesByCurrencyCodeRequest req = ListShipmentRatesByCurrencyCodeRequest.builder()
                 .shipmentId("<id>")
                 .currencyCode("USD")
+                .page(1L)
+                .results(25L)
                 .build();
 
         ListShipmentRatesByCurrencyCodeResponse res = sdk.rates().listShipmentRatesByCurrencyCode()

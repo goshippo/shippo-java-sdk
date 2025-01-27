@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CustomsDeclarationContentsTypeEnum - Type of goods of the shipment.  
@@ -29,5 +31,14 @@ public enum CustomsDeclarationContentsTypeEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CustomsDeclarationContentsTypeEnum> fromValue(String value) {
+        for (CustomsDeclarationContentsTypeEnum o: CustomsDeclarationContentsTypeEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

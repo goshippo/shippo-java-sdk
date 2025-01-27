@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DistanceUnitEnum - The measure unit used for length, width and height.
@@ -27,5 +29,14 @@ public enum DistanceUnitEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DistanceUnitEnum> fromValue(String value) {
+        for (DistanceUnitEnum o: DistanceUnitEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

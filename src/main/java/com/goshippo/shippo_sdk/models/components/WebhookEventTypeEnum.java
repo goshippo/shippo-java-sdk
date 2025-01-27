@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookEventTypeEnum - Type of event that triggered the webhook.
@@ -27,5 +29,14 @@ public enum WebhookEventTypeEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<WebhookEventTypeEnum> fromValue(String value) {
+        for (WebhookEventTypeEnum o: WebhookEventTypeEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

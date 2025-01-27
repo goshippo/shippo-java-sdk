@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ServiceLevelJitsuEnum - |Token | Service name|
@@ -27,5 +29,14 @@ public enum ServiceLevelJitsuEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ServiceLevelJitsuEnum> fromValue(String value) {
+        for (ServiceLevelJitsuEnum o: ServiceLevelJitsuEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

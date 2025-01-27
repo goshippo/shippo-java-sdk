@@ -6,6 +6,8 @@ package com.goshippo.shippo_sdk.models.components;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CustomsTaxIdentificationType - Type of tax identification.
@@ -29,5 +31,14 @@ public enum CustomsTaxIdentificationType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CustomsTaxIdentificationType> fromValue(String value) {
+        for (CustomsTaxIdentificationType o: CustomsTaxIdentificationType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }
