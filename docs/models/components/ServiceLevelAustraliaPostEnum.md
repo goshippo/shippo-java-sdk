@@ -14,6 +14,14 @@
 | australia_post_parcel_post_return | Parcel Post Return|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelAustraliaPostEnum;
+
+ServiceLevelAustraliaPostEnum value = ServiceLevelAustraliaPostEnum.AUSTRALIA_POST_EXPRESS_POST;
+```
+
 
 ## Values
 

@@ -1,10 +1,8 @@
 # Refunds
-(*refunds()*)
 
 ## Overview
 
 Refunds are reimbursements for successfully created but unused shipping labels or other charges.
-<SchemaDefinition schemaRef="#/components/schemas/Refund"/>
 
 ### Available Operations
 
@@ -18,11 +16,11 @@ Creates a new refund object.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="CreateRefund" method="post" path="/refunds" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.RefundRequestBody;
 import com.goshippo.shippo_sdk.models.operations.CreateRefundResponse;
 import java.lang.Exception;
 
@@ -31,20 +29,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         CreateRefundResponse res = sdk.refunds().create()
-                .shippoApiVersion("2018-02-08")
-                .refundRequestBody(RefundRequestBody.builder()
-                    .transaction("915d94940ea54c3a80cbfa328722f5a1")
-                    .async(false)
-                    .build())
+                .async(false)
+                .transaction("915d94940ea54c3a80cbfa328722f5a1")
                 .call();
 
         if (res.refund().isPresent()) {
-            // handle response
+            System.out.println(res.refund().get());
         }
     }
 }
@@ -52,10 +47,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `refundRequestBody`                                                                                                                                                | [RefundRequestBody](../../models/components/RefundRequestBody.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                 | Refund details                                                                                                                                                     |                                                                                                                                                                    |
+| Parameter                        | Type                             | Required                         | Description                      | Example                          |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `async`                          | *Optional\<Boolean>*             | :heavy_minus_sign:               | N/A                              | false                            |
+| `transaction`                    | *String*                         | :heavy_check_mark:               | N/A                              | 915d94940ea54c3a80cbfa328722f5a1 |
 
 ### Response
 
@@ -73,6 +68,7 @@ Returns a list all refund objects.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListRefunds" method="get" path="/refunds/" -->
 ```java
 package hello.world;
 
@@ -85,26 +81,19 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListRefundsResponse res = sdk.refunds().list()
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.refundPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.refundPaginatedList().get());
         }
     }
 }
 ```
-
-### Parameters
-
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -122,6 +111,7 @@ Returns an existing rate using a rate object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="GetRefund" method="get" path="/refunds/{RefundId}" -->
 ```java
 package hello.world;
 
@@ -134,17 +124,16 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetRefundResponse res = sdk.refunds().get()
                 .refundId("<id>")
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.refund().isPresent()) {
-            // handle response
+            System.out.println(res.refund().get());
         }
     }
 }
@@ -152,10 +141,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `refundId`                                                                                                                                                         | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the refund to update                                                                                                                                  |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                         | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `refundId`                        | *String*                          | :heavy_check_mark:                | Object ID of the refund to update |
 
 ### Response
 

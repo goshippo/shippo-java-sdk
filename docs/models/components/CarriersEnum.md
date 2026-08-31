@@ -14,12 +14,10 @@
 | boxberry | Boxberry|
 | bring | Bring (also used for Posten Norge)|
 | canada_post | Canada Post|
-| cdl | CDL|
 | chronopost | Chronopost|
 | collect_plus | CollectPlus|
 | correios_br | CorreiosBR|
 | correos_espana | Correos España |
-| couriersplease | Couriers Please|
 | colissimo | Colissimo|
 | deutsche_post | Deutsche Post|
 | dhl_benelux | DHL Benelux|
@@ -52,9 +50,9 @@
 | posti | Posti|
 | purolator | Purolator|
 | royal_mail | Royal Mail|
+| royal_mail_sf | Royal Mail Storefeeder|
 | rr_donnelley | ePost Global|
 | russian_post | Russian Post|
-| sendle | Sendle|
 | skypostal | SkyPostal|
 | stuart | Stuart|
 | swyft | Swyft|
@@ -63,6 +61,14 @@
 | usps | USPS|
 | veho | Veho |
 
+
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.CarriersEnum;
+
+CarriersEnum value = CarriersEnum.AIRTERRA;
+```
 
 
 ## Values
@@ -81,12 +87,10 @@
 | `BOXBERRY`           | boxberry             |
 | `BRING`              | bring                |
 | `CANADA_POST`        | canada_post          |
-| `CDL`                | cdl                  |
 | `CHRONOPOST`         | chronopost           |
 | `COLLECT_PLUS`       | collect_plus         |
 | `CORREIOS_BR`        | correios_br          |
 | `CORREOS_ESPANA`     | correos_espana       |
-| `COURIERSPLEASE`     | couriersplease       |
 | `COLISSIMO`          | colissimo            |
 | `DEUTSCHE_POST`      | deutsche_post        |
 | `DHL_BENELUX`        | dhl_benelux          |
@@ -119,9 +123,9 @@
 | `POSTI`              | posti                |
 | `PUROLATOR`          | purolator            |
 | `ROYAL_MAIL`         | royal_mail           |
+| `ROYAL_MAIL_SF`      | royal_mail_sf        |
 | `RR_DONNELLEY`       | rr_donnelley         |
 | `RUSSIAN_POST`       | russian_post         |
-| `SENDLE`             | sendle               |
 | `SKYPOSTAL`          | skypostal            |
 | `STUART`             | stuart               |
 | `SWYFT`              | swyft                |

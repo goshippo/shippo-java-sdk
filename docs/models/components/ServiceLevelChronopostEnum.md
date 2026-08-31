@@ -10,6 +10,14 @@
 | chronopost_express | Chrono Express International|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelChronopostEnum;
+
+ServiceLevelChronopostEnum value = ServiceLevelChronopostEnum.CHRONOPOST13;
+```
+
 
 ## Values
 

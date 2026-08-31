@@ -36,6 +36,9 @@ Shippo external API.: Use this API to integrate with the Shippo service
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
   * [Authentication](#authentication)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Debugging](#debugging)
+  * [Jackson Configuration](#jackson-configuration)
 
 <!-- End Table of Contents [toc] -->
 
@@ -275,47 +278,104 @@ We provide the API and web app for all your shipping needs.<!-- Start Error Hand
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
 
-By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `initiateOauth2Signin` method throws the following exceptions:
 
-| Error Type                                                            | Status Code | Content Type     |
-| --------------------------------------------------------------------- | ----------- | ---------------- |
-| models/errors/InitiateOauth2SigninResponseBody                        | 400         | application/json |
-| models/errors/InitiateOauth2SigninCarrierAccountsResponseBody         | 401         | application/json |
-| models/errors/InitiateOauth2SigninCarrierAccountsResponseResponseBody | 404         | application/json |
-| models/errors/SDKError                                                | 4XX, 5XX    | \*/\*            |
+[`ShippoException`](./src/main/java/models/errors/ShippoException.java) is the base class for all HTTP error responses. It has the following properties:
+
+| Method           | Type                        | Description                                                              |
+| ---------------- | --------------------------- | ------------------------------------------------------------------------ |
+| `message()`      | `String`                    | Error message                                                            |
+| `code()`         | `int`                       | HTTP response status code eg `404`                                       |
+| `headers`        | `Map<String, List<String>>` | HTTP response headers                                                    |
+| `body()`         | `byte[]`                    | HTTP body as a byte array. Can be empty array if no body is returned.    |
+| `bodyAsString()` | `String`                    | HTTP body as a UTF-8 string. Can be empty string if no body is returned. |
+| `rawResponse()`  | `HttpResponse<?>`           | Raw HTTP response (body already read and not available for re-read)      |
 
 ### Example
-
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody;
-import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody;
-import com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninResponseBody;
+import com.goshippo.shippo_sdk.models.errors.*;
 import com.goshippo.shippo_sdk.models.operations.InitiateOauth2SigninResponse;
+import java.io.UncheckedIOException;
 import java.lang.Exception;
+import java.lang.String;
+import java.util.Optional;
 
 public class Application {
 
-    public static void main(String[] args) throws InitiateOauth2SigninResponseBody, InitiateOauth2SigninCarrierAccountsResponseBody, InitiateOauth2SigninCarrierAccountsResponseResponseBody, Exception {
+    public static void main(String[] args) throws InitiateOauth2SigninResponseBody, InitiateOauth2SigninCarrierAccountsResponseResponseBody, InitiateOauth2SigninCarrierAccountsResponseBody, Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
+        try {
 
-        InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
-                .carrierAccountObjectId("<id>")
-                .redirectUri("https://enlightened-mortise.com/")
-                .state("Louisiana")
-                .shippoApiVersion("2018-02-08")
-                .call();
+            InitiateOauth2SigninResponse res = sdk.carrierAccounts().initiateOauth2Signin()
+                    .carrierAccountObjectId("<id>")
+                    .redirectUri("https://ashamed-reporter.biz")
+                    .call();
 
-        // handle response
-    }
+            // handle response
+        } catch (ShippoException ex) { // all SDK exceptions inherit from ShippoException
+
+            // ex.ToString() provides a detailed error message including
+            // HTTP status code, headers, and error payload (if any)
+            System.out.println(ex);
+
+            // Base exception fields
+            var rawResponse = ex.rawResponse();
+            var headers = ex.headers();
+            var contentType = headers.first("Content-Type");
+            int statusCode = ex.code();
+            Optional<byte[]> responseBody = ex.body();
+
+            // different error subclasses may be thrown 
+            // depending on the service call
+            if (ex instanceof InitiateOauth2SigninResponseBody) {
+                var e = (InitiateOauth2SigninResponseBody) ex;
+                // Check error data fields
+                e.data().ifPresent(payload -> {
+                      Optional<String> title = payload.title();
+                      Optional<String> detail = payload.detail();
+                });
+            }
+
+            // An underlying cause may be provided. If the error payload 
+            // cannot be deserialized then the deserialization exception 
+            // will be set as the cause.
+            if (ex.getCause() != null) {
+                var cause = ex.getCause();
+            }
+        } catch (UncheckedIOException ex) {
+            // handle IO error (connection, timeout, etc)
+        }    }
 }
 ```
+
+### Error Classes
+**Primary error:**
+* [`ShippoException`](./src/main/java/models/errors/ShippoException.java): The base class for HTTP error responses.
+
+<details><summary>Less common errors (9)</summary>
+
+<br />
+
+**Network errors:**
+* `java.io.IOException` (always wrapped by `java.io.UncheckedIOException`). Commonly encountered subclasses of
+`IOException` include `java.net.ConnectException`, `java.net.SocketTimeoutException`, `EOFException` (there are
+many more subclasses in the JDK platform).
+
+**Inherit from [`ShippoException`](./src/main/java/models/errors/ShippoException.java)**:
+* [`com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninResponseBody`](./src/main/java/models/errors/com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninResponseBody.java): Invalid parameters provided by the user. Status code `400`. Applicable to 1 of 70 methods.*
+* [`com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody`](./src/main/java/models/errors/com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseResponseBody.java): Invalid ShippoToken or unsupported carrier account provided by the user. Status code `401`. Applicable to 1 of 70 methods.*
+* [`com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody`](./src/main/java/models/errors/com.goshippo.shippo_sdk.models.errors.InitiateOauth2SigninCarrierAccountsResponseBody.java): Invalid carrier account provided by the user. Status code `404`. Applicable to 1 of 70 methods.*
+
+
+</details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -323,7 +383,7 @@ public class Application {
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
+The default server can be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
 ```java
 package hello.world;
 
@@ -337,18 +397,17 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .serverURL("https://api.goshippo.com")
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListAddressesResponse res = sdk.addresses().list()
                 .page(1L)
                 .results(5L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.addressPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.addressPaginatedList().get());
         }
     }
 }
@@ -379,18 +438,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
                 .shippoApiVersion("2018-02-08")
             .build();
 
         ListAddressesResponse res = sdk.addresses().list()
                 .page(1L)
                 .results(5L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.addressPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.addressPaginatedList().get());
         }
     }
 }
@@ -402,6 +460,195 @@ public class Application {
 <!-- No SDK Installation -->
 <!-- No SDK Example Usage -->
 <!-- No SDK Available Operations -->
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
+
+The Java SDK makes API calls using an `HTTPClient` that wraps the native
+[HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html). This
+client provides the ability to attach hooks around the request lifecycle that can be used to modify the request or handle
+errors and response.
+
+The `HTTPClient` interface allows you to either use the default `SpeakeasyHTTPClient` that comes with the SDK,
+or provide your own custom implementation with customized configuration such as custom executors, SSL context,
+connection pools, and other HTTP client settings.
+
+The interface provides synchronous (`send`) methods.
+
+The following example shows how to add a custom header and handle errors:
+
+```java
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.utils.HTTPClient;
+import com.goshippo.shippo_sdk.utils.SpeakeasyHTTPClient;
+import com.goshippo.shippo_sdk.utils.Utils;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.io.InputStream;
+import java.time.Duration;
+
+public class Application {
+    public static void main(String[] args) {
+        // Create a custom HTTP client with hooks
+        HTTPClient httpClient = new HTTPClient() {
+            private final HTTPClient defaultClient = new SpeakeasyHTTPClient();
+            
+            @Override
+            public HttpResponse<InputStream> send(HttpRequest request) throws IOException, URISyntaxException, InterruptedException {
+                // Add custom header and timeout using Utils.copy()
+                HttpRequest modifiedRequest = Utils.copy(request)
+                    .header("x-custom-header", "custom value")
+                    .timeout(Duration.ofSeconds(30))
+                    .build();
+                    
+                try {
+                    HttpResponse<InputStream> response = defaultClient.send(modifiedRequest);
+                    // Log successful response
+                    System.out.println("Request successful: " + response.statusCode());
+                    return response;
+                } catch (Exception error) {
+                    // Log error
+                    System.err.println("Request failed: " + error.getMessage());
+                    throw error;
+                }
+            }
+        };
+
+        Shippo sdk = Shippo.builder()
+            .client(httpClient)
+            .build();
+    }
+}
+```
+
+<details>
+<summary>Custom HTTP Client Configuration</summary>
+
+You can also provide a completely custom HTTP client with your own configuration:
+
+```java
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.utils.HTTPClient;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.io.InputStream;
+import java.time.Duration;
+import java.util.concurrent.Executors;
+
+public class Application {
+    public static void main(String[] args) {
+        // Custom HTTP client with custom configuration
+        HTTPClient customHttpClient = new HTTPClient() {
+            private final HttpClient client = HttpClient.newBuilder()
+                .executor(Executors.newFixedThreadPool(10))
+                .connectTimeout(Duration.ofSeconds(30))
+                // .sslContext(customSslContext) // Add custom SSL context if needed
+                .build();
+
+            @Override
+            public HttpResponse<InputStream> send(HttpRequest request) throws IOException, URISyntaxException, InterruptedException {
+                return client.send(request, HttpResponse.BodyHandlers.ofInputStream());
+            }
+        };
+
+        Shippo sdk = Shippo.builder()
+            .client(customHttpClient)
+            .build();
+    }
+}
+```
+
+</details>
+
+You can also enable debug logging on the default `SpeakeasyHTTPClient`:
+
+```java
+import com.goshippo.shippo_sdk.Shippo;
+import com.goshippo.shippo_sdk.utils.SpeakeasyHTTPClient;
+
+public class Application {
+    public static void main(String[] args) {
+        SpeakeasyHTTPClient httpClient = new SpeakeasyHTTPClient();
+        httpClient.enableDebugLogging(true);
+
+        Shippo sdk = Shippo.builder()
+            .client(httpClient)
+            .build();
+    }
+}
+```
+<!-- End Custom HTTP Client [http-client] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+### Debug
+
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
+
+```java
+SDK.builder()
+    .enableHTTPDebugLogging(true)
+    .build();
+```
+Example output:
+```
+Sending request: http://localhost:35123/bearer#global GET
+Request headers: {Accept=[application/json], Authorization=[******], Client-Level-Header=[added by client], Idempotency-Key=[some-key], x-speakeasy-user-agent=[speakeasy-sdk/java 0.0.1 internal 0.1.0 org.openapis.openapi]}
+Received response: (GET http://localhost:35123/bearer#global) 200
+Response headers: {access-control-allow-credentials=[true], access-control-allow-origin=[*], connection=[keep-alive], content-length=[50], content-type=[application/json], date=[Wed, 09 Apr 2025 01:43:29 GMT], server=[gunicorn/19.9.0]}
+Response body:
+{
+  "authenticated": true, 
+  "token": "global"
+}
+```
+__WARNING__: This logging should only be used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+
+__NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
+
+
+Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
+<!-- End Debugging [debug] -->
+
+<!-- Start Jackson Configuration [jackson] -->
+## Jackson Configuration
+
+The SDK ships with a pre-configured Jackson [`ObjectMapper`][jackson-databind] accessible via
+`JSON.getMapper()`. It is set up with type modules, strict deserializers, and the feature flags
+needed for full SDK compatibility (including ISO-8601 `OffsetDateTime` serialization):
+
+```java
+import com.goshippo.shippo_sdk.utils.JSON;
+
+String json = JSON.getMapper().writeValueAsString(response);
+```
+
+To compose with your own `ObjectMapper`, register the provided `ShippoSDKJacksonModule`, which
+bundles all the same modules and feature flags as a single plug-and-play module:
+
+```java
+import com.goshippo.shippo_sdk.utils.ShippoSDKJacksonModule;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+ObjectMapper myMapper = new ObjectMapper()
+    .registerModule(new ShippoSDKJacksonModule());
+
+String json = myMapper.writeValueAsString(response);
+```
+
+[jackson-databind]: https://github.com/FasterXML/jackson-databind
+[jackson-jsr310]: https://github.com/FasterXML/jackson-modules-java8/tree/master/datetime
+<!-- End Jackson Configuration [jackson] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 

@@ -10,6 +10,14 @@
 | gls_us_sds | Saturday Delivery|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelGLSUSEnum;
+
+ServiceLevelGLSUSEnum value = ServiceLevelGLSUSEnum.GLS_US_CPS;
+```
+
 
 ## Values
 

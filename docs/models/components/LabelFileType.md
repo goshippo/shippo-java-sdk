@@ -1,5 +1,13 @@
 # LabelFileType
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.LabelFileType;
+
+LabelFileType value = LabelFileType.PNG;
+```
+
 
 ## Values
 
