@@ -1,14 +1,8 @@
 # Webhooks
-(*webhooks()*)
 
 ## Overview
 
 Webhooks are a way for Shippo to notify your application when a specific event occurs. For example, when a label is purchased or when a shipment tracking status has changed. You can use webhooks to trigger actions in your application, such as sending an email or updating a database.
-<SchemaDefinition schemaRef="#/components/schemas/Webhook"/>
-
-# Webhook Payload
-The payload is the body of the POST request Shippo sends to the URL specified at the time of webhook registration.
-<SchemaDefinition schemaRef="#/components/schemas/WebhookPayload"/>
 
 ### Available Operations
 
@@ -24,6 +18,7 @@ Creates a new webhook to send notifications to a URL when a specific event occur
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createWebhook" method="post" path="/webhooks" -->
 ```java
 package hello.world;
 
@@ -38,12 +33,11 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
-                .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         WebhookUpdateRequest req = WebhookUpdateRequest.builder()
-                .event(WebhookEventTypeEnum.BATCH_CREATED)
+                .event(WebhookEventTypeEnum.TRANSACTION_UPDATED)
                 .url("https://example.com/shippo-webhook")
                 .active(true)
                 .isTest(false)
@@ -54,7 +48,7 @@ public class Application {
                 .call();
 
         if (res.webhook().isPresent()) {
-            // handle response
+            System.out.println(res.webhook().get());
         }
     }
 }
@@ -82,6 +76,7 @@ Returns a list of all webhooks you have created.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listWebhooks" method="get" path="/webhooks" -->
 ```java
 package hello.world;
 
@@ -94,15 +89,14 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
-                .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListWebhooksResponse res = sdk.webhooks().listWebhooks()
                 .call();
 
         if (res.webhookPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.webhookPaginatedList().get());
         }
     }
 }
@@ -124,6 +118,7 @@ Returns the details of a specific webhook using the webhook object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getWebhook" method="get" path="/webhooks/{webhookId}" -->
 ```java
 package hello.world;
 
@@ -136,8 +131,7 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
-                .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetWebhookResponse res = sdk.webhooks().getWebhook()
@@ -145,7 +139,7 @@ public class Application {
                 .call();
 
         if (res.webhook().isPresent()) {
-            // handle response
+            System.out.println(res.webhook().get());
         }
     }
 }
@@ -173,6 +167,7 @@ Updates an existing webhook using the webhook object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updateWebhook" method="put" path="/webhooks/{webhookId}" -->
 ```java
 package hello.world;
 
@@ -187,14 +182,13 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
-                .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         UpdateWebhookResponse res = sdk.webhooks().updateWebhook()
                 .webhookId("<id>")
                 .webhookUpdateRequest(WebhookUpdateRequest.builder()
-                    .event(WebhookEventTypeEnum.BATCH_CREATED)
+                    .event(WebhookEventTypeEnum.ALL)
                     .url("https://example.com/shippo-webhook")
                     .active(true)
                     .isTest(false)
@@ -202,7 +196,7 @@ public class Application {
                 .call();
 
         if (res.webhook().isPresent()) {
-            // handle response
+            System.out.println(res.webhook().get());
         }
     }
 }
@@ -231,6 +225,7 @@ Deletes a specific webhook using the webhook object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteWebhook" method="delete" path="/webhooks/{webhookId}" -->
 ```java
 package hello.world;
 
@@ -243,8 +238,7 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
-                .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         DeleteWebhookResponse res = sdk.webhooks().deleteWebhook()

@@ -18,6 +18,14 @@
 | canada_post_international_parcel_air  | International Parcel Air
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelCanadaPostEnum;
+
+ServiceLevelCanadaPostEnum value = ServiceLevelCanadaPostEnum.CANADA_POST_REGULAR_PARCEL;
+```
+
 
 ## Values
 

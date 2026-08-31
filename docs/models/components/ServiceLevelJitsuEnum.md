@@ -6,6 +6,14 @@
 | axlehire_next_day | Next Day|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelJitsuEnum;
+
+ServiceLevelJitsuEnum value = ServiceLevelJitsuEnum.AXLEHIRE_SAME_DAY;
+```
+
 
 ## Values
 

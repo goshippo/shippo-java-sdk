@@ -14,6 +14,14 @@
 | deutsche_post_warenpost_international_l | Warenpost International L|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelDeutschePostEnum;
+
+ServiceLevelDeutschePostEnum value = ServiceLevelDeutschePostEnum.DEUTSCHE_POST_POSTKARTE;
+```
+
 
 ## Values
 

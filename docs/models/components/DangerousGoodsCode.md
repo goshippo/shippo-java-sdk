@@ -1,6 +1,14 @@
 # DangerousGoodsCode
 
-Dangerous Goods Code (DHL eCommerce only). See <a href="https://api-legacy.dhlecs.com/docs/v2/appendix.html#dangerous-goods">Category Codes</a>
+Dangerous Goods Code (DHL eCommerce only). See [Category Codes](https://api-legacy.dhlecs.com/docs/v2/appendix.html#dangerous-goods)
+
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.DangerousGoodsCode;
+
+DangerousGoodsCode value = DangerousGoodsCode.ONE;
+```
 
 
 ## Values

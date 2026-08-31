@@ -6,6 +6,14 @@
 | correos_premium_home | Paquete Premium|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelCorreosEspanaEnum;
+
+ServiceLevelCorreosEspanaEnum value = ServiceLevelCorreosEspanaEnum.CORREOS_STANDARD_HOME;
+```
+
 
 ## Values
 

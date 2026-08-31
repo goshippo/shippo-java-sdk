@@ -2,6 +2,14 @@
 
 Specify an ancillary service endorsement to provide the USPS with instructions on how to handle undeliverable-as-addressed pieces (DHL eCommerce only).
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.AncillaryEndorsement;
+
+AncillaryEndorsement value = AncillaryEndorsement.FORWARDING_SERVICE_REQUESTED;
+```
+
 
 ## Values
 

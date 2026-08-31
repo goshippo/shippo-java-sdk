@@ -12,6 +12,14 @@
 | asendia_us_other | Asendia USA Other Services (custom)|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelAsendiaEnum;
+
+ServiceLevelAsendiaEnum value = ServiceLevelAsendiaEnum.ASENDIA_US_PRIORITY_TRACKED;
+```
+
 
 ## Values
 
