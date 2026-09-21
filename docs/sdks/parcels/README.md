@@ -1,14 +1,8 @@
 # Parcels
-(*parcels()*)
 
 ## Overview
 
-A parcel is an item you are shipping. The parcel object includes details about its physical make-up of the parcel. It includes dimensions and weight that Shippo uses to calculate rates. 
-<SchemaDefinition schemaRef="#/components/schemas/Parcel"/>
-
-# Parcel Extras
-The following values are supported for the `extra` field of the parcel object.
-<SchemaDefinition schemaRef="#/components/schemas/ParcelExtra"/>
+A parcel is an item you are shipping. The parcel object includes details about its physical make-up of the parcel. It includes dimensions and weight that Shippo uses to calculate rates.
 
 ### Available Operations
 
@@ -22,6 +16,7 @@ Returns a list of all parcel objects.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListParcels" method="get" path="/parcels" -->
 ```java
 package hello.world;
 
@@ -34,18 +29,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListParcelsResponse res = sdk.parcels().list()
                 .page(1L)
                 .results(25L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.parcelPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.parcelPaginatedList().get());
         }
     }
 }
@@ -53,11 +47,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `page`                                                                                                                                                             | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The page number you want to select                                                                                                                                 |                                                                                                                                                                    |
-| `results`                                                                                                                                                          | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The number of results to return per page (max 100)                                                                                                                 |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `page`                                             | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The page number you want to select                 |
+| `results`                                          | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The number of results to return per page (max 100) |
 
 ### Response
 
@@ -75,18 +68,12 @@ Creates a new parcel object.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="CreateParcel" method="post" path="/parcels" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.Cod;
-import com.goshippo.shippo_sdk.models.components.DistanceUnitEnum;
-import com.goshippo.shippo_sdk.models.components.ParcelCreateRequest;
-import com.goshippo.shippo_sdk.models.components.ParcelExtra;
-import com.goshippo.shippo_sdk.models.components.ParcelInsurance;
-import com.goshippo.shippo_sdk.models.components.ParcelInsuranceProvider;
-import com.goshippo.shippo_sdk.models.components.PaymentMethod;
-import com.goshippo.shippo_sdk.models.components.WeightUnitEnum;
+import com.goshippo.shippo_sdk.models.components.*;
 import com.goshippo.shippo_sdk.models.operations.CreateParcelRequestBody;
 import com.goshippo.shippo_sdk.models.operations.CreateParcelResponse;
 import java.lang.Exception;
@@ -96,38 +83,39 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
-        CreateParcelResponse res = sdk.parcels().create()
-                .shippoApiVersion("2018-02-08")
-                .requestBody(CreateParcelRequestBody.of(ParcelCreateRequest.builder()
-                    .massUnit(WeightUnitEnum.LB)
-                    .weight("1")
-                    .distanceUnit(DistanceUnitEnum.IN)
-                    .height("1")
-                    .length("1")
-                    .width("1")
-                    .extra(ParcelExtra.builder()
-                        .cod(Cod.builder()
-                            .amount("5.5")
-                            .currency("USD")
-                            .paymentMethod(PaymentMethod.CASH)
-                            .build())
-                        .insurance(ParcelInsurance.builder()
-                            .amount("5.5")
-                            .content("Laptop")
-                            .currency("USD")
-                            .provider(ParcelInsuranceProvider.UPS)
-                            .build())
+        CreateParcelRequestBody req = CreateParcelRequestBody.of(ParcelCreateRequest.builder()
+                .massUnit(WeightUnitEnum.LB)
+                .weight("1")
+                .distanceUnit(DistanceUnitEnum.IN)
+                .height("1")
+                .length("1")
+                .width("1")
+                .extra(ParcelExtra.builder()
+                    .cod(Cod.builder()
+                        .amount("5.5")
+                        .currency("USD")
+                        .paymentMethod(PaymentMethod.CASH)
                         .build())
-                    .metadata("Customer ID 123456")
-                    .build()))
+                    .insurance(ParcelInsurance.builder()
+                        .amount("5.5")
+                        .content("Laptop")
+                        .currency("USD")
+                        .provider(ParcelInsuranceProvider.UPS)
+                        .build())
+                    .build())
+                .metadata("Customer ID 123456")
+                .build());
+
+        CreateParcelResponse res = sdk.parcels().create()
+                .request(req)
                 .call();
 
         if (res.parcel().isPresent()) {
-            // handle response
+            System.out.println(res.parcel().get());
         }
     }
 }
@@ -135,10 +123,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `requestBody`                                                                                                                                                      | [CreateParcelRequestBody](../../models/operations/CreateParcelRequestBody.md)                                                                                      | :heavy_check_mark:                                                                                                                                                 | Parcel details.                                                                                                                                                    |                                                                                                                                                                    |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [CreateParcelRequestBody](../../models/operations/CreateParcelRequestBody.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 ### Response
 
@@ -156,6 +143,7 @@ Returns parcel details using an existing parcel object ID (this will not return 
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="GetParcel" method="get" path="/parcels/{ParcelId}" -->
 ```java
 package hello.world;
 
@@ -168,17 +156,16 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetParcelResponse res = sdk.parcels().get()
                 .parcelId("<id>")
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.parcel().isPresent()) {
-            // handle response
+            System.out.println(res.parcel().get());
         }
     }
 }
@@ -186,10 +173,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `parcelId`                                                                                                                                                         | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the parcel                                                                                                                                            |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter               | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `parcelId`              | *String*                | :heavy_check_mark:      | Object ID of the parcel |
 
 ### Response
 

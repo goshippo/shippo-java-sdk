@@ -5,6 +5,14 @@
 `Success` shipments have been processed successfully, meaning that rate generation has concluded. 
 `Error` does not occur currently and is reserved for future use.
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ShipmentStatus;
+
+ShipmentStatus value = ShipmentStatus.ERROR;
+```
+
 
 ## Values
 

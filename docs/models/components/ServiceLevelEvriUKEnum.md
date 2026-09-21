@@ -9,6 +9,14 @@
 | hermes_uk_postable_nextday | Postable Next Day|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelEvriUKEnum;
+
+ServiceLevelEvriUKEnum value = ServiceLevelEvriUKEnum.HERMES_UK_COURIER_SERVICE;
+```
+
 
 ## Values
 
