@@ -7,6 +7,14 @@
 | parcelforce_expressam | Express AM|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelParcelforceEnum;
+
+ServiceLevelParcelforceEnum value = ServiceLevelParcelforceEnum.PARCELFORCE_EXPRESS48;
+```
+
 
 ## Values
 

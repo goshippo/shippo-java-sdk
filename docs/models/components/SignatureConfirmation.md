@@ -3,6 +3,14 @@
 Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS only) 
 or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.SignatureConfirmation;
+
+SignatureConfirmation value = SignatureConfirmation.STANDARD;
+```
+
 
 ## Values
 

@@ -1,8 +1,16 @@
 # PaymentMethod
 
 Secured funds include money orders, certified cheques and others (see 
-<a href="https://www.ups.com/content/us/en/shipping/time/service/value_added/cod.html">UPS</a> for details). 
+[UPS](https://www.ups.com/content/us/en/shipping/time/service/value_added/cod.html) for details). 
 If no payment_method inputted the value defaults to "ANY".)
+
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.PaymentMethod;
+
+PaymentMethod value = PaymentMethod.SECURED_FUNDS;
+```
 
 
 ## Values

@@ -6,6 +6,14 @@
 | DHLeC_SM_Flats | Flats | 27.00 x 17.00 x 17.00 in|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ParcelTemplateDHLeCommerceEnum;
+
+ParcelTemplateDHLeCommerceEnum value = ParcelTemplateDHLeCommerceEnum.DH_LE_C_IRREGULAR;
+```
+
 
 ## Values
 

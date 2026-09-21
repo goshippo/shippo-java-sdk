@@ -6,6 +6,14 @@ Type of tax identification.
 * `IOSS` - Import One-Stop Shop
 * `ARN` - Australian Taxation Office Reference Number
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.CustomsTaxIdentificationType;
+
+CustomsTaxIdentificationType value = CustomsTaxIdentificationType.EIN;
+```
+
 
 ## Values
 

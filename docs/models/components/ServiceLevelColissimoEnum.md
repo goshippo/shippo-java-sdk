@@ -7,6 +7,14 @@
 | colissimo_return_mainland_france | Retour France|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelColissimoEnum;
+
+ServiceLevelColissimoEnum value = ServiceLevelColissimoEnum.COLISSIMO_HOME;
+```
+
 
 ## Values
 

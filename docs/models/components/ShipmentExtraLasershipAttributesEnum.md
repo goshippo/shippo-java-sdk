@@ -1,5 +1,13 @@
 # ShipmentExtraLasershipAttributesEnum
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ShipmentExtraLasershipAttributesEnum;
+
+ShipmentExtraLasershipAttributesEnum value = ShipmentExtraLasershipAttributesEnum.TWO_PERSON_DELIVERY;
+```
+
 
 ## Values
 

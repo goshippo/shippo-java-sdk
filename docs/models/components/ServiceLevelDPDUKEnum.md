@@ -21,6 +21,14 @@
 | dpd_uk_pickup_returns | Pickup Returns|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelDPDUKEnum;
+
+ServiceLevelDPDUKEnum value = ServiceLevelDPDUKEnum.DPD_UK_SHIP_TO_SHOP;
+```
+
 
 ## Values
 

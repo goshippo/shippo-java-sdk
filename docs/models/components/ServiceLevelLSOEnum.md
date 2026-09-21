@@ -10,6 +10,14 @@
 | lso_early_overnight | Early Overnight|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelLSOEnum;
+
+ServiceLevelLSOEnum value = ServiceLevelLSOEnum.LSO_GROUND;
+```
+
 
 ## Values
 
