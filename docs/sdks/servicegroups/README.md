@@ -1,11 +1,9 @@
 # ServiceGroups
-(*serviceGroups()*)
 
 ## Overview
 
 A service group is a set of service levels grouped together. 
 Rates at checkout uses services groups to present available shipping options to customers in their shopping basket.
-<SchemaDefinition schemaRef="#/components/schemas/ServiceGroup"/>
 
 ### Available Operations
 
@@ -20,6 +18,7 @@ Returns a list of service group objects.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListServiceGroups" method="get" path="/service-groups" -->
 ```java
 package hello.world;
 
@@ -32,26 +31,19 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListServiceGroupsResponse res = sdk.serviceGroups().list()
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.serviceGroupListResponse().isPresent()) {
-            // handle response
+            System.out.println(res.serviceGroupListResponse().get());
         }
     }
 }
 ```
-
-### Parameters
-
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
 
 ### Response
 
@@ -69,11 +61,11 @@ Creates a new service group.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="CreateServiceGroup" method="post" path="/service-groups" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.ServiceGroupAccountAndServiceLevel;
 import com.goshippo.shippo_sdk.models.components.ServiceGroupCreateRequest;
 import com.goshippo.shippo_sdk.models.components.ServiceGroupTypeEnum;
 import com.goshippo.shippo_sdk.models.operations.CreateServiceGroupResponse;
@@ -85,31 +77,28 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
+        ServiceGroupCreateRequest req = ServiceGroupCreateRequest.builder()
+                .description("USPS shipping options")
+                .name("USPS Shipping")
+                .type(ServiceGroupTypeEnum.FLAT_RATE)
+                .serviceLevels(List.of())
+                .flatRate("5")
+                .flatRateCurrency("USD")
+                .freeShippingThresholdCurrency("USD")
+                .freeShippingThresholdMin("5")
+                .rateAdjustment(15L)
+                .build();
+
         CreateServiceGroupResponse res = sdk.serviceGroups().create()
-                .shippoApiVersion("2018-02-08")
-                .serviceGroupCreateRequest(ServiceGroupCreateRequest.builder()
-                    .description("USPS shipping options")
-                    .name("USPS Shipping")
-                    .type(ServiceGroupTypeEnum.FLAT_RATE)
-                    .serviceLevels(List.of(
-                        ServiceGroupAccountAndServiceLevel.builder()
-                            .accountObjectId("80feb1633d4a43c898f0058506cfd82d")
-                            .serviceLevelToken("ups_next_day_air_saver")
-                            .build()))
-                    .flatRate("5")
-                    .flatRateCurrency("USD")
-                    .freeShippingThresholdCurrency("USD")
-                    .freeShippingThresholdMin("5")
-                    .rateAdjustment(15L)
-                    .build())
+                .request(req)
                 .call();
 
         if (res.serviceGroup().isPresent()) {
-            // handle response
+            System.out.println(res.serviceGroup().get());
         }
     }
 }
@@ -117,10 +106,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `serviceGroupCreateRequest`                                                                                                                                        | [ServiceGroupCreateRequest](../../models/components/ServiceGroupCreateRequest.md)                                                                                  | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [ServiceGroupCreateRequest](../../models/shared/ServiceGroupCreateRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 ### Response
 
@@ -134,17 +122,16 @@ public class Application {
 
 ## update
 
-Updates an existing service group object. <br>The object_id cannot be updated as it is the unique identifier for the object.
+Updates an existing service group object. The object_id cannot be updated as it is the unique identifier for the object.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="UpdateServiceGroup" method="put" path="/service-groups" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.ServiceGroupAccountAndServiceLevel;
-import com.goshippo.shippo_sdk.models.components.ServiceGroupTypeEnum;
-import com.goshippo.shippo_sdk.models.components.ServiceGroupUpdateRequest;
+import com.goshippo.shippo_sdk.models.components.*;
 import com.goshippo.shippo_sdk.models.operations.UpdateServiceGroupResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -154,33 +141,34 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
+        ServiceGroupUpdateRequest req = ServiceGroupUpdateRequest.builder()
+                .description("USPS shipping options")
+                .name("USPS Shipping")
+                .type(ServiceGroupTypeEnum.FLAT_RATE)
+                .objectId("80feb1633d4a43c898f005850")
+                .isActive(true)
+                .serviceLevels(List.of(
+                    ServiceGroupAccountAndServiceLevel.builder()
+                        .accountObjectId("80feb1633d4a43c898f0058506cfd82d")
+                        .serviceLevelToken("ups_next_day_air_saver")
+                        .build()))
+                .flatRate("5")
+                .flatRateCurrency("USD")
+                .freeShippingThresholdCurrency("USD")
+                .freeShippingThresholdMin("5")
+                .rateAdjustment(15L)
+                .build();
+
         UpdateServiceGroupResponse res = sdk.serviceGroups().update()
-                .shippoApiVersion("2018-02-08")
-                .serviceGroupUpdateRequest(ServiceGroupUpdateRequest.builder()
-                    .description("USPS shipping options")
-                    .name("USPS Shipping")
-                    .type(ServiceGroupTypeEnum.FLAT_RATE)
-                    .objectId("80feb1633d4a43c898f005850")
-                    .isActive(true)
-                    .serviceLevels(List.of(
-                        ServiceGroupAccountAndServiceLevel.builder()
-                            .accountObjectId("80feb1633d4a43c898f0058506cfd82d")
-                            .serviceLevelToken("ups_next_day_air_saver")
-                            .build()))
-                    .flatRate("5")
-                    .flatRateCurrency("USD")
-                    .freeShippingThresholdCurrency("USD")
-                    .freeShippingThresholdMin("5")
-                    .rateAdjustment(15L)
-                    .build())
+                .request(req)
                 .call();
 
         if (res.serviceGroup().isPresent()) {
-            // handle response
+            System.out.println(res.serviceGroup().get());
         }
     }
 }
@@ -188,10 +176,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `serviceGroupUpdateRequest`                                                                                                                                        | [Optional\<ServiceGroupUpdateRequest>](../../models/components/ServiceGroupUpdateRequest.md)                                                                       | :heavy_minus_sign:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [ServiceGroupUpdateRequest](../../models/shared/ServiceGroupUpdateRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 ### Response
 
@@ -209,6 +196,7 @@ Deletes an existing service group using an object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="DeleteServiceGroup" method="delete" path="/service-groups/{ServiceGroupId}" -->
 ```java
 package hello.world;
 
@@ -221,13 +209,12 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         DeleteServiceGroupResponse res = sdk.serviceGroups().delete()
                 .serviceGroupId("<id>")
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         // handle response
@@ -237,10 +224,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `serviceGroupId`                                                                                                                                                   | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the service group                                                                                                                                     |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `serviceGroupId`               | *String*                       | :heavy_check_mark:             | Object ID of the service group |
 
 ### Response
 

@@ -4,31 +4,60 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
+    securityFeb2025: false
+    sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
+    nameOverrideFeb2026: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  versioningStrategy: automatic
+  persistentEdits: {}
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 java:
-  version: 1.0.0-beta
+  version: 1.0.0-beta.1
   additionalDependencies: []
   additionalPlugins:
     - id 'org.jreleaser' version '1.15.0'
   artifactID: shippo-sdk
+  baseErrorName: ShippoException
   clientServerStatusCodesAsErrors: true
   companyEmail: support@shippo.com
   companyName: Shippo
   companyURL: www.goshippo.com
   defaultErrorName: SDKError
+  enableCustomCodeRegions: false
+  enableFormatting: false
+  enableSlf4jLogging: false
+  enableStreamingUploads: false
+  explicitDocImports: false
   externalDocs:
     url: https://github.com/goshippo/shippo-java-sdk
     version: ""
   flattenGlobalSecurity: true
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: true
+  generateOptionalUnionAccessors: false
+  generateSpringBootStarter: true
+  generateUnionDocs: false
+  getterStyle: presence-aware
   githubURL: https://github.com/goshippo/shippo-java-sdk
   groupID: com.goshippo
+  httpClient: jdk
   imports:
     option: openapi
     paths:
@@ -37,15 +66,24 @@ java:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: false
   info:
     descriptions: Maven library which integrates with Shippo Multi Carrier Shipping API. This library provides access to Shippo (goshippo.com) API capabilities. Including label generation, rating, tracking and more.
     version: ""
   inputModelSuffix: input
+  languageVersion: 11
   license:
     name: The MIT License (MIT)
     shortName: MIT
     url: https://mit-license.org/
   maxMethodParams: 4
+  multipartArrayFormat: legacy
+  nullFriendlyParameters: false
+  operationScopedParams: true
   outputModelSuffix: output
+  prefixModeMethodNames: false
   projectName: api
+  respectTitlesForPrimitiveUnionMembers: false
+  showSetterGetterTypesInDocs: false
   templateVersion: v2
+  unionStrategy: populated-fields

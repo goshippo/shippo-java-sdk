@@ -17,6 +17,14 @@
 | rr_donnelley_emi | Express Mail International|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelePostGlobalEnum;
+
+ServiceLevelePostGlobalEnum value = ServiceLevelePostGlobalEnum.RR_DONNELLEY_DOMESTIC_ECONOMY_PARCEL;
+```
+
 
 ## Values
 

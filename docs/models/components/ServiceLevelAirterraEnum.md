@@ -6,6 +6,14 @@
 | airterra_postal | FastPost|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelAirterraEnum;
+
+ServiceLevelAirterraEnum value = ServiceLevelAirterraEnum.AIRTERRA_GROUND;
+```
+
 
 ## Values
 

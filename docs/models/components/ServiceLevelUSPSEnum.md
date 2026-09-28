@@ -11,6 +11,14 @@
 | usps_ground_advantage | Ground Advantage |
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelUSPSEnum;
+
+ServiceLevelUSPSEnum value = ServiceLevelUSPSEnum.USPS_PRIORITY;
+```
+
 
 ## Values
 

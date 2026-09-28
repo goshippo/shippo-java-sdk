@@ -2,6 +2,14 @@
 
 Indicates the high level status of the shipment.
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.TrackingStatusEnum;
+
+TrackingStatusEnum value = TrackingStatusEnum.UNKNOWN;
+```
+
 
 ## Values
 

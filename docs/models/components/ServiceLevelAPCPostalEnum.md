@@ -13,6 +13,14 @@
 | apc_postal_parcelconnect_epmei | parcelConnect ePMEI|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelAPCPostalEnum;
+
+ServiceLevelAPCPostalEnum value = ServiceLevelAPCPostalEnum.APC_POSTAL_PARCELCONNECT_EXPEDITED;
+```
+
 
 ## Values
 

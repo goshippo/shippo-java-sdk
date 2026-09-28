@@ -1,11 +1,9 @@
 # CustomsDeclarations
-(*customsDeclarations()*)
 
 ## Overview
 
 Customs declarations are relevant information, including one or multiple customs items, you need to provide for 
 customs clearance for your international shipments.
-<SchemaDefinition schemaRef="#/components/schemas/CustomsDeclaration"/>
 
 ### Available Operations
 
@@ -15,10 +13,11 @@ customs clearance for your international shipments.
 
 ## list
 
-Returns a a list of all customs declaration objects
+Returns a list of all customs declaration objects
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListCustomsDeclarations" method="get" path="/customs/declarations" -->
 ```java
 package hello.world;
 
@@ -31,18 +30,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListCustomsDeclarationsResponse res = sdk.customsDeclarations().list()
                 .page(1L)
                 .results(5L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.customsDeclarationPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.customsDeclarationPaginatedList().get());
         }
     }
 }
@@ -50,11 +48,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `page`                                                                                                                                                             | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The page number you want to select                                                                                                                                 |                                                                                                                                                                    |
-| `results`                                                                                                                                                          | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The number of results to return per page (max 100, default 5)                                                                                                      |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `page`                                                        | *Optional\<Long>*                                             | :heavy_minus_sign:                                            | The page number you want to select                            |
+| `results`                                                     | *Optional\<Long>*                                             | :heavy_minus_sign:                                            | The number of results to return per page (max 100, default 5) |
 
 ### Response
 
@@ -72,25 +69,12 @@ Creates a new customs declaration object
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="CreateCustomsDeclaration" method="post" path="/customs/declarations" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.AddressImporter;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationB13AFilingOptionEnum;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationContentsTypeEnum;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationCreateRequest;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationCreateRequestAddress;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationCreateRequestType;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationEelPfcEnum;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationIncotermEnum;
-import com.goshippo.shippo_sdk.models.components.CustomsDeclarationNonDeliveryOptionEnum;
-import com.goshippo.shippo_sdk.models.components.CustomsExporterIdentification;
-import com.goshippo.shippo_sdk.models.components.CustomsItemCreateRequest;
-import com.goshippo.shippo_sdk.models.components.CustomsTaxIdentification;
-import com.goshippo.shippo_sdk.models.components.CustomsTaxIdentificationType;
-import com.goshippo.shippo_sdk.models.components.DutiesPayor;
-import com.goshippo.shippo_sdk.models.components.WeightUnitEnum;
+import com.goshippo.shippo_sdk.models.components.*;
 import com.goshippo.shippo_sdk.models.operations.CreateCustomsDeclarationResponse;
 import java.lang.Exception;
 import java.util.List;
@@ -100,72 +84,61 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
-        CreateCustomsDeclarationResponse res = sdk.customsDeclarations().create()
-                .shippoApiVersion("2018-02-08")
-                .customsDeclarationCreateRequest(CustomsDeclarationCreateRequest.builder()
-                    .certify(true)
-                    .certifySigner("Shawn Ippotle")
-                    .contentsType(CustomsDeclarationContentsTypeEnum.MERCHANDISE)
-                    .items(List.of(
-                        CustomsItemCreateRequest.builder()
-                            .description("T-Shirt")
-                            .massUnit(WeightUnitEnum.LB)
-                            .netWeight("5")
-                            .originCountry("<value>")
-                            .quantity(20L)
-                            .valueAmount("200")
-                            .valueCurrency("USD")
-                            .metadata("Order ID \"123454\"")
-                            .skuCode("HM-123")
-                            .hsCode("0901.21")
-                            .build()))
-                    .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN)
-                    .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
-                    .contentsExplanation("T-Shirt purchase")
-                    .dutiesPayor(DutiesPayor.builder()
-                        .account("2323434543")
-                        .type(CustomsDeclarationCreateRequestType.THIRD_PARTY)
-                        .address(CustomsDeclarationCreateRequestAddress.builder()
-                            .name("Patrick Kavanagh")
-                            .zip("80331")
-                            .country("DE")
-                            .build())
-                        .build())
-                    .exporterIdentification(CustomsExporterIdentification.builder()
-                        .eoriNumber("PL123456790ABCDE")
-                        .taxId(CustomsTaxIdentification.builder()
-                            .number("123456789")
-                            .type(CustomsTaxIdentificationType.EIN)
-                            .build())
-                        .build())
-                    .invoice("#123123")
-                    .metadata("Order ID #123123")
-                    .addressImporter(AddressImporter.builder()
-                        .name("Shwan Ippotle")
-                        .company("Shippo")
-                        .street1("Blumenstraße")
-                        .street3("")
-                        .streetNo("22")
-                        .city("München")
-                        .state("CA")
+        CustomsDeclarationCreateRequest req = CustomsDeclarationCreateRequest.builder()
+                .certify(true)
+                .certifySigner("Shawn Ippotle")
+                .contentsType(CustomsDeclarationContentsTypeEnum.MERCHANDISE)
+                .items(List.of())
+                .nonDeliveryOption(CustomsDeclarationNonDeliveryOptionEnum.RETURN)
+                .b13aFilingOption(CustomsDeclarationB13AFilingOptionEnum.FILED_ELECTRONICALLY)
+                .contentsExplanation("T-Shirt purchase")
+                .dutiesPayor(DutiesPayor.builder()
+                    .account("2323434543")
+                    .type(CustomsDeclarationCreateRequestType.THIRD_PARTY)
+                    .address(CustomsDeclarationCreateRequestAddress.builder()
+                        .name("Patrick Kavanagh")
                         .zip("80331")
                         .country("DE")
-                        .phone("80331")
-                        .email("shippotle@shippo.com")
-                        .isResidential(true)
                         .build())
-                    .eelPfc(CustomsDeclarationEelPfcEnum.NOEEI3037_A)
-                    .incoterm(CustomsDeclarationIncotermEnum.DDP)
-                    .test(true)
                     .build())
+                .exporterIdentification(CustomsExporterIdentification.builder()
+                    .eoriNumber("PL123456790ABCDE")
+                    .taxId(CustomsTaxIdentification.builder()
+                        .number("123456789")
+                        .type(CustomsTaxIdentificationType.EIN)
+                        .build())
+                    .build())
+                .invoice("#123123")
+                .metadata("Order ID #123123")
+                .addressImporter(AddressImporter.builder()
+                    .name("Shwan Ippotle")
+                    .company("Shippo")
+                    .street1("Blumenstraße")
+                    .street3("")
+                    .streetNo("22")
+                    .city("München")
+                    .state("CA")
+                    .zip("80331")
+                    .country("DE")
+                    .phone("80331")
+                    .email("shippotle@shippo.com")
+                    .isResidential(true)
+                    .build())
+                .eelPfc(CustomsDeclarationEelPfcEnum.NOEEI3037_A)
+                .incoterm(CustomsDeclarationIncotermEnum.DDP)
+                .test(true)
+                .build();
+
+        CreateCustomsDeclarationResponse res = sdk.customsDeclarations().create()
+                .request(req)
                 .call();
 
         if (res.customsDeclaration().isPresent()) {
-            // handle response
+            System.out.println(res.customsDeclaration().get());
         }
     }
 }
@@ -173,10 +146,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `customsDeclarationCreateRequest`                                                                                                                                  | [CustomsDeclarationCreateRequest](../../models/components/CustomsDeclarationCreateRequest.md)                                                                      | :heavy_check_mark:                                                                                                                                                 | CustomsDeclaration details.                                                                                                                                        |                                                                                                                                                                    |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [CustomsDeclarationCreateRequest](../../models/shared/CustomsDeclarationCreateRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 ### Response
 
@@ -194,6 +166,7 @@ Returns an existing customs declaration using an object ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="GetCustomsDeclaration" method="get" path="/customs/declarations/{CustomsDeclarationId}" -->
 ```java
 package hello.world;
 
@@ -206,18 +179,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetCustomsDeclarationResponse res = sdk.customsDeclarations().get()
                 .customsDeclarationId("<id>")
                 .page(1L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.customsDeclaration().isPresent()) {
-            // handle response
+            System.out.println(res.customsDeclaration().get());
         }
     }
 }
@@ -225,11 +197,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `customsDeclarationId`                                                                                                                                             | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the customs declaration                                                                                                                               |                                                                                                                                                                    |
-| `page`                                                                                                                                                             | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The page number you want to select                                                                                                                                 |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                            | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `customsDeclarationId`               | *String*                             | :heavy_check_mark:                   | Object ID of the customs declaration |
+| `page`                               | *Optional\<Long>*                    | :heavy_minus_sign:                   | The page number you want to select   |
 
 ### Response
 

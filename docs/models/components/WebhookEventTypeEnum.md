@@ -2,6 +2,14 @@
 
 Type of event that triggered the webhook.
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.WebhookEventTypeEnum;
+
+WebhookEventTypeEnum value = WebhookEventTypeEnum.TRANSACTION_CREATED;
+```
+
 
 ## Values
 
