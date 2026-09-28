@@ -2,6 +2,14 @@
 
 Party to be billed. (Leave blank for DHL Germany.)
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.Type;
+
+Type value = Type.SENDER;
+```
+
 
 ## Values
 

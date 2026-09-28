@@ -29,6 +29,14 @@
 | UPS_Pallet | Pallet | 120.00 x 80.00 x 200.00 cm|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ParcelTemplateUPSEnum;
+
+ParcelTemplateUPSEnum value = ParcelTemplateUPSEnum.UPS_BOX10KG;
+```
+
 
 ## Values
 

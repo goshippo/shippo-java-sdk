@@ -9,6 +9,14 @@
 | fastway_australia_box_large | Box Large|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelAramexAustraliaEnum;
+
+ServiceLevelAramexAustraliaEnum value = ServiceLevelAramexAustraliaEnum.FASTWAY_AUSTRALIA_PARCEL;
+```
+
 
 ## Values
 

@@ -12,7 +12,6 @@ targets:
         source: my-first-source
         publish:
             java:
-                useSonatypeLegacy: false
                 ossrhUsername: $ossrh_username
                 ossrhPassword: $ossrh_password
                 gpgSecretKey: $java_gpg_secret_key

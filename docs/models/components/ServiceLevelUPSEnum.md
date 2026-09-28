@@ -29,6 +29,14 @@
 | ups_access_point_economy | Access Point™ Economy|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelUPSEnum;
+
+ServiceLevelUPSEnum value = ServiceLevelUPSEnum.UPS_STANDARD;
+```
+
 
 ## Values
 

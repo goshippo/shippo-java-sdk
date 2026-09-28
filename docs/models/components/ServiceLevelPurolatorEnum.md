@@ -22,6 +22,14 @@
 | purolator_express_international1200 | Express International 12pm|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelPurolatorEnum;
+
+ServiceLevelPurolatorEnum value = ServiceLevelPurolatorEnum.PUROLATOR_GROUND;
+```
+
 
 ## Values
 

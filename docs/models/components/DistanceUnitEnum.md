@@ -2,6 +2,14 @@
 
 The measure unit used for length, width and height.
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.DistanceUnitEnum;
+
+DistanceUnitEnum value = DistanceUnitEnum.CM;
+```
+
 
 ## Values
 

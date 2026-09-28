@@ -6,6 +6,14 @@
 | better_trucks_next_day | Next Day|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelBetterTrucksEnum;
+
+ServiceLevelBetterTrucksEnum value = ServiceLevelBetterTrucksEnum.BETTER_TRUCKS_SAME_DAY;
+```
+
 
 ## Values
 

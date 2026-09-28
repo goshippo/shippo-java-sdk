@@ -11,18 +11,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListAddressesResponse res = sdk.addresses().list()
                 .page(1L)
                 .results(5L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.addressPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.addressPaginatedList().get());
         }
     }
 }

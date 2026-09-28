@@ -1,12 +1,10 @@
 # ShippoAccounts
-(*shippoAccounts()*)
 
 ## Overview
 
 Shippo Accounts are used by Shippo Platform Accounts to create and manage Managed Shippo Accounts. 
 Managed Shippo Accounts are headless accounts that represent your customers. They are opaque to your end customers, meaning customers do not need to create their own Shippo login or have a billing relationship with Shippo. 
-They can be used by marketplaces, e-commerce platforms, and third-party logistics providers who want to offer, seamless, built-in shipping functionality to their customers. See our <a href="https://docs.goshippo.com/docs/platformaccounts/platform_accounts/">guide</a> for more details.
-<SchemaDefinition schemaRef="#/components/schemas/ShippoAccount"/>
+They can be used by marketplaces, e-commerce platforms, and third-party logistics providers who want to offer, seamless, built-in shipping functionality to their customers. See our [guide](https://docs.goshippo.com/docs/platformaccounts/platform_accounts/) for more details.
 
 ### Available Operations
 
@@ -21,6 +19,7 @@ Returns a list of Shippo Managed Accounts objects.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListShippoAccounts" method="get" path="/shippo-accounts" -->
 ```java
 package hello.world;
 
@@ -33,18 +32,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListShippoAccountsResponse res = sdk.shippoAccounts().list()
                 .page(1L)
                 .results(25L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.shippoAccountPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.shippoAccountPaginatedList().get());
         }
     }
 }
@@ -52,11 +50,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `page`                                                                                                                                                             | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The page number you want to select                                                                                                                                 |                                                                                                                                                                    |
-| `results`                                                                                                                                                          | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The number of results to return per page (max 100)                                                                                                                 |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `page`                                             | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The page number you want to select                 |
+| `results`                                          | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The number of results to return per page (max 100) |
 
 ### Response
 
@@ -70,15 +67,15 @@ public class Application {
 
 ## create
 
-Creates a new <a href="https://docs.goshippo.com/docs/platformaccounts/platform_using_accounts/">Shippo Managed Account</a>.
+Creates a new [Shippo Managed Account](https://docs.goshippo.com/docs/platformaccounts/platform_using_accounts/).
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="CreateShippoAccount" method="post" path="/shippo-accounts" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.ShippoAccountUpdateRequest;
 import com.goshippo.shippo_sdk.models.operations.CreateShippoAccountResponse;
 import java.lang.Exception;
 
@@ -87,22 +84,19 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         CreateShippoAccountResponse res = sdk.shippoAccounts().create()
-                .shippoApiVersion("2018-02-08")
-                .shippoAccountUpdateRequest(ShippoAccountUpdateRequest.builder()
-                    .email("hippo@shippo.com")
-                    .firstName("Shippo")
-                    .lastName("Meister")
-                    .companyName("Acme")
-                    .build())
+                .email("hippo@shippo.com")
+                .firstName("Shippo")
+                .lastName("Meister")
+                .companyName("Acme")
                 .call();
 
         if (res.shippoAccount().isPresent()) {
-            // handle response
+            System.out.println(res.shippoAccount().get());
         }
     }
 }
@@ -110,10 +104,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `shippoAccountUpdateRequest`                                                                                                                                       | [ShippoAccountUpdateRequest](../../models/components/ShippoAccountUpdateRequest.md)                                                                                | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *String*           | :heavy_check_mark: | N/A                | hippo@shippo.com   |
+| `firstName`        | *String*           | :heavy_check_mark: | N/A                | Shippo             |
+| `lastName`         | *String*           | :heavy_check_mark: | N/A                | Meister            |
+| `companyName`      | *String*           | :heavy_check_mark: | N/A                | Acme               |
 
 ### Response
 
@@ -131,6 +127,7 @@ Returns a Shippo Managed Account using an object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="GetShippoAccount" method="get" path="/shippo-accounts/{ShippoAccountId}" -->
 ```java
 package hello.world;
 
@@ -143,17 +140,16 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetShippoAccountResponse res = sdk.shippoAccounts().get()
                 .shippoAccountId("<id>")
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.shippoAccount().isPresent()) {
-            // handle response
+            System.out.println(res.shippoAccount().get());
         }
     }
 }
@@ -161,10 +157,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoAccountId`                                                                                                                                                  | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the ShippoAccount                                                                                                                                     |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `shippoAccountId`              | *String*                       | :heavy_check_mark:             | Object ID of the ShippoAccount |
 
 ### Response
 
@@ -182,6 +177,7 @@ Updates a Shippo Managed Account using an object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="UpdateShippoAccount" method="put" path="/shippo-accounts/{ShippoAccountId}" -->
 ```java
 package hello.world;
 
@@ -195,13 +191,12 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         UpdateShippoAccountResponse res = sdk.shippoAccounts().update()
                 .shippoAccountId("<id>")
-                .shippoApiVersion("2018-02-08")
                 .shippoAccountUpdateRequest(ShippoAccountUpdateRequest.builder()
                     .email("hippo@shippo.com")
                     .firstName("Shippo")
@@ -211,7 +206,7 @@ public class Application {
                 .call();
 
         if (res.shippoAccount().isPresent()) {
-            // handle response
+            System.out.println(res.shippoAccount().get());
         }
     }
 }
@@ -219,11 +214,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoAccountId`                                                                                                                                                  | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the ShippoAccount                                                                                                                                     |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `shippoAccountUpdateRequest`                                                                                                                                       | [Optional\<ShippoAccountUpdateRequest>](../../models/components/ShippoAccountUpdateRequest.md)                                                                     | :heavy_minus_sign:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `shippoAccountId`                                                                              | *String*                                                                                       | :heavy_check_mark:                                                                             | Object ID of the ShippoAccount                                                                 |
+| `shippoAccountUpdateRequest`                                                                   | [Optional\<ShippoAccountUpdateRequest>](../../models/components/ShippoAccountUpdateRequest.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 
 ### Response
 
