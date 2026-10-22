@@ -20,6 +20,14 @@ public abstract class SdkProvider {
         return sdk;
     }
 
+    // shippoApiVersion is now set on the client rather than per call.
+    protected static Shippo getSdkWithApiVersion(String apiVersion) {
+        return Shippo.builder()
+                .apiKeyHeader(System.getenv("SHIPPO_TOKEN"))
+                .shippoApiVersion(apiVersion)
+                .build();
+    }
+
     public CarrierAccountWithExtraInfo getCarrierAccount(CarriersEnum carrier) throws Exception {
         return getCarrierAccounts(carrier).get(0);
     }

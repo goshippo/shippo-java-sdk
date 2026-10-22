@@ -4,7 +4,6 @@ import com.goshippo.shippo_sdk.models.components.AddressCompleteCreateRequest;
 import com.goshippo.shippo_sdk.models.components.CarriersEnum;
 import com.goshippo.shippo_sdk.models.components.DistanceUnitEnum;
 import com.goshippo.shippo_sdk.models.components.LineItem;
-import com.goshippo.shippo_sdk.models.components.LiveRateCreateRequest;
 import com.goshippo.shippo_sdk.models.components.LiveRateCreateRequestAddressFrom;
 import com.goshippo.shippo_sdk.models.components.LiveRateCreateRequestAddressTo;
 import com.goshippo.shippo_sdk.models.components.LiveRateCreateRequestParcel;
@@ -54,7 +53,7 @@ public class RatesAtCheckoutTests extends SdkProvider {
         }
 
         final var serviceGroupResponse = getSdk().serviceGroups().create()
-                .serviceGroupCreateRequest(
+                .request(
                         ServiceGroupCreateRequest.builder()
                                 .name("UPS shipping")
                                 .description("UPS shipping options")
@@ -68,8 +67,7 @@ public class RatesAtCheckoutTests extends SdkProvider {
         final var serviceGroup = serviceGroupResponse.serviceGroup().get();
         assertNotNull(serviceGroup);
 
-        final var ratesAtCheckoutResponse = getSdk().ratesAtCheckout().create(
-                LiveRateCreateRequest.builder()
+        final var ratesAtCheckoutResponse = getSdk().ratesAtCheckout().create()
                         .addressFrom(LiveRateCreateRequestAddressFrom.of(
                                 AddressCompleteCreateRequest.builder()
                                         .name("S. Hippo")
@@ -108,7 +106,7 @@ public class RatesAtCheckoutTests extends SdkProvider {
                                 .weight("1")
                                 .massUnit(WeightUnitEnum.LB)
                                 .build()))
-                        .build());
+                        .call();
 
         final var ratesAtCheckout = ratesAtCheckoutResponse.liveRatePaginatedList().get().results().get();
         assertInstanceOf(List.class, ratesAtCheckout);

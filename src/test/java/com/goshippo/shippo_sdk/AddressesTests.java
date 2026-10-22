@@ -58,7 +58,7 @@ public class AddressesTests extends SdkProvider {
                 .validate(true)
                 .build();
         final var response = getSdk().addresses().create()
-                .addressCreateRequest(addressCreateRequest)
+                .request(addressCreateRequest)
                 .call();
 
         assertInstanceOf(CreateAddressResponse.class, response);

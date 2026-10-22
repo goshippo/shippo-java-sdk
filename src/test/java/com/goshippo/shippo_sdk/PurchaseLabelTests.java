@@ -67,7 +67,7 @@ public class PurchaseLabelTests extends SdkProvider {
                 .build();
 
         final var shipmentResponse = getSdk().shipments().create()
-                .shipmentCreateRequest(shipment)
+                .request(shipment)
                 .call();
 
         assertInstanceOf(Shipment.class, shipmentResponse.shipment().get());
@@ -84,7 +84,7 @@ public class PurchaseLabelTests extends SdkProvider {
 
         final var rateId = shipmentResponse.shipment().get().rates().get(0).objectId();
         final var transactionResponse = getSdk().transactions().create()
-                .requestBody(CreateTransactionRequestBody.of(
+                .request(CreateTransactionRequestBody.of(
                         TransactionCreateRequest.builder().rate(rateId).build()))
                 .call();
 
@@ -128,13 +128,13 @@ public class PurchaseLabelTests extends SdkProvider {
                 .build();
 
         final var addressFrom = getSdk().addresses().create()
-                .addressCreateRequest(addressFromCreateRequest)
+                .request(addressFromCreateRequest)
                 .call().address().get();
         final var addressTo = getSdk().addresses().create()
-                .addressCreateRequest(addressToCreateRequest)
+                .request(addressToCreateRequest)
                 .call().address().get();
         final var shipmentResponse = getSdk().shipments().create()
-                .shipmentCreateRequest(ShipmentCreateRequest.builder()
+                .request(ShipmentCreateRequest.builder()
                         .addressFrom(AddressFrom.of(addressFrom.objectId().get()))
                         .addressReturn(AddressReturn.of(addressFrom.objectId().get()))
                         .addressTo(AddressTo.of(addressTo.objectId().get()))
@@ -159,7 +159,7 @@ public class PurchaseLabelTests extends SdkProvider {
 
         String rateId = shipmentResponse.shipment().get().rates().get(0).objectId();
         final var transactionResponse = getSdk().transactions().create()
-                .requestBody(CreateTransactionRequestBody.of(
+                .request(CreateTransactionRequestBody.of(
                         TransactionCreateRequest.builder().rate(rateId).build()))
                 .call();
 
@@ -235,15 +235,15 @@ public class PurchaseLabelTests extends SdkProvider {
                 .build();
 
         final var addressFrom = getSdk().addresses().create()
-                .addressCreateRequest(addressFromCreateRequest)
+                .request(addressFromCreateRequest)
                 .call().address().get();
 
         final var customsDeclaration = getSdk().customsDeclarations().create()
-                .customsDeclarationCreateRequest(customsDeclarationCreateRequest)
+                .request(customsDeclarationCreateRequest)
                 .call().customsDeclaration().get();
 
         final var shipmentResponse = getSdk().shipments().create()
-                .shipmentCreateRequest(ShipmentCreateRequest.builder()
+                .request(ShipmentCreateRequest.builder()
                         .addressFrom(AddressFrom.of(addressFrom.objectId().get()))
                         .addressTo(AddressTo.of(addressToCreateRequest))
                         .parcels(List.of(Parcels.of(parcelCreateRequest)))
@@ -266,7 +266,7 @@ public class PurchaseLabelTests extends SdkProvider {
 
         final var rateId = shipmentResponse.shipment().get().rates().get(0).objectId();
         final var transactionResponse = getSdk().transactions().create()
-                .requestBody(CreateTransactionRequestBody.of(
+                .request(CreateTransactionRequestBody.of(
                         TransactionCreateRequest.builder().rate(rateId).build()))
                 .call();
 
