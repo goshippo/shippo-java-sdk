@@ -1,19 +1,17 @@
 # TrackingStatus
-(*trackingStatus()*)
 
 ## Overview
 
-<p style="text-align: center; background-color: #F2F3F4;"></br>
+<p style="text-align: center; background-color: #F2F3F4;"><br>
 If you purchased your shipping label through Shippo, you can also get all the tracking details of your Shipment 
-from the <a href="#tag/Transactions">Transaction</a> object.
-</br></br></p>
+from the [Transaction](/shippoapi/public-api/transactions) object.
+<br><br></p>
 A tracking status of a package is an indication of current location of a package in the supply chain. For example,  sorting, warehousing, or out for delivery. Use the tracking status object to track the location of your shipments.
 
-When using your <a href="https://docs.goshippo.com/docs/guides_general/authentication/">Test</a> token for tracking, you need to use Shippo's 
+When using your [Test](https://docs.goshippo.com/docs/guides_general/authentication/) token for tracking, you need to use Shippo's 
 predefined tokens for testing different tracking statuses. You can find more information in our 
-<a href="https://docs.goshippo.com/docs/tracking/tracking/">Tracking tutorial</a> on how to do this, and what the 
+[Tracking tutorial](https://docs.goshippo.com/docs/tracking/tracking/) on how to do this, and what the 
 payloads look like.      
-<SchemaDefinition schemaRef="#/components/schemas/Track"/>
 
 ### Available Operations
 
@@ -22,15 +20,15 @@ payloads look like.
 
 ## create
 
-Registers a webhook that will send HTTP notifications to you when the status of your tracked package changes. For more details on creating a webhook, see our guides on <a href="https://docs.goshippo.com/docs/tracking/webhooks/">Webhooks</a> and <a href="https://docs.goshippo.com/docs/tracking/tracking/">Tracking</a>.
+Registers a webhook that will send HTTP notifications to you when the status of your tracked package changes. For more details on creating a webhook, see our guides on [Webhooks](https://docs.goshippo.com/docs/tracking/webhooks/) and [Tracking](https://docs.goshippo.com/docs/tracking/tracking/).
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="CreateTrack" method="post" path="/tracks" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.TracksRequest;
 import com.goshippo.shippo_sdk.models.operations.CreateTrackResponse;
 import java.lang.Exception;
 
@@ -39,21 +37,18 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         CreateTrackResponse res = sdk.trackingStatus().create()
-                .shippoApiVersion("2018-02-08")
-                .tracksRequest(TracksRequest.builder()
-                    .carrier("usps")
-                    .trackingNumber("9205590164917312751089")
-                    .metadata("Order 000123")
-                    .build())
+                .carrier("usps")
+                .metadata("Order 000123")
+                .trackingNumber("9205590164917312751089")
                 .call();
 
         if (res.track().isPresent()) {
-            // handle response
+            System.out.println(res.track().get());
         }
     }
 }
@@ -61,10 +56,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `tracksRequest`                                                                                                                                                    | [TracksRequest](../../models/components/TracksRequest.md)                                                                                                          | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |                                                                                                                                                                    |
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           | Example                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `carrier`                                                                                                             | *String*                                                                                                              | :heavy_check_mark:                                                                                                    | Name of the carrier of the shipment to track.                                                                         | usps                                                                                                                  |
+| `metadata`                                                                                                            | *Optional\<String>*                                                                                                   | :heavy_minus_sign:                                                                                                    | A string of up to 100 characters that can be filled with any additional information you want to attach to the object. | Order 000123                                                                                                          |
+| `trackingNumber`                                                                                                      | *String*                                                                                                              | :heavy_check_mark:                                                                                                    | Tracking number to track.                                                                                             | 9205590164917312751089                                                                                                |
 
 ### Response
 
@@ -82,6 +78,7 @@ Returns the tracking status of a shipment using a carrier name and a tracking nu
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="GetTrack" method="get" path="/tracks/{Carrier}/{TrackingNumber}" -->
 ```java
 package hello.world;
 
@@ -94,18 +91,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetTrackResponse res = sdk.trackingStatus().get()
                 .trackingNumber("<value>")
                 .carrier("<value>")
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.track().isPresent()) {
-            // handle response
+            System.out.println(res.track().get());
         }
     }
 }
@@ -113,11 +109,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `trackingNumber`                                                                                                                                                   | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Tracking number                                                                                                                                                    |                                                                                                                                                                    |
-| `carrier`                                                                                                                                                          | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Name of the carrier                                                                                                                                                |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter           | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `trackingNumber`    | *String*            | :heavy_check_mark:  | Tracking number     |
+| `carrier`           | *String*            | :heavy_check_mark:  | Name of the carrier |
 
 ### Response
 

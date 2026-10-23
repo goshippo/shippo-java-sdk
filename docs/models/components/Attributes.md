@@ -1,5 +1,13 @@
 # Attributes
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.Attributes;
+
+Attributes value = Attributes.BESTVALUE;
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # AddressValidationResultsMessageCodeEnum
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.AddressValidationResultsMessageCodeEnum;
+
+AddressValidationResultsMessageCodeEnum value = AddressValidationResultsMessageCodeEnum.VERIFICATION_ERROR;
+```
+
 
 ## Values
 

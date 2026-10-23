@@ -28,6 +28,14 @@
 | fedex_standard_overnight_extra_hours | Standard Overnight® EH |
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelFedExEnum;
+
+ServiceLevelFedExEnum value = ServiceLevelFedExEnum.FEDEX_GROUND;
+```
+
 
 ## Values
 

@@ -74,7 +74,7 @@ public class PurchaseInstalabelTests extends SdkProvider {
                 .build());
 
         final var response = getSdk().transactions().create()
-                .requestBody(request)
+                .request(request)
                 .call();
 
         assertInstanceOf(Transaction.class, response.transaction().get());

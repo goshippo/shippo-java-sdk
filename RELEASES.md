@@ -61,3 +61,13 @@ Based on:
 - [java v1.0.0-beta.3] .
 ### Releases
 - [Maven Central v1.0.0-beta.3] https://central.sonatype.com/artifact/com.goshippo/sdk/1.0.0-beta.3 - .
+
+## 2026-10-23 16:09:03
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.803.2 (2.950.13) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v1.0.0-beta.8] .
+### Releases
+- [Maven Central v1.0.0-beta.8] https://central.sonatype.com/artifact/com.goshippo/shippo-sdk/1.0.0-beta.8 - .

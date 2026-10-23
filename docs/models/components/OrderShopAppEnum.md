@@ -3,6 +3,14 @@
 Platform the order was created on and, if applicable, imported from. 
 Orders created via the Shippo API or dashboard will have the value "Shippo".
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.OrderShopAppEnum;
+
+OrderShopAppEnum value = OrderShopAppEnum.AMAZON;
+```
+
 
 ## Values
 

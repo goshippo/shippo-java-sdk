@@ -11,10 +11,9 @@ public class AccountsTests extends SdkProvider {
 
     @Test
     public void shouldListAllAccounts() throws Exception {
-        final var response = getSdk().shippoAccounts().list()
+        final var response = getSdkWithApiVersion("2018-02-08").shippoAccounts().list()
                 .page(1L)
                 .results(25L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         assertInstanceOf(ListShippoAccountsResponse.class, response);

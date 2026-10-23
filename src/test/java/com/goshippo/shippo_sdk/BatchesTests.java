@@ -21,9 +21,8 @@ public class BatchesTests extends SdkProvider {
         final var request = generator.buildBatchCreateRequest(
                 getDefaultCarrierAccountObjectId());
 
-        final var response = getSdk().batches().create()
-                .shippoApiVersion("2018-02-08")
-                .batchCreateRequest(request)
+        final var response = getSdkWithApiVersion("2018-02-08").batches().create()
+                .request(request)
                 .call();
 
         assertNotNull(response);

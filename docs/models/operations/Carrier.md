@@ -2,6 +2,14 @@
 
 filter by specific carrier
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.operations.Carrier;
+
+Carrier value = Carrier.UPS;
+```
+
 
 ## Values
 

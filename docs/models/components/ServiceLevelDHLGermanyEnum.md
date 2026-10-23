@@ -10,6 +10,14 @@
 | dhl_germany_paket_sameday | DHL Germany Paket Sameday|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelDHLGermanyEnum;
+
+ServiceLevelDHLGermanyEnum value = ServiceLevelDHLGermanyEnum.DHL_GERMANY_EUROPAKET;
+```
+
 
 ## Values
 

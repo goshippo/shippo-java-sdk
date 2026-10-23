@@ -24,6 +24,14 @@
 | USPS_SoftPack | Soft Pack Padded Envelope |  Length and width defined in the Parcel|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ParcelTemplateUSPSEnum;
+
+ParcelTemplateUSPSEnum value = ParcelTemplateUSPSEnum.USPS_FLAT_RATE_CARDBOARD_ENVELOPE;
+```
+
 
 ## Values
 

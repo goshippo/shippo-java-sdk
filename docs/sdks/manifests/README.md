@@ -1,16 +1,9 @@
 # Manifests
-(*manifests()*)
 
 ## Overview
 
-A manifest is a single-page document with a barcode that carriers can scan to accept all packages into transit without the need to scan each item individually. 
+A manifest is a single-page document with a barcode that carriers can scan to accept all packages into transit without the need to scan each item individually.
 They are close-outs of shipping labels of a certain day. Some carriers require manifests to  process the shipments.
-
-<SchemaDefinition schemaRef="#/components/schemas/Manifest"/>
-
-# Manifest Errors
-The following codes and messages are the possible errors that may occur when creating Manifests.
-<SchemaDefinition schemaRef="#/components/schemas/ManifestErrors"/>
 
 ### Available Operations
 
@@ -24,6 +17,7 @@ Returns a list of all manifest objects.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListManifests" method="get" path="/manifests" -->
 ```java
 package hello.world;
 
@@ -36,18 +30,17 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListManifestsResponse res = sdk.manifests().list()
                 .page(1L)
                 .results(5L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.manifestPaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.manifestPaginatedList().get());
         }
     }
 }
@@ -55,11 +48,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `page`                                                                                                                                                             | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The page number you want to select                                                                                                                                 |                                                                                                                                                                    |
-| `results`                                                                                                                                                          | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The number of results to return per page (max 100, default 5)                                                                                                      |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `page`                                                        | *Optional\<Long>*                                             | :heavy_minus_sign:                                            | The page number you want to select                            |
+| `results`                                                     | *Optional\<Long>*                                             | :heavy_minus_sign:                                            | The number of results to return per page (max 100, default 5) |
 
 ### Response
 
@@ -77,11 +69,11 @@ Creates a new manifest object.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="CreateManifest" method="post" path="/manifests" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.components.AddressCreateRequest;
 import com.goshippo.shippo_sdk.models.components.ManifestCreateRequest;
 import com.goshippo.shippo_sdk.models.components.ManifestCreateRequestAddressFrom;
 import com.goshippo.shippo_sdk.models.operations.CreateManifestResponse;
@@ -93,38 +85,24 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
+        ManifestCreateRequest req = ManifestCreateRequest.builder()
+                .carrierAccount("adcfdddf8ec64b84ad22772bce3ea37a")
+                .shipmentDate("2014-05-16T23:59:59Z")
+                .addressFrom(ManifestCreateRequestAddressFrom.of("<value>"))
+                .transactions(List.of(
+                    "adcfdddf8ec64b84ad22772bce3ea37a"))
+                .build();
+
         CreateManifestResponse res = sdk.manifests().create()
-                .shippoApiVersion("2018-02-08")
-                .manifestCreateRequest(ManifestCreateRequest.builder()
-                    .carrierAccount("adcfdddf8ec64b84ad22772bce3ea37a")
-                    .shipmentDate("2014-05-16T23:59:59Z")
-                    .addressFrom(ManifestCreateRequestAddressFrom.of(AddressCreateRequest.builder()
-                        .country("US")
-                        .name("Shwan Ippotle")
-                        .company("Shippo")
-                        .street1("215 Clayton St.")
-                        .street3("")
-                        .streetNo("")
-                        .city("San Francisco")
-                        .state("CA")
-                        .zip("94117")
-                        .phone("+1 555 341 9393")
-                        .email("shippotle@shippo.com")
-                        .isResidential(true)
-                        .metadata("Customer ID 123456")
-                        .validate(true)
-                        .build()))
-                    .transactions(List.of(
-                        "adcfdddf8ec64b84ad22772bce3ea37a"))
-                    .build())
+                .request(req)
                 .call();
 
         if (res.manifest().isPresent()) {
-            // handle response
+            System.out.println(res.manifest().get());
         }
     }
 }
@@ -132,10 +110,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
-| `manifestCreateRequest`                                                                                                                                            | [ManifestCreateRequest](../../models/components/ManifestCreateRequest.md)                                                                                          | :heavy_check_mark:                                                                                                                                                 | Manifest details and contact info.                                                                                                                                 |                                                                                                                                                                    |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [ManifestCreateRequest](../../models/shared/ManifestCreateRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 ### Response
 
@@ -153,6 +130,7 @@ Returns an existing manifest using an object ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="GetManifest" method="get" path="/manifests/{ManifestId}" -->
 ```java
 package hello.world;
 
@@ -165,17 +143,16 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetManifestResponse res = sdk.manifests().get()
                 .manifestId("<id>")
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.manifest().isPresent()) {
-            // handle response
+            System.out.println(res.manifest().get());
         }
     }
 }
@@ -183,10 +160,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `manifestId`                                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the manifest to update                                                                                                                                |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                           | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `manifestId`                        | *String*                            | :heavy_check_mark:                  | Object ID of the manifest to update |
 
 ### Response
 
