@@ -6,6 +6,14 @@
 | next_day | Next Day|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelSwyftEnum;
+
+ServiceLevelSwyftEnum value = ServiceLevelSwyftEnum.SAME_DAY;
+```
+
 
 ## Values
 

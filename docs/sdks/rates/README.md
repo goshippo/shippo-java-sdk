@@ -1,10 +1,8 @@
 # Rates
-(*rates()*)
 
 ## Overview
 
 A rate is the cost to ship a parcel from a carrier. The rate object details the service level including the cost and transit time. 
-<SchemaDefinition schemaRef="#/components/schemas/Rate"/>
 
 ### Available Operations
 
@@ -14,10 +12,11 @@ A rate is the cost to ship a parcel from a carrier. The rate object details the 
 
 ## get
 
-Returns an existing rate using a rate object ID.
+Returns an existing rate using a rate object ID. Rates older than 390 days are not returned.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="GetRate" method="get" path="/rates/{RateId}" -->
 ```java
 package hello.world;
 
@@ -30,17 +29,16 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         GetRateResponse res = sdk.rates().get()
                 .rateId("<id>")
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.rate().isPresent()) {
-            // handle response
+            System.out.println(res.rate().get());
         }
     }
 }
@@ -48,10 +46,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `rateId`                                                                                                                                                           | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the rate                                                                                                                                              |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `rateId`              | *String*              | :heavy_check_mark:    | Object ID of the rate |
 
 ### Response
 
@@ -65,10 +62,11 @@ public class Application {
 
 ## listShipmentRates
 
-Returns a paginated list of rates associated with a shipment
+Returns a paginated list of rates associated with a shipment. Rates for shipments older than 390 days are not returned.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListShipmentRates" method="get" path="/shipments/{ShipmentId}/rates" -->
 ```java
 package hello.world;
 
@@ -81,19 +79,18 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
         ListShipmentRatesResponse res = sdk.rates().listShipmentRates()
                 .shipmentId("<id>")
                 .page(1L)
                 .results(25L)
-                .shippoApiVersion("2018-02-08")
                 .call();
 
         if (res.ratePaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.ratePaginatedList().get());
         }
     }
 }
@@ -101,12 +98,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `shipmentId`                                                                                                                                                       | *String*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | Object ID of the shipment to update                                                                                                                                |                                                                                                                                                                    |
-| `page`                                                                                                                                                             | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The page number you want to select                                                                                                                                 |                                                                                                                                                                    |
-| `results`                                                                                                                                                          | *Optional\<Long>*                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The number of results to return per page (max 100)                                                                                                                 |                                                                                                                                                                    |
-| `shippoApiVersion`                                                                                                                                                 | *Optional\<String>*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                 | Optional string used to pick a non-default API version to use. See our <a href="https://docs.goshippo.com/docs/api_concepts/apiversioning/">API version</a> guide. | 2018-02-08                                                                                                                                                         |
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `shipmentId`                                       | *String*                                           | :heavy_check_mark:                                 | Object ID of the shipment to update                |
+| `page`                                             | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The page number you want to select                 |
+| `results`                                          | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The number of results to return per page (max 100) |
 
 ### Response
 
@@ -124,17 +120,19 @@ Returns all available shipping rates for a shipment object.
 
 When you create a new valid shipment object, Shippo automatically calculates all available rates. Depending on your shipment data, there may be none, one or multiple rates.
 
-By default, the calculated rates will return the price in two currencies under the `amount` and `amount_local` keys, respectively. The `amount` key will contain the price of a rate expressed in the currency that is used in the country from where the parcel originates, and the `amount_local` key will contain the price expressed in the currency that is used in the country the parcel is shipped to. You can request rates with prices expressed in a different currency by adding the currency code to the end of the resource URL. The full list of supported currencies along with their codes can be viewed on <a href="http://openexchangerates.org/api/currencies.json">open exchange rates</a>.
+By default, the calculated rates will return the price in two currencies under the `amount` and `amount_local` keys, respectively. The `amount` key will contain the price of a rate expressed in the currency that is used in the country from where the parcel originates, and the `amount_local` key will contain the price expressed in the currency that is used in the country the parcel is shipped to. You can request rates with prices expressed in a different currency by adding the currency code to the end of the resource URL. The full list of supported currencies along with their codes can be viewed on [open exchange rates](http://openexchangerates.org/api/currencies.json).
 
 Note: re-requesting the rates with a different currency code will re-queue the shipment (i.e. set the Shipment's `status` to `QUEUED`) and the converted currency rates will only be available when the Shipment's `status` is set to `SUCCESS`.
 
+Rates for shipments older than 390 days are not returned.
+
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="ListShipmentRatesByCurrencyCode" method="get" path="/shipments/{ShipmentId}/rates/{CurrencyCode}" -->
 ```java
 package hello.world;
 
 import com.goshippo.shippo_sdk.Shippo;
-import com.goshippo.shippo_sdk.models.operations.ListShipmentRatesByCurrencyCodeRequest;
 import com.goshippo.shippo_sdk.models.operations.ListShipmentRatesByCurrencyCodeResponse;
 import java.lang.Exception;
 
@@ -143,21 +141,19 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         Shippo sdk = Shippo.builder()
-                .apiKeyHeader("<YOUR_API_KEY_HERE>")
                 .shippoApiVersion("2018-02-08")
+                .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
-        ListShipmentRatesByCurrencyCodeRequest req = ListShipmentRatesByCurrencyCodeRequest.builder()
+        ListShipmentRatesByCurrencyCodeResponse res = sdk.rates().listShipmentRatesByCurrencyCode()
                 .shipmentId("<id>")
                 .currencyCode("USD")
-                .build();
-
-        ListShipmentRatesByCurrencyCodeResponse res = sdk.rates().listShipmentRatesByCurrencyCode()
-                .request(req)
+                .page(1L)
+                .results(25L)
                 .call();
 
         if (res.ratePaginatedList().isPresent()) {
-            // handle response
+            System.out.println(res.ratePaginatedList().get());
         }
     }
 }
@@ -165,9 +161,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [ListShipmentRatesByCurrencyCodeRequest](../../models/operations/ListShipmentRatesByCurrencyCodeRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `shipmentId`                                       | *String*                                           | :heavy_check_mark:                                 | Object ID of the shipment to update                |
+| `currencyCode`                                     | *String*                                           | :heavy_check_mark:                                 | ISO currency code for the rates                    |
+| `page`                                             | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The page number you want to select                 |
+| `results`                                          | *Optional\<Long>*                                  | :heavy_minus_sign:                                 | The number of results to return per page (max 100) |
 
 ### Response
 

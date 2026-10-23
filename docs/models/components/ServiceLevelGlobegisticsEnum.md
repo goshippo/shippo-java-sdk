@@ -16,6 +16,14 @@
 | globegistics_ecom_international_surface_airlift | Globegistics eCom International Surface Air Lift|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelGlobegisticsEnum;
+
+ServiceLevelGlobegisticsEnum value = ServiceLevelGlobegisticsEnum.GLOBEGISTICS_PRIORITY_MAIL_EXPRESS_INTERNATIONAL;
+```
+
 
 ## Values
 

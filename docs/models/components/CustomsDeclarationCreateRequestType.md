@@ -2,6 +2,14 @@
 
 Party to be billed for duties.
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.CustomsDeclarationCreateRequestType;
+
+CustomsDeclarationCreateRequestType value = CustomsDeclarationCreateRequestType.SENDER;
+```
+
 
 ## Values
 

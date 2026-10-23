@@ -1,5 +1,13 @@
 # ShipmentExtraReturnServiceTypeUPSEnum
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ShipmentExtraReturnServiceTypeUPSEnum;
+
+ShipmentExtraReturnServiceTypeUPSEnum value = ShipmentExtraReturnServiceTypeUPSEnum.PRINT_AND_MAIL;
+```
+
 
 ## Values
 

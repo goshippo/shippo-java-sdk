@@ -2,6 +2,14 @@
 
 The type of building where the pickup is located.
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.BuildingType;
+
+BuildingType value = BuildingType.APARTMENT;
+```
+
 
 ## Values
 

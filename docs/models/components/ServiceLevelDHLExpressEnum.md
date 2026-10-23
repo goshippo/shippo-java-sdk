@@ -26,6 +26,14 @@
 | dhl_express_express_easy_nondoc | Express Easy NonDoc|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelDHLExpressEnum;
+
+ServiceLevelDHLExpressEnum value = ServiceLevelDHLExpressEnum.DHL_EXPRESS_DOMESTIC_EXPRESS_DOC;
+```
+
 
 ## Values
 

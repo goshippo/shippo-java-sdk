@@ -8,6 +8,14 @@
 | apg_eparcel_expedited | eParcel Expedited|
 
 
+## Example Usage
+
+```java
+import com.goshippo.shippo_sdk.models.components.ServiceLevelAPGEnum;
+
+ServiceLevelAPGEnum value = ServiceLevelAPGEnum.EPACKET;
+```
+
 
 ## Values
 
