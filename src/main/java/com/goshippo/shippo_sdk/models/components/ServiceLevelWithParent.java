@@ -31,9 +31,9 @@ public class ServiceLevelWithParent {
     private Optional<String> name;
 
     /**
-     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this
-     * rate is a FedEx One Rate variant of the same service level — it shares the same
-     * `token` as the standard-rate object but is a separate rate with its own `amount`.
+     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this rate is a FedEx
+     * One Rate variant of the same service level — it shares the same `token` as the standard-rate object
+     * but is a separate rate with its own `amount`.
      * Standard (non-One Rate) rates have an empty string here.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -98,9 +98,9 @@ public class ServiceLevelWithParent {
     }
 
     /**
-     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this
-     * rate is a FedEx One Rate variant of the same service level — it shares the same
-     * `token` as the standard-rate object but is a separate rate with its own `amount`.
+     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this rate is a FedEx
+     * One Rate variant of the same service level — it shares the same `token` as the standard-rate object
+     * but is a separate rate with its own `amount`.
      * Standard (non-One Rate) rates have an empty string here.
      */
     @JsonIgnore
@@ -164,9 +164,9 @@ public class ServiceLevelWithParent {
     }
 
     /**
-     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this
-     * rate is a FedEx One Rate variant of the same service level — it shares the same
-     * `token` as the standard-rate object but is a separate rate with its own `amount`.
+     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this rate is a FedEx
+     * One Rate variant of the same service level — it shares the same `token` as the standard-rate object
+     * but is a separate rate with its own `amount`.
      * Standard (non-One Rate) rates have an empty string here.
      */
     public ServiceLevelWithParent withTerms(String terms) {
@@ -177,9 +177,9 @@ public class ServiceLevelWithParent {
 
 
     /**
-     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this
-     * rate is a FedEx One Rate variant of the same service level — it shares the same
-     * `token` as the standard-rate object but is a separate rate with its own `amount`.
+     * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this rate is a FedEx
+     * One Rate variant of the same service level — it shares the same `token` as the standard-rate object
+     * but is a separate rate with its own `amount`.
      * Standard (non-One Rate) rates have an empty string here.
      */
     public ServiceLevelWithParent withTerms(Optional<String> terms) {
@@ -323,9 +323,9 @@ public class ServiceLevelWithParent {
 
 
         /**
-         * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this
-         * rate is a FedEx One Rate variant of the same service level — it shares the same
-         * `token` as the standard-rate object but is a separate rate with its own `amount`.
+         * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this rate is a FedEx
+         * One Rate variant of the same service level — it shares the same `token` as the standard-rate object
+         * but is a separate rate with its own `amount`.
          * Standard (non-One Rate) rates have an empty string here.
          */
         public Builder terms(String terms) {
@@ -335,9 +335,9 @@ public class ServiceLevelWithParent {
         }
 
         /**
-         * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this
-         * rate is a FedEx One Rate variant of the same service level — it shares the same
-         * `token` as the standard-rate object but is a separate rate with its own `amount`.
+         * Further clarification of the service. For FedEx, a value of `ONERATE` indicates this rate is a FedEx
+         * One Rate variant of the same service level — it shares the same `token` as the standard-rate object
+         * but is a separate rate with its own `amount`.
          * Standard (non-One Rate) rates have an empty string here.
          */
         public Builder terms(Optional<String> terms) {

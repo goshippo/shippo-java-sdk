@@ -2,8 +2,7 @@
 
 ## Overview
 
-Customs declarations are relevant information, including one or multiple customs items, you need to provide for 
-customs clearance for your international shipments.
+Customs declarations are relevant information, including one or multiple customs items, you need to provide for customs clearance for your international shipments.
 
 ### Available Operations
 
@@ -31,6 +30,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -85,6 +85,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -180,6 +181,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 

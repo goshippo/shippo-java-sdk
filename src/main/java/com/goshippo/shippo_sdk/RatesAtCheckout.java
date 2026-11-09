@@ -58,10 +58,9 @@ public class RatesAtCheckout {
     /**
      * Generate a live rates request
      * 
-     * <p>Initiates a live rates request. Include either the object ID for
-     * an existing address record or a fully formed address object when entering
-     * an address value. You can also enter the object ID of an existing user parcel
-     * template or a fully formed user parcel template object as the parcel value.
+     * <p>Initiates a live rates request. Include either the object ID for an existing address record or a
+     * fully formed address object when entering an address value. You can also enter the object ID of an
+     * existing user parcel template or a fully formed user parcel template object as the parcel value.
      * 
      * @return The call builder
      */
@@ -72,14 +71,11 @@ public class RatesAtCheckout {
     /**
      * Generate a live rates request
      * 
-     * <p>Initiates a live rates request. Include either the object ID for
-     * an existing address record or a fully formed address object when entering
-     * an address value. You can also enter the object ID of an existing user parcel
-     * template or a fully formed user parcel template object as the parcel value.
+     * <p>Initiates a live rates request. Include either the object ID for an existing address record or a
+     * fully formed address object when entering an address value. You can also enter the object ID of an
+     * existing user parcel template or a fully formed user parcel template object as the parcel value.
      * 
-     * @param addressTo The recipient address, which includes the recipient's name, company name, street address, city, state, zip code, 
-     *         country, phone number, and email address (strings). Special characters should not be included in 
-     *         any address element, especially name, company, and email.
+     * @param addressTo The recipient address, which includes the recipient's name, company name, street address, city, state, zip code, country, phone number, and email address (strings). Special characters should not be included in any address element, especially name, company, and email.
      * @param lineItems 
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -92,17 +88,12 @@ public class RatesAtCheckout {
     /**
      * Generate a live rates request
      * 
-     * <p>Initiates a live rates request. Include either the object ID for
-     * an existing address record or a fully formed address object when entering
-     * an address value. You can also enter the object ID of an existing user parcel
-     * template or a fully formed user parcel template object as the parcel value.
+     * <p>Initiates a live rates request. Include either the object ID for an existing address record or a
+     * fully formed address object when entering an address value. You can also enter the object ID of an
+     * existing user parcel template or a fully formed user parcel template object as the parcel value.
      * 
-     * @param addressFrom The sender address, which includes your name, company name, street address, city, state, zip code, 
-     *         country, phone number, and email address (strings). Special characters should not be included in 
-     *         any address element, especially name, company, and email.
-     * @param addressTo The recipient address, which includes the recipient's name, company name, street address, city, state, zip code, 
-     *         country, phone number, and email address (strings). Special characters should not be included in 
-     *         any address element, especially name, company, and email.
+     * @param addressFrom The sender address, which includes your name, company name, street address, city, state, zip code, country, phone number, and email address (strings). Special characters should not be included in any address element, especially name, company, and email.
+     * @param addressTo The recipient address, which includes the recipient's name, company name, street address, city, state, zip code, country, phone number, and email address (strings). Special characters should not be included in any address element, especially name, company, and email.
      * @param lineItems 
      * @param parcel Object ID for an existing User Parcel Template OR a fully formed Parcel object.
      * @return The response from the API call

@@ -19,9 +19,8 @@ import java.util.Optional;
  * DangerousGoodsObject
  * 
  * <p>Container for specifying the presence of dangerous materials. This is specific to USPS, and if any
- * contents
- * are provided, only certain USPS service levels will be eligible. For more information, see our
- * [guide on hazardous or dangerous materials
+ * contents are provided, only certain USPS service levels will be eligible. For more information, see
+ * our [guide on hazardous or dangerous materials
  * shipping](https://docs.goshippo.com/docs/shipments/hazmat/).
  */
 public class DangerousGoodsObject {

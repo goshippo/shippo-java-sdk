@@ -32,8 +32,7 @@ public class CustomsExporterIdentification {
 
     /**
      * Tax identification that may be required to ship in certain countries. Typically used to assess
-     * duties on
-     * goods that are crossing a border.
+     * duties on goods that are crossing a border.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tax_id")
@@ -66,8 +65,7 @@ public class CustomsExporterIdentification {
 
     /**
      * Tax identification that may be required to ship in certain countries. Typically used to assess
-     * duties on
-     * goods that are crossing a border.
+     * duties on goods that are crossing a border.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -107,8 +105,7 @@ public class CustomsExporterIdentification {
 
     /**
      * Tax identification that may be required to ship in certain countries. Typically used to assess
-     * duties on
-     * goods that are crossing a border.
+     * duties on goods that are crossing a border.
      */
     public CustomsExporterIdentification withTaxId(CustomsTaxIdentification taxId) {
         Utils.checkNotNull(taxId, "taxId");
@@ -119,8 +116,7 @@ public class CustomsExporterIdentification {
 
     /**
      * Tax identification that may be required to ship in certain countries. Typically used to assess
-     * duties on
-     * goods that are crossing a border.
+     * duties on goods that are crossing a border.
      */
     public CustomsExporterIdentification withTaxId(Optional<? extends CustomsTaxIdentification> taxId) {
         Utils.checkNotNull(taxId, "taxId");
@@ -194,8 +190,7 @@ public class CustomsExporterIdentification {
 
         /**
          * Tax identification that may be required to ship in certain countries. Typically used to assess
-         * duties on
-         * goods that are crossing a border.
+         * duties on goods that are crossing a border.
          */
         public Builder taxId(CustomsTaxIdentification taxId) {
             Utils.checkNotNull(taxId, "taxId");
@@ -205,8 +200,7 @@ public class CustomsExporterIdentification {
 
         /**
          * Tax identification that may be required to ship in certain countries. Typically used to assess
-         * duties on
-         * goods that are crossing a border.
+         * duties on goods that are crossing a border.
          */
         public Builder taxId(Optional<? extends CustomsTaxIdentification> taxId) {
             Utils.checkNotNull(taxId, "taxId");

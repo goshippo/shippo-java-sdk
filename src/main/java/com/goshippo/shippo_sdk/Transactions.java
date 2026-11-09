@@ -132,6 +132,9 @@ public class Transactions {
      * Retrieve a shipping label
      * 
      * <p>Returns an existing transaction using an object ID.
+     * Each call returns a new `label_url` with a new expiration time. Use this endpoint to get a new
+     * `label_url` when the `Expires` value on the current `label_url` is in the past. Send one call for
+     * each transaction.
      * 
      * @return The call builder
      */
@@ -143,6 +146,9 @@ public class Transactions {
      * Retrieve a shipping label
      * 
      * <p>Returns an existing transaction using an object ID.
+     * Each call returns a new `label_url` with a new expiration time. Use this endpoint to get a new
+     * `label_url` when the `Expires` value on the current `label_url` is in the past. Send one call for
+     * each transaction.
      * 
      * @param transactionId Object ID of the transaction to update
      * @return The response from the API call

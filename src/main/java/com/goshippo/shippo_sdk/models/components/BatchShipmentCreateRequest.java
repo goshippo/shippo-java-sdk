@@ -23,8 +23,8 @@ public class BatchShipmentCreateRequest {
     private Optional<String> carrierAccount;
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -32,8 +32,8 @@ public class BatchShipmentCreateRequest {
 
     /**
      * A token that sets the shipping method for the batch, overriding the batch default.
-     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels)
-     * or [at this endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
+     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels) or [at this
+     * endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("servicelevel_token")
@@ -74,8 +74,8 @@ public class BatchShipmentCreateRequest {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonIgnore
     public Optional<String> metadata() {
@@ -84,8 +84,8 @@ public class BatchShipmentCreateRequest {
 
     /**
      * A token that sets the shipping method for the batch, overriding the batch default.
-     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels)
-     * or [at this endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
+     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels) or [at this
+     * endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
      */
     @JsonIgnore
     public Optional<String> servicelevelToken() {
@@ -122,8 +122,8 @@ public class BatchShipmentCreateRequest {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public BatchShipmentCreateRequest withMetadata(String metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -133,8 +133,8 @@ public class BatchShipmentCreateRequest {
 
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public BatchShipmentCreateRequest withMetadata(Optional<String> metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -144,8 +144,8 @@ public class BatchShipmentCreateRequest {
 
     /**
      * A token that sets the shipping method for the batch, overriding the batch default.
-     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels)
-     * or [at this endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
+     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels) or [at this
+     * endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
      */
     public BatchShipmentCreateRequest withServicelevelToken(String servicelevelToken) {
         Utils.checkNotNull(servicelevelToken, "servicelevelToken");
@@ -156,8 +156,8 @@ public class BatchShipmentCreateRequest {
 
     /**
      * A token that sets the shipping method for the batch, overriding the batch default.
-     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels)
-     * or [at this endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
+     * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels) or [at this
+     * endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
      */
     public BatchShipmentCreateRequest withServicelevelToken(Optional<String> servicelevelToken) {
         Utils.checkNotNull(servicelevelToken, "servicelevelToken");
@@ -239,8 +239,8 @@ public class BatchShipmentCreateRequest {
 
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you want
-         * to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(String metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -249,8 +249,8 @@ public class BatchShipmentCreateRequest {
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you want
-         * to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(Optional<String> metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -261,8 +261,8 @@ public class BatchShipmentCreateRequest {
 
         /**
          * A token that sets the shipping method for the batch, overriding the batch default.
-         * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels)
-         * or [at this endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
+         * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels) or [at this
+         * endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
          */
         public Builder servicelevelToken(String servicelevelToken) {
             Utils.checkNotNull(servicelevelToken, "servicelevelToken");
@@ -272,8 +272,8 @@ public class BatchShipmentCreateRequest {
 
         /**
          * A token that sets the shipping method for the batch, overriding the batch default.
-         * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels)
-         * or [at this endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
+         * Servicelevel tokens can be found [in this list](/shippoapi/public-api/service-levels) or [at this
+         * endpoint](/shippoapi/public-api/carrier-accounts/listcarrieraccounts).
          */
         public Builder servicelevelToken(Optional<String> servicelevelToken) {
             Utils.checkNotNull(servicelevelToken, "servicelevelToken");

@@ -76,10 +76,10 @@ public class AddressImporter {
      * **required for purchase for some countries**
      * 
      * <p>State/Province values are required for shipments from/to the US, AU, and CA. UPS requires province
-     * for some
-     * countries (i.e Ireland). To receive more accurate quotes, passing this field is recommended. Most
-     * carriers
-     * only accept two or three character state abbreviations.
+     * for some countries (i.e Ireland). To receive more accurate quotes, passing this field is
+     * recommended.
+     * 
+     * <p>Most carriers only accept two or three character state abbreviations.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("state")
@@ -93,8 +93,8 @@ public class AddressImporter {
     private Optional<String> zip;
 
     /**
-     * Example: `US` or `DE`. All accepted values can be found on the
-     * [Official ISO Website](http://www.iso.org/).
+     * Example: `US` or `DE`. All accepted values can be found on the [Official ISO
+     * Website](http://www.iso.org/).
      * Sending a country is always required.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -103,9 +103,8 @@ public class AddressImporter {
 
     /**
      * Addresses containing a phone number allow carriers to call the recipient when delivering the Parcel.
-     * This
-     * increases the probability of delivery and helps to avoid accessorial charges after a Parcel has been
-     * shipped.
+     * This increases the probability of delivery and helps to avoid accessorial charges after a Parcel has
+     * been shipped.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("phone")
@@ -239,10 +238,10 @@ public class AddressImporter {
      * **required for purchase for some countries**
      * 
      * <p>State/Province values are required for shipments from/to the US, AU, and CA. UPS requires province
-     * for some
-     * countries (i.e Ireland). To receive more accurate quotes, passing this field is recommended. Most
-     * carriers
-     * only accept two or three character state abbreviations.
+     * for some countries (i.e Ireland). To receive more accurate quotes, passing this field is
+     * recommended.
+     * 
+     * <p>Most carriers only accept two or three character state abbreviations.
      */
     @JsonIgnore
     public Optional<String> state() {
@@ -258,8 +257,8 @@ public class AddressImporter {
     }
 
     /**
-     * Example: `US` or `DE`. All accepted values can be found on the
-     * [Official ISO Website](http://www.iso.org/).
+     * Example: `US` or `DE`. All accepted values can be found on the [Official ISO
+     * Website](http://www.iso.org/).
      * Sending a country is always required.
      */
     @JsonIgnore
@@ -269,9 +268,8 @@ public class AddressImporter {
 
     /**
      * Addresses containing a phone number allow carriers to call the recipient when delivering the Parcel.
-     * This
-     * increases the probability of delivery and helps to avoid accessorial charges after a Parcel has been
-     * shipped.
+     * This increases the probability of delivery and helps to avoid accessorial charges after a Parcel has
+     * been shipped.
      */
     @JsonIgnore
     public Optional<String> phone() {
@@ -442,10 +440,10 @@ public class AddressImporter {
      * **required for purchase for some countries**
      * 
      * <p>State/Province values are required for shipments from/to the US, AU, and CA. UPS requires province
-     * for some
-     * countries (i.e Ireland). To receive more accurate quotes, passing this field is recommended. Most
-     * carriers
-     * only accept two or three character state abbreviations.
+     * for some countries (i.e Ireland). To receive more accurate quotes, passing this field is
+     * recommended.
+     * 
+     * <p>Most carriers only accept two or three character state abbreviations.
      */
     public AddressImporter withState(String state) {
         Utils.checkNotNull(state, "state");
@@ -458,10 +456,10 @@ public class AddressImporter {
      * **required for purchase for some countries**
      * 
      * <p>State/Province values are required for shipments from/to the US, AU, and CA. UPS requires province
-     * for some
-     * countries (i.e Ireland). To receive more accurate quotes, passing this field is recommended. Most
-     * carriers
-     * only accept two or three character state abbreviations.
+     * for some countries (i.e Ireland). To receive more accurate quotes, passing this field is
+     * recommended.
+     * 
+     * <p>Most carriers only accept two or three character state abbreviations.
      */
     public AddressImporter withState(Optional<String> state) {
         Utils.checkNotNull(state, "state");
@@ -489,8 +487,8 @@ public class AddressImporter {
     }
 
     /**
-     * Example: `US` or `DE`. All accepted values can be found on the
-     * [Official ISO Website](http://www.iso.org/).
+     * Example: `US` or `DE`. All accepted values can be found on the [Official ISO
+     * Website](http://www.iso.org/).
      * Sending a country is always required.
      */
     public AddressImporter withCountry(String country) {
@@ -501,8 +499,8 @@ public class AddressImporter {
 
 
     /**
-     * Example: `US` or `DE`. All accepted values can be found on the
-     * [Official ISO Website](http://www.iso.org/).
+     * Example: `US` or `DE`. All accepted values can be found on the [Official ISO
+     * Website](http://www.iso.org/).
      * Sending a country is always required.
      */
     public AddressImporter withCountry(Optional<String> country) {
@@ -513,9 +511,8 @@ public class AddressImporter {
 
     /**
      * Addresses containing a phone number allow carriers to call the recipient when delivering the Parcel.
-     * This
-     * increases the probability of delivery and helps to avoid accessorial charges after a Parcel has been
-     * shipped.
+     * This increases the probability of delivery and helps to avoid accessorial charges after a Parcel has
+     * been shipped.
      */
     public AddressImporter withPhone(String phone) {
         Utils.checkNotNull(phone, "phone");
@@ -526,9 +523,8 @@ public class AddressImporter {
 
     /**
      * Addresses containing a phone number allow carriers to call the recipient when delivering the Parcel.
-     * This
-     * increases the probability of delivery and helps to avoid accessorial charges after a Parcel has been
-     * shipped.
+     * This increases the probability of delivery and helps to avoid accessorial charges after a Parcel has
+     * been shipped.
      */
     public AddressImporter withPhone(Optional<String> phone) {
         Utils.checkNotNull(phone, "phone");
@@ -804,10 +800,10 @@ public class AddressImporter {
          * **required for purchase for some countries**
          * 
          * <p>State/Province values are required for shipments from/to the US, AU, and CA. UPS requires province
-         * for some
-         * countries (i.e Ireland). To receive more accurate quotes, passing this field is recommended. Most
-         * carriers
-         * only accept two or three character state abbreviations.
+         * for some countries (i.e Ireland). To receive more accurate quotes, passing this field is
+         * recommended.
+         * 
+         * <p>Most carriers only accept two or three character state abbreviations.
          */
         public Builder state(String state) {
             Utils.checkNotNull(state, "state");
@@ -819,10 +815,10 @@ public class AddressImporter {
          * **required for purchase for some countries**
          * 
          * <p>State/Province values are required for shipments from/to the US, AU, and CA. UPS requires province
-         * for some
-         * countries (i.e Ireland). To receive more accurate quotes, passing this field is recommended. Most
-         * carriers
-         * only accept two or three character state abbreviations.
+         * for some countries (i.e Ireland). To receive more accurate quotes, passing this field is
+         * recommended.
+         * 
+         * <p>Most carriers only accept two or three character state abbreviations.
          */
         public Builder state(Optional<String> state) {
             Utils.checkNotNull(state, "state");
@@ -851,8 +847,8 @@ public class AddressImporter {
 
 
         /**
-         * Example: `US` or `DE`. All accepted values can be found on the
-         * [Official ISO Website](http://www.iso.org/).
+         * Example: `US` or `DE`. All accepted values can be found on the [Official ISO
+         * Website](http://www.iso.org/).
          * Sending a country is always required.
          */
         public Builder country(String country) {
@@ -862,8 +858,8 @@ public class AddressImporter {
         }
 
         /**
-         * Example: `US` or `DE`. All accepted values can be found on the
-         * [Official ISO Website](http://www.iso.org/).
+         * Example: `US` or `DE`. All accepted values can be found on the [Official ISO
+         * Website](http://www.iso.org/).
          * Sending a country is always required.
          */
         public Builder country(Optional<String> country) {
@@ -875,9 +871,8 @@ public class AddressImporter {
 
         /**
          * Addresses containing a phone number allow carriers to call the recipient when delivering the Parcel.
-         * This
-         * increases the probability of delivery and helps to avoid accessorial charges after a Parcel has been
-         * shipped.
+         * This increases the probability of delivery and helps to avoid accessorial charges after a Parcel has
+         * been shipped.
          */
         public Builder phone(String phone) {
             Utils.checkNotNull(phone, "phone");
@@ -887,9 +882,8 @@ public class AddressImporter {
 
         /**
          * Addresses containing a phone number allow carriers to call the recipient when delivering the Parcel.
-         * This
-         * increases the probability of delivery and helps to avoid accessorial charges after a Parcel has been
-         * shipped.
+         * This increases the probability of delivery and helps to avoid accessorial charges after a Parcel has
+         * been shipped.
          */
         public Builder phone(Optional<String> phone) {
             Utils.checkNotNull(phone, "phone");

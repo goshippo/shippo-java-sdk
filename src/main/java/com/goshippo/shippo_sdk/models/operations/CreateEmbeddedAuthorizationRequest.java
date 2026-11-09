@@ -15,10 +15,12 @@ import java.util.Optional;
 
 public class CreateEmbeddedAuthorizationRequest {
     /**
-     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to
-     * mint a JWT scoped to one of their managed accounts.
+     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to mint a JWT scoped
+     * to one of their managed accounts.
+     * 
+     * <p>`Shippo-Account-Id` and `SHIPPO-ACCOUNT-ID` are the same header.
      */
-    @SpeakeasyMetadata("header:style=simple,explode=false,name=SHIPPO-ACCOUNT-ID")
+    @SpeakeasyMetadata("header:style=simple,explode=false,name=Shippo-Account-Id")
     private Optional<String> shippoAccountId;
 
     /**
@@ -43,8 +45,10 @@ public class CreateEmbeddedAuthorizationRequest {
     }
 
     /**
-     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to
-     * mint a JWT scoped to one of their managed accounts.
+     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to mint a JWT scoped
+     * to one of their managed accounts.
+     * 
+     * <p>`Shippo-Account-Id` and `SHIPPO-ACCOUNT-ID` are the same header.
      */
     @JsonIgnore
     public Optional<String> shippoAccountId() {
@@ -65,8 +69,10 @@ public class CreateEmbeddedAuthorizationRequest {
 
 
     /**
-     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to
-     * mint a JWT scoped to one of their managed accounts.
+     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to mint a JWT scoped
+     * to one of their managed accounts.
+     * 
+     * <p>`Shippo-Account-Id` and `SHIPPO-ACCOUNT-ID` are the same header.
      */
     public CreateEmbeddedAuthorizationRequest withShippoAccountId(String shippoAccountId) {
         Utils.checkNotNull(shippoAccountId, "shippoAccountId");
@@ -76,8 +82,10 @@ public class CreateEmbeddedAuthorizationRequest {
 
 
     /**
-     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to
-     * mint a JWT scoped to one of their managed accounts.
+     * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to mint a JWT scoped
+     * to one of their managed accounts.
+     * 
+     * <p>`Shippo-Account-Id` and `SHIPPO-ACCOUNT-ID` are the same header.
      */
     public CreateEmbeddedAuthorizationRequest withShippoAccountId(Optional<String> shippoAccountId) {
         Utils.checkNotNull(shippoAccountId, "shippoAccountId");
@@ -134,8 +142,10 @@ public class CreateEmbeddedAuthorizationRequest {
 
 
         /**
-         * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to
-         * mint a JWT scoped to one of their managed accounts.
+         * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to mint a JWT scoped
+         * to one of their managed accounts.
+         * 
+         * <p>`Shippo-Account-Id` and `SHIPPO-ACCOUNT-ID` are the same header.
          */
         public Builder shippoAccountId(String shippoAccountId) {
             Utils.checkNotNull(shippoAccountId, "shippoAccountId");
@@ -144,8 +154,10 @@ public class CreateEmbeddedAuthorizationRequest {
         }
 
         /**
-         * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to
-         * mint a JWT scoped to one of their managed accounts.
+         * Optional. The object ID of a Managed Shippo Account. Platform accounts set this to mint a JWT scoped
+         * to one of their managed accounts.
+         * 
+         * <p>`Shippo-Account-Id` and `SHIPPO-ACCOUNT-ID` are the same header.
          */
         public Builder shippoAccountId(Optional<String> shippoAccountId) {
             Utils.checkNotNull(shippoAccountId, "shippoAccountId");

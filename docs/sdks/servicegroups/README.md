@@ -2,7 +2,7 @@
 
 ## Overview
 
-A service group is a set of service levels grouped together. 
+A service group is a set of service levels grouped together.
 Rates at checkout uses services groups to present available shipping options to customers in their shopping basket.
 
 ### Available Operations
@@ -32,6 +32,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -78,6 +79,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -142,6 +144,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -210,6 +213,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 

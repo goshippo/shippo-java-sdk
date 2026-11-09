@@ -18,13 +18,11 @@ import java.util.Optional;
  * Insurance
  * 
  * <p>To add 3rd party insurance powered by
- * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/),
- * specify `amount`, `content`, and `currency`. Alternatively, you can choose carrier provided
- * insurance
- * by additionally specifying `provider` (UPS, FedEx and OnTrac only).
+ * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/), specify `amount`, `content`,
+ * and `currency`. Alternatively, you can choose carrier provided insurance by additionally specifying
+ * `provider` (UPS, FedEx and OnTrac only).
  * 
- * <p>If you do not want to add insurance
- * to your shipment, do not set these parameters.
+ * <p>If you do not want to add insurance to your shipment, do not set these parameters.
  */
 public class Insurance {
     /**

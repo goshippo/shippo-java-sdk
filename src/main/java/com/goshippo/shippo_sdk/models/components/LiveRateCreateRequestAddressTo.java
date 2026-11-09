@@ -19,9 +19,8 @@ import java.lang.SuppressWarnings;
  * LiveRateCreateRequestAddressTo
  * 
  * <p>The recipient address, which includes the recipient's name, company name, street address, city,
- * state, zip code,
- * country, phone number, and email address (strings). Special characters should not be included in
- * any address element, especially name, company, and email.
+ * state, zip code, country, phone number, and email address (strings). Special characters should not
+ * be included in any address element, especially name, company, and email.
  */
 @JsonDeserialize(using = LiveRateCreateRequestAddressTo._Deserializer.class)
 public class LiveRateCreateRequestAddressTo {

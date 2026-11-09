@@ -51,6 +51,8 @@ public class UpdateDefaultParcelTemplate {
             this.operationGlobals = new Globals();
             this.sdkConfiguration.globals.getParam("header", "SHIPPO-API-VERSION")
                 .ifPresent(param -> operationGlobals.putParam("header", "SHIPPO-API-VERSION", param));
+            this.sdkConfiguration.globals.getParam("header", "SHIPPO-ACCOUNT-ID")
+                .ifPresent(param -> operationGlobals.putParam("header", "SHIPPO-ACCOUNT-ID", param));
         }
 
         Optional<SecuritySource> securitySource() {

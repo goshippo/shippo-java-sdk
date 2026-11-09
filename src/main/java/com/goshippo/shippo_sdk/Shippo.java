@@ -55,8 +55,7 @@ public class Shippo {
 
     /**
      * Customs declarations are relevant information, including one or multiple customs items, you need to
-     * provide for
-     * customs clearance for your international shipments.
+     * provide for customs clearance for your international shipments.
      */
     private final CustomsDeclarations customsDeclarations;
 
@@ -67,9 +66,9 @@ public class Shippo {
     private final CustomsItems customsItems;
 
     /**
-     * Mint short-lived JSON Web Tokens (JWTs) for client-side applications, so you never ship a
-     * long-lived API token to the browser. Authenticate the request with a Shippo API token or an
-     * OAuth bearer token, then pass the returned token as `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+     * Mint short-lived JSON Web Tokens (JWTs) for client-side applications, so you never ship a long-lived
+     * API token to the browser. Authenticate the request with a Shippo API token or an OAuth bearer token,
+     * then pass the returned token as `Authorization: JWT &lt;JWT_TOKEN&gt;`.
      * See our [Authentication using JWT
      * guide](https://docs.goshippo.com/docs/guides_general/authentication_using_jwt/) for details.
      */
@@ -186,15 +185,12 @@ public class Shippo {
 
     /**
      * A user parcel template represents a package used for shipping that has preset dimensions and
-     * attributes defined
-     * by you. They are useful for capturing attributes of parcel-types you frequently use for shipping,
-     * allowing
-     * them to be defined once and then used for many shipments. These parcel templates can also be used
-     * for live rates.
+     * attributes defined by you. They are useful for capturing attributes of parcel-types you frequently
+     * use for shipping, allowing them to be defined once and then used for many shipments. These parcel
+     * templates can also be used for live rates.
      * 
      * <p>User parcel templates can also be created using a carrier parcel template, where the dimensions will
-     * be copied from
-     * the carrier presets, but the weight can be configured by you.
+     * be copied from the carrier presets, but the weight can be configured by you.
      */
     private final UserParcelTemplates userParcelTemplates;
 
@@ -247,8 +243,7 @@ public class Shippo {
 
     /**
      * Customs declarations are relevant information, including one or multiple customs items, you need to
-     * provide for
-     * customs clearance for your international shipments.
+     * provide for customs clearance for your international shipments.
      */
     public CustomsDeclarations customsDeclarations() {
         return customsDeclarations;
@@ -263,9 +258,9 @@ public class Shippo {
     }
 
     /**
-     * Mint short-lived JSON Web Tokens (JWTs) for client-side applications, so you never ship a
-     * long-lived API token to the browser. Authenticate the request with a Shippo API token or an
-     * OAuth bearer token, then pass the returned token as `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+     * Mint short-lived JSON Web Tokens (JWTs) for client-side applications, so you never ship a long-lived
+     * API token to the browser. Authenticate the request with a Shippo API token or an OAuth bearer token,
+     * then pass the returned token as `Authorization: JWT &lt;JWT_TOKEN&gt;`.
      * See our [Authentication using JWT
      * guide](https://docs.goshippo.com/docs/guides_general/authentication_using_jwt/) for details.
      */
@@ -408,15 +403,12 @@ public class Shippo {
 
     /**
      * A user parcel template represents a package used for shipping that has preset dimensions and
-     * attributes defined
-     * by you. They are useful for capturing attributes of parcel-types you frequently use for shipping,
-     * allowing
-     * them to be defined once and then used for many shipments. These parcel templates can also be used
-     * for live rates.
+     * attributes defined by you. They are useful for capturing attributes of parcel-types you frequently
+     * use for shipping, allowing them to be defined once and then used for many shipments. These parcel
+     * templates can also be used for live rates.
      * 
      * <p>User parcel templates can also be created using a carrier parcel template, where the dimensions will
-     * be copied from
-     * the carrier presets, but the weight can be configured by you.
+     * be copied from the carrier presets, but the weight can be configured by you.
      */
     public UserParcelTemplates userParcelTemplates() {
         return userParcelTemplates;
@@ -563,6 +555,17 @@ public class Shippo {
          */
         public Builder shippoApiVersion(String shippoApiVersion) {
             this.sdkConfiguration.globals.putParam("header", "SHIPPO-API-VERSION", shippoApiVersion);
+            return this;
+        }
+
+        /**
+         * Allows setting the shippoAccountId parameter for all supported operations.
+         *
+         * @param shippoAccountId The value to set.
+         * @return The builder instance.
+         */
+        public Builder shippoAccountId(String shippoAccountId) {
+            this.sdkConfiguration.globals.putParam("header", "SHIPPO-ACCOUNT-ID", shippoAccountId);
             return this;
         }
         // Visible for testing, may be accessed via reflection in tests

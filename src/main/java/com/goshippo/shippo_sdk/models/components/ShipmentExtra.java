@@ -140,9 +140,8 @@ public class ShipmentExtra {
 
     /**
      * Container for specifying the presence of dangerous materials. This is specific to USPS, and if any
-     * contents
-     * are provided, only certain USPS service levels will be eligible. For more information, see our
-     * [guide on hazardous or dangerous materials
+     * contents are provided, only certain USPS service levels will be eligible. For more information, see
+     * our [guide on hazardous or dangerous materials
      * shipping](https://docs.goshippo.com/docs/shipments/hazmat/).
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -215,13 +214,11 @@ public class ShipmentExtra {
 
     /**
      * To add 3rd party insurance powered by
-     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/),
-     * specify `amount`, `content`, and `currency`. Alternatively, you can choose carrier provided
-     * insurance
-     * by additionally specifying `provider` (UPS, FedEx and OnTrac only).
+     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/), specify `amount`, `content`,
+     * and `currency`. Alternatively, you can choose carrier provided insurance by additionally specifying
+     * `provider` (UPS, FedEx and OnTrac only).
      * 
-     * <p>If you do not want to add insurance
-     * to your shipment, do not set these parameters.
+     * <p>If you do not want to add insurance to your shipment, do not set these parameters.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("insurance")
@@ -402,8 +399,7 @@ public class ShipmentExtra {
 
     /**
      * Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS
-     * only)
-     * or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
+     * only) or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("signature_confirmation")
@@ -761,9 +757,8 @@ public class ShipmentExtra {
 
     /**
      * Container for specifying the presence of dangerous materials. This is specific to USPS, and if any
-     * contents
-     * are provided, only certain USPS service levels will be eligible. For more information, see our
-     * [guide on hazardous or dangerous materials
+     * contents are provided, only certain USPS service levels will be eligible. For more information, see
+     * our [guide on hazardous or dangerous materials
      * shipping](https://docs.goshippo.com/docs/shipments/hazmat/).
      */
     @SuppressWarnings("unchecked")
@@ -850,13 +845,11 @@ public class ShipmentExtra {
 
     /**
      * To add 3rd party insurance powered by
-     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/),
-     * specify `amount`, `content`, and `currency`. Alternatively, you can choose carrier provided
-     * insurance
-     * by additionally specifying `provider` (UPS, FedEx and OnTrac only).
+     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/), specify `amount`, `content`,
+     * and `currency`. Alternatively, you can choose carrier provided insurance by additionally specifying
+     * `provider` (UPS, FedEx and OnTrac only).
      * 
-     * <p>If you do not want to add insurance
-     * to your shipment, do not set these parameters.
+     * <p>If you do not want to add insurance to your shipment, do not set these parameters.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -1068,8 +1061,7 @@ public class ShipmentExtra {
 
     /**
      * Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS
-     * only)
-     * or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
+     * only) or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -1420,9 +1412,8 @@ public class ShipmentExtra {
 
     /**
      * Container for specifying the presence of dangerous materials. This is specific to USPS, and if any
-     * contents
-     * are provided, only certain USPS service levels will be eligible. For more information, see our
-     * [guide on hazardous or dangerous materials
+     * contents are provided, only certain USPS service levels will be eligible. For more information, see
+     * our [guide on hazardous or dangerous materials
      * shipping](https://docs.goshippo.com/docs/shipments/hazmat/).
      */
     public ShipmentExtra withDangerousGoods(DangerousGoodsObject dangerousGoods) {
@@ -1434,9 +1425,8 @@ public class ShipmentExtra {
 
     /**
      * Container for specifying the presence of dangerous materials. This is specific to USPS, and if any
-     * contents
-     * are provided, only certain USPS service levels will be eligible. For more information, see our
-     * [guide on hazardous or dangerous materials
+     * contents are provided, only certain USPS service levels will be eligible. For more information, see
+     * our [guide on hazardous or dangerous materials
      * shipping](https://docs.goshippo.com/docs/shipments/hazmat/).
      */
     public ShipmentExtra withDangerousGoods(Optional<? extends DangerousGoodsObject> dangerousGoods) {
@@ -1611,13 +1601,11 @@ public class ShipmentExtra {
 
     /**
      * To add 3rd party insurance powered by
-     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/),
-     * specify `amount`, `content`, and `currency`. Alternatively, you can choose carrier provided
-     * insurance
-     * by additionally specifying `provider` (UPS, FedEx and OnTrac only).
+     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/), specify `amount`, `content`,
+     * and `currency`. Alternatively, you can choose carrier provided insurance by additionally specifying
+     * `provider` (UPS, FedEx and OnTrac only).
      * 
-     * <p>If you do not want to add insurance
-     * to your shipment, do not set these parameters.
+     * <p>If you do not want to add insurance to your shipment, do not set these parameters.
      */
     public ShipmentExtra withInsurance(Insurance insurance) {
         Utils.checkNotNull(insurance, "insurance");
@@ -1628,13 +1616,11 @@ public class ShipmentExtra {
 
     /**
      * To add 3rd party insurance powered by
-     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/),
-     * specify `amount`, `content`, and `currency`. Alternatively, you can choose carrier provided
-     * insurance
-     * by additionally specifying `provider` (UPS, FedEx and OnTrac only).
+     * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/), specify `amount`, `content`,
+     * and `currency`. Alternatively, you can choose carrier provided insurance by additionally specifying
+     * `provider` (UPS, FedEx and OnTrac only).
      * 
-     * <p>If you do not want to add insurance
-     * to your shipment, do not set these parameters.
+     * <p>If you do not want to add insurance to your shipment, do not set these parameters.
      */
     public ShipmentExtra withInsurance(Optional<? extends Insurance> insurance) {
         Utils.checkNotNull(insurance, "insurance");
@@ -2091,8 +2077,7 @@ public class ShipmentExtra {
 
     /**
      * Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS
-     * only)
-     * or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
+     * only) or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
      */
     public ShipmentExtra withSignatureConfirmation(SignatureConfirmation signatureConfirmation) {
         Utils.checkNotNull(signatureConfirmation, "signatureConfirmation");
@@ -2103,8 +2088,7 @@ public class ShipmentExtra {
 
     /**
      * Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS
-     * only)
-     * or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
+     * only) or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
      */
     public ShipmentExtra withSignatureConfirmation(Optional<? extends SignatureConfirmation> signatureConfirmation) {
         Utils.checkNotNull(signatureConfirmation, "signatureConfirmation");
@@ -2748,9 +2732,8 @@ public class ShipmentExtra {
 
         /**
          * Container for specifying the presence of dangerous materials. This is specific to USPS, and if any
-         * contents
-         * are provided, only certain USPS service levels will be eligible. For more information, see our
-         * [guide on hazardous or dangerous materials
+         * contents are provided, only certain USPS service levels will be eligible. For more information, see
+         * our [guide on hazardous or dangerous materials
          * shipping](https://docs.goshippo.com/docs/shipments/hazmat/).
          */
         public Builder dangerousGoods(DangerousGoodsObject dangerousGoods) {
@@ -2761,9 +2744,8 @@ public class ShipmentExtra {
 
         /**
          * Container for specifying the presence of dangerous materials. This is specific to USPS, and if any
-         * contents
-         * are provided, only certain USPS service levels will be eligible. For more information, see our
-         * [guide on hazardous or dangerous materials
+         * contents are provided, only certain USPS service levels will be eligible. For more information, see
+         * our [guide on hazardous or dangerous materials
          * shipping](https://docs.goshippo.com/docs/shipments/hazmat/).
          */
         public Builder dangerousGoods(Optional<? extends DangerousGoodsObject> dangerousGoods) {
@@ -2939,13 +2921,11 @@ public class ShipmentExtra {
 
         /**
          * To add 3rd party insurance powered by
-         * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/),
-         * specify `amount`, `content`, and `currency`. Alternatively, you can choose carrier provided
-         * insurance
-         * by additionally specifying `provider` (UPS, FedEx and OnTrac only).
+         * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/), specify `amount`, `content`,
+         * and `currency`. Alternatively, you can choose carrier provided insurance by additionally specifying
+         * `provider` (UPS, FedEx and OnTrac only).
          * 
-         * <p>If you do not want to add insurance
-         * to your shipment, do not set these parameters.
+         * <p>If you do not want to add insurance to your shipment, do not set these parameters.
          */
         public Builder insurance(Insurance insurance) {
             Utils.checkNotNull(insurance, "insurance");
@@ -2955,13 +2935,11 @@ public class ShipmentExtra {
 
         /**
          * To add 3rd party insurance powered by
-         * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/),
-         * specify `amount`, `content`, and `currency`. Alternatively, you can choose carrier provided
-         * insurance
-         * by additionally specifying `provider` (UPS, FedEx and OnTrac only).
+         * [XCover](https://docs.goshippo.com/docs/shipments/shippinginsurance/), specify `amount`, `content`,
+         * and `currency`. Alternatively, you can choose carrier provided insurance by additionally specifying
+         * `provider` (UPS, FedEx and OnTrac only).
          * 
-         * <p>If you do not want to add insurance
-         * to your shipment, do not set these parameters.
+         * <p>If you do not want to add insurance to your shipment, do not set these parameters.
          */
         public Builder insurance(Optional<? extends Insurance> insurance) {
             Utils.checkNotNull(insurance, "insurance");
@@ -3419,8 +3397,7 @@ public class ShipmentExtra {
 
         /**
          * Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS
-         * only)
-         * or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
+         * only) or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
          */
         public Builder signatureConfirmation(SignatureConfirmation signatureConfirmation) {
             Utils.checkNotNull(signatureConfirmation, "signatureConfirmation");
@@ -3430,8 +3407,7 @@ public class ShipmentExtra {
 
         /**
          * Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS
-         * only)
-         * or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
+         * only) or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
          */
         public Builder signatureConfirmation(Optional<? extends SignatureConfirmation> signatureConfirmation) {
             Utils.checkNotNull(signatureConfirmation, "signatureConfirmation");

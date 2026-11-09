@@ -18,8 +18,7 @@ import java.util.Optional;
  * CustomsTaxIdentification
  * 
  * <p>Tax identification that may be required to ship in certain countries. Typically used to assess
- * duties on
- * goods that are crossing a border.
+ * duties on goods that are crossing a border.
  */
 public class CustomsTaxIdentification {
     /**

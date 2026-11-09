@@ -150,8 +150,8 @@ public class CustomsDeclaration {
     private Optional<String> license;
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -165,10 +165,10 @@ public class CustomsDeclaration {
     private Optional<String> notes;
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("recipient_is_business")
@@ -190,8 +190,7 @@ public class CustomsDeclaration {
 
     /**
      * EEL / PFC type of the shipment. For most shipments from the US to CA, `NOEEI_30_36` is applicable;
-     * for most
-     * other shipments from the US, `NOEEI_30_37_a` is applicable.
+     * for most other shipments from the US, `NOEEI_30_37_a` is applicable.
      * Allowed values available [here](/shippoapi/public-api/customs-declaration-eelpfc)
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -543,8 +542,8 @@ public class CustomsDeclaration {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonIgnore
     public Optional<String> metadata() {
@@ -560,10 +559,10 @@ public class CustomsDeclaration {
     }
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     @JsonIgnore
     public Optional<Boolean> recipientIsBusiness() {
@@ -589,8 +588,7 @@ public class CustomsDeclaration {
 
     /**
      * EEL / PFC type of the shipment. For most shipments from the US to CA, `NOEEI_30_36` is applicable;
-     * for most
-     * other shipments from the US, `NOEEI_30_37_a` is applicable.
+     * for most other shipments from the US, `NOEEI_30_37_a` is applicable.
      * Allowed values available [here](/shippoapi/public-api/customs-declaration-eelpfc)
      */
     @JsonIgnore
@@ -1012,8 +1010,8 @@ public class CustomsDeclaration {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public CustomsDeclaration withMetadata(String metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -1023,8 +1021,8 @@ public class CustomsDeclaration {
 
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public CustomsDeclaration withMetadata(Optional<String> metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -1052,10 +1050,10 @@ public class CustomsDeclaration {
     }
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     public CustomsDeclaration withRecipientIsBusiness(boolean recipientIsBusiness) {
         Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
@@ -1065,10 +1063,10 @@ public class CustomsDeclaration {
 
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     public CustomsDeclaration withRecipientIsBusiness(Optional<Boolean> recipientIsBusiness) {
         Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
@@ -1107,8 +1105,7 @@ public class CustomsDeclaration {
 
     /**
      * EEL / PFC type of the shipment. For most shipments from the US to CA, `NOEEI_30_36` is applicable;
-     * for most
-     * other shipments from the US, `NOEEI_30_37_a` is applicable.
+     * for most other shipments from the US, `NOEEI_30_37_a` is applicable.
      * Allowed values available [here](/shippoapi/public-api/customs-declaration-eelpfc)
      */
     public CustomsDeclaration withEelPfc(String eelPfc) {
@@ -1120,8 +1117,7 @@ public class CustomsDeclaration {
 
     /**
      * EEL / PFC type of the shipment. For most shipments from the US to CA, `NOEEI_30_36` is applicable;
-     * for most
-     * other shipments from the US, `NOEEI_30_37_a` is applicable.
+     * for most other shipments from the US, `NOEEI_30_37_a` is applicable.
      * Allowed values available [here](/shippoapi/public-api/customs-declaration-eelpfc)
      */
     public CustomsDeclaration withEelPfc(Optional<String> eelPfc) {
@@ -1807,8 +1803,8 @@ public class CustomsDeclaration {
 
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(String metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1817,8 +1813,8 @@ public class CustomsDeclaration {
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(Optional<String> metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1847,10 +1843,10 @@ public class CustomsDeclaration {
 
 
         /**
-         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-         * declarations default to false when the field is not provided; declarations created before
-         * the field existed return null, which is treated as false. When true, EU product
-         * identifiers are not required on the customs items.
+         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+         * default to false when the field is not provided; declarations created before the field existed
+         * return null, which is treated as false. When true, EU product identifiers are not required on the
+         * customs items.
          */
         public Builder recipientIsBusiness(boolean recipientIsBusiness) {
             Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
@@ -1859,10 +1855,10 @@ public class CustomsDeclaration {
         }
 
         /**
-         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-         * declarations default to false when the field is not provided; declarations created before
-         * the field existed return null, which is treated as false. When true, EU product
-         * identifiers are not required on the customs items.
+         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+         * default to false when the field is not provided; declarations created before the field existed
+         * return null, which is treated as false. When true, EU product identifiers are not required on the
+         * customs items.
          */
         public Builder recipientIsBusiness(Optional<Boolean> recipientIsBusiness) {
             Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
@@ -1903,8 +1899,7 @@ public class CustomsDeclaration {
 
         /**
          * EEL / PFC type of the shipment. For most shipments from the US to CA, `NOEEI_30_36` is applicable;
-         * for most
-         * other shipments from the US, `NOEEI_30_37_a` is applicable.
+         * for most other shipments from the US, `NOEEI_30_37_a` is applicable.
          * Allowed values available [here](/shippoapi/public-api/customs-declaration-eelpfc)
          */
         public Builder eelPfc(String eelPfc) {
@@ -1915,8 +1910,7 @@ public class CustomsDeclaration {
 
         /**
          * EEL / PFC type of the shipment. For most shipments from the US to CA, `NOEEI_30_36` is applicable;
-         * for most
-         * other shipments from the US, `NOEEI_30_37_a` is applicable.
+         * for most other shipments from the US, `NOEEI_30_37_a` is applicable.
          * Allowed values available [here](/shippoapi/public-api/customs-declaration-eelpfc)
          */
         public Builder eelPfc(Optional<String> eelPfc) {

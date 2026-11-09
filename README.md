@@ -308,6 +308,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
         try {
@@ -398,6 +399,7 @@ public class Application {
         Shippo sdk = Shippo.builder()
                 .serverURL("https://api.goshippo.com")
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -440,6 +442,7 @@ public class Application {
         Shippo sdk = Shippo.builder()
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
             .build();
 
         ListAddressesResponse res = sdk.addresses().list()

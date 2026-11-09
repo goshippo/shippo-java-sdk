@@ -24,8 +24,7 @@ import java.util.Optional;
 
 /**
  * Customs declarations are relevant information, including one or multiple customs items, you need to
- * provide for
- * customs clearance for your international shipments.
+ * provide for customs clearance for your international shipments.
  */
 public class CustomsDeclarations {
     private static final Headers _headers = Headers.EMPTY;

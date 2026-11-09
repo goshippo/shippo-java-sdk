@@ -32,15 +32,12 @@ import java.util.Optional;
 
 /**
  * A user parcel template represents a package used for shipping that has preset dimensions and
- * attributes defined
- * by you. They are useful for capturing attributes of parcel-types you frequently use for shipping,
- * allowing
- * them to be defined once and then used for many shipments. These parcel templates can also be used
- * for live rates.
+ * attributes defined by you. They are useful for capturing attributes of parcel-types you frequently
+ * use for shipping, allowing them to be defined once and then used for many shipments. These parcel
+ * templates can also be used for live rates.
  * 
  * <p>User parcel templates can also be created using a carrier parcel template, where the dimensions will
- * be copied from
- * the carrier presets, but the weight can be configured by you.
+ * be copied from the carrier presets, but the weight can be configured by you.
  */
 public class UserParcelTemplates {
     private static final Headers _headers = Headers.EMPTY;
@@ -84,13 +81,11 @@ public class UserParcelTemplates {
      * 
      * <p>Creates a new user parcel template.
      * 
-     * <p>You can choose to create a
-     * parcel template using a preset carrier template as a starting point, or
-     * you can create an entirely custom one. To use a preset carrier template,
-     * pass in a unique template token from [this list](/shippoapi/public-api/parcel-templates)
-     * plus the weight fields (**weight** and **weight_unit**). Otherwise, omit
-     * the template field and pass the other fields, for the weight, length, height,
-     * and depth, as well as their units."
+     * <p>You can choose to create a parcel template using a preset carrier template as a starting point, or
+     * you can create an entirely custom one. To use a preset carrier template, pass in a unique template
+     * token from [this list](/shippoapi/public-api/parcel-templates) plus the weight fields (**weight**
+     * and **weight_unit**). Otherwise, omit the template field and pass the other fields, for the weight,
+     * length, height, and depth, as well as their units."
      * 
      * @return The call builder
      */
@@ -103,13 +98,11 @@ public class UserParcelTemplates {
      * 
      * <p>Creates a new user parcel template.
      * 
-     * <p>You can choose to create a
-     * parcel template using a preset carrier template as a starting point, or
-     * you can create an entirely custom one. To use a preset carrier template,
-     * pass in a unique template token from [this list](/shippoapi/public-api/parcel-templates)
-     * plus the weight fields (**weight** and **weight_unit**). Otherwise, omit
-     * the template field and pass the other fields, for the weight, length, height,
-     * and depth, as well as their units."
+     * <p>You can choose to create a parcel template using a preset carrier template as a starting point, or
+     * you can create an entirely custom one. To use a preset carrier template, pass in a unique template
+     * token from [this list](/shippoapi/public-api/parcel-templates) plus the weight fields (**weight**
+     * and **weight_unit**). Otherwise, omit the template field and pass the other fields, for the weight,
+     * length, height, and depth, as well as their units."
      * 
      * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
@@ -155,8 +148,8 @@ public class UserParcelTemplates {
     /**
      * Retrieves a user parcel template
      * 
-     * <p>Returns the parcel template information for a specific user parcel
-     * template, identified by the object ID.
+     * <p>Returns the parcel template information for a specific user parcel template, identified by the
+     * object ID.
      * 
      * @return The call builder
      */
@@ -167,8 +160,8 @@ public class UserParcelTemplates {
     /**
      * Retrieves a user parcel template
      * 
-     * <p>Returns the parcel template information for a specific user parcel
-     * template, identified by the object ID.
+     * <p>Returns the parcel template information for a specific user parcel template, identified by the
+     * object ID.
      * 
      * @param userParcelTemplateObjectId Object ID of the user parcel template
      * @return The response from the API call

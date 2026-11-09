@@ -43,8 +43,8 @@ public class Transaction {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label_file_type")
@@ -53,6 +53,14 @@ public class Transaction {
     /**
      * A URL pointing directly to the label in the format you've set in your settings.
      * A value will only be returned if the Transactions has been processed successfully.
+     * The URL expires. The `Expires` query parameter gives the expiration time as a Unix timestamp in
+     * seconds. Before you download the label, compare `Expires` with the current time.
+     * 
+     * <p>If `Expires` is in the past, call `GET /transactions/{TransactionId}` to get a new `label_url`. If
+     * the `Expires` value on the new `label_url` is also in the past, the label file is no longer
+     * available. This occurs for labels created more than one year ago.
+     * 
+     * <p>Do not retry.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label_url")
@@ -124,8 +132,8 @@ public class Transaction {
 
     /**
      * ID of the Rate object for which a Label has to be obtained.
-     * If you purchase a label by calling the transaction endpoint without a rate (instalabel),
-     * this field will be a simplified Rate object in the Transaction model returned from the POST request.
+     * If you purchase a label by calling the transaction endpoint without a rate (instalabel), this field
+     * will be a simplified Rate object in the Transaction model returned from the POST request.
      * Note, only rates less than 7 days old can be purchased to ensure up-to-date pricing.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -270,8 +278,8 @@ public class Transaction {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -282,6 +290,14 @@ public class Transaction {
     /**
      * A URL pointing directly to the label in the format you've set in your settings.
      * A value will only be returned if the Transactions has been processed successfully.
+     * The URL expires. The `Expires` query parameter gives the expiration time as a Unix timestamp in
+     * seconds. Before you download the label, compare `Expires` with the current time.
+     * 
+     * <p>If `Expires` is in the past, call `GET /transactions/{TransactionId}` to get a new `label_url`. If
+     * the `Expires` value on the new `label_url` is also in the past, the label file is no longer
+     * available. This occurs for labels created more than one year ago.
+     * 
+     * <p>Do not retry.
      */
     @JsonIgnore
     public Optional<String> labelUrl() {
@@ -364,8 +380,8 @@ public class Transaction {
 
     /**
      * ID of the Rate object for which a Label has to be obtained.
-     * If you purchase a label by calling the transaction endpoint without a rate (instalabel),
-     * this field will be a simplified Rate object in the Transaction model returned from the POST request.
+     * If you purchase a label by calling the transaction endpoint without a rate (instalabel), this field
+     * will be a simplified Rate object in the Transaction model returned from the POST request.
      * Note, only rates less than 7 days old can be purchased to ensure up-to-date pricing.
      */
     @SuppressWarnings("unchecked")
@@ -480,8 +496,8 @@ public class Transaction {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     public Transaction withLabelFileType(LabelFileTypeEnum labelFileType) {
         Utils.checkNotNull(labelFileType, "labelFileType");
@@ -492,8 +508,8 @@ public class Transaction {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     public Transaction withLabelFileType(Optional<? extends LabelFileTypeEnum> labelFileType) {
         Utils.checkNotNull(labelFileType, "labelFileType");
@@ -504,6 +520,14 @@ public class Transaction {
     /**
      * A URL pointing directly to the label in the format you've set in your settings.
      * A value will only be returned if the Transactions has been processed successfully.
+     * The URL expires. The `Expires` query parameter gives the expiration time as a Unix timestamp in
+     * seconds. Before you download the label, compare `Expires` with the current time.
+     * 
+     * <p>If `Expires` is in the past, call `GET /transactions/{TransactionId}` to get a new `label_url`. If
+     * the `Expires` value on the new `label_url` is also in the past, the label file is no longer
+     * available. This occurs for labels created more than one year ago.
+     * 
+     * <p>Do not retry.
      */
     public Transaction withLabelUrl(String labelUrl) {
         Utils.checkNotNull(labelUrl, "labelUrl");
@@ -515,6 +539,14 @@ public class Transaction {
     /**
      * A URL pointing directly to the label in the format you've set in your settings.
      * A value will only be returned if the Transactions has been processed successfully.
+     * The URL expires. The `Expires` query parameter gives the expiration time as a Unix timestamp in
+     * seconds. Before you download the label, compare `Expires` with the current time.
+     * 
+     * <p>If `Expires` is in the past, call `GET /transactions/{TransactionId}` to get a new `label_url`. If
+     * the `Expires` value on the new `label_url` is also in the past, the label file is no longer
+     * available. This occurs for labels created more than one year ago.
+     * 
+     * <p>Do not retry.
      */
     public Transaction withLabelUrl(Optional<String> labelUrl) {
         Utils.checkNotNull(labelUrl, "labelUrl");
@@ -695,8 +727,8 @@ public class Transaction {
 
     /**
      * ID of the Rate object for which a Label has to be obtained.
-     * If you purchase a label by calling the transaction endpoint without a rate (instalabel),
-     * this field will be a simplified Rate object in the Transaction model returned from the POST request.
+     * If you purchase a label by calling the transaction endpoint without a rate (instalabel), this field
+     * will be a simplified Rate object in the Transaction model returned from the POST request.
      * Note, only rates less than 7 days old can be purchased to ensure up-to-date pricing.
      */
     public Transaction withRate(TransactionRate rate) {
@@ -708,8 +740,8 @@ public class Transaction {
 
     /**
      * ID of the Rate object for which a Label has to be obtained.
-     * If you purchase a label by calling the transaction endpoint without a rate (instalabel),
-     * this field will be a simplified Rate object in the Transaction model returned from the POST request.
+     * If you purchase a label by calling the transaction endpoint without a rate (instalabel), this field
+     * will be a simplified Rate object in the Transaction model returned from the POST request.
      * Note, only rates less than 7 days old can be purchased to ensure up-to-date pricing.
      */
     public Transaction withRate(Optional<? extends TransactionRate> rate) {
@@ -993,8 +1025,8 @@ public class Transaction {
 
         /**
          * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-         * will use the default format set from
-         * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+         * will use the default format set from [the Shippo
+         * dashboard.](https://apps.goshippo.com/settings/labels)
          */
         public Builder labelFileType(LabelFileTypeEnum labelFileType) {
             Utils.checkNotNull(labelFileType, "labelFileType");
@@ -1004,8 +1036,8 @@ public class Transaction {
 
         /**
          * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-         * will use the default format set from
-         * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+         * will use the default format set from [the Shippo
+         * dashboard.](https://apps.goshippo.com/settings/labels)
          */
         public Builder labelFileType(Optional<? extends LabelFileTypeEnum> labelFileType) {
             Utils.checkNotNull(labelFileType, "labelFileType");
@@ -1017,6 +1049,14 @@ public class Transaction {
         /**
          * A URL pointing directly to the label in the format you've set in your settings.
          * A value will only be returned if the Transactions has been processed successfully.
+         * The URL expires. The `Expires` query parameter gives the expiration time as a Unix timestamp in
+         * seconds. Before you download the label, compare `Expires` with the current time.
+         * 
+         * <p>If `Expires` is in the past, call `GET /transactions/{TransactionId}` to get a new `label_url`. If
+         * the `Expires` value on the new `label_url` is also in the past, the label file is no longer
+         * available. This occurs for labels created more than one year ago.
+         * 
+         * <p>Do not retry.
          */
         public Builder labelUrl(String labelUrl) {
             Utils.checkNotNull(labelUrl, "labelUrl");
@@ -1027,6 +1067,14 @@ public class Transaction {
         /**
          * A URL pointing directly to the label in the format you've set in your settings.
          * A value will only be returned if the Transactions has been processed successfully.
+         * The URL expires. The `Expires` query parameter gives the expiration time as a Unix timestamp in
+         * seconds. Before you download the label, compare `Expires` with the current time.
+         * 
+         * <p>If `Expires` is in the past, call `GET /transactions/{TransactionId}` to get a new `label_url`. If
+         * the `Expires` value on the new `label_url` is also in the past, the label file is no longer
+         * available. This occurs for labels created more than one year ago.
+         * 
+         * <p>Do not retry.
          */
         public Builder labelUrl(Optional<String> labelUrl) {
             Utils.checkNotNull(labelUrl, "labelUrl");
@@ -1208,8 +1256,8 @@ public class Transaction {
 
         /**
          * ID of the Rate object for which a Label has to be obtained.
-         * If you purchase a label by calling the transaction endpoint without a rate (instalabel),
-         * this field will be a simplified Rate object in the Transaction model returned from the POST request.
+         * If you purchase a label by calling the transaction endpoint without a rate (instalabel), this field
+         * will be a simplified Rate object in the Transaction model returned from the POST request.
          * Note, only rates less than 7 days old can be purchased to ensure up-to-date pricing.
          */
         public Builder rate(TransactionRate rate) {
@@ -1220,8 +1268,8 @@ public class Transaction {
 
         /**
          * ID of the Rate object for which a Label has to be obtained.
-         * If you purchase a label by calling the transaction endpoint without a rate (instalabel),
-         * this field will be a simplified Rate object in the Transaction model returned from the POST request.
+         * If you purchase a label by calling the transaction endpoint without a rate (instalabel), this field
+         * will be a simplified Rate object in the Transaction model returned from the POST request.
          * Note, only rates less than 7 days old can be purchased to ensure up-to-date pricing.
          */
         public Builder rate(Optional<? extends TransactionRate> rate) {

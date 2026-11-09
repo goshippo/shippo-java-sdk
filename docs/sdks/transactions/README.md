@@ -46,6 +46,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -106,6 +107,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -147,6 +149,7 @@ public class Application {
 ## get
 
 Returns an existing transaction using an object ID.
+Each call returns a new `label_url` with a new expiration time. Use this endpoint to get a new `label_url` when the `Expires` value on the current `label_url` is in the past. Send one call for each transaction.
 
 ### Example Usage
 
@@ -164,6 +167,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 

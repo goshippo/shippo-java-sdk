@@ -20,8 +20,8 @@ import java.util.Optional;
  * AddressValidationResults
  * 
  * <p>Object that contains information regarding if an address had been validated or not. Also contains
- * any messages
- * generated during validation. Children keys are `is_valid`(boolean) and `messages`(array).
+ * any messages generated during validation. Children keys are `is_valid`(boolean) and
+ * `messages`(array).
  */
 public class AddressValidationResults {
 

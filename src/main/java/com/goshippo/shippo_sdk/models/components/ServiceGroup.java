@@ -25,11 +25,10 @@ public class ServiceGroup {
     private String description;
 
     /**
-     * String representation of an amount to be returned as the flat rate
-     * if 1. The service group is of type `LIVE_RATE` and no matching rates
-     * were found; or 2. The service group is of type `FLAT_RATE`. Either
-     * integers or decimals are accepted. Required unless type is
-     * `FREE_SHIPPING`
+     * String representation of an amount to be returned as the flat rate if 1. The service group is of
+     * type `LIVE_RATE` and no matching rates were found; or 2. The service group is of type `FLAT_RATE`.
+     * 
+     * <p>Either integers or decimals are accepted. Required unless type is `FREE_SHIPPING`
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flat_rate")
@@ -162,11 +161,10 @@ public class ServiceGroup {
     }
 
     /**
-     * String representation of an amount to be returned as the flat rate
-     * if 1. The service group is of type `LIVE_RATE` and no matching rates
-     * were found; or 2. The service group is of type `FLAT_RATE`. Either
-     * integers or decimals are accepted. Required unless type is
-     * `FREE_SHIPPING`
+     * String representation of an amount to be returned as the flat rate if 1. The service group is of
+     * type `LIVE_RATE` and no matching rates were found; or 2. The service group is of type `FLAT_RATE`.
+     * 
+     * <p>Either integers or decimals are accepted. Required unless type is `FREE_SHIPPING`
      */
     @JsonIgnore
     public Optional<String> flatRate() {
@@ -269,11 +267,10 @@ public class ServiceGroup {
     }
 
     /**
-     * String representation of an amount to be returned as the flat rate
-     * if 1. The service group is of type `LIVE_RATE` and no matching rates
-     * were found; or 2. The service group is of type `FLAT_RATE`. Either
-     * integers or decimals are accepted. Required unless type is
-     * `FREE_SHIPPING`
+     * String representation of an amount to be returned as the flat rate if 1. The service group is of
+     * type `LIVE_RATE` and no matching rates were found; or 2. The service group is of type `FLAT_RATE`.
+     * 
+     * <p>Either integers or decimals are accepted. Required unless type is `FREE_SHIPPING`
      */
     public ServiceGroup withFlatRate(String flatRate) {
         Utils.checkNotNull(flatRate, "flatRate");
@@ -283,11 +280,10 @@ public class ServiceGroup {
 
 
     /**
-     * String representation of an amount to be returned as the flat rate
-     * if 1. The service group is of type `LIVE_RATE` and no matching rates
-     * were found; or 2. The service group is of type `FLAT_RATE`. Either
-     * integers or decimals are accepted. Required unless type is
-     * `FREE_SHIPPING`
+     * String representation of an amount to be returned as the flat rate if 1. The service group is of
+     * type `LIVE_RATE` and no matching rates were found; or 2. The service group is of type `FLAT_RATE`.
+     * 
+     * <p>Either integers or decimals are accepted. Required unless type is `FREE_SHIPPING`
      */
     public ServiceGroup withFlatRate(Optional<String> flatRate) {
         Utils.checkNotNull(flatRate, "flatRate");
@@ -529,11 +525,10 @@ public class ServiceGroup {
 
 
         /**
-         * String representation of an amount to be returned as the flat rate
-         * if 1. The service group is of type `LIVE_RATE` and no matching rates
-         * were found; or 2. The service group is of type `FLAT_RATE`. Either
-         * integers or decimals are accepted. Required unless type is
-         * `FREE_SHIPPING`
+         * String representation of an amount to be returned as the flat rate if 1. The service group is of
+         * type `LIVE_RATE` and no matching rates were found; or 2. The service group is of type `FLAT_RATE`.
+         * 
+         * <p>Either integers or decimals are accepted. Required unless type is `FREE_SHIPPING`
          */
         public Builder flatRate(String flatRate) {
             Utils.checkNotNull(flatRate, "flatRate");
@@ -542,11 +537,10 @@ public class ServiceGroup {
         }
 
         /**
-         * String representation of an amount to be returned as the flat rate
-         * if 1. The service group is of type `LIVE_RATE` and no matching rates
-         * were found; or 2. The service group is of type `FLAT_RATE`. Either
-         * integers or decimals are accepted. Required unless type is
-         * `FREE_SHIPPING`
+         * String representation of an amount to be returned as the flat rate if 1. The service group is of
+         * type `LIVE_RATE` and no matching rates were found; or 2. The service group is of type `FLAT_RATE`.
+         * 
+         * <p>Either integers or decimals are accepted. Required unless type is `FREE_SHIPPING`
          */
         public Builder flatRate(Optional<String> flatRate) {
             Utils.checkNotNull(flatRate, "flatRate");

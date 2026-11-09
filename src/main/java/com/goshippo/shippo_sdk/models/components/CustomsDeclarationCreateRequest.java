@@ -143,8 +143,8 @@ public class CustomsDeclarationCreateRequest {
     private Optional<String> license;
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -158,10 +158,10 @@ public class CustomsDeclarationCreateRequest {
     private Optional<String> notes;
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("recipient_is_business")
@@ -442,8 +442,8 @@ public class CustomsDeclarationCreateRequest {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonIgnore
     public Optional<String> metadata() {
@@ -459,10 +459,10 @@ public class CustomsDeclarationCreateRequest {
     }
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     @JsonIgnore
     public Optional<Boolean> recipientIsBusiness() {
@@ -818,8 +818,8 @@ public class CustomsDeclarationCreateRequest {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public CustomsDeclarationCreateRequest withMetadata(String metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -829,8 +829,8 @@ public class CustomsDeclarationCreateRequest {
 
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public CustomsDeclarationCreateRequest withMetadata(Optional<String> metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -858,10 +858,10 @@ public class CustomsDeclarationCreateRequest {
     }
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     public CustomsDeclarationCreateRequest withRecipientIsBusiness(boolean recipientIsBusiness) {
         Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
@@ -871,10 +871,10 @@ public class CustomsDeclarationCreateRequest {
 
 
     /**
-     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-     * declarations default to false when the field is not provided; declarations created before
-     * the field existed return null, which is treated as false. When true, EU product
-     * identifiers are not required on the customs items.
+     * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+     * default to false when the field is not provided; declarations created before the field existed
+     * return null, which is treated as false. When true, EU product identifiers are not required on the
+     * customs items.
      */
     public CustomsDeclarationCreateRequest withRecipientIsBusiness(Optional<Boolean> recipientIsBusiness) {
         Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
@@ -1406,8 +1406,8 @@ public class CustomsDeclarationCreateRequest {
 
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(String metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1416,8 +1416,8 @@ public class CustomsDeclarationCreateRequest {
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(Optional<String> metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1446,10 +1446,10 @@ public class CustomsDeclarationCreateRequest {
 
 
         /**
-         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-         * declarations default to false when the field is not provided; declarations created before
-         * the field existed return null, which is treated as false. When true, EU product
-         * identifiers are not required on the customs items.
+         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+         * default to false when the field is not provided; declarations created before the field existed
+         * return null, which is treated as false. When true, EU product identifiers are not required on the
+         * customs items.
          */
         public Builder recipientIsBusiness(boolean recipientIsBusiness) {
             Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
@@ -1458,10 +1458,10 @@ public class CustomsDeclarationCreateRequest {
         }
 
         /**
-         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created
-         * declarations default to false when the field is not provided; declarations created before
-         * the field existed return null, which is treated as false. When true, EU product
-         * identifiers are not required on the customs items.
+         * Indicates the shipment goes to a business (B2B) rather than a consumer. Newly created declarations
+         * default to false when the field is not provided; declarations created before the field existed
+         * return null, which is treated as false. When true, EU product identifiers are not required on the
+         * customs items.
          */
         public Builder recipientIsBusiness(Optional<Boolean> recipientIsBusiness) {
             Utils.checkNotNull(recipientIsBusiness, "recipientIsBusiness");
