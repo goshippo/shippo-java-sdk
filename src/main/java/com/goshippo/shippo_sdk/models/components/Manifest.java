@@ -32,8 +32,8 @@ public class Manifest {
     private String shipmentDate;
 
     /**
-     * IDs transactions to use. If you set this to null or not send this parameter,
-     * Shippo will automatically assign all applicable transactions.
+     * IDs transactions to use. If you set this to null or not send this parameter, Shippo will
+     * automatically assign all applicable transactions.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("transactions")
@@ -160,8 +160,8 @@ public class Manifest {
     }
 
     /**
-     * IDs transactions to use. If you set this to null or not send this parameter,
-     * Shippo will automatically assign all applicable transactions.
+     * IDs transactions to use. If you set this to null or not send this parameter, Shippo will
+     * automatically assign all applicable transactions.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -260,8 +260,8 @@ public class Manifest {
     }
 
     /**
-     * IDs transactions to use. If you set this to null or not send this parameter,
-     * Shippo will automatically assign all applicable transactions.
+     * IDs transactions to use. If you set this to null or not send this parameter, Shippo will
+     * automatically assign all applicable transactions.
      */
     public Manifest withTransactions(List<String> transactions) {
         Utils.checkNotNull(transactions, "transactions");
@@ -271,8 +271,8 @@ public class Manifest {
 
 
     /**
-     * IDs transactions to use. If you set this to null or not send this parameter,
-     * Shippo will automatically assign all applicable transactions.
+     * IDs transactions to use. If you set this to null or not send this parameter, Shippo will
+     * automatically assign all applicable transactions.
      */
     public Manifest withTransactions(Optional<? extends List<String>> transactions) {
         Utils.checkNotNull(transactions, "transactions");
@@ -463,8 +463,8 @@ public class Manifest {
 
 
         /**
-         * IDs transactions to use. If you set this to null or not send this parameter,
-         * Shippo will automatically assign all applicable transactions.
+         * IDs transactions to use. If you set this to null or not send this parameter, Shippo will
+         * automatically assign all applicable transactions.
          */
         public Builder transactions(List<String> transactions) {
             Utils.checkNotNull(transactions, "transactions");
@@ -473,8 +473,8 @@ public class Manifest {
         }
 
         /**
-         * IDs transactions to use. If you set this to null or not send this parameter,
-         * Shippo will automatically assign all applicable transactions.
+         * IDs transactions to use. If you set this to null or not send this parameter, Shippo will
+         * automatically assign all applicable transactions.
          */
         public Builder transactions(Optional<? extends List<String>> transactions) {
             Utils.checkNotNull(transactions, "transactions");

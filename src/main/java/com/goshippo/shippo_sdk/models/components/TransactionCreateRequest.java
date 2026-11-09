@@ -26,8 +26,8 @@ public class TransactionCreateRequest {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label_file_type")
@@ -79,8 +79,8 @@ public class TransactionCreateRequest {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -123,8 +123,8 @@ public class TransactionCreateRequest {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     public TransactionCreateRequest withLabelFileType(LabelFileTypeEnum labelFileType) {
         Utils.checkNotNull(labelFileType, "labelFileType");
@@ -135,8 +135,8 @@ public class TransactionCreateRequest {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     public TransactionCreateRequest withLabelFileType(Optional<? extends LabelFileTypeEnum> labelFileType) {
         Utils.checkNotNull(labelFileType, "labelFileType");
@@ -243,8 +243,8 @@ public class TransactionCreateRequest {
 
         /**
          * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-         * will use the default format set from
-         * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+         * will use the default format set from [the Shippo
+         * dashboard.](https://apps.goshippo.com/settings/labels)
          */
         public Builder labelFileType(LabelFileTypeEnum labelFileType) {
             Utils.checkNotNull(labelFileType, "labelFileType");
@@ -254,8 +254,8 @@ public class TransactionCreateRequest {
 
         /**
          * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-         * will use the default format set from
-         * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+         * will use the default format set from [the Shippo
+         * dashboard.](https://apps.goshippo.com/settings/labels)
          */
         public Builder labelFileType(Optional<? extends LabelFileTypeEnum> labelFileType) {
             Utils.checkNotNull(labelFileType, "labelFileType");

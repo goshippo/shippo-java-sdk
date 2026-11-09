@@ -41,6 +41,11 @@ public class ConnectExistingOwnAccountRequestParameters {
         Utils.checkNotNull(value, "value");
         return new ConnectExistingOwnAccountRequestParameters(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
+
+    public static ConnectExistingOwnAccountRequestParameters of(UPSConnectExistingOwnAccountStreamlinedParameters value) {
+        Utils.checkNotNull(value, "value");
+        return new ConnectExistingOwnAccountRequestParameters(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:
@@ -48,6 +53,7 @@ public class ConnectExistingOwnAccountRequestParameters {
      * <li>{@code java.util.Map<java.lang.String, java.lang.Object>}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.FedExConnectExistingOwnAccountParameters}</li>
      * <li>{@code com.goshippo.shippo_sdk.models.components.UPSConnectExistingOwnAccountParameters}</li>
+     * <li>{@code com.goshippo.shippo_sdk.models.components.UPSConnectExistingOwnAccountStreamlinedParameters}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -89,7 +95,8 @@ public class ConnectExistingOwnAccountRequestParameters {
             super(ConnectExistingOwnAccountRequestParameters.class, false,
                   TypeReferenceWithShape.of(new TypeReference<Map<String, Object>>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<FedExConnectExistingOwnAccountParameters>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<UPSConnectExistingOwnAccountParameters>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<UPSConnectExistingOwnAccountParameters>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<UPSConnectExistingOwnAccountStreamlinedParameters>() {}, JsonShape.DEFAULT));
         }
     }
     

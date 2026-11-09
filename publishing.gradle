@@ -45,10 +45,10 @@ afterEvaluate {
                     ]
                     name = config.name
                     description = config.description
-                    url = 'https://https://github.com/goshippo/shippo-java-sdk'
+                    url = 'https://github.com/goshippo/shippo-java-sdk'
                     scm {
                         url = 'https://github.com/goshippo/shippo-java-sdk'
-                        connection = 'scm:git:ssh://git@https://github.com/goshippo/shippo-java-sdk.git'
+                        connection = 'scm:git:ssh://git@github.com/goshippo/shippo-java-sdk.git'
                     }
                     licenses {
                         license {

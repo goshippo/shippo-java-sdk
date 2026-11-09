@@ -22,9 +22,9 @@ import java.util.Optional;
 public class CustomerReference {
     /**
      * Custom prefix for customer reference field (ZPL labels only). Up to 11 characters, including
-     * trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * trailing spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
@@ -71,9 +71,9 @@ public class CustomerReference {
 
     /**
      * Custom prefix for customer reference field (ZPL labels only). Up to 11 characters, including
-     * trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * trailing spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonIgnore
     public Optional<String> prefix() {
@@ -111,9 +111,9 @@ public class CustomerReference {
 
     /**
      * Custom prefix for customer reference field (ZPL labels only). Up to 11 characters, including
-     * trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * trailing spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public CustomerReference withPrefix(String prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -124,9 +124,9 @@ public class CustomerReference {
 
     /**
      * Custom prefix for customer reference field (ZPL labels only). Up to 11 characters, including
-     * trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * trailing spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public CustomerReference withPrefix(Optional<String> prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -233,9 +233,9 @@ public class CustomerReference {
 
         /**
          * Custom prefix for customer reference field (ZPL labels only). Up to 11 characters, including
-         * trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * trailing spaces. Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(String prefix) {
             Utils.checkNotNull(prefix, "prefix");
@@ -245,9 +245,9 @@ public class CustomerReference {
 
         /**
          * Custom prefix for customer reference field (ZPL labels only). Up to 11 characters, including
-         * trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * trailing spaces. Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(Optional<String> prefix) {
             Utils.checkNotNull(prefix, "prefix");

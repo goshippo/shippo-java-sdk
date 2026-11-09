@@ -36,8 +36,7 @@ public class ShipmentCreateRequest {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("shipment_date")
@@ -67,8 +66,8 @@ public class ShipmentCreateRequest {
     private Optional<Boolean> async;
 
     /**
-     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter
-     * the returned rates. If set, only rates from these carriers will be returned.
+     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter the
+     * returned rates. If set, only rates from these carriers will be returned.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("carrier_accounts")
@@ -150,8 +149,7 @@ public class ShipmentCreateRequest {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     @JsonIgnore
     public Optional<String> shipmentDate() {
@@ -186,8 +184,8 @@ public class ShipmentCreateRequest {
     }
 
     /**
-     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter
-     * the returned rates. If set, only rates from these carriers will be returned.
+     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter the
+     * returned rates. If set, only rates from these carriers will be returned.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -256,8 +254,7 @@ public class ShipmentCreateRequest {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     public ShipmentCreateRequest withShipmentDate(String shipmentDate) {
         Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -269,8 +266,7 @@ public class ShipmentCreateRequest {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     public ShipmentCreateRequest withShipmentDate(Optional<String> shipmentDate) {
         Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -330,8 +326,8 @@ public class ShipmentCreateRequest {
     }
 
     /**
-     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter
-     * the returned rates. If set, only rates from these carriers will be returned.
+     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter the
+     * returned rates. If set, only rates from these carriers will be returned.
      */
     public ShipmentCreateRequest withCarrierAccounts(List<String> carrierAccounts) {
         Utils.checkNotNull(carrierAccounts, "carrierAccounts");
@@ -341,8 +337,8 @@ public class ShipmentCreateRequest {
 
 
     /**
-     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter
-     * the returned rates. If set, only rates from these carriers will be returned.
+     * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter the
+     * returned rates. If set, only rates from these carriers will be returned.
      */
     public ShipmentCreateRequest withCarrierAccounts(Optional<? extends List<String>> carrierAccounts) {
         Utils.checkNotNull(carrierAccounts, "carrierAccounts");
@@ -481,8 +477,7 @@ public class ShipmentCreateRequest {
         /**
          * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
          * Defaults to current date and time if no value is provided. Please note that some carriers require
-         * this value to
-         * be in the future, on a working day, or similar.
+         * this value to be in the future, on a working day, or similar.
          */
         public Builder shipmentDate(String shipmentDate) {
             Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -493,8 +488,7 @@ public class ShipmentCreateRequest {
         /**
          * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
          * Defaults to current date and time if no value is provided. Please note that some carriers require
-         * this value to
-         * be in the future, on a working day, or similar.
+         * this value to be in the future, on a working day, or similar.
          */
         public Builder shipmentDate(Optional<String> shipmentDate) {
             Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -557,8 +551,8 @@ public class ShipmentCreateRequest {
 
 
         /**
-         * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter
-         * the returned rates. If set, only rates from these carriers will be returned.
+         * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter the
+         * returned rates. If set, only rates from these carriers will be returned.
          */
         public Builder carrierAccounts(List<String> carrierAccounts) {
             Utils.checkNotNull(carrierAccounts, "carrierAccounts");
@@ -567,8 +561,8 @@ public class ShipmentCreateRequest {
         }
 
         /**
-         * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter
-         * the returned rates. If set, only rates from these carriers will be returned.
+         * List of [Carrier Accounts](/shippoapi/public-api/carrier-accounts) `object_id`s used to filter the
+         * returned rates. If set, only rates from these carriers will be returned.
          */
         public Builder carrierAccounts(Optional<? extends List<String>> carrierAccounts) {
             Utils.checkNotNull(carrierAccounts, "carrierAccounts");

@@ -34,8 +34,8 @@ public class Pickup {
     private Location location;
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -232,8 +232,8 @@ public class Pickup {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonIgnore
     public Optional<String> metadata() {
@@ -388,8 +388,8 @@ public class Pickup {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public Pickup withMetadata(String metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -399,8 +399,8 @@ public class Pickup {
 
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public Pickup withMetadata(Optional<String> metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -785,8 +785,8 @@ public class Pickup {
 
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(String metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -795,8 +795,8 @@ public class Pickup {
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(Optional<String> metadata) {
             Utils.checkNotNull(metadata, "metadata");

@@ -39,6 +39,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -95,6 +96,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -166,6 +168,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -219,6 +222,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -289,6 +293,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -346,6 +351,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 
@@ -402,6 +408,7 @@ public class Application {
 
         Shippo sdk = Shippo.builder()
                 .shippoApiVersion("2018-02-08")
+                .shippoAccountId("<id>")
                 .apiKeyHeader(System.getenv().getOrDefault("API_KEY_HEADER", ""))
             .build();
 

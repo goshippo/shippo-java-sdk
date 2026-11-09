@@ -20,8 +20,7 @@ import java.util.Optional;
  * LineItem
  * 
  * <p>Line Items, and their corresponding abstract Products and Variants, might be exposed as a separate
- * resource
- * in the future. Currently it's a nested object within the order resource.
+ * resource in the future. Currently it's a nested object within the order resource.
  * 
  * <p>A line item is an individual object in an order. For example, if your order contains a t-shirt,
  * shorts, and a jacket, each item is represented by a line item.
@@ -56,7 +55,9 @@ public class LineItem {
     /**
      * The date and time this item needs to be fulfilled by, i.e. by when the shipping label needs to be
      * created and handed over to the carrier. This value is used by some platforms such as eBay to measure
-     * a seller's handling time and performance. It will be displayed in the Shippo dashboard.
+     * a seller's handling time and performance.
+     * 
+     * <p>It will be displayed in the Shippo dashboard.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_ship_time")
@@ -100,8 +101,8 @@ public class LineItem {
     private Optional<String> variantTitle;
 
     /**
-     * Total weight of this/these item(s). Instead of specifying the weight of all items,
-     * you can also set the `total_weight` value of the order object.
+     * Total weight of this/these item(s). Instead of specifying the weight of all items, you can also set
+     * the `total_weight` value of the order object.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("weight")
@@ -200,7 +201,9 @@ public class LineItem {
     /**
      * The date and time this item needs to be fulfilled by, i.e. by when the shipping label needs to be
      * created and handed over to the carrier. This value is used by some platforms such as eBay to measure
-     * a seller's handling time and performance. It will be displayed in the Shippo dashboard.
+     * a seller's handling time and performance.
+     * 
+     * <p>It will be displayed in the Shippo dashboard.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> maxShipTime() {
@@ -250,8 +253,8 @@ public class LineItem {
     }
 
     /**
-     * Total weight of this/these item(s). Instead of specifying the weight of all items,
-     * you can also set the `total_weight` value of the order object.
+     * Total weight of this/these item(s). Instead of specifying the weight of all items, you can also set
+     * the `total_weight` value of the order object.
      */
     @JsonIgnore
     public Optional<String> weight() {
@@ -350,7 +353,9 @@ public class LineItem {
     /**
      * The date and time this item needs to be fulfilled by, i.e. by when the shipping label needs to be
      * created and handed over to the carrier. This value is used by some platforms such as eBay to measure
-     * a seller's handling time and performance. It will be displayed in the Shippo dashboard.
+     * a seller's handling time and performance.
+     * 
+     * <p>It will be displayed in the Shippo dashboard.
      */
     public LineItem withMaxShipTime(OffsetDateTime maxShipTime) {
         Utils.checkNotNull(maxShipTime, "maxShipTime");
@@ -362,7 +367,9 @@ public class LineItem {
     /**
      * The date and time this item needs to be fulfilled by, i.e. by when the shipping label needs to be
      * created and handed over to the carrier. This value is used by some platforms such as eBay to measure
-     * a seller's handling time and performance. It will be displayed in the Shippo dashboard.
+     * a seller's handling time and performance.
+     * 
+     * <p>It will be displayed in the Shippo dashboard.
      */
     public LineItem withMaxShipTime(Optional<OffsetDateTime> maxShipTime) {
         Utils.checkNotNull(maxShipTime, "maxShipTime");
@@ -470,8 +477,8 @@ public class LineItem {
     }
 
     /**
-     * Total weight of this/these item(s). Instead of specifying the weight of all items,
-     * you can also set the `total_weight` value of the order object.
+     * Total weight of this/these item(s). Instead of specifying the weight of all items, you can also set
+     * the `total_weight` value of the order object.
      */
     public LineItem withWeight(String weight) {
         Utils.checkNotNull(weight, "weight");
@@ -481,8 +488,8 @@ public class LineItem {
 
 
     /**
-     * Total weight of this/these item(s). Instead of specifying the weight of all items,
-     * you can also set the `total_weight` value of the order object.
+     * Total weight of this/these item(s). Instead of specifying the weight of all items, you can also set
+     * the `total_weight` value of the order object.
      */
     public LineItem withWeight(Optional<String> weight) {
         Utils.checkNotNull(weight, "weight");
@@ -680,7 +687,9 @@ public class LineItem {
         /**
          * The date and time this item needs to be fulfilled by, i.e. by when the shipping label needs to be
          * created and handed over to the carrier. This value is used by some platforms such as eBay to measure
-         * a seller's handling time and performance. It will be displayed in the Shippo dashboard.
+         * a seller's handling time and performance.
+         * 
+         * <p>It will be displayed in the Shippo dashboard.
          */
         public Builder maxShipTime(OffsetDateTime maxShipTime) {
             Utils.checkNotNull(maxShipTime, "maxShipTime");
@@ -691,7 +700,9 @@ public class LineItem {
         /**
          * The date and time this item needs to be fulfilled by, i.e. by when the shipping label needs to be
          * created and handed over to the carrier. This value is used by some platforms such as eBay to measure
-         * a seller's handling time and performance. It will be displayed in the Shippo dashboard.
+         * a seller's handling time and performance.
+         * 
+         * <p>It will be displayed in the Shippo dashboard.
          */
         public Builder maxShipTime(Optional<OffsetDateTime> maxShipTime) {
             Utils.checkNotNull(maxShipTime, "maxShipTime");
@@ -800,8 +811,8 @@ public class LineItem {
 
 
         /**
-         * Total weight of this/these item(s). Instead of specifying the weight of all items,
-         * you can also set the `total_weight` value of the order object.
+         * Total weight of this/these item(s). Instead of specifying the weight of all items, you can also set
+         * the `total_weight` value of the order object.
          */
         public Builder weight(String weight) {
             Utils.checkNotNull(weight, "weight");
@@ -810,8 +821,8 @@ public class LineItem {
         }
 
         /**
-         * Total weight of this/these item(s). Instead of specifying the weight of all items,
-         * you can also set the `total_weight` value of the order object.
+         * Total weight of this/these item(s). Instead of specifying the weight of all items, you can also set
+         * the `total_weight` value of the order object.
          */
         public Builder weight(Optional<String> weight) {
             Utils.checkNotNull(weight, "weight");

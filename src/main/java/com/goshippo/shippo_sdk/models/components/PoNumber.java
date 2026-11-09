@@ -21,9 +21,10 @@ import java.util.Optional;
  */
 public class PoNumber {
     /**
-     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing spaces.
+     * Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
@@ -69,9 +70,10 @@ public class PoNumber {
     }
 
     /**
-     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing spaces.
+     * Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonIgnore
     public Optional<String> prefix() {
@@ -108,9 +110,10 @@ public class PoNumber {
 
 
     /**
-     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing spaces.
+     * Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public PoNumber withPrefix(String prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -120,9 +123,10 @@ public class PoNumber {
 
 
     /**
-     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing spaces.
+     * Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public PoNumber withPrefix(Optional<String> prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -228,9 +232,10 @@ public class PoNumber {
 
 
         /**
-         * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing spaces.
+         * Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(String prefix) {
             Utils.checkNotNull(prefix, "prefix");
@@ -239,9 +244,10 @@ public class PoNumber {
         }
 
         /**
-         * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * Custom prefix for PO number field (ZPL labels only). Up to 11 characters, including trailing spaces.
+         * Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(Optional<String> prefix) {
             Utils.checkNotNull(prefix, "prefix");

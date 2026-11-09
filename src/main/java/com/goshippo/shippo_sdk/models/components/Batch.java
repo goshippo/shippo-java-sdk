@@ -37,8 +37,8 @@ public class Batch {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("label_filetype")
@@ -192,8 +192,8 @@ public class Batch {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -311,8 +311,8 @@ public class Batch {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     public Batch withLabelFiletype(LabelFileTypeEnum labelFiletype) {
         Utils.checkNotNull(labelFiletype, "labelFiletype");
@@ -323,8 +323,8 @@ public class Batch {
 
     /**
      * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-     * will use the default format set from
-     * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+     * will use the default format set from [the Shippo
+     * dashboard.](https://apps.goshippo.com/settings/labels)
      */
     public Batch withLabelFiletype(Optional<? extends LabelFileTypeEnum> labelFiletype) {
         Utils.checkNotNull(labelFiletype, "labelFiletype");
@@ -554,8 +554,8 @@ public class Batch {
 
         /**
          * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-         * will use the default format set from
-         * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+         * will use the default format set from [the Shippo
+         * dashboard.](https://apps.goshippo.com/settings/labels)
          */
         public Builder labelFiletype(LabelFileTypeEnum labelFiletype) {
             Utils.checkNotNull(labelFiletype, "labelFiletype");
@@ -565,8 +565,8 @@ public class Batch {
 
         /**
          * Print format of the [label](https://docs.goshippo.com/docs/shipments/shippinglabelsizes/). If empty,
-         * will use the default format set from
-         * [the Shippo dashboard.](https://apps.goshippo.com/settings/labels)
+         * will use the default format set from [the Shippo
+         * dashboard.](https://apps.goshippo.com/settings/labels)
          */
         public Builder labelFiletype(Optional<? extends LabelFileTypeEnum> labelFiletype) {
             Utils.checkNotNull(labelFiletype, "labelFiletype");

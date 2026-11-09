@@ -195,8 +195,8 @@ public class Address {
     private Optional<Boolean> isResidential;
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -250,10 +250,8 @@ public class Address {
 
     /**
      * Date and time of last Address update. Since you cannot update Addresses after they were created,
-     * this time
-     * stamp reflects the time when the Address was changed by Shippo's systems for the last time, e.g.,
-     * during the
-     * approximation of one or more values.
+     * this time stamp reflects the time when the Address was changed by Shippo's systems for the last
+     * time, e.g., during the approximation of one or more values.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("object_updated")
@@ -261,8 +259,8 @@ public class Address {
 
     /**
      * Object that contains information regarding if an address had been validated or not. Also contains
-     * any messages
-     * generated during validation. Children keys are `is_valid`(boolean) and `messages`(array).
+     * any messages generated during validation. Children keys are `is_valid`(boolean) and
+     * `messages`(array).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("validation_results")
@@ -546,8 +544,8 @@ public class Address {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonIgnore
     public Optional<String> metadata() {
@@ -610,10 +608,8 @@ public class Address {
 
     /**
      * Date and time of last Address update. Since you cannot update Addresses after they were created,
-     * this time
-     * stamp reflects the time when the Address was changed by Shippo's systems for the last time, e.g.,
-     * during the
-     * approximation of one or more values.
+     * this time stamp reflects the time when the Address was changed by Shippo's systems for the last
+     * time, e.g., during the approximation of one or more values.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> objectUpdated() {
@@ -622,8 +618,8 @@ public class Address {
 
     /**
      * Object that contains information regarding if an address had been validated or not. Also contains
-     * any messages
-     * generated during validation. Children keys are `is_valid`(boolean) and `messages`(array).
+     * any messages generated during validation. Children keys are `is_valid`(boolean) and
+     * `messages`(array).
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -1037,8 +1033,8 @@ public class Address {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public Address withMetadata(String metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -1048,8 +1044,8 @@ public class Address {
 
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you want
-     * to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public Address withMetadata(Optional<String> metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -1181,10 +1177,8 @@ public class Address {
 
     /**
      * Date and time of last Address update. Since you cannot update Addresses after they were created,
-     * this time
-     * stamp reflects the time when the Address was changed by Shippo's systems for the last time, e.g.,
-     * during the
-     * approximation of one or more values.
+     * this time stamp reflects the time when the Address was changed by Shippo's systems for the last
+     * time, e.g., during the approximation of one or more values.
      */
     public Address withObjectUpdated(OffsetDateTime objectUpdated) {
         Utils.checkNotNull(objectUpdated, "objectUpdated");
@@ -1195,10 +1189,8 @@ public class Address {
 
     /**
      * Date and time of last Address update. Since you cannot update Addresses after they were created,
-     * this time
-     * stamp reflects the time when the Address was changed by Shippo's systems for the last time, e.g.,
-     * during the
-     * approximation of one or more values.
+     * this time stamp reflects the time when the Address was changed by Shippo's systems for the last
+     * time, e.g., during the approximation of one or more values.
      */
     public Address withObjectUpdated(Optional<OffsetDateTime> objectUpdated) {
         Utils.checkNotNull(objectUpdated, "objectUpdated");
@@ -1208,8 +1200,8 @@ public class Address {
 
     /**
      * Object that contains information regarding if an address had been validated or not. Also contains
-     * any messages
-     * generated during validation. Children keys are `is_valid`(boolean) and `messages`(array).
+     * any messages generated during validation. Children keys are `is_valid`(boolean) and
+     * `messages`(array).
      */
     public Address withValidationResults(AddressValidationResults validationResults) {
         Utils.checkNotNull(validationResults, "validationResults");
@@ -1220,8 +1212,8 @@ public class Address {
 
     /**
      * Object that contains information regarding if an address had been validated or not. Also contains
-     * any messages
-     * generated during validation. Children keys are `is_valid`(boolean) and `messages`(array).
+     * any messages generated during validation. Children keys are `is_valid`(boolean) and
+     * `messages`(array).
      */
     public Address withValidationResults(Optional<? extends AddressValidationResults> validationResults) {
         Utils.checkNotNull(validationResults, "validationResults");
@@ -1772,8 +1764,8 @@ public class Address {
 
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you want
-         * to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(String metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1782,8 +1774,8 @@ public class Address {
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you want
-         * to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(Optional<String> metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1916,10 +1908,8 @@ public class Address {
 
         /**
          * Date and time of last Address update. Since you cannot update Addresses after they were created,
-         * this time
-         * stamp reflects the time when the Address was changed by Shippo's systems for the last time, e.g.,
-         * during the
-         * approximation of one or more values.
+         * this time stamp reflects the time when the Address was changed by Shippo's systems for the last
+         * time, e.g., during the approximation of one or more values.
          */
         public Builder objectUpdated(OffsetDateTime objectUpdated) {
             Utils.checkNotNull(objectUpdated, "objectUpdated");
@@ -1929,10 +1919,8 @@ public class Address {
 
         /**
          * Date and time of last Address update. Since you cannot update Addresses after they were created,
-         * this time
-         * stamp reflects the time when the Address was changed by Shippo's systems for the last time, e.g.,
-         * during the
-         * approximation of one or more values.
+         * this time stamp reflects the time when the Address was changed by Shippo's systems for the last
+         * time, e.g., during the approximation of one or more values.
          */
         public Builder objectUpdated(Optional<OffsetDateTime> objectUpdated) {
             Utils.checkNotNull(objectUpdated, "objectUpdated");
@@ -1943,8 +1931,8 @@ public class Address {
 
         /**
          * Object that contains information regarding if an address had been validated or not. Also contains
-         * any messages
-         * generated during validation. Children keys are `is_valid`(boolean) and `messages`(array).
+         * any messages generated during validation. Children keys are `is_valid`(boolean) and
+         * `messages`(array).
          */
         public Builder validationResults(AddressValidationResults validationResults) {
             Utils.checkNotNull(validationResults, "validationResults");
@@ -1954,8 +1942,8 @@ public class Address {
 
         /**
          * Object that contains information regarding if an address had been validated or not. Also contains
-         * any messages
-         * generated during validation. Children keys are `is_valid`(boolean) and `messages`(array).
+         * any messages generated during validation. Children keys are `is_valid`(boolean) and
+         * `messages`(array).
          */
         public Builder validationResults(Optional<? extends AddressValidationResults> validationResults) {
             Utils.checkNotNull(validationResults, "validationResults");

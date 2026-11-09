@@ -22,8 +22,9 @@ import java.util.Optional;
 public class DepartmentNumber {
     /**
      * Custom prefix for department number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
@@ -69,8 +70,9 @@ public class DepartmentNumber {
 
     /**
      * Custom prefix for department number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonIgnore
     public Optional<String> prefix() {
@@ -107,8 +109,9 @@ public class DepartmentNumber {
 
     /**
      * Custom prefix for department number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public DepartmentNumber withPrefix(String prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -119,8 +122,9 @@ public class DepartmentNumber {
 
     /**
      * Custom prefix for department number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public DepartmentNumber withPrefix(Optional<String> prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -225,8 +229,9 @@ public class DepartmentNumber {
 
         /**
          * Custom prefix for department number field (ZPL labels only). Up to 11 characters, including trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * spaces. Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(String prefix) {
             Utils.checkNotNull(prefix, "prefix");
@@ -236,8 +241,9 @@ public class DepartmentNumber {
 
         /**
          * Custom prefix for department number field (ZPL labels only). Up to 11 characters, including trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * spaces. Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(Optional<String> prefix) {
             Utils.checkNotNull(prefix, "prefix");

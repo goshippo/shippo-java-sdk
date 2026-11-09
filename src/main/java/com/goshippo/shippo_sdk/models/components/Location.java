@@ -22,8 +22,8 @@ import java.util.Optional;
 public class Location {
     /**
      * The pickup address, which includes your name, company name, street address, city, state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * country, phone number, and email address (strings). Special characters should not be included in any
+     * address element, especially name, company, and email.
      */
     @JsonProperty("address")
     private AddressCompleteCreateRequest address;
@@ -75,8 +75,8 @@ public class Location {
 
     /**
      * The pickup address, which includes your name, company name, street address, city, state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * country, phone number, and email address (strings). Special characters should not be included in any
+     * address element, especially name, company, and email.
      */
     @JsonIgnore
     public AddressCompleteCreateRequest address() {
@@ -117,8 +117,8 @@ public class Location {
 
     /**
      * The pickup address, which includes your name, company name, street address, city, state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * country, phone number, and email address (strings). Special characters should not be included in any
+     * address element, especially name, company, and email.
      */
     public Location withAddress(AddressCompleteCreateRequest address) {
         Utils.checkNotNull(address, "address");
@@ -226,8 +226,8 @@ public class Location {
 
         /**
          * The pickup address, which includes your name, company name, street address, city, state, zip code,
-         * country, phone number, and email address (strings). Special characters should not be included in
-         * any address element, especially name, company, and email.
+         * country, phone number, and email address (strings). Special characters should not be included in any
+         * address element, especially name, company, and email.
          */
         public Builder address(AddressCompleteCreateRequest address) {
             Utils.checkNotNull(address, "address");

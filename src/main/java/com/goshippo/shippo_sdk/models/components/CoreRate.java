@@ -68,8 +68,8 @@ public class CoreRate {
 
     /**
      * Service level name, e.g. `Priority Mail` or `FedEx Ground®`.
-     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard),
-     * along with other properties. These names vary depending on the provider.
+     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard), along
+     * with other properties. These names vary depending on the provider.
      * See [Service Levels](/shippoapi/public-api/service-levels).
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -181,8 +181,8 @@ public class CoreRate {
 
     /**
      * Service level name, e.g. `Priority Mail` or `FedEx Ground®`.
-     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard),
-     * along with other properties. These names vary depending on the provider.
+     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard), along
+     * with other properties. These names vary depending on the provider.
      * See [Service Levels](/shippoapi/public-api/service-levels).
      */
     @JsonIgnore
@@ -343,8 +343,8 @@ public class CoreRate {
 
     /**
      * Service level name, e.g. `Priority Mail` or `FedEx Ground®`.
-     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard),
-     * along with other properties. These names vary depending on the provider.
+     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard), along
+     * with other properties. These names vary depending on the provider.
      * See [Service Levels](/shippoapi/public-api/service-levels).
      */
     public CoreRate withServicelevelName(String servicelevelName) {
@@ -356,8 +356,8 @@ public class CoreRate {
 
     /**
      * Service level name, e.g. `Priority Mail` or `FedEx Ground®`.
-     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard),
-     * along with other properties. These names vary depending on the provider.
+     * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard), along
+     * with other properties. These names vary depending on the provider.
      * See [Service Levels](/shippoapi/public-api/service-levels).
      */
     public CoreRate withServicelevelName(Optional<String> servicelevelName) {
@@ -595,8 +595,8 @@ public class CoreRate {
 
         /**
          * Service level name, e.g. `Priority Mail` or `FedEx Ground®`.
-         * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard),
-         * along with other properties. These names vary depending on the provider.
+         * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard), along
+         * with other properties. These names vary depending on the provider.
          * See [Service Levels](/shippoapi/public-api/service-levels).
          */
         public Builder servicelevelName(String servicelevelName) {
@@ -607,8 +607,8 @@ public class CoreRate {
 
         /**
          * Service level name, e.g. `Priority Mail` or `FedEx Ground®`.
-         * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard),
-         * along with other properties. These names vary depending on the provider.
+         * A service level commonly defines the transit time of a Shipment (e.g., Express vs. Standard), along
+         * with other properties. These names vary depending on the provider.
          * See [Service Levels](/shippoapi/public-api/service-levels).
          */
         public Builder servicelevelName(Optional<String> servicelevelName) {

@@ -17,16 +17,16 @@ import java.util.Optional;
 
 public class EmbeddedAuthorization {
     /**
-     * The encoded JSON Web Token. Pass it on subsequent API requests as
-     * `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+     * The encoded JSON Web Token. Pass it on subsequent API requests as `Authorization: JWT
+     * &lt;JWT_TOKEN&gt;`.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("token")
     private Optional<String> token;
 
     /**
-     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim
-     * inside the token itself. Tokens are valid for 12 hours from issue.
+     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim inside the token
+     * itself. Tokens are valid for 12 hours from issue.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("expiresIn")
@@ -47,8 +47,8 @@ public class EmbeddedAuthorization {
     }
 
     /**
-     * The encoded JSON Web Token. Pass it on subsequent API requests as
-     * `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+     * The encoded JSON Web Token. Pass it on subsequent API requests as `Authorization: JWT
+     * &lt;JWT_TOKEN&gt;`.
      */
     @JsonIgnore
     public Optional<String> token() {
@@ -56,8 +56,8 @@ public class EmbeddedAuthorization {
     }
 
     /**
-     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim
-     * inside the token itself. Tokens are valid for 12 hours from issue.
+     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim inside the token
+     * itself. Tokens are valid for 12 hours from issue.
      */
     @JsonIgnore
     public Optional<Long> expiresIn() {
@@ -70,8 +70,8 @@ public class EmbeddedAuthorization {
 
 
     /**
-     * The encoded JSON Web Token. Pass it on subsequent API requests as
-     * `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+     * The encoded JSON Web Token. Pass it on subsequent API requests as `Authorization: JWT
+     * &lt;JWT_TOKEN&gt;`.
      */
     public EmbeddedAuthorization withToken(String token) {
         Utils.checkNotNull(token, "token");
@@ -81,8 +81,8 @@ public class EmbeddedAuthorization {
 
 
     /**
-     * The encoded JSON Web Token. Pass it on subsequent API requests as
-     * `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+     * The encoded JSON Web Token. Pass it on subsequent API requests as `Authorization: JWT
+     * &lt;JWT_TOKEN&gt;`.
      */
     public EmbeddedAuthorization withToken(Optional<String> token) {
         Utils.checkNotNull(token, "token");
@@ -91,8 +91,8 @@ public class EmbeddedAuthorization {
     }
 
     /**
-     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim
-     * inside the token itself. Tokens are valid for 12 hours from issue.
+     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim inside the token
+     * itself. Tokens are valid for 12 hours from issue.
      */
     public EmbeddedAuthorization withExpiresIn(long expiresIn) {
         Utils.checkNotNull(expiresIn, "expiresIn");
@@ -102,8 +102,8 @@ public class EmbeddedAuthorization {
 
 
     /**
-     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim
-     * inside the token itself. Tokens are valid for 12 hours from issue.
+     * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim inside the token
+     * itself. Tokens are valid for 12 hours from issue.
      */
     public EmbeddedAuthorization withExpiresIn(Optional<Long> expiresIn) {
         Utils.checkNotNull(expiresIn, "expiresIn");
@@ -151,8 +151,8 @@ public class EmbeddedAuthorization {
 
 
         /**
-         * The encoded JSON Web Token. Pass it on subsequent API requests as
-         * `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+         * The encoded JSON Web Token. Pass it on subsequent API requests as `Authorization: JWT
+         * &lt;JWT_TOKEN&gt;`.
          */
         public Builder token(String token) {
             Utils.checkNotNull(token, "token");
@@ -161,8 +161,8 @@ public class EmbeddedAuthorization {
         }
 
         /**
-         * The encoded JSON Web Token. Pass it on subsequent API requests as
-         * `Authorization: JWT &lt;JWT_TOKEN&gt;`.
+         * The encoded JSON Web Token. Pass it on subsequent API requests as `Authorization: JWT
+         * &lt;JWT_TOKEN&gt;`.
          */
         public Builder token(Optional<String> token) {
             Utils.checkNotNull(token, "token");
@@ -172,8 +172,8 @@ public class EmbeddedAuthorization {
 
 
         /**
-         * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim
-         * inside the token itself. Tokens are valid for 12 hours from issue.
+         * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim inside the token
+         * itself. Tokens are valid for 12 hours from issue.
          */
         public Builder expiresIn(long expiresIn) {
             Utils.checkNotNull(expiresIn, "expiresIn");
@@ -182,8 +182,8 @@ public class EmbeddedAuthorization {
         }
 
         /**
-         * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim
-         * inside the token itself. Tokens are valid for 12 hours from issue.
+         * Unix timestamp (seconds) of when the token expires. This matches the `exp` claim inside the token
+         * itself. Tokens are valid for 12 hours from issue.
          */
         public Builder expiresIn(Optional<Long> expiresIn) {
             Utils.checkNotNull(expiresIn, "expiresIn");

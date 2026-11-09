@@ -21,8 +21,8 @@ import java.util.Optional;
 public class CarrierAccountWithExtraInfo {
     /**
      * Unique identifier of the account. Please check the [carrier accounts
-     * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/)
-     * page for the `account_id` per carrier.
+     * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/) page for the `account_id` per
+     * carrier.
      * To protect account information, this field will be masked in any API response.
      */
     @JsonProperty("account_id")
@@ -30,9 +30,8 @@ public class CarrierAccountWithExtraInfo {
 
     /**
      * Determines whether the account is active. When creating a shipment, if no `carrier_accounts` are
-     * explicitly
-     * passed Shippo will query all carrier accounts that have this field set. By default, this is set to
-     * True.
+     * explicitly passed Shippo will query all carrier accounts that have this field set. By default, this
+     * is set to True.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active")
@@ -152,8 +151,8 @@ public class CarrierAccountWithExtraInfo {
 
     /**
      * Unique identifier of the account. Please check the [carrier accounts
-     * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/)
-     * page for the `account_id` per carrier.
+     * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/) page for the `account_id` per
+     * carrier.
      * To protect account information, this field will be masked in any API response.
      */
     @JsonIgnore
@@ -163,9 +162,8 @@ public class CarrierAccountWithExtraInfo {
 
     /**
      * Determines whether the account is active. When creating a shipment, if no `carrier_accounts` are
-     * explicitly
-     * passed Shippo will query all carrier accounts that have this field set. By default, this is set to
-     * True.
+     * explicitly passed Shippo will query all carrier accounts that have this field set. By default, this
+     * is set to True.
      */
     @JsonIgnore
     public Optional<Boolean> active() {
@@ -253,8 +251,8 @@ public class CarrierAccountWithExtraInfo {
 
     /**
      * Unique identifier of the account. Please check the [carrier accounts
-     * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/)
-     * page for the `account_id` per carrier.
+     * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/) page for the `account_id` per
+     * carrier.
      * To protect account information, this field will be masked in any API response.
      */
     public CarrierAccountWithExtraInfo withAccountId(String accountId) {
@@ -265,9 +263,8 @@ public class CarrierAccountWithExtraInfo {
 
     /**
      * Determines whether the account is active. When creating a shipment, if no `carrier_accounts` are
-     * explicitly
-     * passed Shippo will query all carrier accounts that have this field set. By default, this is set to
-     * True.
+     * explicitly passed Shippo will query all carrier accounts that have this field set. By default, this
+     * is set to True.
      */
     public CarrierAccountWithExtraInfo withActive(boolean active) {
         Utils.checkNotNull(active, "active");
@@ -278,9 +275,8 @@ public class CarrierAccountWithExtraInfo {
 
     /**
      * Determines whether the account is active. When creating a shipment, if no `carrier_accounts` are
-     * explicitly
-     * passed Shippo will query all carrier accounts that have this field set. By default, this is set to
-     * True.
+     * explicitly passed Shippo will query all carrier accounts that have this field set. By default, this
+     * is set to True.
      */
     public CarrierAccountWithExtraInfo withActive(Optional<Boolean> active) {
         Utils.checkNotNull(active, "active");
@@ -530,8 +526,8 @@ public class CarrierAccountWithExtraInfo {
 
         /**
          * Unique identifier of the account. Please check the [carrier accounts
-         * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/)
-         * page for the `account_id` per carrier.
+         * tutorial](https://docs.goshippo.com/docs/carriers/carrieraccounts/) page for the `account_id` per
+         * carrier.
          * To protect account information, this field will be masked in any API response.
          */
         public Builder accountId(String accountId) {
@@ -543,9 +539,8 @@ public class CarrierAccountWithExtraInfo {
 
         /**
          * Determines whether the account is active. When creating a shipment, if no `carrier_accounts` are
-         * explicitly
-         * passed Shippo will query all carrier accounts that have this field set. By default, this is set to
-         * True.
+         * explicitly passed Shippo will query all carrier accounts that have this field set. By default, this
+         * is set to True.
          */
         public Builder active(boolean active) {
             Utils.checkNotNull(active, "active");
@@ -555,9 +550,8 @@ public class CarrierAccountWithExtraInfo {
 
         /**
          * Determines whether the account is active. When creating a shipment, if no `carrier_accounts` are
-         * explicitly
-         * passed Shippo will query all carrier accounts that have this field set. By default, this is set to
-         * True.
+         * explicitly passed Shippo will query all carrier accounts that have this field set. By default, this
+         * is set to True.
          */
         public Builder active(Optional<Boolean> active) {
             Utils.checkNotNull(active, "active");

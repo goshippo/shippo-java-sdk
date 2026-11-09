@@ -40,8 +40,7 @@ public class Shipment {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("shipment_date")
@@ -75,8 +74,7 @@ public class Shipment {
      * An array of object_ids of the carrier account objects to be used for getting shipping rates for this
      * shipment.
      * If no carrier account object_ids are set in this field, Shippo will attempt to generate rates using
-     * all the
-     * carrier accounts that have the `active` field set.
+     * all the carrier accounts that have the `active` field set.
      */
     @JsonProperty("carrier_accounts")
     private List<String> carrierAccounts;
@@ -121,9 +119,9 @@ public class Shipment {
     private List<Parcel> parcels;
 
     /**
-     * An array with all available rates. If `async` has been set to `false` in the request,
-     * this will be populated with all available rates in the response. Otherwise rates will be created
-     * asynchronously and this array will initially be empty.
+     * An array with all available rates. If `async` has been set to `false` in the request, this will be
+     * populated with all available rates in the response. Otherwise rates will be created asynchronously
+     * and this array will initially be empty.
      */
     @JsonProperty("rates")
     private List<Rate> rates;
@@ -241,8 +239,7 @@ public class Shipment {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     @JsonIgnore
     public Optional<String> shipmentDate() {
@@ -283,8 +280,7 @@ public class Shipment {
      * An array of object_ids of the carrier account objects to be used for getting shipping rates for this
      * shipment.
      * If no carrier account object_ids are set in this field, Shippo will attempt to generate rates using
-     * all the
-     * carrier accounts that have the `active` field set.
+     * all the carrier accounts that have the `active` field set.
      */
     @JsonIgnore
     public List<String> carrierAccounts() {
@@ -343,9 +339,9 @@ public class Shipment {
     }
 
     /**
-     * An array with all available rates. If `async` has been set to `false` in the request,
-     * this will be populated with all available rates in the response. Otherwise rates will be created
-     * asynchronously and this array will initially be empty.
+     * An array with all available rates. If `async` has been set to `false` in the request, this will be
+     * populated with all available rates in the response. Otherwise rates will be created asynchronously
+     * and this array will initially be empty.
      */
     @JsonIgnore
     public List<Rate> rates() {
@@ -408,8 +404,7 @@ public class Shipment {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     public Shipment withShipmentDate(String shipmentDate) {
         Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -421,8 +416,7 @@ public class Shipment {
     /**
      * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
      * Defaults to current date and time if no value is provided. Please note that some carriers require
-     * this value to
-     * be in the future, on a working day, or similar.
+     * this value to be in the future, on a working day, or similar.
      */
     public Shipment withShipmentDate(Optional<String> shipmentDate) {
         Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -479,8 +473,7 @@ public class Shipment {
      * An array of object_ids of the carrier account objects to be used for getting shipping rates for this
      * shipment.
      * If no carrier account object_ids are set in this field, Shippo will attempt to generate rates using
-     * all the
-     * carrier accounts that have the `active` field set.
+     * all the carrier accounts that have the `active` field set.
      */
     public Shipment withCarrierAccounts(List<String> carrierAccounts) {
         Utils.checkNotNull(carrierAccounts, "carrierAccounts");
@@ -553,9 +546,9 @@ public class Shipment {
     }
 
     /**
-     * An array with all available rates. If `async` has been set to `false` in the request,
-     * this will be populated with all available rates in the response. Otherwise rates will be created
-     * asynchronously and this array will initially be empty.
+     * An array with all available rates. If `async` has been set to `false` in the request, this will be
+     * populated with all available rates in the response. Otherwise rates will be created asynchronously
+     * and this array will initially be empty.
      */
     public Shipment withRates(List<Rate> rates) {
         Utils.checkNotNull(rates, "rates");
@@ -731,8 +724,7 @@ public class Shipment {
         /**
          * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
          * Defaults to current date and time if no value is provided. Please note that some carriers require
-         * this value to
-         * be in the future, on a working day, or similar.
+         * this value to be in the future, on a working day, or similar.
          */
         public Builder shipmentDate(String shipmentDate) {
             Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -743,8 +735,7 @@ public class Shipment {
         /**
          * Date the shipment will be tendered to the carrier. Must be in the format `2014-01-18T00:35:03.463Z`.
          * Defaults to current date and time if no value is provided. Please note that some carriers require
-         * this value to
-         * be in the future, on a working day, or similar.
+         * this value to be in the future, on a working day, or similar.
          */
         public Builder shipmentDate(Optional<String> shipmentDate) {
             Utils.checkNotNull(shipmentDate, "shipmentDate");
@@ -804,8 +795,7 @@ public class Shipment {
          * An array of object_ids of the carrier account objects to be used for getting shipping rates for this
          * shipment.
          * If no carrier account object_ids are set in this field, Shippo will attempt to generate rates using
-         * all the
-         * carrier accounts that have the `active` field set.
+         * all the carrier accounts that have the `active` field set.
          */
         public Builder carrierAccounts(List<String> carrierAccounts) {
             Utils.checkNotNull(carrierAccounts, "carrierAccounts");
@@ -885,9 +875,9 @@ public class Shipment {
 
 
         /**
-         * An array with all available rates. If `async` has been set to `false` in the request,
-         * this will be populated with all available rates in the response. Otherwise rates will be created
-         * asynchronously and this array will initially be empty.
+         * An array with all available rates. If `async` has been set to `false` in the request, this will be
+         * populated with all available rates in the response. Otherwise rates will be created asynchronously
+         * and this array will initially be empty.
          */
         public Builder rates(List<Rate> rates) {
             Utils.checkNotNull(rates, "rates");

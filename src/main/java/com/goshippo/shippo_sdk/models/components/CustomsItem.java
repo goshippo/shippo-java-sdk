@@ -35,27 +35,26 @@ public class CustomsItem {
     private Optional<String> eccnEar99;
 
     /**
-     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need
-     * product identifiers on shipments that meet the EU product identifier conditions
-     * (EU destination, non-EU origin, MERCHANDISE contents, recipient not a business).
+     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need product
+     * identifiers on shipments that meet the EU product identifier conditions (EU destination, non-EU
+     * origin, MERCHANDISE contents, recipient not a business).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("eu_exempt_category")
     private Optional<Boolean> euExemptCategory;
 
     /**
-     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `sku_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions.
+     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `sku_code` on every non-exempt
+     * item when the shipment meets the EU product identifier conditions.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("manufacturer_code")
     private Optional<String> manufacturerCode;
 
     /**
-     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required,
-     * but recommended for EU-bound shipments when one exists.
+     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required, but
+     * recommended for EU-bound shipments when one exists.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("manufacturer_standard_code")
@@ -68,8 +67,8 @@ public class CustomsItem {
     private WeightUnitEnum massUnit;
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata")
@@ -95,10 +94,10 @@ public class CustomsItem {
     private long quantity;
 
     /**
-     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `manufacturer_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions; some carriers also use it outside the EU.
+     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `manufacturer_code` on every
+     * non-exempt item when the shipment meets the EU product identifier conditions; some carriers also use
+     * it outside the EU.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sku_code")
@@ -132,8 +131,8 @@ public class CustomsItem {
     private String valueAmount;
 
     /**
-     * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php)
-     * currency codes are used, e.g. `USD` or `EUR`.
+     * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php) currency
+     * codes are used, e.g. `USD` or `EUR`.
      */
     @JsonProperty("value_currency")
     private String valueCurrency;
@@ -281,9 +280,9 @@ public class CustomsItem {
     }
 
     /**
-     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need
-     * product identifiers on shipments that meet the EU product identifier conditions
-     * (EU destination, non-EU origin, MERCHANDISE contents, recipient not a business).
+     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need product
+     * identifiers on shipments that meet the EU product identifier conditions (EU destination, non-EU
+     * origin, MERCHANDISE contents, recipient not a business).
      */
     @JsonIgnore
     public Optional<Boolean> euExemptCategory() {
@@ -291,10 +290,9 @@ public class CustomsItem {
     }
 
     /**
-     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `sku_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions.
+     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `sku_code` on every non-exempt
+     * item when the shipment meets the EU product identifier conditions.
      */
     @JsonIgnore
     public Optional<String> manufacturerCode() {
@@ -302,8 +300,8 @@ public class CustomsItem {
     }
 
     /**
-     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required,
-     * but recommended for EU-bound shipments when one exists.
+     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required, but
+     * recommended for EU-bound shipments when one exists.
      */
     @JsonIgnore
     public Optional<String> manufacturerStandardCode() {
@@ -319,8 +317,8 @@ public class CustomsItem {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     @JsonIgnore
     public Optional<String> metadata() {
@@ -353,10 +351,10 @@ public class CustomsItem {
     }
 
     /**
-     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `manufacturer_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions; some carriers also use it outside the EU.
+     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `manufacturer_code` on every
+     * non-exempt item when the shipment meets the EU product identifier conditions; some carriers also use
+     * it outside the EU.
      */
     @JsonIgnore
     public Optional<String> skuCode() {
@@ -395,8 +393,8 @@ public class CustomsItem {
     }
 
     /**
-     * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php)
-     * currency codes are used, e.g. `USD` or `EUR`.
+     * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php) currency
+     * codes are used, e.g. `USD` or `EUR`.
      */
     @JsonIgnore
     public String valueCurrency() {
@@ -486,9 +484,9 @@ public class CustomsItem {
     }
 
     /**
-     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need
-     * product identifiers on shipments that meet the EU product identifier conditions
-     * (EU destination, non-EU origin, MERCHANDISE contents, recipient not a business).
+     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need product
+     * identifiers on shipments that meet the EU product identifier conditions (EU destination, non-EU
+     * origin, MERCHANDISE contents, recipient not a business).
      */
     public CustomsItem withEuExemptCategory(boolean euExemptCategory) {
         Utils.checkNotNull(euExemptCategory, "euExemptCategory");
@@ -498,9 +496,9 @@ public class CustomsItem {
 
 
     /**
-     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need
-     * product identifiers on shipments that meet the EU product identifier conditions
-     * (EU destination, non-EU origin, MERCHANDISE contents, recipient not a business).
+     * Marks the item as belonging to an EU-exempt product category. Exempt items do not need product
+     * identifiers on shipments that meet the EU product identifier conditions (EU destination, non-EU
+     * origin, MERCHANDISE contents, recipient not a business).
      */
     public CustomsItem withEuExemptCategory(Optional<Boolean> euExemptCategory) {
         Utils.checkNotNull(euExemptCategory, "euExemptCategory");
@@ -509,10 +507,9 @@ public class CustomsItem {
     }
 
     /**
-     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `sku_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions.
+     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `sku_code` on every non-exempt
+     * item when the shipment meets the EU product identifier conditions.
      */
     public CustomsItem withManufacturerCode(String manufacturerCode) {
         Utils.checkNotNull(manufacturerCode, "manufacturerCode");
@@ -522,10 +519,9 @@ public class CustomsItem {
 
 
     /**
-     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `sku_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions.
+     * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `sku_code` on every non-exempt
+     * item when the shipment meets the EU product identifier conditions.
      */
     public CustomsItem withManufacturerCode(Optional<String> manufacturerCode) {
         Utils.checkNotNull(manufacturerCode, "manufacturerCode");
@@ -534,8 +530,8 @@ public class CustomsItem {
     }
 
     /**
-     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required,
-     * but recommended for EU-bound shipments when one exists.
+     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required, but
+     * recommended for EU-bound shipments when one exists.
      */
     public CustomsItem withManufacturerStandardCode(String manufacturerStandardCode) {
         Utils.checkNotNull(manufacturerStandardCode, "manufacturerStandardCode");
@@ -545,8 +541,8 @@ public class CustomsItem {
 
 
     /**
-     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required,
-     * but recommended for EU-bound shipments when one exists.
+     * Standardized product identifier such as a GTIN. Up to 100 characters. Never required, but
+     * recommended for EU-bound shipments when one exists.
      */
     public CustomsItem withManufacturerStandardCode(Optional<String> manufacturerStandardCode) {
         Utils.checkNotNull(manufacturerStandardCode, "manufacturerStandardCode");
@@ -564,8 +560,8 @@ public class CustomsItem {
     }
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public CustomsItem withMetadata(String metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -575,8 +571,8 @@ public class CustomsItem {
 
 
     /**
-     * A string of up to 100 characters that can be filled with any additional information you
-     * want to attach to the object.
+     * A string of up to 100 characters that can be filled with any additional information you want to
+     * attach to the object.
      */
     public CustomsItem withMetadata(Optional<String> metadata) {
         Utils.checkNotNull(metadata, "metadata");
@@ -613,10 +609,10 @@ public class CustomsItem {
     }
 
     /**
-     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `manufacturer_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions; some carriers also use it outside the EU.
+     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `manufacturer_code` on every
+     * non-exempt item when the shipment meets the EU product identifier conditions; some carriers also use
+     * it outside the EU.
      */
     public CustomsItem withSkuCode(String skuCode) {
         Utils.checkNotNull(skuCode, "skuCode");
@@ -626,10 +622,10 @@ public class CustomsItem {
 
 
     /**
-     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers
-     * accept fewer and reject longer values at label purchase. Required together with
-     * `manufacturer_code` on every non-exempt item when the shipment meets the EU product
-     * identifier conditions; some carriers also use it outside the EU.
+     * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers accept fewer
+     * and reject longer values at label purchase. Required together with `manufacturer_code` on every
+     * non-exempt item when the shipment meets the EU product identifier conditions; some carriers also use
+     * it outside the EU.
      */
     public CustomsItem withSkuCode(Optional<String> skuCode) {
         Utils.checkNotNull(skuCode, "skuCode");
@@ -699,8 +695,8 @@ public class CustomsItem {
     }
 
     /**
-     * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php)
-     * currency codes are used, e.g. `USD` or `EUR`.
+     * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php) currency
+     * codes are used, e.g. `USD` or `EUR`.
      */
     public CustomsItem withValueCurrency(String valueCurrency) {
         Utils.checkNotNull(valueCurrency, "valueCurrency");
@@ -973,9 +969,9 @@ public class CustomsItem {
 
 
         /**
-         * Marks the item as belonging to an EU-exempt product category. Exempt items do not need
-         * product identifiers on shipments that meet the EU product identifier conditions
-         * (EU destination, non-EU origin, MERCHANDISE contents, recipient not a business).
+         * Marks the item as belonging to an EU-exempt product category. Exempt items do not need product
+         * identifiers on shipments that meet the EU product identifier conditions (EU destination, non-EU
+         * origin, MERCHANDISE contents, recipient not a business).
          */
         public Builder euExemptCategory(boolean euExemptCategory) {
             Utils.checkNotNull(euExemptCategory, "euExemptCategory");
@@ -984,9 +980,9 @@ public class CustomsItem {
         }
 
         /**
-         * Marks the item as belonging to an EU-exempt product category. Exempt items do not need
-         * product identifiers on shipments that meet the EU product identifier conditions
-         * (EU destination, non-EU origin, MERCHANDISE contents, recipient not a business).
+         * Marks the item as belonging to an EU-exempt product category. Exempt items do not need product
+         * identifiers on shipments that meet the EU product identifier conditions (EU destination, non-EU
+         * origin, MERCHANDISE contents, recipient not a business).
          */
         public Builder euExemptCategory(Optional<Boolean> euExemptCategory) {
             Utils.checkNotNull(euExemptCategory, "euExemptCategory");
@@ -996,10 +992,9 @@ public class CustomsItem {
 
 
         /**
-         * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers
-         * accept fewer and reject longer values at label purchase. Required together with
-         * `sku_code` on every non-exempt item when the shipment meets the EU product
-         * identifier conditions.
+         * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers accept fewer
+         * and reject longer values at label purchase. Required together with `sku_code` on every non-exempt
+         * item when the shipment meets the EU product identifier conditions.
          */
         public Builder manufacturerCode(String manufacturerCode) {
             Utils.checkNotNull(manufacturerCode, "manufacturerCode");
@@ -1008,10 +1003,9 @@ public class CustomsItem {
         }
 
         /**
-         * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers
-         * accept fewer and reject longer values at label purchase. Required together with
-         * `sku_code` on every non-exempt item when the shipment meets the EU product
-         * identifier conditions.
+         * Product identifier assigned by the manufacturer. Up to 100 characters; some carriers accept fewer
+         * and reject longer values at label purchase. Required together with `sku_code` on every non-exempt
+         * item when the shipment meets the EU product identifier conditions.
          */
         public Builder manufacturerCode(Optional<String> manufacturerCode) {
             Utils.checkNotNull(manufacturerCode, "manufacturerCode");
@@ -1021,8 +1015,8 @@ public class CustomsItem {
 
 
         /**
-         * Standardized product identifier such as a GTIN. Up to 100 characters. Never required,
-         * but recommended for EU-bound shipments when one exists.
+         * Standardized product identifier such as a GTIN. Up to 100 characters. Never required, but
+         * recommended for EU-bound shipments when one exists.
          */
         public Builder manufacturerStandardCode(String manufacturerStandardCode) {
             Utils.checkNotNull(manufacturerStandardCode, "manufacturerStandardCode");
@@ -1031,8 +1025,8 @@ public class CustomsItem {
         }
 
         /**
-         * Standardized product identifier such as a GTIN. Up to 100 characters. Never required,
-         * but recommended for EU-bound shipments when one exists.
+         * Standardized product identifier such as a GTIN. Up to 100 characters. Never required, but
+         * recommended for EU-bound shipments when one exists.
          */
         public Builder manufacturerStandardCode(Optional<String> manufacturerStandardCode) {
             Utils.checkNotNull(manufacturerStandardCode, "manufacturerStandardCode");
@@ -1052,8 +1046,8 @@ public class CustomsItem {
 
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(String metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1062,8 +1056,8 @@ public class CustomsItem {
         }
 
         /**
-         * A string of up to 100 characters that can be filled with any additional information you
-         * want to attach to the object.
+         * A string of up to 100 characters that can be filled with any additional information you want to
+         * attach to the object.
          */
         public Builder metadata(Optional<String> metadata) {
             Utils.checkNotNull(metadata, "metadata");
@@ -1104,10 +1098,10 @@ public class CustomsItem {
 
 
         /**
-         * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers
-         * accept fewer and reject longer values at label purchase. Required together with
-         * `manufacturer_code` on every non-exempt item when the shipment meets the EU product
-         * identifier conditions; some carriers also use it outside the EU.
+         * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers accept fewer
+         * and reject longer values at label purchase. Required together with `manufacturer_code` on every
+         * non-exempt item when the shipment meets the EU product identifier conditions; some carriers also use
+         * it outside the EU.
          */
         public Builder skuCode(String skuCode) {
             Utils.checkNotNull(skuCode, "skuCode");
@@ -1116,10 +1110,10 @@ public class CustomsItem {
         }
 
         /**
-         * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers
-         * accept fewer and reject longer values at label purchase. Required together with
-         * `manufacturer_code` on every non-exempt item when the shipment meets the EU product
-         * identifier conditions; some carriers also use it outside the EU.
+         * SKU or merchant-assigned product code of the item. Up to 100 characters; some carriers accept fewer
+         * and reject longer values at label purchase. Required together with `manufacturer_code` on every
+         * non-exempt item when the shipment meets the EU product identifier conditions; some carriers also use
+         * it outside the EU.
          */
         public Builder skuCode(Optional<String> skuCode) {
             Utils.checkNotNull(skuCode, "skuCode");
@@ -1191,8 +1185,8 @@ public class CustomsItem {
 
 
         /**
-         * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php)
-         * currency codes are used, e.g. `USD` or `EUR`.
+         * Currency used for value_amount. The [official ISO 4217](http://www.xe.com/iso4217.php) currency
+         * codes are used, e.g. `USD` or `EUR`.
          */
         public Builder valueCurrency(String valueCurrency) {
             Utils.checkNotNull(valueCurrency, "valueCurrency");

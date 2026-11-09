@@ -22,8 +22,9 @@ import java.util.Optional;
 public class InvoiceNumber {
     /**
      * Custom prefix for invoice number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
@@ -70,8 +71,9 @@ public class InvoiceNumber {
 
     /**
      * Custom prefix for invoice number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     @JsonIgnore
     public Optional<String> prefix() {
@@ -109,8 +111,9 @@ public class InvoiceNumber {
 
     /**
      * Custom prefix for invoice number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public InvoiceNumber withPrefix(String prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -121,8 +124,9 @@ public class InvoiceNumber {
 
     /**
      * Custom prefix for invoice number field (ZPL labels only). Up to 11 characters, including trailing
-     * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-     * this property.
+     * spaces. Empty string indicates removal of default prefix.
+     * 
+     * <p>To use the default prefix, do not include this property.
      */
     public InvoiceNumber withPrefix(Optional<String> prefix) {
         Utils.checkNotNull(prefix, "prefix");
@@ -229,8 +233,9 @@ public class InvoiceNumber {
 
         /**
          * Custom prefix for invoice number field (ZPL labels only). Up to 11 characters, including trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * spaces. Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(String prefix) {
             Utils.checkNotNull(prefix, "prefix");
@@ -240,8 +245,9 @@ public class InvoiceNumber {
 
         /**
          * Custom prefix for invoice number field (ZPL labels only). Up to 11 characters, including trailing
-         * spaces. Empty string indicates removal of default prefix. To use the default prefix, do not include
-         * this property.
+         * spaces. Empty string indicates removal of default prefix.
+         * 
+         * <p>To use the default prefix, do not include this property.
          */
         public Builder prefix(Optional<String> prefix) {
             Utils.checkNotNull(prefix, "prefix");

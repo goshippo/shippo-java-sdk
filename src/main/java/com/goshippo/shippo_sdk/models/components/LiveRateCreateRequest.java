@@ -19,8 +19,8 @@ import java.util.Optional;
 public class LiveRateCreateRequest {
     /**
      * The sender address, which includes your name, company name, street address, city, state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * country, phone number, and email address (strings). Special characters should not be included in any
+     * address element, especially name, company, and email.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("address_from")
@@ -28,9 +28,8 @@ public class LiveRateCreateRequest {
 
     /**
      * The recipient address, which includes the recipient's name, company name, street address, city,
-     * state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * state, zip code, country, phone number, and email address (strings). Special characters should not
+     * be included in any address element, especially name, company, and email.
      */
     @JsonProperty("address_to")
     private LiveRateCreateRequestAddressTo addressTo;
@@ -73,8 +72,8 @@ public class LiveRateCreateRequest {
 
     /**
      * The sender address, which includes your name, company name, street address, city, state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * country, phone number, and email address (strings). Special characters should not be included in any
+     * address element, especially name, company, and email.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -84,9 +83,8 @@ public class LiveRateCreateRequest {
 
     /**
      * The recipient address, which includes the recipient's name, company name, street address, city,
-     * state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * state, zip code, country, phone number, and email address (strings). Special characters should not
+     * be included in any address element, especially name, company, and email.
      */
     @JsonIgnore
     public LiveRateCreateRequestAddressTo addressTo() {
@@ -117,8 +115,8 @@ public class LiveRateCreateRequest {
 
     /**
      * The sender address, which includes your name, company name, street address, city, state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * country, phone number, and email address (strings). Special characters should not be included in any
+     * address element, especially name, company, and email.
      */
     public LiveRateCreateRequest withAddressFrom(LiveRateCreateRequestAddressFrom addressFrom) {
         Utils.checkNotNull(addressFrom, "addressFrom");
@@ -129,8 +127,8 @@ public class LiveRateCreateRequest {
 
     /**
      * The sender address, which includes your name, company name, street address, city, state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * country, phone number, and email address (strings). Special characters should not be included in any
+     * address element, especially name, company, and email.
      */
     public LiveRateCreateRequest withAddressFrom(Optional<? extends LiveRateCreateRequestAddressFrom> addressFrom) {
         Utils.checkNotNull(addressFrom, "addressFrom");
@@ -140,9 +138,8 @@ public class LiveRateCreateRequest {
 
     /**
      * The recipient address, which includes the recipient's name, company name, street address, city,
-     * state, zip code,
-     * country, phone number, and email address (strings). Special characters should not be included in
-     * any address element, especially name, company, and email.
+     * state, zip code, country, phone number, and email address (strings). Special characters should not
+     * be included in any address element, especially name, company, and email.
      */
     public LiveRateCreateRequest withAddressTo(LiveRateCreateRequestAddressTo addressTo) {
         Utils.checkNotNull(addressTo, "addressTo");
@@ -228,8 +225,8 @@ public class LiveRateCreateRequest {
 
         /**
          * The sender address, which includes your name, company name, street address, city, state, zip code,
-         * country, phone number, and email address (strings). Special characters should not be included in
-         * any address element, especially name, company, and email.
+         * country, phone number, and email address (strings). Special characters should not be included in any
+         * address element, especially name, company, and email.
          */
         public Builder addressFrom(LiveRateCreateRequestAddressFrom addressFrom) {
             Utils.checkNotNull(addressFrom, "addressFrom");
@@ -239,8 +236,8 @@ public class LiveRateCreateRequest {
 
         /**
          * The sender address, which includes your name, company name, street address, city, state, zip code,
-         * country, phone number, and email address (strings). Special characters should not be included in
-         * any address element, especially name, company, and email.
+         * country, phone number, and email address (strings). Special characters should not be included in any
+         * address element, especially name, company, and email.
          */
         public Builder addressFrom(Optional<? extends LiveRateCreateRequestAddressFrom> addressFrom) {
             Utils.checkNotNull(addressFrom, "addressFrom");
@@ -251,9 +248,8 @@ public class LiveRateCreateRequest {
 
         /**
          * The recipient address, which includes the recipient's name, company name, street address, city,
-         * state, zip code,
-         * country, phone number, and email address (strings). Special characters should not be included in
-         * any address element, especially name, company, and email.
+         * state, zip code, country, phone number, and email address (strings). Special characters should not
+         * be included in any address element, especially name, company, and email.
          */
         public Builder addressTo(LiveRateCreateRequestAddressTo addressTo) {
             Utils.checkNotNull(addressTo, "addressTo");

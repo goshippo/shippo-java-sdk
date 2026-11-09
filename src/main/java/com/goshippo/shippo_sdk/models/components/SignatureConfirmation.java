@@ -12,8 +12,7 @@ import java.util.Optional;
  * SignatureConfirmation
  * 
  * <p>Request standard or adult signature confirmation. You can alternatively request Certified Mail (USPS
- * only)
- * or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
+ * only) or Indirect signature (FedEx only) or Carrier Confirmation (Deutsche Post only).
  */
 public enum SignatureConfirmation {
     STANDARD("STANDARD"),
